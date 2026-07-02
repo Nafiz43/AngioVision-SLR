@@ -1,0 +1,151 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabularx}{\textwidth}
+{>{\raggedright\arraybackslash}p{3.3cm}
+ >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Task} & \textbf{Representative Architectures} \\
+\midrule
+3D Reconstruction \& Depth Estimation &
+Deep Segmentation + Bi-Plane Reconstruction~\cite{ref90} \\
+\hdashline
+Anomaly Detection &
+Support Vector Machine~\cite{ref11}, X3D Family~\cite{ref25} \\
+\hdashline
+Background Subtraction &
+CNNs~\cite{ref52}, U-Net Family~\cite{ref40}, GAN-based Models~\cite{ref5}, CDSA-Net~\cite{} \\
+\hdashline
+Catheter \& Device Tracking &
+U-Net Family~\cite{ref98}, FCN-based Networks~\cite{ref87}, Vision Transformer Hybrids~\cite{ref56}, R-CNN Family~\cite{ref8}, Bayesian Filtering + Siamese~\cite{ref99}, Support Vector Machine~\cite{ref11}, PAR-Net~\cite{} \\
+\hdashline
+Contrast Flow Analysis &
+CNNs~\cite{ref69}, ResNet Family~\cite{ref33}, U-Net Family~\cite{ref28}, Recurrent Models (GRU)~\cite{ref96}, Physics-Informed Learning~\cite{ref43}, pix2pix~\cite{}, SymDIRECT~\cite{} \\
+\hdashline
+Disease Classification \& Grading &
+ResNet Family~\cite{ref23}, DenseNet Family~\cite{ref62}, EfficientNet Family~\cite{ref76}, Vision Transformer Family~\cite{ref31}, X3D Family~\cite{ref25}, CVFSNet~\cite{ref35}, Faster R-CNN~\cite{ref53}, Dr-SAM~\cite{} \\
+\hdashline
+Image Enhancement \& Denoising &
+CNNs~\cite{ref10}, U-Net Family~\cite{ref39}, GAN-based Models~\cite{ref93}, Edge-Enhancement DenseNet~\cite{ref83}, RED-CNN~\cite{}, AaDSA~\cite{}, EEDN~\cite{} \\
+\hdashline
+Image Registration &
+Projective Spatial Transformers (U-Net based)~\cite{ref55} \\
+\hdashline
+Landmark \& Keypoint Detection &
+Hourglass-based Detection~\cite{ref9} \\
+\hdashline
+Motion Correction \& Registration &
+U-Net Family~\cite{ref40}, CNNs~\cite{ref96}, Projective Spatial Transformer~\cite{ref55}, JTML~\cite{} \\
+\hdashline
+Object Detection \& Localization &
+YOLO Family~\cite{ref22}, Transformer Detection~\cite{ref66}, R-CNN Family~\cite{ref53}, RetinaNet~\cite{ref21}, ResNet Family~\cite{ref100}, DenseNet Family~\cite{ref78}, U-Net Family~\cite{ref61}, Siamese Networks~\cite{ref19}, Tree-based Models~\cite{ref14} \\
+\hdashline
+Outcome Prediction &
+Dense Neural Networks~\cite{ref14}, DenseNet Family~\cite{ref42}, EfficientNet Family~\cite{ref76}, ResNet Family~\cite{ref71}, Recurrent Models~\cite{ref96}, Tree-based Models~\cite{ref59}, Parametric Imaging~\cite{ref72}, SPARNet~\cite{} \\
+\hdashline
+Temporal Sequence Modeling &
+CNNs~\cite{ref20}, ResNet Family~\cite{ref62}, Tree-based Models~\cite{ref59}, Recurrent Models~\cite{ref77}, Deep Channel Attention~\cite{ref97}, MoSt-DSA~\cite{}, SAVE-Net~\cite{}, SepConv++~\cite{} \\
+\hdashline
+Vessel Segmentation &
+U-Net Family~\cite{ref49}, Temporal Attention Networks~\cite{ref64}, DenseNet Family~\cite{ref97}, nnU-Net~\cite{ref15}, CAVE~\cite{ref50}, FSTIF-UNet~\cite{ref63}, DOSTA-Net~\cite{ref64}, Channel Attention (SDAN)~\cite{ref97}, UniverSeg~\cite{}, DeepMedic~\cite{}, DFA-Net~\cite{}, MA-Net~\cite{}, MDA-Net~\cite{}, TAG-DL~\cite{}, TBENet~\cite{} \\
+\hdashline
+Other &
+ResNet Family~\cite{ref30}, SegFormer-style Transformer~\cite{ref31}, Diffusion/Generative Models~\cite{ref39}, U-Net Family~\cite{ref58}, VGG-based Models~\cite{ref94}, X3D-S~\cite{ref25}, YOLO Family~\cite{ref22}, FluoroSAM~\cite{}, HyperMorph~\cite{}, Light U-Net~\cite{}, RAFT~\cite{}, nnU-Net+pix2pix cGAN~\cite{} \\
+\bottomrule
+\end{tabularx}
+\caption{Task-wise mapping of representative architectural families. Architecturally similar variants (e.g., U-Net derivatives, ResNet variants, YOLO versions, and Transformer-based models) are grouped to improve readability.}
+\label{tab:task_architecture_clean}
+\end{table*}
+
+
+
+
+
+% \begin{table*}[t]
+% \centering
+% \small
+% \begin{tabularx}{\textwidth}
+% {>{\raggedright\arraybackslash}p{3.3cm}
+%  >{\raggedright\arraybackslash}X}
+% \toprule
+% \textbf{Task} & \textbf{Representative Architectures} \\
+% \midrule
+
+% 3D Reconstruction \& Depth Estimation &
+% DAMN \\
+
+% \hdashline
+
+% Anomaly Detection &
+% Support Vector Machine, X3D Family \\
+
+% \hdashline
+
+% Background Subtraction &
+% CNNs, U-Net Family, GAN-based Models, CDSA-Net \\
+
+% \hdashline
+
+% Catheter \& Device Tracking &
+% U-Net Family, DeepLab Family, FCN-based Networks, SegNet, Vision Transformer Hybrids, R-CNN Family, Reinforcement Learning (SAC), Support Vector Machine, Siamese Networks, PAR-Net \\
+
+% \hdashline
+
+% Contrast Flow Analysis &
+% CNNs, ResNet Family, U-Net Family, Recurrent Models (GRU), pix2pix, SymDIRECT, Physics-ML Hybrid Models \\
+
+% \hdashline
+
+% Disease Classification \& Grading &
+% ResNet Family, DenseNet Family, EfficientNet Family, Vision Transformer Family, X3D Family, CVFSNet, Dr-SAM, Faster R-CNN \\
+
+% \hdashline
+
+% Image Enhancement \& Denoising &
+% CNNs, U-Net Family, GAN-based Models, Dense DnCNN, RED-CNN, AaDSA, EEDN \\
+
+% \hdashline
+
+% Image Registration &
+% U-Net Family \\
+
+% \hdashline
+
+% Landmark \& Keypoint Detection &
+% SA-Hourglass \\
+
+% \hdashline
+
+% Motion Correction \& Registration &
+% U-Net Family, CNNs, JTML, ProST DeepNet \\
+
+% \hdashline
+
+% Object Detection \& Localization &
+% YOLO Family, DETR Family, R-CNN Family, RetinaNet, ResNet Family, Vision Transformer Family, DenseNet Family, U-Net Family, Siamese Networks, Tree-based Models \\
+
+% \hdashline
+
+% Outcome Prediction &
+% Dense Neural Networks, DenseNet Family, EfficientNet Family, ResNet Family, Recurrent Models, Tree-based Models, Hybrid Transformer-UNet Models, SPARNet \\
+
+% \hdashline
+
+% Temporal Sequence Modeling &
+% CNNs, ResNet Family, Tree-based Models, Recurrent Models, MoStNet, MoSt-DSA, SAVE-Net, SepConv++ \\
+
+% \hdashline
+
+% Vessel Segmentation &
+% U-Net Family, DeepLab Family, FCN-based Segmentation Networks, DenseNet Family, Vision Transformer Segmentation Models, nnU-Net, UniverSeg, DeepMedic, CAVE, DFA-Net, MA-Net, MDA-Net, TAG-DL, TBENet, SDAN \\
+
+% \hdashline
+
+% Other &
+% FluoroSAM, HyperMorph, Light U-Net, RAFT, ResNet Family, SegFormer, Diffusion Models, U-Net Family, VGG-based Models, X3D-S, YOLO Family, nnU-Net+pix2pix cGAN \\
+
+% \bottomrule
+% \end{tabularx}
+% \caption{Task-wise mapping of representative architectural families. Architecturally similar variants (e.g., U-Net derivatives, ResNet variants, YOLO versions, and Transformer-based models) are grouped to improve readability.}
+% \label{tab:task_architecture_clean}
+% \end{table*}

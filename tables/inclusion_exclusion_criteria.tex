@@ -1,0 +1,64 @@
+\renewcommand{\arraystretch}{1.25}
+\begin{table*}[ht]
+\centering
+\caption{Pre-specified eligibility criteria with Stage~1 screening
+counts. Include counts reflect records satisfying each criterion
+individually; exclude counts reflect records failing each criterion.}
+\label{tab:criteria}
+\begin{tabularx}{\textwidth}{@{}l l X r r@{}}
+\toprule
+\textbf{ID} & \textbf{Type} & \textbf{Criterion} &
+\textbf{In} & \textbf{Ex} \\
+\midrule
+I1 & Modality
+   & DSA or fluoroscopic image sequences (multi-frame temporal data).
+     Single-frame DSA images without explicit temporal analysis do not
+     satisfy this criterion.
+   & 661 & \\
+\hdashline
+I2 & Task
+   & Addresses at least one computational processing task: image
+     enhancement, denoising, artifact reduction, background subtraction,
+     registration, motion correction, vessel segmentation, object
+     detection, localization, classification, temporal sequence
+     modeling, or outcome prediction.
+   & 2547 & \\
+\hdashline
+I3 & Method detail
+   & The proposed method is described with sufficient detail to identify
+     inputs, outputs, architecture, and the core processing pipeline.
+     Full reproducibility from the paper alone is not required.
+   & 2884 & \\
+\hdashline
+I4 & Evaluation
+   & Quantitative performance is reported using at least one defined
+     metric with a specified validation design (held-out test set,
+     cross-validation, or prospective cohort).
+   & 3346 & \\
+\midrule
+E1 & Wrong modality
+   & Modality is exclusively CT, MRI, ultrasound, or static radiography with
+     no DSA or fluoroscopy component.
+   & & 114 \\
+\hdashline
+E2 & No temporal component
+   & Work operates on a single static frame with no inter-frame or
+     sequence-level analysis.
+   & & 29 \\
+\hdashline
+E3 & No original method
+   & Clinical narrative, commentary, opinion piece, or secondary review
+     without an original computational contribution.
+   & & 0 \\
+\hdashline
+E4 & Incomplete publication
+   & Abstract-only submission or conference poster lacking a full
+     methods section.
+   & & 0 \\
+\hdashline
+E5 & Non-English language
+   & Full text not available in English.
+   & & 1 \\
+\bottomrule
+\end{tabularx}
+\end{table*}

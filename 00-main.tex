@@ -1,0 +1,190 @@
+\documentclass[a4paper,fleqn]{cas-dc}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{positioning, calc, backgrounds}
+\usepackage{pdflscape}   % for landscape wrapping
+
+
+% --- Figures & tables ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{microtype}
+\usepackage{arydshln}
+\usepackage{enumerate}
+\usepackage{tabularx}
+% --- Lists/columns ---
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{longtable}
+% \usepackage{listings}
+% --- Colors ---
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+
+% --- Hyperlinks ---
+% \usepackage[colorlinks=true,
+%             linkcolor=RoyalBlue,
+%             citecolor=ForestGreen,
+%             urlcolor=Maroon]{hyperref}
+
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+
+\usepackage[most]{tcolorbox}
+\usepackage{caption}
+\usepackage{xcolor}
+
+\tcbset{
+    promptbox/.style={
+        enhanced,
+        breakable,
+        colback=gray!5,
+        colframe=black!60,
+        boxrule=0.5pt,
+        arc=0pt,
+        left=6pt,
+        right=6pt,
+        top=6pt,
+        bottom=6pt
+    }
+}
+
+\newcommand{\dashedrule}{\noalign{\vskip3pt{\color{gray!40}\hrule height 0.4pt}\vskip3pt}}
+\newcommand{\tabitem}{\hspace{2pt}\textbullet\hspace{5pt}}
+
+
+\usepackage{ragged2e}
+
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+% --- Code listings ---
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true,
+  postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}
+}
+
+% --- REQUIRED for author/affiliation formatting ---
+% \usepackage{authblk}
+
+% If the frontmatter runs over more than one page
+% use the longmktitle option.
+
+%\documentclass[a4paper,fleqn,longmktitle]{cas-sc}
+
+%\usepackage[numbers]{natbib}
+%\usepackage[authoryear]{natbib}
+% \usepackage[authoryear,longnamesfirst]{natbib}
+\usepackage[numbers]{natbib}
+
+%%%Author macros
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+%%%
+
+% Uncomment and use as if needed
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newdefinition{rmk}{Remark}
+%\newproof{pf}{Proof}
+%\newproof{pot}{Proof of Theorem \ref{thm}}
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+% Short title
+\shorttitle{SLR on Angiographic Sequence Analysis}
+
+% Short author
+% \shortauthors{Khan, Filkov and Goldman}
+
+% Main title of the paper
+\title[mode = title]{A Systematic Literature Review on Methods for Angiographic Sequence Analysis}
+
+\tnotemark[1]
+
+
+% \author[1]{Nafiz Imtiaz Khan}[orcid=0000-0003-0149-6012]
+% \ead{nikhan@ucdavis.edu}
+% \author[1]{Vladimir Filkov}[orcid=0000-0003-0492-4393]
+% \author[3]{Roger Eric Goldman}[orcid=0000-0003-0394-3744]
+% \cormark[1]
+% \fnmark[1]
+
+
+% \credit{Conceptualization, Methodology, Software, Formal Analysis, Writing -- Original Draft}
+
+% \affiliation[1]{organization={Department of Computer Science, University of California, Davis},
+%             addressline={},
+%             city={Davis},
+%             postcode={95616},
+%             state={CA},
+%             country={USA}}
+% \ead{}
+% \ead[url]{}
+
+% % Credit authorship
+% \credit{Supervision, Conceptualization, Writing -- Review \& Editing}
+
+% \ead[url]{}
+
+% \credit{Supervision, Conceptualization, Methodology, Clinical Expertise, Writing -- Review \& Editing}
+
+% % Address/affiliation
+% \affiliation[2]{organization={Department of Radiology, School of Medicine, University of California, Davis},
+%             city={Sacramento},
+%             postcode={95817},
+%             state={CA},
+%             country={USA}}
+
+% \cortext[1]{Corresponding author}
+% \fntext[1]{}
+
+\begin{abstract}
+Cardiovascular disease remains a leading cause of mortality worldwide. Angiographic imaging serves as a cornerstone for the diagnosis and treatment of vascular disorders. Unlike static medical imaging modalities, digital subtraction angiography (DSA) and fluoroscopic acquisitions capture dynamic contrast propagation over time, providing rich spatial and temporal information that can support clinical decision-making. Recent advances in artificial intelligence (AI) and deep learning have accelerated the development of automated methods for angiographic sequence analysis; however, the literature remains fragmented across clinical domains, imaging modalities, computational tasks, and research communities. To provide a comprehensive synthesis of this rapidly evolving field, we conducted a PRISMA 2020-guided systematic literature review of AI-based angiographic sequence analysis. A structured search of PubMed/MEDLINE and Semantic Scholar identified 5,829 records, from which 194 studies satisfied all eligibility criteria and were included in the final review. We systematically analyze publication trends, imaging modalities, anatomical coverage, computational tasks, deep learning architectures, evaluation practices, reporting quality, and translational readiness. Our findings reveal substantial growth in the field since 2020, yet demonstrate that most existing approaches continue to treat angiographic sequences as collections of independent frames rather than explicitly modeling temporal dynamics. The literature is heavily concentrated coronary and  cerebral applications, with limited exploration of multi-modal learning, broader anatomical territories, and clinically grounded outcome prediction. Furthermore, considerable heterogeneity in datasets, evaluation protocols, and reporting practices constrains reproducibility and cross-study comparison. Through a synthesis of methodological limitations and future work reported across the included studies, we identify twelve major research gaps spanning data infrastructure, temporal modeling, annotation efficiency, clinical validation, explainability, multi-modal integration, privacy-preserving learning, outcome prediction, and large language model applications. Collectively, these findings provide the first comprehensive overview of deep learning methods for angiographic sequence analysis and establish a roadmap for the development of robust, reproducible, and clinically deployable AI systems for deployment in angiography-guided interventional procedures.
+
+\end{abstract}
+
+
+\begin{keywords}
+{Angiographic Sequence Analysis \sep Digital Subtraction Angiography \sep Fluoroscopy \sep Deep Learning \sep Artificial Intelligence \sep Temporal Modeling \sep Spatio-Temporal Learning \sep Medical Image Analysis \sep Interventional Radiology \sep Cardiovascular Imaging \sep Systematic Literature Review}
+\end{keywords}
+
+\maketitle
+
+
+\input{01-intro}
+\input{02-methodology}
+\input{03-analysis}
+\input{04-research_gaps}
+\input{05-discussion}
+\input{06-appendix}
+\printcredits
+
+
+
+\bibliographystyle{unsrtnat}
+% Loading bibliography database
+\bibliography{references}
+
+
+\end{document}
+

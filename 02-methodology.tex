@@ -1,0 +1,98 @@
+\section{Methodology}
+\subsection{Search Strategy}
+This systematic review was conducted in accordance with the Preferred Reporting Items for Systematic Reviews and Meta-Analyses 2020 (PRISMA 2020) guidelines~\cite{Page2021PRISMA}. As the primary objective of this review is to characterize AI methods that operate on angiographic image sequences, the search strategy was designed to jointly capture both the imaging modality and the computational methodology.
+
+A structured Boolean search was executed across PubMed/MEDLINE \cite{white2020pubmed} and Semantic Scholar \cite{fricke2018semantic}. These databases were selected to provide complementary coverage of both clinical and technical literature, which reflects the interdisciplinary nature of angiographic image analysis research. No study-type filters were applied during database retrieval in order to maximize recall and avoid prematurely excluding potentially relevant methodological contributions. Instead, study eligibility was determined during the screening process.
+
+The search spans publications published between \textit{January 1, 2000} and \textit{15 May 2026}. The year 2000 was selected as a practical lower bound because modern digital angiographic workflows and contemporary machine learning approaches largely emerged after this period.
+
+To capture studies at the intersection of angiographic imaging and AI, the search query was organized into two Boolean components.
+
+\medskip
+\noindent\textbf{Block 1 --- Imaging modality}
+\begin{quote}
+\small\texttt{(angiograph* OR fluoroscopy* OR ``digital subtraction angiography'' OR DSA)}
+\end{quote}
+
+\noindent\textbf{AND}
+
+\noindent\textbf{Block 2 --- Computational methodology}
+\begin{quote}
+\small\texttt{(`deep learning'' OR `machine learning'' OR CNN OR transformer OR ``artificial intelligence'' OR AI)}
+\end{quote}
+\medskip
+
+% The initial search yielded 5{,}829 records, including 4{,}071 from PubMed/MEDLINE and 1{,}758 from Semantic Scholar. Duplicate records were removed, which resuls in the exclusion of 765 duplicates and leaving 5{,}064 unique records. An additional 29 records lacking retrievable titles or abstracts were excluded prior to screening, yielding 5{,}035 records for title and abstract assessment.
+
+
+
+\subsection{Eligibility Criteria}
+\label{sec:eligibility}
+
+Eligibility criteria were defined \emph{a priori} in accordance with PRISMA 2020 recommendations and are summarized in Table~\ref{tab:criteria}. 
+
+To be included, a study was required to satisfy four inclusion criteria. First, the study had to analyze DSA or fluoroscopic image sequences containing explicit temporal information. Second, it had to address at least one computational processing task relevant to angiographic analysis, which includes image enhancement, denoising, background subtraction, motion correction, registration, vessel segmentation, object detection, classification, temporal sequence modeling, or outcome prediction. Third, the proposed methodology had to be described with sufficient technical detail to identify the principal processing pipeline and model architecture. Fourth, the study was required to report quantitative evaluation results using a defined validation strategy.
+
+Studies were excluded if they focused exclusively on non-angiographic imaging modalities, operated solely on static images without sequence-level analysis, lacked an original computational contribution, were available only as abstracts or posters without sufficient methodological detail, or were not available in English. Eligibility criteria were applied sequentially during title--abstract screening and subsequently re-evaluated during full-text assessment.
+
+
+\subsection{LLM-Assisted Screening Pipeline}
+\label{sec:llm-pipeline}
+
+Given the large volume of retrieved records, an LLM-assisted screening workflow was developed to support the systematic review process while maintaining explicit adherence to predefined eligibility criteria. The objective of the pipeline was not to replace human judgment but rather to provide a scalable and reproducible mechanism for applying the inclusion and exclusion criteria consistently across thousands of candidate records. All inference was performed locally using the Ollama framework \cite{marcondes2025using}, which enabled complete control over model execution, eliminated dependence on external services, and ensured reproducibility of the screening process.
+
+The screening workflow consisted of two sequential stages corresponding to the title--abstract screening and full-text review phases of the systematic review. During the first stage, candidate records were evaluated using a structured two-gate screening architecture. The first gate assessed the four inclusion criteria (I1--I4), requiring all criteria to be satisfied before a study could advance. Records passing the inclusion gate were subsequently evaluated against the exclusion criteria (E1--E5). Any study triggering one or more exclusion criteria was removed from further consideration. This design mirrors the sequential decision-making process, which is commonly employed during manual systematic reviews and provides explicit traceability regarding the criterion responsible for each exclusion decision.
+
+\subsubsection{Title-Abstract Eligibility Assessment}
+\label{sec:title-abstract-sceening}
+
+For each record, the model was provided with the article title and abstract and instructed to generate a structured JSON response containing: (i) an inclusion or exclusion decision, (ii) the eligibility criteria that were satisfied or violated, (iii) a concise justification for the decision, and (iv) an uncertainty flag indicating whether insufficient information was available for a confident assessment. To maximize determinism and reduce response variability, model temperature was fixed at zero. Additional safeguards included automatic retry mechanisms, JSON schema validation, response repair procedures for malformed outputs, and context-length controls for unusually long abstracts. Records classified as uncertain were automatically flagged for human review.
+
+Because screening decisions directly influence the composition of the final review corpus, a manual validation procedure was conducted to assess the reliability of the LLM-assisted workflow. A random sample of 100 records was independently reviewed by a human evaluator (NIK) using the same inclusion and exclusion criteria applied by the automated pipeline. The evaluator assessed each article without access to the model-generated decision and subsequently compared the resulting judgments against the LLM outputs. Disagreements were examined manually to identify potential failure modes and verify the suitability of the screening pipeline for large-scale literature assessment. This validation step provided an additional layer of quality assurance and reduced the likelihood of systematic screening errors.
+
+%Studies that advanced beyond title--abstract screening proceeded to a full-text analysis stage. Full manuscripts were converted into machine-readable Markdown representations and processed using GPT-OSS:20B \cite{agarwal2025gpt} deployed locally through Ollama \cite{marcondes2025using}. GPT-OSS:20B was selected because it provides strong reasoning and structured information extraction capabilities while remaining computationally practical for large-scale document analysis. Recent evaluations have demonstrated that GPT-OSS models achieve performance competitive with substantially larger models on information extraction, scientific document understanding, and structured reasoning tasks, making them well suited for systematic review workflows \cite{agarwal2025gpt, OpenAI2025GPTOSS}. The model was instructed to extract a comprehensive set of bibliographic, methodological, evaluative, and translational characteristics according to a predefined JSON schema. Extracted fields included imaging modalities, anatomical territories, dataset characteristics, computational tasks, architectural designs, temporal modeling strategies, evaluation metrics, validation methodologies, reproducibility indicators, and clinical deployment considerations.
+
+%To ensure transparency and reproducibility, the prompts are provided in Appendix A.
+
+
+\subsubsection{Full-Text Eligibility Assessment and Structured Data Extraction}
+\label{sec:full-text-screening}
+
+Studies advancing beyond title--abstract screening underwent full-text eligibility assessment and structured information extraction. Full manuscripts were converted into machine-readable Markdown representations and processed using a second LLM-based extraction pipeline.
+
+This stage employed GPT-OSS:20B \cite{agarwal2025gpt}, an open-weight large language model deployed locally through Ollama. GPT-OSS:20B was selected because it provides strong reasoning and information extraction performance while remaining computationally practical for large-scale full-text analysis. Recent benchmarking studies have demonstrated that GPT-OSS models achieve performance comparable to substantially larger proprietary and open-source models across a range of structured extraction and scientific document understanding tasks, making them well-suited for systematic review workflows.
+
+For each article, the model was provided with the full manuscript text and instructed to extract information according to a predefined JSON schema developed specifically for angiographic sequence analysis. Extracted fields included bibliographic metadata, imaging modality, anatomical territory, dataset characteristics, annotation procedures, computational tasks, model architectures, temporal modeling strategies, evaluation metrics, validation designs, reproducibility indicators, clinical validation characteristics, limitations, and future research directions.
+
+To maximize extraction consistency, model outputs were constrained to structured JSON representations and validated automatically. Malformed outputs triggered automated repair procedures and re-evaluation. Full-text inputs exceeding the model context budget were truncated using a predefined maximum character limit while preserving the article metadata and primary methodological content.
+
+The resulting structured database served as the foundation for all subsequent quantitative analyses presented in Section~\ref{sec:results}. The complete extraction schema, prompts, and implementation details are provided in Appendix~X.
+
+\subsection{Statistical Analysis}
+\label{sec:stats-methods}
+Statistical analyses were primarily descriptive in nature and were designed to characterize methodological, reporting, and performance trends across the included studies. Frequencies, percentages, and summary distributions were computed for publication characteristics, imaging modalities, anatomical territories, computational tasks, model architectures, and reporting attributes. Reporting-quality assessments based on the CLAIM 2024 framework were summarized as adherence proportions, with corresponding 95\% confidence intervals estimated using the Wilson score method. Comparative analyses between publication cohorts were performed using differences in observed proportions. Reported performance metrics extracted from the literature were aggregated and examined using histograms and kernel density estimation (KDE) to visualize distributional patterns across metric families. Given the substantial heterogeneity in datasets, validation protocols, and evaluation metrics among studies, no formal meta-analysis or pooled effect-size estimation was performed. All statistical analyses and visualizations were conducted using Python.
+% \subsection{Screening and Selection Process}
+% \label{sec:screening}
+
+% Screening was conducted using a two-stage process, shown in Figure~\ref{fig:prisma}. The two-stage design was adopted to balance broad initial coverage with detailed full-text verification, allowing potentially relevant studies to be retained until sufficient methodological information became available for eligibility assessment.
+
+% \textbf{Stage 1 --- Title and abstract screening.}
+
+% All records produced from the structured Boolean search were evaluated using the LLM-assisted screening pipeline described in Section~\ref{sec:llm-pipeline}. For each record, the system generated an INCLUDE or EXCLUDE decision accompanied by a structured rationale explicitly referencing the eligibility criteria. To assess screening reliability, a random subset (n=100) of decisions was manually reviewed by a human evaluator. 
+
+% % Human evaluator independently looked for the decisions (include/exclude) for that random set of articles, and a 
+
+% Following title and abstract screening, 353 records satisfied all inclusion criteria and advanced to full-text review. The remaining 4{,}682 records were excluded. The most common exclusion reason was incorrect imaging modality (E1; $n=114$), followed by the absence of temporal sequence analysis (E2; $n=29$) and non-English publication (E5; $n=1$).
+
+% \textbf{Stage 2 --- Full-text eligibility assessment.}
+
+% Full texts were sought for all 353 studies identified during Stage~1. Fifteen reports could not be retrieved, leaving 338 studies available for detailed eligibility assessment. Each study was evaluated against the complete inclusion and exclusion criteria using the full manuscript.
+
+% During full-text review, 144 studies were excluded after closer examination of their methodology, datasets, or evaluation procedures. The remaining \textbf{194 studies} satisfied all eligibility requirements and were included in the final review corpus. Reasons for exclusion at this stage were recorded in accordance with PRISMA 2020 reporting guidelines and are summarized in Figure~\ref{fig:prisma}.
+
+% % \medskip
+% % \noindent\textbf{PRISMA flow sFummary.}
+
+% In total, 5{,}829 records were identified across the two databases. After removal of duplicates and records lacking sufficient bibliographic information, 5{,}035 records underwent title and abstract screening. Of these, 353 advanced to full-text review, 338 full texts were successfully retrieved, and 194 studies ultimately met all eligibility criteria and were included in the systematic review.
+
+

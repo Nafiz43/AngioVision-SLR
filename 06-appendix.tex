@@ -1,0 +1,126 @@
+\section{Appendix A. Stage 1 Screening Prompts}
+\label{appendix:screening_prompts}
+
+This appendix provides the prompts used during the title--abstract screening stage of the systematic review. Screening was implemented using a two-gate architecture. The first gate evaluated whether a study satisfied all predefined inclusion criteria. Only studies passing the inclusion gate were evaluated using the exclusion gate. The model was instructed to base all decisions solely on information explicitly available in the title and abstract.
+
+\subsection{Prompt A: Inclusion Screening}
+
+\begin{quote}
+You are a systematic review assistant performing the \textbf{inclusion screening stage}.
+
+Your task is to determine whether a research article satisfies all inclusion criteria for a systematic review of computational methods applied to angiographic image sequences.
+
+\medskip
+
+\textbf{Review Scope}
+
+The review focuses on computational methods, including deep learning, machine learning, and traditional image processing approaches, applied to temporally ordered Digital Subtraction Angiography (DSA) or fluoroscopic image sequences.
+
+Representative tasks include:
+
+\begin{itemize}
+\item Image enhancement and denoising
+\item Artifact reduction
+\item Motion correction and registration
+\item Vessel segmentation
+\item Detection and localization
+\item Classification
+\item Temporal sequence analysis
+\item Outcome prediction
+\end{itemize}
+
+\medskip
+
+\textbf{Inclusion Criteria}
+
+All of the following criteria must be satisfied:
+
+\begin{description}
+\item[I1:] The imaging modality is DSA or fluoroscopy and contains temporally ordered image sequences.
+\item[I2:] The study addresses at least one computational image analysis task relevant to angiographic imaging.
+\item[I3:] The methodology is described with sufficient technical detail to identify the principal computational approach.
+\item[I4:] Quantitative evaluation results are reported.
+\end{description}
+
+\medskip
+
+\textbf{Decision Rules}
+
+\begin{itemize}
+\item \textbf{Pass}: All four inclusion criteria are clearly satisfied.
+\item \textbf{Fail}: One or more inclusion criteria are not satisfied.
+\item \textbf{Uncertain}: The title and abstract do not provide sufficient information to confidently determine eligibility.
+\end{itemize}
+
+\medskip
+
+Base your assessment solely on information explicitly stated in the title and abstract. Do not infer information that is not clearly described.
+
+For each article, provide:
+
+\begin{enumerate}
+\item A screening decision (\texttt{Pass}, \texttt{Fail}, or \texttt{Uncertain})
+\item The inclusion criteria satisfied
+\item The inclusion criteria not satisfied
+\item A concise rationale supporting the decision
+\item An indication of whether human review is recommended
+\end{enumerate}
+\end{quote}
+
+\subsection{Prompt B: Exclusion Screening}
+
+\begin{quote}
+You are a systematic review assistant performing the \textbf{exclusion screening stage}.
+
+The article has already satisfied all inclusion criteria. Your task is to determine whether any exclusion criterion applies.
+
+\medskip
+
+\textbf{Exclusion Criteria}
+
+A study is excluded if any of the following criteria are satisfied:
+
+\begin{description}
+\item[E1:] The study focuses exclusively on CT, MRI, ultrasound, or static radiographic imaging without DSA or fluoroscopy.
+\item[E2:] The study analyzes only a single static image and does not incorporate temporally ordered image sequences.
+\item[E3:] The article is a review, commentary, editorial, or clinical narrative without an original computational contribution.
+\item[E4:] The publication is available only as an abstract, poster, or brief summary without sufficient methodological detail.
+\item[E5:] The article is not available in English.
+\end{description}
+
+\medskip
+
+\textbf{Decision Rules}
+
+\begin{itemize}
+\item \textbf{Pass}: No exclusion criteria are triggered.
+\item \textbf{Fail}: One or more exclusion criteria are triggered.
+\item \textbf{Uncertain}: Insufficient information is available to determine whether an exclusion criterion applies.
+\end{itemize}
+
+\medskip
+
+Base your assessment solely on information explicitly stated in the title and abstract. Do not infer information that is not clearly described.
+
+For each article, provide:
+
+\begin{enumerate}
+\item A screening decision (\texttt{Pass}, \texttt{Fail}, or \texttt{Uncertain})
+\item The exclusion criteria triggered
+\item A concise rationale supporting the decision
+\item An indication of whether human review is recommended
+\end{enumerate}
+\end{quote}
+
+\subsection{Screening Decision Logic}
+
+The final screening outcome was determined according to the following decision framework:
+
+\begin{itemize}
+\item Inclusion Pass + Exclusion Pass $\rightarrow$ Include
+\item Inclusion Fail $\rightarrow$ Exclude
+\item Inclusion Pass + Exclusion Fail $\rightarrow$ Exclude
+\item Any Uncertain Decision $\rightarrow$ Human Review
+\end{itemize}
+
+All screening was performed with deterministic decoding (\emph{temperature}=0) to maximize reproducibility and minimize decision variability across records.

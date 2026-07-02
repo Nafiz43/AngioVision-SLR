@@ -1,0 +1,236 @@
+\section{Results \& Analysis}
+\label{sec:analysis}
+\label{sec:results}
+This section presents a structured empirical characterization of the studies included in the final synthesis. The objective is to provide a comprehensive overview of the current landscape of AI methods for angiographic image analysis, spanning publication trends, imaging modalities, anatomical targets, computational tasks, methodological approaches, evaluation practices, and reporting quality. While these dimensions are examined independently, they are also interpreted through a unifying analytical framework centered on the temporal structure inherent in angiographic image sequences and the extent to which contemporary computational methods leverage this information.
+
+The analysis is organized into six complementary dimensions: study selection and corpus characteristics, publication dynamics, modality and anatomical coverage, computational tasks and architectural paradigms, dissemination patterns, quantitative performance behavior, and reporting quality. Together, these dimensions provide a comprehensive view of the field, enabling both a broad characterization of current research activity.
+
+Importantly, temporal modeling is not the sole focus of this analysis but rather one of several recurring themes examined throughout the review. Publication dynamics provide insight into the maturation of the field and the emergence of sequence-aware approaches over time. Modality, anatomy, and task distributions reveal where temporally structured angiographic data are most commonly utilized. Architectural analyses examine the degree to which proposed methods explicitly model temporal dependencies, while evaluation and reporting analyses assess how these approaches are validated, compared, and translated toward clinical practice. Collectively, these perspectives provide a comprehensive understanding of the current state of angiographic image analysis while also highlighting the role of temporal information within the broader methodological landscape.
+
+\subsection{Study Selection and Review Corpus}
+The literature search and screening process resulted in a final review corpus of 194 studies. Figure~\ref{fig:prisma} presents the complete study selection workflow in accordance with the PRISMA 2020 reporting guidelines.
+
+The initial database search identified 5,829 candidate records, comprising 4,071 records retrieved from PubMed/MEDLINE and 1,758 records obtained from Semantic Scholar. Following record aggregation, duplicate detection identified and removed 765 duplicate entries, yielding 5,064 unique records. An additional 29 records were excluded prior to screening because sufficient bibliographic information, including titles or abstracts, could not be retrieved. Consequently, 5,035 records advanced to title and abstract screening.
+
+Next, the title and abstract screening was performed and 353 studies were identified as potentially eligible and advanced to full-text review. Fifteen articles could not be retrieved with even institutional access mechanisms and alternative search efforts, leaving 338 studies available for detailed eligibility assessment. During full-text review, 144 studies were excluded after detailed examination of their methodology. Thus, the resulting review corpus spans a set of 194 selected articles.
+
+
+% was performed using the LLM-assisted eligibility assessment framework described in Section~\ref{sec}. During this stage, each record was evaluated against the predefined inclusion and exclusion criteria. The majority of retrieved studies were excluded because they focused on imaging modalities outside the scope of this review, including computed tomography, magnetic resonance imaging, ultrasound, and static radiographic imaging. Additional exclusions occurred when studies lacked temporally structured angiographic sequences, did not present an original computational methodology, or provided insufficient methodological detail for assessment. Following this initial screening phase,
+
+
+
+
+% broad range of clinical applications, anatomical territories, computational tasks, and methodological approaches. Collectively, these studies form the evidentiary basis for the analyses presented in the remainder of this section, including publication trends, imaging modalities, anatomical coverage, computational tasks, architectural paradigms, quantitative performance characteristics, reporting quality, and translational readiness.
+
+
+% , datasets, evaluation strategies, or publication characteristics. Common reasons for exclusion included the absence of explicit temporal sequence analysis, insufficient methodological detail, lack of quantitative validation, or a primary focus on imaging modalities outside the scope of this review. The remaining 194 studies satisfied all eligibility requirements and were therefore included in the final synthesis.
+
+% Full-text evaluation applied the complete set of inclusion and exclusion criteria and additionally verified methodological details that were not always apparent from titles and abstracts alone, including the presence of sequence-based angiographic data, quantitative evaluation procedures, and sufficient technical descriptions of the proposed computational methods.
+
+
+\input{figs/prisma}
+\input{tables/inclusion_exclusion_criteria}
+
+
+
+% ==================================================================
+\subsection{Publication Trends and Field Growth}
+\label{subsec:trends}
+% ==================================================================
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/temporal_trends.pdf}
+\caption{Annual publication volume across included studies (2000--present (2026)).}
+\label{fig:temporal_trends}
+\end{figure}
+
+Figure~\ref{fig:temporal_trends} reveals a strongly non-uniform evolution of the field over time. Prior to 2017, angiographic sequence analysis appears only sporadically in the literature, suggesting that it was not yet established as a coherent computational problem. Early work is largely isolated and methodologically heterogeneous, with limited continuity across studies.
+
+A first structural shift emerges around 2018--2019, coinciding with broader adoption of deep encoder--decoder architectures in medical imaging. However, the most significant transition occurs after 2020, where publication volume increases sharply and remains consistently elevated through 2025. This period aligns with the adoption of transformer-based architectures and large-scale representation learning approaches in medical vision, which appear to have lowered the barrier for modeling complex spatio-temporal dependencies.
+
+Importantly, the growth curve has not yet stabilized. The partial-year 2026 counts already exceed several prior full years, indicating that the field is still in an expansion regime rather than a mature equilibrium. Notable, this has a direct interpretive implication in that any static synthesis of this literature reflects a moving target rather than a settled body of work.
+
+\vspace{0.25cm}
+\begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
+\textbf{Finding 1.} The field exhibits sustained post-2020 expansion, with approximately 80\% of studies published in the last five years. This confirms that angiographic sequence analysis is still an emerging research area with rapidly evolving methodological and clinical priorities.
+\end{mdframed}
+\vspace{0.25cm}
+
+% ==================================================================
+\subsection{Imaging Modalities and Anatomical Coverage}
+\label{subsec:modality_anatomy}
+% ==================================================================
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/modality_distribution.pdf}
+\caption{Imaging modality distribution across included studies.}
+\label{fig:modality_distribution}
+\end{figure}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/anatomy_distribution.pdf}
+\caption{Anatomical territory distribution across included studies.}
+\label{fig:anatomy_distribution}
+\end{figure}
+
+The distribution of imaging modalities and anatomical targets reveals a field that is shaped more by clinical convenience and dataset availability than by systematic coverage of the angiographic problem space.
+
+DSA is the dominant modality, accounting for approximately 27\% of included studies. This is consistent with its unique role in depicting vascular psychophysiology, making it the most information-dense representation of blood flow in interventional imaging. Fluoroscopy follows, reflecting its widespread use in procedural guidance and device tracking. X-ray sequence-based approaches form a smaller subset, typically focused on hardware localization tasks.
+
+A more important observation is the near absence of multi-modal learning. Despite the simultaneous availability of DSA and fluoroscopy in modern interventional suites, fewer than 1\% of studies explicitly integrate both modalities. Additionally, angiorgaphy is frequently interpreted in the context of prior cross-sectional imaging such as CT or MRI. This suggests that current computational approaches treat imaging streams as independent, rather than complementary views of the interventional imaging.
+
+As shown in Figure~\ref{fig:anatomy_distribution},
+a similar concentration is observed in anatomical coverage. Coronary and cerebral applications together account for over one third of the literature, reflecting both procedural volume and dataset accessibility. In contrast, abdominopelvic, peripheral,  other thoracic, such as aortic or intercostal, vascular territories remain significantly underrepresented. This introduces a non-trivial limitation: models trained predominantly on coronary or cerebral angiography are implicitly assumed to generalize across anatomically and physiologically distinct vascular systems, an assumption that is rarely validated.
+
+\vspace{0.25cm}
+\begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
+\textbf{Finding 2.} The literature is heavily concentrated in exclusive use of either DSA or fluoroscopy, with almost no systematic exploration of multi-modal learning. Anatomical coverage is similarly skewed toward coronary and cerebral territories, limiting the validity of most existing methods across anatomic contexts.
+\end{mdframed}
+\vspace{0.25cm}
+
+% ==================================================================
+\subsection{Computational Task Landscape and Architectural Structure}
+\label{subsec:tasks_architectures}
+% ==================================================================
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/task_distribution.pdf}
+\caption{Distribution of primary computational tasks across included studies.}
+\label{fig:task_distribution}
+\end{figure}
+
+The computational task landscape provides important insight into how the angiography community conceptualizes and operationalizes machine learning problems. As shown in Figure~\ref{fig:task_distribution}, the literature is heavily concentrated around a small number of core tasks, with vessel segmentation emerging as the dominant application area, followed by object detection and localization, catheter and device tracking, and disease classification. Together, these tasks account for a substantial proportion of the published studies, indicating that the field has primarily focused on extracting anatomical structures, identifying clinically relevant objects, and supporting diagnostic decision-making from angiographic imagery.
+
+The prominence of vessel segmentation is particularly notable. With approximately three times as many studies as most other task categories, segmentation represents the most mature methodological area within the literature. This dominance is reflected not only in publication volume (Figure~\ref{fig:task_distribution}) but also in the breadth of architectural development summarized in Table~\ref{tab:task_architecture_clean}. Segmentation studies overwhelmingly rely on encoder--decoder architectures, particularly the U-Net family and its numerous extensions, alongside DeepLab-based models, fully convolutional segmentation networks, and more recent transformer-enhanced segmentation frameworks. The prevalence of these approaches reflects the suitability of dense prediction architectures for vascular delineation and the availability of established evaluation metrics such as Dice similarity and Intersection-over-Union.
+
+A similar concentration can be observed in object detection and localization tasks. As shown in Table~\ref{tab:task_architecture_clean}, studies in this category are dominated by modern detection frameworks, including YOLO, DETR, and R-CNN families, often combined with ResNet-based backbones and transformer modules. Catheter and device tracking exhibits a comparable pattern, although with a greater emphasis on segmentation-based localization networks and hybrid CNN--Transformer architectures. Collectively, these observations suggest that much of the methodological innovation in angiography has been driven by adapting successful computer vision architectures originally developed for natural-image analysis rather than designing architectures specifically tailored to angiographic data.
+
+The architectural landscape further reinforces this observation. Across nearly all major task categories, a relatively small set of architectural paradigms repeatedly appears. U-Net derivatives dominate segmentation-related problems, ResNet-based convolutional networks are widely used for classification and detection, transformer-based architectures are increasingly incorporated for representation learning and long-range spatial reasoning, and recurrent models such as GRUs and LSTMs are occasionally employed when temporal information is considered (Table~\ref{tab:task_architecture_clean}). Although the literature contains a large number of named architectures, many represent incremental modifications or domain-specific adaptations of these broader architectural families. Consequently, the field exhibits substantial architectural diversity at the implementation level while remaining concentrated around a limited number of fundamental design paradigms.
+
+The task distribution reveals an important structural imbalance. Despite angiography being inherently a dynamic imaging modality that captures the propagation of contrast material through the vascular system over time, most studies formulate their objectives as predominantly spatial problems. Vessel segmentation, object detection, disease classification, and background subtraction are commonly performed on individual frames or on temporally aggregated representations, reducing the sequential acquisition process to a collection of largely independent images. Consequently, many models operate without explicitly leveraging the temporal information that distinguishes angiography from static imaging modalities such as radiography or computed tomography.
+
+This imbalance becomes particularly evident when examining tasks that intrinsically depend on temporal information. Temporal sequence modeling constitutes only a relatively small portion of the literature (Figure~\ref{fig:task_distribution}), despite the fact that angiographic interpretation often relies on understanding dynamic flow patterns, vascular filling characteristics, and temporal relationships between anatomical structures. Similarly, contrast flow analysis remains comparatively uncommon even though it directly captures hemodynamic information that is unavailable from static frames. Motion correction and temporal registration are even less represented, despite their importance for improving image quality, reducing subtraction artifacts, and enabling reliable downstream analysis. The relatively limited attention devoted to these tasks suggests that the temporal dimension of angiography remains underutilized by current computational approaches.
+
+Recent studies have begun to address this limitation through the incorporation of temporal architectures, including recurrent neural networks, temporal convolutional models, spatio-temporal transformers, video representation learning frameworks, and specialized sequence modeling networks (Table~\ref{tab:task_architecture_clean}). However, these approaches remain comparatively isolated and have not yet produced a field-wide transition toward temporally grounded analysis. Instead, they appear primarily within niche application areas such as contrast flow estimation, temporal sequence modeling, and selected classification tasks. As a result, the dominant methodological paradigm continues to emphasize spatial feature extraction rather than explicit modeling of temporal dynamics.
+
+Taken together, the task distribution in Figure~\ref{fig:task_distribution} and the architecture-task mapping presented in Table~\ref{tab:task_architecture_clean} reveal a persistent mismatch between the nature of the data and the prevailing modeling assumptions. While angiography fundamentally captures dynamic physiological processes unfolding over time, most computational studies continue to approach it through spatially oriented tasks and architectures. This observation highlights a major opportunity for future research: the development of methods that more fully exploit temporal information and model angiographic sequences as coherent spatio-temporal processes rather than collections of independent frames.
+
+\input{tables/task-archi}
+
+\vspace{0.25cm}
+\begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
+\textbf{Finding 3.} The computational landscape of angiography research is dominated by spatially oriented tasks, particularly vessel segmentation and object detection, which are primarily addressed using U-Net-, CNN-, and Transformer-based architectures. In contrast, tasks that explicitly exploit temporal information, such as sequence modeling, contrast flow analysis, and motion correction, remain comparatively underexplored. This suggests that current methodologies do not yet fully leverage the dynamic nature of angiographic imaging, leaving substantial opportunities for temporally grounded learning approaches.
+\end{mdframed}
+\vspace{0.25cm}
+
+% ==================================================================
+\subsection{Dissemination Landscape: Venues and Publication Channels}
+\label{subsec:venues}
+% ==================================================================
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/venue_analysis_stacked.pdf}
+\caption{Top publication venues by paper count, stratified by venue type.}
+\label{fig:venue_stacked}
+\end{figure}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/venue_cumulative_curve.pdf}
+\caption{Venue dominance curve showing cumulative distribution across venues.}
+\label{fig:venue_curve}
+\end{figure}
+
+The dissemination landscape of angiographic sequence analysis reflects both the interdisciplinary nature of the field and its limited consolidation around a common publication ecosystem. Unlike many mature research domains that exhibit a small number of dominant venues, publications in angiographic sequence analysis are distributed across a broad collection of journals and conferences spanning medical imaging, biomedical engineering, computer-assisted intervention, radiology, and machine learning.
+
+Figure~\ref{fig:venue_stacked} illustrates the most frequent publication venues within the corpus. The literature is predominantly journal-oriented, with \textit{Medical Physics}, the \textit{International Journal of Computer Assisted Radiology and Surgery} (IJCARS), \textit{Computers in Biology and Medicine} (CBM), and \textit{Computerized Medical Imaging and Graphics} (CMIG) emerging as the most common outlets. These venues collectively represent the intersection of medical physics, image-guided intervention, and biomedical image analysis communities. However, even the most frequently occurring venue contributes only a modest number of studies, indicating that no single journal serves as a primary dissemination hub for the field. Conference venues such as SPIE, EMBC, BIBM, ISBI, and ISMR contribute comparatively fewer publications, suggesting that angiographic sequence analysis remains substantially more journal-centric than adjacent areas of computer vision and medical image analysis, where conference publication often serves as a major dissemination mechanism~\cite{Litjens2017,Shen2017}.
+
+This observation is reinforced by the venue dominance curve shown in Figure~\ref{fig:venue_curve}. Rather than exhibiting a highly concentrated publication structure, the field demonstrates a pronounced long-tail distribution. The cumulative curve rises gradually, indicating that publications are dispersed across a large number of venues. Approximately half of the literature is distributed among the top few dozen venues, while a substantially larger set of outlets is required to capture the majority of published work. Consequently, no small collection of journals or conferences provides comprehensive coverage of the field.
+
+The combination of Figures~\ref{fig:venue_stacked} and \ref{fig:venue_curve} highlights a distinctive characteristic of angiographic sequence analysis. The methodological developments emerge simultaneously from multiple research communities rather than from a centralized scholarly venue. Clinical imaging journals often emphasize diagnostic and translational applications, biomedical engineering venues focus on algorithmic development and system integration, while computer science conferences contribute advances in machine learning and image analysis methodologies. Although this interdisciplinary dissemination broadens the range of perspectives represented within the literature, it also creates challenges for knowledge consolidation, reproducibility, and community building. Researchers seeking a comprehensive understanding of the field must therefore engage with a diverse set of publication channels rather than relying on a narrow collection of core venues.
+
+The fragmented publication structure has important implications for evidence synthesis and research visibility. Because relevant studies are distributed across numerous journals and conferences, literature reviews based on a limited set of venues are likely to miss substantial portions of the evidence base. This observation further justifies the need for broad, multi-database search strategies and systematic synthesis efforts capable of integrating contributions from otherwise disconnected research communities. At the same time, the absence of a dominant venue may partially explain the methodological heterogeneity observed throughout the literature, as innovations diffuse more slowly across disciplinary boundaries.
+
+Taken together, the venue distribution demonstrates that angiographic sequence analysis remains an interdisciplinary and highly decentralized research area. While the field continues to grow across clinical and computational communities, the dissemination patterns indicate that it has not yet converged around a shared publication ecosystem. This fragmentation presents challenges for discoverability and methodological standardization, but also reflects the broad clinical and technical relevance of angiographic sequence analysis across multiple domains.
+
+\vspace{0.25cm}
+\begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
+\textbf{Finding 4.} Angiographic sequence analysis is disseminated through a highly fragmented publication landscape dominated by journals rather than conferences. No single venue or small group serves as a central publication hub, and a large number of outlets are required to capture the majority of the literature. This long-tail distribution highlights both the interdisciplinary nature of the field and the need for broad, multi-venue search and synthesis strategies.
+\end{mdframed}
+\vspace{0.25cm}
+
+
+% ==================================================================
+\subsection{Quantitative Performance Across Tasks and Metrics}
+\label{subsec:performance}
+% ==================================================================
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/histogram_metrics.pdf}
+\caption{Distribution of performance metrics across studies.}
+\label{fig:metric_histogram}
+\end{figure}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/kde_metrics.pdf}
+\caption{Kernel density estimates of performance metrics by family.}
+\label{fig:metric_kde}
+\end{figure}
+
+
+Reporting and interpreting performance metrics is central to evaluating the maturity of any computational field, as these values provide the primary basis on which methods are compared, ranked, and ultimately considered for clinical adoption. However, performance metrics are meaningful only when interpreted in the context of the datasets, validation protocols, and task definitions that produce them. In angiographic sequence analysis, where evaluation practices vary widely across studies, aggregate metric distributions offer a useful but necessarily cautious lens through which to characterize the apparent performance of the field. We therefore examine the distribution of reported metrics across studies not as a direct measure of methodological quality, but as an indicator of broader reporting and evaluation patterns.
+
+Across all metric families, reported values are concentrated in relatively high ranges (approximately 70--100), with a strong skew toward optimistic performance estimates. This pattern is consistent with known publication biases, where studies with weaker results are less likely to be published and where evaluation is often performed with data generated under similar, or identical, conditions to the training data.
+
+Accuracy-based metrics exhibit the strongest clustering near high values, but are also the least informative in settings with class imbalance, which is common in angiographic imaging tasks. Overlap-based metrics such as Dice and IoU show broader distributions, reflecting the increased difficulty of dense prediction tasks such as segmentation. AUC-based metrics fall between these extremes, offering more stable but still heterogeneous performance estimates.
+
+Importantly, the lack of standardized benchmarks makes cross-study comparison fundamentally unreliable. As a result, these distributions should not be interpreted as indicators of absolute progress, but rather as reflections of heterogeneous evaluation settings.
+
+The distribution of reported performance metrics must be interpreted with caution, as it reflects not only model quality but also strong heterogeneity in datasets, evaluation protocols, and reporting practices.
+
+
+\vspace{0.25cm}
+\begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
+\textbf{Finding 5.} Reported performance values are consistently high but not comparable across studies due to heterogeneous datasets and evaluation protocols. The absence of shared benchmarks prevents meaningful cross-study performance interpretation.
+\end{mdframed}
+\vspace{0.25cm}
+
+% ==================================================================
+\subsection{Reporting Quality and Translational Readiness}
+\label{subsec:reporting_quality}
+% ==================================================================
+
+\begin{figure*}[]
+\centering
+\includegraphics[width=1\linewidth]{figs/forest_plot_claim2024_comparison.pdf}
+\caption{CLAIM 2024 adherence across reporting clusters and publication cohorts.}
+\label{fig:forest_plot}
+\end{figure*}
+
+
+\input{tables/claim_2024_comaprison}
+To assess reporting quality and clinical readiness, we evaluated all included studies using the Checklist for Artificial Intelligence in Medical Imaging (CLAIM) 2024 framework~\cite{Tejani2024}. CLAIM is a consensus-based reporting guideline developed by the Radiological Society of North America (RSNA) and the EQUATOR Network to promote transparent, reproducible, and clinically meaningful reporting of artificial intelligence research in medical imaging. The guideline encompasses key dimensions of study design, dataset description, model development, validation methodology, reproducibility, and clinical evaluation, and was specifically updated in 2024 to reflect emerging best practices in medical imaging AI research~\cite{Tejani2024CLAIM}. CLAIM was selected because angiographic sequence analysis represents a specialized medical imaging domain in which clinical translation depends not only on algorithmic performance but also on transparent reporting of datasets, validation procedures, reference standards, and deployment considerations. 
+
+The assessment of reporting quality using CLAIM 2024 reveals a field that is partially compliant with reporting standards but structurally inconsistent in several areas critical for reproducibility, external validation, and eventual clinical deployment.
+
+%The assessment of reporting quality using CLAIM 2024 reveals a field that is partially compliant with reporting standards but structurally inconsistent in areas critical for clinical translation.
+
+Basic narrative elements such as background and study objectives are nearly universally reported, reflecting established scientific writing conventions. However, methodological transparency is significantly weaker. While there is some improvement in more recent studies, particularly in evaluation design and study data description, key elements such as data partitioning, subgroup analysis, and reproducibility remain underreported.
+
+Of particular concern is the consistently low reporting of reproducibility-related information, including code availability, model sharing, and detailed experimental configurations. Similarly, demographic and subgroup analyses are rarely reported, limiting the ability to assess model robustness across patient populations.
+
+Although modest improvements are visible in studies published after 2025, these changes appear incremental rather than structural. We selected 2025 as the threshold year because it marks the first full publication cycle following the release of CLAIM 2024, allowing sufficient lead time for the updated checklist to plausibly influence study design and reporting; it therefore serves as a natural inflection point for assessing whether the revised guidelines produced measurable changes in reporting practice. One possible explanation is that reporting frameworks such as CLAIM 2024 had only recently become available and therefore may not yet have had sufficient time to meaningfully influence study conception, methodological design, validation planning, and manuscript preparation. Consequently, while recent publications exhibit greater alignment with several reporting recommendations, adherence remains inconsistent across many criteria. The overall picture is one of gradual progress toward improved reporting quality rather than complete integration of reporting standards into common research practice.
+
+\vspace{0.25cm}
+\begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
+\textbf{Finding 6.} Reporting quality is uneven, with strong adherence to narrative sections but persistent gaps in reproducibility, subgroup analysis, and data transparency. These limitations significantly constrain clinical interpretability and deployment readiness.
+\end{mdframed}
+
+
