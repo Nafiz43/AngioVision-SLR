@@ -4,7 +4,7 @@ This systematic review was conducted in accordance with the Preferred Reporting 
 
 A structured Boolean search was executed across PubMed/MEDLINE \cite{white2020pubmed} and Semantic Scholar \cite{fricke2018semantic}. These databases were selected to provide complementary coverage of both clinical and technical literature, which reflects the interdisciplinary nature of angiographic image analysis research. No study-type filters were applied during database retrieval in order to maximize recall and avoid prematurely excluding potentially relevant methodological contributions. Instead, study eligibility was determined during the screening process.
 
-The search spans publications published between \textit{January 1, 2000} and \textit{15 May 2026}. The year 2000 was selected as a practical lower bound because modern digital angiographic workflows and contemporary machine learning approaches largely emerged after this period.
+The search spans publications between \textit{January 1, 2000} and \textit{15 May 2026}. The year 2000 was selected as a practical lower bound because modern digital angiographic workflows and contemporary machine learning approaches largely emerged after this period.
 
 To capture studies at the intersection of angiographic imaging and AI, the search query was organized into two Boolean components.
 
@@ -18,7 +18,7 @@ To capture studies at the intersection of angiographic imaging and AI, the searc
 
 \noindent\textbf{Block 2 --- Computational methodology}
 \begin{quote}
-\small\texttt{(`deep learning'' OR `machine learning'' OR CNN OR transformer OR ``artificial intelligence'' OR AI)}
+\small\texttt{(``deep learning'' OR ``machine learning'' OR CNN OR transformer OR ``artificial intelligence'' OR AI)}
 \end{quote}
 \medskip
 
@@ -43,7 +43,7 @@ Studies were excluded if they focused exclusively on non-angiographic imaging mo
 
 Given the large volume of retrieved records, an LLM-assisted screening workflow was developed to support the systematic review process while maintaining explicit adherence to predefined eligibility criteria. The objective of the pipeline was not to replace human judgment but rather to provide a scalable and reproducible mechanism for applying the inclusion and exclusion criteria consistently across thousands of candidate records. All inference was performed locally using the Ollama framework \cite{marcondes2025using}, which enabled complete control over model execution, eliminated dependence on external services, and ensured reproducibility of the screening process.
 
-The screening workflow consisted of two sequential stages corresponding to the title--abstract screening and full-text review phases of the systematic review. During the first stage, candidate records were evaluated using a structured two-gate screening architecture. The first gate assessed the four inclusion criteria (I1--I4), requiring all criteria to be satisfied before a study could advance. Records passing the inclusion gate were subsequently evaluated against the exclusion criteria (E1--E5). Any study triggering one or more exclusion criteria was removed from further consideration. This design mirrors the sequential decision-making process, which is commonly employed during manual systematic reviews and provides explicit traceability regarding the criterion responsible for each exclusion decision.
+The screening workflow consisted of two sequential stages corresponding to the title--abstract screening and full-text review phases of the systematic review. During the first stage, candidate records were evaluated using a structured two-gate screening architecture. The first gate assessed the four inclusion criteria (I1--I4), requiring all criteria to be satisfied before a study could advance. Records passing the inclusion gate were subsequently evaluated against the exclusion criteria (E1--E5). Any study triggering one or more exclusion criteria was removed from further consideration. This design mirrors the sequential decision-making process commonly employed during manual systematic reviews and provides explicit traceability regarding the criterion responsible for each exclusion decision.
 
 \subsubsection{Title-Abstract Eligibility Assessment}
 \label{sec:title-abstract-sceening}
