@@ -163,3 +163,10 @@ The final screening outcome was determined according to the following decision f
 \end{itemize}
 
 All screening was performed with deterministic decoding (\emph{temperature}=0) to maximize reproducibility and minimize decision variability across records.
+
+\section{Appendix C. Title/Abstract Screening Validation Sample}
+\label{appendix:screening_validation}
+
+This appendix reports the full 200-record sample used for the secondary validation of the title/abstract screening pipeline described in Section~\ref{sec:validation}. The sample was drawn from \texttt{results/stage1\_results.csv} using stratified random sampling (fixed seed 43; 70 records with pipeline decision INCLUDE, 70 EXCLUDE, and 60 UNCERTAIN, to ensure sufficient representation of the minority INCLUDE class for reliable precision/recall estimation). Each record was independently screened by two automated LLM-based review passes (Reviewer A, Reviewer B) against the same inclusion/exclusion criteria (I1--I4, E1--E5) used by the primary screening pipeline; disagreements were resolved by a third automated adjudication pass shown both prior decisions and rationales. Table~\ref{tab:screening_validation_full} reports, for every sampled record, the two independent decisions, the final adjudicated label, and the original stage-1 pipeline decision.
+
+\input{tables/screening_validation_full}
