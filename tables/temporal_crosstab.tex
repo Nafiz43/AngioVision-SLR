@@ -1,0 +1,49 @@
+\renewcommand{\arraystretch}{1.2}
+\begin{table*}[ht]
+\centering
+\caption{Adoption rate of explicit temporal modeling (any category other than
+``No Temporal Use'' or ``Not reported in extraction'' in
+Table~\ref{tab:temporal_taxonomy}) by primary task, imaging modality, and
+anatomical territory, computed over the 206 records that reached full-text
+extraction. Rows with fewer than 5 records are omitted for reliability; four
+tasks (Anomaly Detection, 3D Reconstruction \& Depth Estimation, Image
+Registration, Landmark \& Keypoint Detection; 5 records total) and one
+modality (explicit multi-modal fusion; 1 record) are omitted on this basis.}
+\label{tab:temporal_crosstab}
+\begin{tabularx}{\textwidth}{@{}X r r@{}}
+\toprule
+\textbf{Dimension} & \textbf{N} & \textbf{Temporal-Use Rate} \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{By Primary Task}} \\
+\hdashline
+Temporal Sequence Modelling & 10 & 90\% \\
+Disease Classification \& Grading & 13 & 77\% \\
+Contrast Flow Analysis & 11 & 36\% \\
+Object Detection \& Localisation & 31 & 32\% \\
+Catheter \& Device Tracking & 16 & 31\% \\
+Outcome Prediction & 11 & 27\% \\
+Other / uncategorized task & 39 & 26\% \\
+Image Enhancement \& Denoising & 10 & 20\% \\
+Motion Correction \& Registration & 6 & 17\% \\
+Vessel Segmentation & 46 & 13\% \\
+Background Subtraction & 8 & 13\% \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{By Imaging Modality}} \\
+\hdashline
+DSA & 90 & 34\% \\
+X-ray / Fluoroscopy & 92 & 33\% \\
+DSA + Fluoroscopy (explicit dual-modality) & 5 & 20\% \\
+Other / uncategorized modality & 8 & 0\% \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{By Anatomical Territory}} \\
+\hdashline
+Cardiac & 43 & 44\% \\
+Other Thoracic & 6 & 33\% \\
+Neurologic & 61 & 30\% \\
+Abdominopelvic & 20 & 30\% \\
+Multi-region & 7 & 29\% \\
+Other / uncategorized territory & 51 & 27\% \\
+Peripheral & 8 & 25\% \\
+\bottomrule
+\end{tabularx}
+\end{table*}

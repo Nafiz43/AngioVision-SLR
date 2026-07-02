@@ -284,6 +284,113 @@ fluoroscopic image analysis.}
 
 \end{longtable}
 
+\subsection{Toward an Actionable Roadmap}
+\label{sec:actionable_roadmap}
+
+While Table~\ref{tab:research_gaps} documents the evidence base and candidate mitigation strategies for each gap, it does not by itself prioritize where the field should act first or specify how progress could be measured. Table~\ref{tab:cbm_roadmap} distills this analysis into a compact, actionable roadmap: for each gap, it reports the number of included studies documenting the gap in the literature (Evidence Count, computed directly from the citations underlying Table~\ref{tab:research_gaps}), the clinical risk of leaving the gap unaddressed, the corresponding computational opportunity, and a concrete benchmark or evaluation recommendation that would make progress on the gap measurable. Gaps with the largest evidence bases (G1, G2, G6) represent the most extensively documented structural barriers in the current literature, whereas gaps with a narrow evidence base (G7, G10, G12) reflect emerging but still underexplored directions.
+
+\footnotesize
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.1cm}
+                  >{\centering\arraybackslash}p{1.1cm}
+                  >{\raggedright\arraybackslash}p{4.1cm}
+                  >{\raggedright\arraybackslash}p{4.1cm}
+                  >{\raggedright\arraybackslash}p{4.3cm}}
+
+\caption{CBM-facing actionable roadmap synthesizing each research gap identified in Table~\ref{tab:research_gaps} into clinical risk, computational opportunity, and a concrete benchmark or evaluation recommendation. Evidence Count is the number of distinct included studies cited as documenting each gap in Table~\ref{tab:research_gaps}.}
+\label{tab:cbm_roadmap} \\
+
+\toprule
+\textbf{Gap} & \textbf{Evid.\ Count} & \textbf{Clinical Risk} & \textbf{Computational Opportunity} & \textbf{Benchmark / Evaluation Recommendation} \\
+\midrule
+\endfirsthead
+
+\multicolumn{5}{c}{\tablename~\thetable{} -- \textit{continued from previous page}} \\
+\toprule
+\textbf{Gap} & \textbf{Evid.\ Count} & \textbf{Clinical Risk} & \textbf{Computational Opportunity} & \textbf{Benchmark / Evaluation Recommendation} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+\textbf{G1} Absence of Public Benchmarks & 32 &
+Reported performance cannot be verified to generalize beyond the originating institution before deployment, risking undetected failure in new clinical settings. &
+Large-scale, standardized, publicly released multi-institutional datasets with defined train/test splits. &
+Organize a public challenge benchmark with standardized metrics and phantom-versus-patient evaluation subsets. \\
+\dashedrule
+
+\textbf{G2} Generalizability \& Domain Shift & 28 &
+Models validated at a single site, vendor, or vascular territory may silently degrade elsewhere, producing unreliable outputs during patient care without warning. &
+Domain adaptation and personalized federated learning tailored to cross-vendor, cross-protocol, and cross-territory variation. &
+Require external multi-institutional validation and report a domain-shift benchmark quantifying degradation across imaging vendors. \\
+\dashedrule
+
+\textbf{G3} Temporal Modeling \& Video-Level Analysis & 15 &
+Discarding hemodynamic flow and contrast-propagation dynamics risks missing clinically important temporal signals a frame-independent model cannot detect. &
+Video-transformer and state-space architectures modeling full acquisition phases (mask, injection, washout) with hemodynamic priors. &
+Evaluate on full variable-length real acquisitions with metrics scoring temporal fidelity, not accuracy on short fixed-length clips alone. \\
+\dashedrule
+
+\textbf{G4} 2D Constraints \& 3D Reconstruction & 14 &
+Foreshortening, vessel overlap, and depth loss from monoplane 2D projections can cause missed or mis-measured lesions during intraoperative decisions. &
+Multi-view and physics-informed 3D reconstruction from mono-/biplane or rotational angiographic acquisitions. &
+Standardized 2D/3D registration accuracy benchmark evaluated under intraoperative time constraints. \\
+\dashedrule
+
+\textbf{G5} Annotation Scarcity \& Annotation-Efficient Learning & 18 &
+Reliance on scarce expert annotation with unquantified inter-observer variability threatens label reliability for safety-critical model training. &
+Semi-/self-supervised and active learning, foundation-model pretraining on large archives of unlabeled fluoroscopic video. &
+Report performance-versus-label-count curves for each annotation-efficient method, rather than accuracy at a single fixed label budget. \\
+\dashedrule
+
+\textbf{G6} Prospective Clinical Validation \& Outcome Assessment & 19 &
+Because almost no studies validate prospectively, there is no evidence these models change physician behavior or patient outcomes in live care. &
+Prospective evaluation frameworks and outcome-supervised training designed jointly with clinicians from the outset. &
+Randomized controlled trials comparing standard-of-care versus AI-assisted decision-making as the evaluation standard. \\
+\dashedrule
+
+\textbf{G7} Explainability \& Model Transparency & 5 &
+Predictions without interpretable justification, and unflagged out-of-distribution failures, can silently mislead clinicians and undermine patient safety. &
+Uncertainty quantification and failure-detection systems flagging out-of-distribution inputs for mandatory human review. &
+Prospective user studies testing whether explainability outputs measurably improve clinical decision-making, not qualitative attention maps alone. \\
+\dashedrule
+
+\textbf{G8} Multi-Modal Data Integration & 11 &
+Ignoring routinely available complementary data (IVUS, OCT, ECG, labs) means models may miss clinically decisive information a clinician would normally use. &
+Fusion architectures with explicit handling of missing modalities; vision-language integration of free-text clinical notes. &
+Outcome-oriented multi-modal benchmarks that explicitly test performance under missing-modality conditions. \\
+\dashedrule
+
+\textbf{G9} Class Imbalance \& Rare Pathology Coverage & 12 &
+Models biased toward majority classes may have poor sensitivity for rare but critical events (e.g., perforation, aneurysm) -- precisely the cases where failure is most dangerous. &
+Cost-sensitive learning, hard negative mining, and rare-event simulation or generative augmentation. &
+Mandate stratified per-class sensitivity reporting for rare pathologies alongside aggregate accuracy metrics. \\
+\dashedrule
+
+\textbf{G10} Privacy-Preserving \& Multi-Institutional Learning & 5 &
+Data governance barriers blocking multi-institutional pooling constrain how representative and safe models can be before wide deployment. &
+Federated learning frameworks and differential privacy / secure multi-party computation for angiographic video. &
+Benchmark personalized federated approaches against centralized baselines as a function of institutional data heterogeneity. \\
+\dashedrule
+
+\textbf{G11} Imaging Biomarkers \& Clinical Outcome Prediction & 11 &
+Strong segmentation or detection accuracy does not establish that a model improves revascularization decisions or survival, so technical success may not translate to patient benefit. &
+Outcome-supervised training objectives and imaging-biomarker discovery combined with survival modeling. &
+Longitudinal cohort evaluation linking imaging-derived predictions to real clinical endpoints (re-intervention rate, mortality), not intermediate task metrics alone. \\
+\dashedrule
+
+\textbf{G12} Large Language Models \& Structured Reporting & 1 &
+With only one included study (geographically and model-restricted), there is essentially no evidence base for LLM-assisted angiographic reporting, so its safety and reliability for clinical use is unknown. &
+Open-source LLM and vision-language pipelines for angiographic report structuring and finding extraction. &
+Benchmark open-source against proprietary models on diverse international angiographic report corpora using a standardized reporting ontology. \\
+
+\end{longtable}
+\normalsize
+
 \clearpage
 \twocolumn
 
