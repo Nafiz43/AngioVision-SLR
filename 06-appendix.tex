@@ -1,4 +1,43 @@
-\section{Appendix A. Stage 1 Screening Prompts}
+\section{Appendix A. Reproducible Search Log and Database-Specific Queries}
+\label{appendix:search_log}
+
+This appendix provides the exact, database-specific queries, execution dates, filters, and retrieval statistics used for the structured search described in Section~\ref{sec:eligibility}, to allow the search to be independently audited, reproduced, or extended to additional databases.
+
+\subsection{PubMed/MEDLINE}
+
+\textbf{Execution date:} 2026-05-25. \textbf{Interface:} NCBI Entrez E-utilities (\texttt{esearch}), via the Biopython \texttt{Bio.Entrez} client.
+
+\textbf{Filters applied:} publication date (\texttt{pdat}) restricted to 2000--3000 (i.e., 2000 onward, with no practical upper bound other than the retrieval date), and language restricted to English (\texttt{english[lang]}). No study-type, article-type, or subject-heading filters were applied.
+
+\begin{quote}
+\small\texttt{(angiograph*[tiab] OR fluoroscop*[tiab] OR "digital subtraction angiography"[tiab] OR DSA[tiab]) AND ("deep learning"[tiab] OR "machine learning"[tiab] OR CNN[tiab] OR transformer[tiab] OR "artificial intelligence"[tiab] OR AI[tiab]) AND ("2000"[pdat] : "3000"[pdat]) AND english[lang]}
+\end{quote}
+
+\textbf{Retrieved:} 4{,}071 records before deduplication; 3{,}312 unique records after within-source and cross-source deduplication (759 duplicates removed).
+
+\subsection{Semantic Scholar}
+
+\textbf{Execution date:} 2026-05-25. \textbf{Interface:} Semantic Scholar Graph API v1 (\texttt{/paper/search} endpoint).
+
+\textbf{Filters applied:} publication year restricted to 2000--2026. No venue, study-type, or field-of-study filters were applied. Because the Semantic Scholar API does not support the same field-tagged Boolean syntax as PubMed, the search was decomposed into 21 shorter, relaxed free-text queries combining an imaging term (angiography, DSA, or fluoroscopy) with an AI/ML term, executed independently and merged. This design choice trades query precision for recall, consistent with the goal of maximizing sensitivity during automated retrieval and deferring precision to the downstream LLM-assisted screening stage.
+
+\begin{quote}
+\small\texttt{
+deep learning angiography; deep learning digital subtraction angiography; machine learning angiography; deep learning fluoroscopy; artificial intelligence angiography; CNN angiography; transformer angiography; deep learning DSA; neural network DSA; machine learning DSA; artificial intelligence DSA; machine learning fluoroscopy; neural network fluoroscopy; artificial intelligence fluoroscopy; CNN fluoroscopy; deep learning vessel segmentation angiography; deep learning vascular imaging; neural network vascular segmentation; deep learning cerebrovascular angiography; deep learning coronary angiography; deep learning peripheral angiography; deep learning retinal angiography
+}
+\end{quote}
+
+\textbf{Retrieved:} 1{,}758 records before deduplication; 1{,}753 unique records after deduplication (5 duplicates removed).
+
+\subsection{Deduplication and Aggregation}
+
+Records from both sources were pooled and deduplicated first by DOI (case-insensitive exact match) and, for records lacking a DOI, by normalized title (lowercased, punctuation-stripped exact match). This yielded 5{,}064 unique records from an initial pool of 5{,}829 (765 duplicates removed: 759 within/across PubMed, 5 within/across Semantic Scholar, with the remainder resolved at aggregation), matching the counts reported in Section~\ref{sec:eligibility}.
+
+\subsection{Sources Not Queried}
+
+\textbf{arXiv} was not queried directly. This was a deliberate scope decision to prioritize peer-reviewed venues over unreviewed preprints, rather than an oversight; an arXiv query string was drafted and is retained in the fetcher codebase for future extensions of this search but was not executed for the present review. \textbf{Scopus} and \textbf{Web of Science} were also not queried as part of the automated retrieval pipeline; we note this explicitly as a scope limitation rather than a claim of comprehensive database coverage. As reported in Section~\ref{sec:eligibility}, a retrospective venue audit of the 206 records reaching full-text extraction found that Semantic Scholar's aggregation nonetheless surfaced substantial IEEE (19 records, 9.2\%) and SPIE (15 records, 7.3\%) content, but only a single MICCAI/LNCS record and no ACM-venue records, indicating that coverage of ACM- and MICCAI-specific venues remains a limitation of the present search strategy.
+
+\section{Appendix B. Stage 1 Screening Prompts}
 \label{appendix:screening_prompts}
 
 This appendix provides the prompts used during the title--abstract screening stage of the systematic review. Screening was implemented using a two-gate architecture. The first gate evaluated whether a study satisfied all predefined inclusion criteria. Only studies passing the inclusion gate were evaluated using the exclusion gate. The model was instructed to base all decisions solely on information explicitly available in the title and abstract.
