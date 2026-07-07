@@ -2,7 +2,7 @@
 \footnotesize
 \onecolumn
 \begin{longtable}{@{}r p{9cm} c c c c@{}}
-\caption{Full 200-record title/abstract screening validation sample. \textbf{Rev.\ A} / \textbf{Rev.\ B}: independent first-pass decisions (I = Include, E = Exclude); \textbf{Final}: adjudicated label used as ground truth (marked $^{\dagger}$ where adjudication was required to resolve a Rev.\ A/Rev.\ B disagreement); \textbf{Pipeline}: the original stage-1 screening pipeline decision from \texttt{results/stage1\_results.csv} (I = Include, E = Exclude, U = Uncertain).}
+\caption{Full 673-record title/abstract screening validation sample (Cochran/FPC-sized: full census of the 276 pipeline-INCLUDE records plus a 397-record probability sample of the pipeline-EXCLUDE/UNCERTAIN stratum; see Section~\ref{sec:validation}). \textbf{Rev.\ A} / \textbf{Rev.\ B}: independent human-annotator decisions (I = Include, E = Exclude, U = Uncertain; blank where annotation is still pending). \textbf{Final}: adjudicated label used as ground truth (marked $^{\dagger}$ where adjudication was required to resolve a Rev.\ A/Rev.\ B disagreement). \textbf{Pipeline}: the original stage-1 screening pipeline decision from \texttt{results/stage1\_results.csv}. As of this draft, 0 of 673 records have a resolved Final label.}
 \label{tab:screening_validation_full} \\
 \toprule
 \textbf{\#} & \textbf{Title} & \textbf{Rev.\,A} & \textbf{Rev.\,B} & \textbf{Final} & \textbf{Pipeline} \\
@@ -18,204 +18,677 @@
 \endfoot
 \bottomrule
 \endlastfoot
-1 & Subtraction-free artifact-aware digital subtraction angiography image generation for head and neck vessels from motion data. & I & I & I & I \\
-2 & Zero-fluoroscopy approach for ablation of supraventricular tachycardia using the Ensite NavX system: a multicenter experience & E & E & E & E \\
-3 & Emerging Image-Guided Navigation Techniques for Cardiovascular Interventions: A Scoping Review. & E & E & E & E \\
-4 & Intergrader Agreement on Qualitative and Quantitative Assessment of Diabetic Retinopathy Severity Using Ultra-Widefield Imaging: INSPIRED Study Report 1. & E & E & E & E \\
-5 & Automated Machine Learning - Methods, Systems, Challenges & E & E & E & U \\
-6 & FLOW LAYER HETEROGENEITY LEADING PLAQUE ECCENTRICITY IN CORONARY ARTERIES: DYNAMIC ANGIOGRAPHY WITH IVUS AND DEEP LEARNING ANALYSIS & E & E & E & U \\
-7 & Diagnosis of Polypoidal Choroidal Vasculopathy From Fluorescein Angiography Using Deep Learning. & E & E & E & I \\
-8 & Hyperparameter optimization of YOLO models for invasive coronary angiography lesion detection and assessment. & I & I & I & I \\
-9 & Application of Pseudo-Three-Dimensional Residual Network to Classify the Stages of Moyamoya Disease. & I & I & I & I \\
-10 & Optical coherence tomography angiography analysis of interocular asymmetry in hydroxychloroquine retinal toxicity. & E & E & E & E \\
-11 & End-to-end deep learning approach for uterine artery-ovarian artery anastomosis detection from digital subtraction angiography sequences. & I & I & I & I \\
-12 & Deep Learning-Based Intraoperative Stent Graft Segmentation on Completion Digital Subtraction Angiography During Endovascular Aneurysm Repair. & I & I & I & I \\
-13 & Clinical application of automated optical coherence tomography angiography for retinal fluid segmentation: a study of real-world data. & E & E & E & E \\
-14 & A Deep Learning Algorithm for Classifying Diabetic Retinopathy Using Optical Coherence Tomography Angiography. & E & E & E & E \\
-15 & Semi-supervised segmentation of coronary DSA using mixed networks and multi-strategies. & I & I & I & I \\
-16 & A dual-task deep learning framework for automated detection and classification of coronary artery lesions in invasive coronary angiography imaging. & I & I & I & I \\
-17 & Clinical evaluation of real-time artificial intelligence provision of expert representation in indocyanine green fluorescence angiography during colorectal resections: Erratum. & E & E & E & U \\
-18 & Enhancing trust of deep learning models with post-quantum digital signatures & E & E & E & U \\
-19 & Validation of UniverSeg for Interventional Abdominal Angiographic Segmentation. & I & I & I & I \\
-20 & Fully automated Bayesian analysis for quantifying the extent and distribution of pulmonary perfusion changes on CT pulmonary angiography in CTEPH. & E & E & E & E \\
-21 & Pericoronary Fat Attenuation: Diagnosis and Clinical Implications. & E & E & E & E \\
-22 & Development and Validation of a Deep Learning-Based Segmentation Method for Fenestration Marker and Graft Body Identification in Fenestrated Endovascular Aortic Repair. & I & I & I & I \\
-23 & A Weakly Supervised Deep Learning Approach for Leakage Detection in Fluorescein Angiography Images. & E & E & E & U \\
-24 & AngioWave Artificial Intelligence-Assisted Analysis of Septal Collaterals for Retrograde Chronic Total Occlusion Percutaneous Coronary Intervention. & I & I & I & U \\
-25 & Detecting Large Vessel Occlusion at Multiphase CT Angiography by Using a Deep Convolutional Neural Network. & E & E & E & E \\
-26 & Intelligent Algorithm-Based Coronary Angiography Characteristics of Acute Non-ST-Segment Elevation Myocardial Infarction Patients with Different Genders. & I & I & I & U \\
-27 & Classification of anatomic patterns of peripheral artery disease with automated machine learning (AutoML). & E & E & E & U \\
-28 & Deep-learning quantitative ureter perfusion assessment during incocyanine green fluoroscopy on robotic radical cystectomy videos to reduce ureteroenteric strictures & I & E & E$^{\dagger}$ & U \\
-29 & Surgical navigation for guidewire placement from intraoperative fluoroscopy in orthopaedic surgery. & I & E & E$^{\dagger}$ & I \\
-30 & FluoroSAM: A Language-promptable Foundation Model for Flexible X-ray Image Segmentation. & I & E & E$^{\dagger}$ & I \\
-31 & Development of Novel Artificial Intelligence to Detect the Presence of Clinically Meaningful Coronary Atherosclerotic Stenosis in Major Branch from Coronary Angiography Video. & I & I & I & I \\
-32 & LB-3 | Artificial Intelligence for Extracting Non-COronary Data from Angiography: The AI-ENCODE Study & E & E & E & U \\
-33 & Blockchain, artificial intelligence, and healthcare: the tripod of future—a narrative review & E & E & E & U \\
-34 & Enhancing accuracy of detecting left atrial dilatation on CT pulmonary angiography. & E & E & E & E \\
-35 & A Confidence-Aware Machine Learning Framework for Dynamic Security Assessment & E & E & E & U \\
-36 & Artificial intelligence in atherosclerotic disease: Applications and trends. & E & E & E & U \\
-37 & Current State and Future Perspectives of Artificial Intelligence for Automated Coronary Angiography Imaging Analysis in Patients with Ischemic Heart Disease. & E & E & E & U \\
-38 & Artificial intelligence: the future for cardiology. & E & E & E & U \\
-39 & Diagnostic performance of deep learning algorithm for analysis of computed tomography myocardial perfusion. & E & E & E & E \\
-40 & Stenosis degree and plaque burden differ between the major epicardial coronary arteries supplying ischemic territories. & E & E & E & E \\
-41 & Exploration of oral microbiota alteration and AI-driven non-invasive hyperspectral imaging for CAD prediction. & E & E & E & E \\
-42 & An artificial intelligence-based model for exploration of coronary artery dissection and planning of percutaneous coronary intervention & I & I & I & I \\
-43 & Reconstruction of 3D interventional cardiovascular device geometries using biplanar x-ray fluoroscopic images & E & E & E & U \\
-44 & X-Ray to CT Rigid Registration Using Scene Coordinate Regression & E & E & E & I \\
-45 & Unsupervised machine learning for risk stratification and identification of relevant subgroups of ascending aorta dimensions using cardiac CT and clinical data. & E & E & E & E \\
-46 & A Temporary Transformer Network for Guide- Wire Segmentation & I & I & I & I \\
-47 & Abstract No. 53 Image Quality Improvement for Digital Subtraction Angiography (DSA) around High-Density Obstacles Using Deep Learning: A Bench-Top Study & E & E & E & U \\
-48 & Deep learning-driven automated quality assessment of ultra-widefield optical coherence tomography angiography images for diabetic retinopathy & E & E & E & E \\
-49 & Analysis of Video Retinal Angiography With Deep Learning and Eulerian Magnification & E & E & E & I \\
-50 & Deep learning-based assessment of coronary artery disease using curved-multiplanar reconstruction: comprehensive evaluation of stenosis, calcification, and plaque. & E & E & E & E \\
-51 & Radiation Safety in Musculoskeletal Radiology: Addressing Challenges and Implementing Solutions & E & E & E & E \\
-52 & Automated Prediction of Proximal Middle Cerebral Artery Occlusions in Noncontrast Brain Computed Tomography. & E & E & E & E \\
-53 & Temporal-Spatial Feature Extraction of DSA Video and Its Application in AVM Diagnosis. & I & I & I & I \\
-54 & Hunting for a coronary artery disease diagnosis in asymptomatic patients with diabetes mellitus: if, how and when. & E & E & E & E \\
-55 & Automatic differentiation of ruptured and unruptured intracranial aneurysms on computed tomography angiography based on deep learning and radiomics. & E & E & E & E \\
-56 & Improved U-Net for Guidewire Tip Segmentation in X-ray Fluoroscopy Images & I & I & I & I \\
-57 & Multi-label classification of retinal lesions in diabetic retinopathy for automatic analysis of fundus fluorescein angiography based on deep learning. & E & E & E & U \\
-58 & High-resolution multiplexed antibody-omics and interpretable machine learning unveil novel pathogenic mechanisms in kidney transplant rejection & E & E & E & U \\
-59 & Freqformer: Frequency-Domain Transformer for 3-D Visualization and Quantification of Human Retinal Circulation & E & E & E & U \\
-60 & Prediction of Percutaneous Coronary Intervention Success in Patients With Moderate to Severe Coronary Artery Calcification Using Machine Learning Based on Coronary Angiography: Prospective Cohort Study. & E & E & E & I \\
-61 & Multi-scale dual attention embedded U-shaped network for accurate segmentation of coronary vessels in digital subtraction angiography. & I & I & I & I \\
-62 & Cross-modality cerebrovascular segmentation based on pseudo-label generation via paired data. & I & I & I & U \\
-63 & Quantifying post-treatment vascular remodeling in brain aneurysms using WEKA-based machine learning: a pilot study. & I & E & E$^{\dagger}$ & I \\
-64 & Clinical efficacy of DSA-based features in predicting outcomes of acupuncture intervention on upper limb dysfunction following ischemic stroke. & I & I & I & U \\
-65 & Use of biplane quantitative angiographic imaging with ensemble neural networks to assess reperfusion status during mechanical thrombectomy. & I & I & I & I \\
-66 & Automatic Image Co-registration of Carotid Angiography and Intravascular Optical Coherence Tomography Based on Machine Learning Method: A Pilot Feasibility Study. & I & I & I & I \\
-67 & A deep learning framework for segmentation and pose estimation of pedicle screw implants based on C-arm fluoroscopy. & E & E & E & I \\
-68 & Attention residual convolution neural network based on U-net (AttentionResU-Net) for retina vessel segmentation & E & E & E & E \\
-69 & Artificial Intelligence for Identification of Images with Active Bleeding in Mesenteric and Celiac Arteries Angiography. & I & I & I & U \\
-70 & Outcome prediction of intracranial aneurysm treatment by flow diverters using machine learning. & E & E & E & U \\
-71 & Anomaly Detection in Optical Coherence Tomography Angiography (OCTA) with a Vector-Quantized Variational Auto-Encoder (VQ-VAE). & E & E & E & E \\
-72 & Abstract No. 533 Deep Learning of Angiographic Signatures in Abdominopelvic Digital Subtraction Angiography & E & E & E & U \\
-73 & Digital Subtraction Angiography Image Features under the Deep Learning Algorithm in Cardiovascular Interventional Treatment and Nursing for Vascular Restenosis. & I & I & I & I \\
-74 & Cryo-balloon catheter localization in X-Ray fluoroscopy using U-net. & I & I & I & I \\
-75 & Weakly-Supervised Convolutional Neural Networks for Vessel Segmentation in Cerebral Angiography & I & I & I & I \\
-76 & Differences in retinal microvasculature between large artery atherosclerosis and small artery disease: an optical coherence tomography angiography study. & E & E & E & E \\
-77 & A framework for intracranial aneurysm detection and rupture analysis on DSA. & I & I & I & I \\
-78 & Fully automated unruptured intracranial aneurysm detection and segmentation from digital subtraction angiography series using an end-to-end spatiotemporal deep neural network & I & I & I & I \\
-79 & Prediction of revascularization by coronary CT angiography using a machine learning ischemia risk score. & E & E & E & E \\
-80 & Real-time Markerless Tracking of Lung Tumors based on 2-D Fluoroscopy Imaging using Convolutional LSTM. & E & I & E$^{\dagger}$ & I \\
-81 & Enhancing percutaneous coronary intervention with heuristic path planning and deep-learning-based vascular segmentation. & I & I & I & I \\
-82 & Automatic detection of pulmonary embolism in computed tomography pulmonary angiography using Scaled-YOLOv4. & E & E & E & E \\
-83 & Noise reduction of three-dimensional rotational angiography (3DRA) images using residual encoder-decoder convolutional neural network (RED-CNN) & E & E & E & I \\
-84 & Dust Source and Susceptibility Map in Iran and Iraq: Application of Remote Sensing and Machine Learning Techniques & E & E & E & U \\
-85 & Noninvasive Coronary Artery Disease Detection Using Retinal Images: A Multimodal Study. & E & E & E & E \\
-86 & Radiomics-based assessment of ultra-widefield leakage patterns and vessel network architecture in the PERMEATE study: insights into treatment durability. & E & E & E & I \\
-87 & Performance of a Deep-Learning Neural Network to Detect Intracranial Aneurysms from 3D TOF-MRA Compared to Human Readers. & E & E & E & E \\
-88 & Auxiliary learning for anatomical localization of hierarchical vascular structures in digital subtraction angiography & I & I & I & I \\
-89 & INTERMEDIATE AND DEEP CAPILLARY PLEXUSES IN MACHINE LEARNING SEGMENTATION OF HIGH-RESOLUTION OPTICAL COHERENCE TOMOGRAPHY IMAGING. & E & E & E & E \\
-90 & Artificial Intelligence-Enhanced Coronary Computed Tomography Angiography for Chronic Coronary Total Occlusion Percutaneous Coronary Intervention. & E & E & E & U \\
-91 & Comparison of Smartphone Augmented Reality, Smartglasses Augmented Reality, and 3D CBCT-guided Fluoroscopy Navigation for Percutaneous Needle Insertion: A Phantom Study & E & E & E & U \\
-92 & Deep learning robotic guidance for autonomous vascular access & E & E & E & U \\
-93 & Deep Learning-Based Digital Subtraction Angiography Characteristics in Nursing of Maintenance Hemodialysis Patients. & I & I & I & I \\
-94 & Comparison of deep learning reconstruction algorithms to improve image quality of dual-energy carotid CT angiography under dual-low scan. & E & E & E & E \\
-95 & The ApoB/ApoA-I ratio supersedes conventional lipids in predicting coronary artery disease and clinical phenotypes requiring revascularization. & E & E & E & E \\
-96 & AutoFOX: An automated cross-modal 3D fusion framework of coronary X-ray angiography and OCT. & I & I & I & I \\
-97 & Detection of Endoleak after Endovascular Aortic Repair through Deep Learning Based on Non-contrast CT. & E & E & E & E \\
-98 & Normal-resolution vs. super-resolution deep learning reconstruction for diagnosis of functionally significant coronary stenosis using cardiac CT. & E & E & E & E \\
-99 & Super-resolution deep learning reconstruction for improved quality of myocardial CT late enhancement. & E & E & E & E \\
-100 & Image Quality Assessment of Deep Learning-Based Virtual Monoenergetic Images From Single-Energy CT Pulmonary Angiography. & E & E & E & E \\
-101 & Coronary Artery Stent Evaluation by CTA: Impact of Deep Learning Reconstruction and Subtraction Technique. & E & E & E & E \\
-102 & Fully Automatic Dual-Guidewire Segmentation for Coronary Bifurcation Lesion & I & I & I & I \\
-103 & Questionnaire-based exposome-wide association studies (ExWAS) reveal expected and novel risk factors associated with cardiovascular outcomes in the Personalized Environment and Genes Study. & E & E & E & E \\
-104 & Multitask Deep Learning for Automated Detection of Endoleak at Digital Subtraction Angiography during Endovascular Aneurysm Repair. & I & I & I & I \\
-105 & A Comprehensive Review on Heart Disease Risk Prediction using Machine Learning and Deep Learning Algorithms & E & E & E & U \\
-106 & Dsa-PAML: a parallel automated machine learning system via dual-stacked autoencoder & E & E & E & U \\
-107 & What role for cardiac imaging in chronic coronary syndromes: review of the literature in light of the latest recommendations. & E & E & E & E \\
-108 & Deep Learning Based Bayesian Filtering for Catheter Tip Tracking in X-ray Fluoroscopy & I & I & I & U \\
-109 & Fully Automated Approaches for Localization of Intraoperative Electrocorticographic Electrodes & E & E & E & I \\
-110 & Patch Neointima Technique in Acute Type A Aortic Dissection: Midterm Results of 147 Cases. & E & E & E & E \\
-111 & Gastrointestinal bleeding detection on digital subtraction angiography using convolutional neural networks with and without temporal information. & I & I & I & I \\
-112 & Automatic extraction and stenosis evaluation of coronary arteries in invasive coronary angiograms. & I & I & I & I \\
-113 & Personalised pose estimation from single-plane moving fluoroscope images using deep convolutional neural networks. & E & E & E & I \\
-114 & Deep Learning-based Angiogram Generation Model for Cerebral Angiography without Misregistration Artifacts. & I & I & I & I \\
-115 & Direct Vascular Territory Segmentation on Cerebral Digital Subtraction Angiography & I & I & I & I \\
-116 & Influence of diabetes mellitus on the diagnostic performance of machine learning-based coronary CT angiography-derived fractional flow reserve: a multicenter study. & E & E & E & E \\
-117 & Enhancing Pulmonary Embolism Detection in COVID-19 Patients Through Advanced Deep Learning Techniques. & E & E & E & E \\
-118 & Label-Efficient Data Augmentation with Video Diffusion Models for Guidewire Segmentation in Cardiac Fluoroscopy & I & I & I & I \\
-119 & Establishment of machine learning-based tool for early detection of pulmonary embolism. & E & E & E & E \\
-120 & Domain Generalization for Retinal Vessel Segmentation with Vector Field Transformer & E & E & E & U \\
-121 & Integrated deep learning model for automatic detection and classification of stenosis in coronary angiography. & I & I & I & U \\
-122 & Automated three-dimensional vessel reconstruction based on deep segmentation and bi-plane angiographic projections. & I & I & I & I \\
-123 & A Dynamic Machine Learning Model to Predict Angiographic Vasospasm After Aneurysmal Subarachnoid Hemorrhage. & E & E & E & E \\
-124 & Exploring multimodal data fusion and augmentation strategies for imbalanced datasets for intraoperative aneurysm occlusion prognosis & I & I & I & U \\
-125 & Perfusion Maps Acquired From Dynamic Angiography MRI Using Deep Learning Approaches. & E & E & E & E \\
-126 & Stroke prediction in elderly patients with atrial fibrillation using machine learning combined clinical and left atrial appendage imaging phenotypic features. & E & E & E & E \\
-127 & Predicting Acute Coronary Syndromes From Coronary CT Angiography: (A)I Spy With My Little Eye. & E & E & E & U \\
-128 & Deep Learning Unveils Hidden Angiography in Noncontrast CT Scans. & E & E & E & U \\
-129 & Correction: Prediction of Percutaneous Coronary Intervention Success in Patients With Moderate to Severe Coronary Artery Calcification Using Machine Learning Based on Coronary Angiography: Prospective Cohort Study. & E & E & E & U \\
-130 & Effective descriptor extraction strategies for correspondence matching in coronary angiography images. & I & I & I & U \\
-131 & Calculation of virtual 3D subtraction angiographies using conditional generative adversarial networks (cGANs). & I & I & I & I \\
-132 & Validation Study Comparing Artificial Intelligence for Fully Automatic Aortic Aneurysms Segmentation and Diameter Measurements on Contrast and Noncontrast Enhanced Computed Tomography: A la mémoire de Lucie Salomon du Mont (In memory of Lucie Salomon du Mont). & E & E & E & E \\
-133 & Phenotypic clustering of myocardial infarction complicated by out-of-hospital cardiac arrest using unsupervised machine learning. & E & E & E & E \\
-134 & Automatic Pharyngeal Phase Recognition in Untrimmed Videofluoroscopic Swallowing Study Using Transfer Learning with Deep Convolutional Neural Networks. & E & E & E & I \\
-135 & Efficient Quality Control with Mixed CT and CTA Datasets. & E & E & E & E \\
-136 & Towards clinical translation of deep-learning based classification of DSA image sequences for stroke treatment & I & I & I & I \\
-137 & A dual-stage deep learning framework for detecting borderline coronary artery stenosis in x-ray angiography & I & I & I & U \\
-138 & AI-driven tongue image analysis for diagnosing and predicting coronary artery disease. & E & E & E & E \\
-139 & Comparison of Image Quality Reconstructed Using Iterative Reconstruction and Deep Learning Algorithms Under Varying Dose Reductions in Dual-Energy Carotid CT Angiography. & E & E & E & E \\
-140 & GaraMoSt: Parallel Multi-Granularity Motion and Structural Modeling for Efficient Multi-Frame Interpolation in DSA Images & I & I & I & I \\
-141 & Machine learning demonstrates top predictors of lipid-rich necrotic core modulation over 1 year in psoriasis. & E & E & E & U \\
-142 & Fluoroscopic Image Denoising with Feature Preserving Residual Noise Learning & I & I & I & I \\
-143 & TiAVox: Time-aware Attenuation Voxels for Sparse-view 4D DSA Reconstruction & I & I & I & I \\
-144 & Evaluation of Optic Disc, Retinal Vascular Structures, and Acircularity Index in Patients with Idiopathic Macular Telangiectasia Type 2. & E & E & E & E \\
-145 & Development and validation of a neural network survival prediction model for ischemic heart disease. & E & E & E & E \\
-146 & Studies of Plausibility Using Deep Learning Techniques to Automatically Detect Retinal Neovascularization in Enface Optical Coherence Tomography Angiography Images & E & E & E & E \\
-147 & Enhancing precision in aneurysm volume measurement: A comparative study of techniques including an artificial intelligence-based method for endovascular coiling. & E & E & E & E \\
-148 & Uncertain Feature-refinement Attention Unet: Considering Suitable Convolutional Neural Network Model for Real-time Segmentation in Markerless Tumor Tracking. & E & I & E$^{\dagger}$ & I \\
-149 & Radiogenomics and Artificial Intelligence Approaches Applied to Cardiac Computed Tomography Angiography and Cardiac Magnetic Resonance for Precision Medicine in Coronary Heart Disease: A Systematic Review. & E & E & E & E \\
-150 & Energy-based Kinetic Energy Features for Online Dynamic Security Assessment using Bayes by Backprop Machine Learning Algorithm & E & E & E & E \\
-151 & Performance of deep learning-based autodetection of arterial stenosis on head and neck CT angiography: an independent external validation study. & E & E & E & E \\
-152 & Classifying Ruptured Middle Cerebral Artery Aneurysms With a Machine Learning Based, Radiomics-Morphological Model: A Multicentral Study. & E & E & E & E \\
-153 & Autonomous Guidewire Navigation in Dynamic Environments & I & I & I & I \\
-154 & Deep learning for estimating right ventricular function from routine coronary angiography. & I & I & I & I \\
-155 & Automatic image-based tracking of gadolinium-filled balloon wedge catheters for MRI-guided cardiac catheterization using deep learning. & E & E & E & E \\
-156 & Background Subtraction Angiography with Deep Learning Using Multi-frame Spatiotemporal Angiographic Input. & I & I & I & I \\
-157 & Artificial Intelligence-Based Quantitative Coronary Plaque Analysis. & E & E & E & U \\
-158 & Development of a machine learning-based real-time location system to streamline acute endovascular intervention in acute stroke: a proof-of-concept study. & E & E & E & E \\
-159 & Multi-dimensional cascades neural network models for the segmentation of retinal vessels in colour fundus images & E & E & E & E \\
-160 & AI Quantification of Vascular Lesions in Mouse Fundus Fluorescein Angiography. & E & E & E & I \\
-161 & The Clinical Utility Of AI Models In Diagnostic And Endovascular Radiology & E & E & E & E \\
-162 & Deep reinforcement learning for cerebral anterior vessel tree extraction from 3D CTA images. & E & E & E & E \\
-163 & Benchmark dataset for clot detection in ischemic stroke vessel-based imaging: CODEC-IV. & E & E & E & E \\
-164 & Response to: ‘Deep learning synthetic angiograms for individuals unable to undergo contrast-guided laser treatment in aggressive retinopathy of prematurity’ & E & E & E & U \\
-165 & Proximal femur segmentation and quantification in dual-energy subtraction tomosynthesis: A novel approach to fracture risk assessment. & E & E & E & I \\
-166 & Femoropopliteal Artery Stent Detection in Fluoroscopy Using Otsu's Preprocessing and CNN Segmentation & I & I & I & I \\
-167 & Automatic viewing angles prediction for endovascular treatment in intracranial aneurysm & I & I & I & I \\
-168 & Summertime for Cardiovascular AI. & E & E & E & U \\
-169 & Is Artificial Intelligence-Based Quantitative Coronary Angiography Ready for Clinical Adoption? & E & E & E & U \\
-170 & Deep Learning-Based Automated Thrombolysis in Cerebral Infarction Scoring: A Timely Proof-of-Principle Study. & I & I & I & I \\
-171 & Stent-RD-UNet: A Deep Learning Network for Real-Time Pose Estimation and Tracking of Aortic Stents in Image-Assisted Interventions & I & I & I & I \\
-172 & Automated catheter segmentation and tip detection in cerebral angiography with topology-aware geometric deep learning. & I & I & I & I \\
-173 & A Deep-Learning Model for Stroke Subtype Identification in Moyamoya Disease Based on Digital Subtraction Angiography. & E & I & E$^{\dagger}$ & U \\
-174 & Optimizing Input Selection for Cardiac Model Training and Inference: An Efficient 3D CNN-based Approach to Automate Coronary Angiogram Video Selection & I & I & I & I \\
-175 & WHITE MATTER HYPERINTENSITY AND MULTI-REGION BRAIN MRI SEGMENTATION USING CONVOLUTIONAL NEURAL NETWORK & E & E & E & U \\
-176 & Prediction of treatment outcome for branch retinal vein occlusion using convolutional neural network-based retinal fluorescein angiography. & E & E & E & I \\
-177 & Determinants of COVID-19 vaccine hesitancy among students and parents in Sentinel Schools Network of Catalonia, Spain. & E & E & E & U \\
-178 & Deep learning based tracked X-ray for surgery guidance & I & I & I & I \\
-179 & Authors' response to letter to the editor regarding impact of artificial intelligence arrhythmia mapping on time to first ablation, procedure duration, and fluoroscopy use. & E & E & E & U \\
-180 & Intraoperative guidance of orthopaedic instruments using 3D correspondence of 2D object instance segmentations & E & E & E & I \\
-181 & DCA-YOLOv8: A Novel Framework Combined with AICI Loss Function for Coronary Artery Stenosis Detection. & I & I & I & U \\
-182 & Old Habits Die Hard: Can AI Help Bring Coronary Angiography Into the 21st Century? & E & E & E & U \\
-183 & EfficientNetB0-Based End-to-End Diagnostic System for Diabetic Retinopathy Grading and Macular Edema Detection. & E & E & E & U \\
-184 & DSA Image Analysis of Clinical Features and Nursing Care of Cerebral Aneurysm Patients Based on the Deep Learning Algorithm. & I & I & I & I \\
-185 & Deep Learning-Based Approach to Automatically Assess Coronary Distensibility Following Kawasaki Disease. & I & I & I & I \\
-186 & Fusion of Biplane Fluoroscopy With Fiber Bragg Grating for 3D Catheter Shape Reconstruction & I & I & I & U \\
-187 & Editor's choice to the May 2022 issue : Fully automated quantification of cardiac chambers and function in 2D echo by Deep Learning, and a modern atlas of invasive coronary angiographic views. & E & E & E & E \\
-188 & Lesion detection in age-related macular degeneration with a multi-modal imaging and machine learning approach. & E & E & E & E \\
-189 & Deep Learning for CAD Prediction: X-ray Angiography Insights & I & I & I & U \\
-190 & AI-quantified epicardial adipose tissue and prediction of future myocardial infarction in patients with cardiometabolic disease: a post-hoc analysis from the SCOT-HEART trial. & E & E & E & E \\
-191 & Autonomous skeletal landmark localization toward agentic C-arm control. & E & E & E & U \\
-192 & Deep Ensemble Learning to Detect Retinal Vascular Leakage on Ultrawide-Field Fundus Photographs of Patients With Uveitis. & E & E & E & U \\
-193 & Dynamic-Computed Tomography Angiography for Cerebral Vessel Templates and Segmentation & E & E & E & E \\
-194 & When Plaque Helps Us DECIDE. & E & E & E & U \\
-195 & Deep Learning Model for Real-Time Catheter Tracking from Fluoroscopy & I & I & I & U \\
-196 & Changes in donor vessel physiology following coronary computed tomography angiography guided chronic total occlusion percutaneous coronary intervention: insights from computed tomography fractional flow reserve and artificial intelligence-guided ischemia model. & E & E & E & U \\
-197 & Vision-language model for report generation and outcome prediction in CT pulmonary angiogram. & E & E & E & E \\
-198 & Automated Echocardiographic Detection of Severe Coronary Artery Disease Using Artificial Intelligence. & E & E & E & E \\
-199 & A Memory Efficient Adversarial Attention Tree-Structured Deep Learning Model for Classification & E & E & E & E \\
-200 & Towards Automatic Prediction of Outcome in Treatment of Cerebral Aneurysms. & I & I & I & U \\
+1 & Subtraction-free artifact-aware digital subtraction angiography image generation for head and neck vessels from motion data. &  &  &  & I \\
+2 & Zero-fluoroscopy approach for ablation of supraventricular tachycardia using the Ensite NavX system: a multicenter experience &  &  &  & E \\
+3 & Emerging Image-Guided Navigation Techniques for Cardiovascular Interventions: A Scoping Review. &  &  &  & E \\
+4 & Intergrader Agreement on Qualitative and Quantitative Assessment of Diabetic Retinopathy Severity Using Ultra-Widefield Imaging: INSPIRED Study Report 1. &  &  &  & E \\
+5 & Automated Machine Learning - Methods, Systems, Challenges &  &  &  & U \\
+6 & FLOW LAYER HETEROGENEITY LEADING PLAQUE ECCENTRICITY IN CORONARY ARTERIES: DYNAMIC ANGIOGRAPHY WITH IVUS AND DEEP LEARNING ANALYSIS &  &  &  & U \\
+7 & Diagnosis of Polypoidal Choroidal Vasculopathy From Fluorescein Angiography Using Deep Learning. &  &  &  & I \\
+8 & Hyperparameter optimization of YOLO models for invasive coronary angiography lesion detection and assessment. &  &  &  & I \\
+9 & Application of Pseudo-Three-Dimensional Residual Network to Classify the Stages of Moyamoya Disease. &  &  &  & I \\
+10 & Optical coherence tomography angiography analysis of interocular asymmetry in hydroxychloroquine retinal toxicity. &  &  &  & E \\
+11 & End-to-end deep learning approach for uterine artery-ovarian artery anastomosis detection from digital subtraction angiography sequences. &  &  &  & I \\
+12 & Deep Learning-Based Intraoperative Stent Graft Segmentation on Completion Digital Subtraction Angiography During Endovascular Aneurysm Repair. &  &  &  & I \\
+13 & Clinical application of automated optical coherence tomography angiography for retinal fluid segmentation: a study of real-world data. &  &  &  & E \\
+14 & A Deep Learning Algorithm for Classifying Diabetic Retinopathy Using Optical Coherence Tomography Angiography. &  &  &  & E \\
+15 & Semi-supervised segmentation of coronary DSA using mixed networks and multi-strategies. &  &  &  & I \\
+16 & A dual-task deep learning framework for automated detection and classification of coronary artery lesions in invasive coronary angiography imaging. &  &  &  & I \\
+17 & Clinical evaluation of real-time artificial intelligence provision of expert representation in indocyanine green fluorescence angiography during colorectal resections: Erratum. &  &  &  & U \\
+18 & Enhancing trust of deep learning models with post-quantum digital signatures &  &  &  & U \\
+19 & Validation of UniverSeg for Interventional Abdominal Angiographic Segmentation. &  &  &  & I \\
+20 & Fully automated Bayesian analysis for quantifying the extent and distribution of pulmonary perfusion changes on CT pulmonary angiography in CTEPH. &  &  &  & E \\
+21 & Pericoronary Fat Attenuation: Diagnosis and Clinical Implications. &  &  &  & E \\
+22 & Development and Validation of a Deep Learning-Based Segmentation Method for Fenestration Marker and Graft Body Identification in Fenestrated Endovascular Aortic Repair. &  &  &  & I \\
+23 & A Weakly Supervised Deep Learning Approach for Leakage Detection in Fluorescein Angiography Images. &  &  &  & U \\
+24 & AngioWave Artificial Intelligence-Assisted Analysis of Septal Collaterals for Retrograde Chronic Total Occlusion Percutaneous Coronary Intervention. &  &  &  & U \\
+25 & Detecting Large Vessel Occlusion at Multiphase CT Angiography by Using a Deep Convolutional Neural Network. &  &  &  & E \\
+26 & Intelligent Algorithm-Based Coronary Angiography Characteristics of Acute Non-ST-Segment Elevation Myocardial Infarction Patients with Different Genders. &  &  &  & U \\
+27 & Classification of anatomic patterns of peripheral artery disease with automated machine learning (AutoML). &  &  &  & U \\
+28 & Deep-learning quantitative ureter perfusion assessment during incocyanine green fluoroscopy on robotic radical cystectomy videos to reduce ureteroenteric strictures &  &  &  & U \\
+29 & Surgical navigation for guidewire placement from intraoperative fluoroscopy in orthopaedic surgery. &  &  &  & I \\
+30 & FluoroSAM: A Language-promptable Foundation Model for Flexible X-ray Image Segmentation. &  &  &  & I \\
+31 & Development of Novel Artificial Intelligence to Detect the Presence of Clinically Meaningful Coronary Atherosclerotic Stenosis in Major Branch from Coronary Angiography Video. &  &  &  & I \\
+32 & LB-3 | Artificial Intelligence for Extracting Non-COronary Data from Angiography: The AI-ENCODE Study &  &  &  & U \\
+33 & Blockchain, artificial intelligence, and healthcare: the tripod of future—a narrative review &  &  &  & U \\
+34 & Enhancing accuracy of detecting left atrial dilatation on CT pulmonary angiography. &  &  &  & E \\
+35 & A Confidence-Aware Machine Learning Framework for Dynamic Security Assessment &  &  &  & U \\
+36 & Artificial intelligence in atherosclerotic disease: Applications and trends. &  &  &  & U \\
+37 & Current State and Future Perspectives of Artificial Intelligence for Automated Coronary Angiography Imaging Analysis in Patients with Ischemic Heart Disease. &  &  &  & U \\
+38 & Artificial intelligence: the future for cardiology. &  &  &  & U \\
+39 & Diagnostic performance of deep learning algorithm for analysis of computed tomography myocardial perfusion. &  &  &  & E \\
+40 & Stenosis degree and plaque burden differ between the major epicardial coronary arteries supplying ischemic territories. &  &  &  & E \\
+41 & Exploration of oral microbiota alteration and AI-driven non-invasive hyperspectral imaging for CAD prediction. &  &  &  & E \\
+42 & An artificial intelligence-based model for exploration of coronary artery dissection and planning of percutaneous coronary intervention &  &  &  & I \\
+43 & Reconstruction of 3D interventional cardiovascular device geometries using biplanar x-ray fluoroscopic images &  &  &  & U \\
+44 & X-Ray to CT Rigid Registration Using Scene Coordinate Regression &  &  &  & I \\
+45 & Unsupervised machine learning for risk stratification and identification of relevant subgroups of ascending aorta dimensions using cardiac CT and clinical data. &  &  &  & E \\
+46 & A Temporary Transformer Network for Guide- Wire Segmentation &  &  &  & I \\
+47 & Abstract No. 53 Image Quality Improvement for Digital Subtraction Angiography (DSA) around High-Density Obstacles Using Deep Learning: A Bench-Top Study &  &  &  & U \\
+48 & Deep learning-driven automated quality assessment of ultra-widefield optical coherence tomography angiography images for diabetic retinopathy &  &  &  & E \\
+49 & Analysis of Video Retinal Angiography With Deep Learning and Eulerian Magnification &  &  &  & I \\
+50 & Deep learning-based assessment of coronary artery disease using curved-multiplanar reconstruction: comprehensive evaluation of stenosis, calcification, and plaque. &  &  &  & E \\
+51 & Radiation Safety in Musculoskeletal Radiology: Addressing Challenges and Implementing Solutions &  &  &  & E \\
+52 & Automated Prediction of Proximal Middle Cerebral Artery Occlusions in Noncontrast Brain Computed Tomography. &  &  &  & E \\
+53 & Temporal-Spatial Feature Extraction of DSA Video and Its Application in AVM Diagnosis. &  &  &  & I \\
+54 & Hunting for a coronary artery disease diagnosis in asymptomatic patients with diabetes mellitus: if, how and when. &  &  &  & E \\
+55 & Automatic differentiation of ruptured and unruptured intracranial aneurysms on computed tomography angiography based on deep learning and radiomics. &  &  &  & E \\
+56 & Improved U-Net for Guidewire Tip Segmentation in X-ray Fluoroscopy Images &  &  &  & I \\
+57 & Multi-label classification of retinal lesions in diabetic retinopathy for automatic analysis of fundus fluorescein angiography based on deep learning. &  &  &  & U \\
+58 & High-resolution multiplexed antibody-omics and interpretable machine learning unveil novel pathogenic mechanisms in kidney transplant rejection &  &  &  & U \\
+59 & Freqformer: Frequency-Domain Transformer for 3-D Visualization and Quantification of Human Retinal Circulation &  &  &  & U \\
+60 & Prediction of Percutaneous Coronary Intervention Success in Patients With Moderate to Severe Coronary Artery Calcification Using Machine Learning Based on Coronary Angiography: Prospective Cohort Study. &  &  &  & I \\
+61 & Multi-scale dual attention embedded U-shaped network for accurate segmentation of coronary vessels in digital subtraction angiography. &  &  &  & I \\
+62 & Cross-modality cerebrovascular segmentation based on pseudo-label generation via paired data. &  &  &  & U \\
+63 & Quantifying post-treatment vascular remodeling in brain aneurysms using WEKA-based machine learning: a pilot study. &  &  &  & I \\
+64 & Clinical efficacy of DSA-based features in predicting outcomes of acupuncture intervention on upper limb dysfunction following ischemic stroke. &  &  &  & U \\
+65 & Use of biplane quantitative angiographic imaging with ensemble neural networks to assess reperfusion status during mechanical thrombectomy. &  &  &  & I \\
+66 & Automatic Image Co-registration of Carotid Angiography and Intravascular Optical Coherence Tomography Based on Machine Learning Method: A Pilot Feasibility Study. &  &  &  & I \\
+67 & A deep learning framework for segmentation and pose estimation of pedicle screw implants based on C-arm fluoroscopy. &  &  &  & I \\
+68 & Attention residual convolution neural network based on U-net (AttentionResU-Net) for retina vessel segmentation &  &  &  & E \\
+69 & Artificial Intelligence for Identification of Images with Active Bleeding in Mesenteric and Celiac Arteries Angiography. &  &  &  & U \\
+70 & Outcome prediction of intracranial aneurysm treatment by flow diverters using machine learning. &  &  &  & U \\
+71 & Anomaly Detection in Optical Coherence Tomography Angiography (OCTA) with a Vector-Quantized Variational Auto-Encoder (VQ-VAE). &  &  &  & E \\
+72 & Abstract No. 533 Deep Learning of Angiographic Signatures in Abdominopelvic Digital Subtraction Angiography &  &  &  & U \\
+73 & Digital Subtraction Angiography Image Features under the Deep Learning Algorithm in Cardiovascular Interventional Treatment and Nursing for Vascular Restenosis. &  &  &  & I \\
+74 & Cryo-balloon catheter localization in X-Ray fluoroscopy using U-net. &  &  &  & I \\
+75 & Weakly-Supervised Convolutional Neural Networks for Vessel Segmentation in Cerebral Angiography &  &  &  & I \\
+76 & Differences in retinal microvasculature between large artery atherosclerosis and small artery disease: an optical coherence tomography angiography study. &  &  &  & E \\
+77 & A framework for intracranial aneurysm detection and rupture analysis on DSA. &  &  &  & I \\
+78 & Fully automated unruptured intracranial aneurysm detection and segmentation from digital subtraction angiography series using an end-to-end spatiotemporal deep neural network &  &  &  & I \\
+79 & Prediction of revascularization by coronary CT angiography using a machine learning ischemia risk score. &  &  &  & E \\
+80 & Real-time Markerless Tracking of Lung Tumors based on 2-D Fluoroscopy Imaging using Convolutional LSTM. &  &  &  & I \\
+81 & Enhancing percutaneous coronary intervention with heuristic path planning and deep-learning-based vascular segmentation. &  &  &  & I \\
+82 & Automatic detection of pulmonary embolism in computed tomography pulmonary angiography using Scaled-YOLOv4. &  &  &  & E \\
+83 & Noise reduction of three-dimensional rotational angiography (3DRA) images using residual encoder-decoder convolutional neural network (RED-CNN) &  &  &  & I \\
+84 & Dust Source and Susceptibility Map in Iran and Iraq: Application of Remote Sensing and Machine Learning Techniques &  &  &  & U \\
+85 & Noninvasive Coronary Artery Disease Detection Using Retinal Images: A Multimodal Study. &  &  &  & E \\
+86 & Radiomics-based assessment of ultra-widefield leakage patterns and vessel network architecture in the PERMEATE study: insights into treatment durability. &  &  &  & I \\
+87 & Performance of a Deep-Learning Neural Network to Detect Intracranial Aneurysms from 3D TOF-MRA Compared to Human Readers. &  &  &  & E \\
+88 & Auxiliary learning for anatomical localization of hierarchical vascular structures in digital subtraction angiography &  &  &  & I \\
+89 & INTERMEDIATE AND DEEP CAPILLARY PLEXUSES IN MACHINE LEARNING SEGMENTATION OF HIGH-RESOLUTION OPTICAL COHERENCE TOMOGRAPHY IMAGING. &  &  &  & E \\
+90 & Artificial Intelligence-Enhanced Coronary Computed Tomography Angiography for Chronic Coronary Total Occlusion Percutaneous Coronary Intervention. &  &  &  & U \\
+91 & Comparison of Smartphone Augmented Reality, Smartglasses Augmented Reality, and 3D CBCT-guided Fluoroscopy Navigation for Percutaneous Needle Insertion: A Phantom Study &  &  &  & U \\
+92 & Deep learning robotic guidance for autonomous vascular access &  &  &  & U \\
+93 & Deep Learning-Based Digital Subtraction Angiography Characteristics in Nursing of Maintenance Hemodialysis Patients. &  &  &  & I \\
+94 & Comparison of deep learning reconstruction algorithms to improve image quality of dual-energy carotid CT angiography under dual-low scan. &  &  &  & E \\
+95 & The ApoB/ApoA-I ratio supersedes conventional lipids in predicting coronary artery disease and clinical phenotypes requiring revascularization. &  &  &  & E \\
+96 & AutoFOX: An automated cross-modal 3D fusion framework of coronary X-ray angiography and OCT. &  &  &  & I \\
+97 & Detection of Endoleak after Endovascular Aortic Repair through Deep Learning Based on Non-contrast CT. &  &  &  & E \\
+98 & Normal-resolution vs. super-resolution deep learning reconstruction for diagnosis of functionally significant coronary stenosis using cardiac CT. &  &  &  & E \\
+99 & Super-resolution deep learning reconstruction for improved quality of myocardial CT late enhancement. &  &  &  & E \\
+100 & Image Quality Assessment of Deep Learning-Based Virtual Monoenergetic Images From Single-Energy CT Pulmonary Angiography. &  &  &  & E \\
+101 & Coronary Artery Stent Evaluation by CTA: Impact of Deep Learning Reconstruction and Subtraction Technique. &  &  &  & E \\
+102 & Fully Automatic Dual-Guidewire Segmentation for Coronary Bifurcation Lesion &  &  &  & I \\
+103 & Questionnaire-based exposome-wide association studies (ExWAS) reveal expected and novel risk factors associated with cardiovascular outcomes in the Personalized Environment and Genes Study. &  &  &  & E \\
+104 & Multitask Deep Learning for Automated Detection of Endoleak at Digital Subtraction Angiography during Endovascular Aneurysm Repair. &  &  &  & I \\
+105 & A Comprehensive Review on Heart Disease Risk Prediction using Machine Learning and Deep Learning Algorithms &  &  &  & U \\
+106 & Dsa-PAML: a parallel automated machine learning system via dual-stacked autoencoder &  &  &  & U \\
+107 & What role for cardiac imaging in chronic coronary syndromes: review of the literature in light of the latest recommendations. &  &  &  & E \\
+108 & Deep Learning Based Bayesian Filtering for Catheter Tip Tracking in X-ray Fluoroscopy &  &  &  & U \\
+109 & Fully Automated Approaches for Localization of Intraoperative Electrocorticographic Electrodes &  &  &  & I \\
+110 & Patch Neointima Technique in Acute Type A Aortic Dissection: Midterm Results of 147 Cases. &  &  &  & E \\
+111 & Gastrointestinal bleeding detection on digital subtraction angiography using convolutional neural networks with and without temporal information. &  &  &  & I \\
+112 & Automatic extraction and stenosis evaluation of coronary arteries in invasive coronary angiograms. &  &  &  & I \\
+113 & Personalised pose estimation from single-plane moving fluoroscope images using deep convolutional neural networks. &  &  &  & I \\
+114 & Deep Learning-based Angiogram Generation Model for Cerebral Angiography without Misregistration Artifacts. &  &  &  & I \\
+115 & Direct Vascular Territory Segmentation on Cerebral Digital Subtraction Angiography &  &  &  & I \\
+116 & Influence of diabetes mellitus on the diagnostic performance of machine learning-based coronary CT angiography-derived fractional flow reserve: a multicenter study. &  &  &  & E \\
+117 & Enhancing Pulmonary Embolism Detection in COVID-19 Patients Through Advanced Deep Learning Techniques. &  &  &  & E \\
+118 & Label-Efficient Data Augmentation with Video Diffusion Models for Guidewire Segmentation in Cardiac Fluoroscopy &  &  &  & I \\
+119 & Establishment of machine learning-based tool for early detection of pulmonary embolism. &  &  &  & E \\
+120 & Domain Generalization for Retinal Vessel Segmentation with Vector Field Transformer &  &  &  & U \\
+121 & Integrated deep learning model for automatic detection and classification of stenosis in coronary angiography. &  &  &  & U \\
+122 & Automated three-dimensional vessel reconstruction based on deep segmentation and bi-plane angiographic projections. &  &  &  & I \\
+123 & A Dynamic Machine Learning Model to Predict Angiographic Vasospasm After Aneurysmal Subarachnoid Hemorrhage. &  &  &  & E \\
+124 & Exploring multimodal data fusion and augmentation strategies for imbalanced datasets for intraoperative aneurysm occlusion prognosis &  &  &  & U \\
+125 & Perfusion Maps Acquired From Dynamic Angiography MRI Using Deep Learning Approaches. &  &  &  & E \\
+126 & Stroke prediction in elderly patients with atrial fibrillation using machine learning combined clinical and left atrial appendage imaging phenotypic features. &  &  &  & E \\
+127 & Predicting Acute Coronary Syndromes From Coronary CT Angiography: (A)I Spy With My Little Eye. &  &  &  & U \\
+128 & Deep Learning Unveils Hidden Angiography in Noncontrast CT Scans. &  &  &  & U \\
+129 & Correction: Prediction of Percutaneous Coronary Intervention Success in Patients With Moderate to Severe Coronary Artery Calcification Using Machine Learning Based on Coronary Angiography: Prospective Cohort Study. &  &  &  & U \\
+130 & Effective descriptor extraction strategies for correspondence matching in coronary angiography images. &  &  &  & U \\
+131 & Calculation of virtual 3D subtraction angiographies using conditional generative adversarial networks (cGANs). &  &  &  & I \\
+132 & Validation Study Comparing Artificial Intelligence for Fully Automatic Aortic Aneurysms Segmentation and Diameter Measurements on Contrast and Noncontrast Enhanced Computed Tomography: A la mémoire de Lucie Salomon du Mont (In memory of Lucie Salomon du Mont). &  &  &  & E \\
+133 & Phenotypic clustering of myocardial infarction complicated by out-of-hospital cardiac arrest using unsupervised machine learning. &  &  &  & E \\
+134 & Automatic Pharyngeal Phase Recognition in Untrimmed Videofluoroscopic Swallowing Study Using Transfer Learning with Deep Convolutional Neural Networks. &  &  &  & I \\
+135 & Efficient Quality Control with Mixed CT and CTA Datasets. &  &  &  & E \\
+136 & Towards clinical translation of deep-learning based classification of DSA image sequences for stroke treatment &  &  &  & I \\
+137 & A dual-stage deep learning framework for detecting borderline coronary artery stenosis in x-ray angiography &  &  &  & U \\
+138 & AI-driven tongue image analysis for diagnosing and predicting coronary artery disease. &  &  &  & E \\
+139 & Comparison of Image Quality Reconstructed Using Iterative Reconstruction and Deep Learning Algorithms Under Varying Dose Reductions in Dual-Energy Carotid CT Angiography. &  &  &  & E \\
+140 & GaraMoSt: Parallel Multi-Granularity Motion and Structural Modeling for Efficient Multi-Frame Interpolation in DSA Images &  &  &  & I \\
+141 & Machine learning demonstrates top predictors of lipid-rich necrotic core modulation over 1 year in psoriasis. &  &  &  & U \\
+142 & Fluoroscopic Image Denoising with Feature Preserving Residual Noise Learning &  &  &  & I \\
+143 & TiAVox: Time-aware Attenuation Voxels for Sparse-view 4D DSA Reconstruction &  &  &  & I \\
+144 & Evaluation of Optic Disc, Retinal Vascular Structures, and Acircularity Index in Patients with Idiopathic Macular Telangiectasia Type 2. &  &  &  & E \\
+145 & Development and validation of a neural network survival prediction model for ischemic heart disease. &  &  &  & E \\
+146 & Studies of Plausibility Using Deep Learning Techniques to Automatically Detect Retinal Neovascularization in Enface Optical Coherence Tomography Angiography Images &  &  &  & E \\
+147 & Enhancing precision in aneurysm volume measurement: A comparative study of techniques including an artificial intelligence-based method for endovascular coiling. &  &  &  & E \\
+148 & Uncertain Feature-refinement Attention Unet: Considering Suitable Convolutional Neural Network Model for Real-time Segmentation in Markerless Tumor Tracking. &  &  &  & I \\
+149 & Radiogenomics and Artificial Intelligence Approaches Applied to Cardiac Computed Tomography Angiography and Cardiac Magnetic Resonance for Precision Medicine in Coronary Heart Disease: A Systematic Review. &  &  &  & E \\
+150 & Energy-based Kinetic Energy Features for Online Dynamic Security Assessment using Bayes by Backprop Machine Learning Algorithm &  &  &  & E \\
+151 & Performance of deep learning-based autodetection of arterial stenosis on head and neck CT angiography: an independent external validation study. &  &  &  & E \\
+152 & Classifying Ruptured Middle Cerebral Artery Aneurysms With a Machine Learning Based, Radiomics-Morphological Model: A Multicentral Study. &  &  &  & E \\
+153 & Autonomous Guidewire Navigation in Dynamic Environments &  &  &  & I \\
+154 & Deep learning for estimating right ventricular function from routine coronary angiography. &  &  &  & I \\
+155 & Automatic image-based tracking of gadolinium-filled balloon wedge catheters for MRI-guided cardiac catheterization using deep learning. &  &  &  & E \\
+156 & Background Subtraction Angiography with Deep Learning Using Multi-frame Spatiotemporal Angiographic Input. &  &  &  & I \\
+157 & Artificial Intelligence-Based Quantitative Coronary Plaque Analysis. &  &  &  & U \\
+158 & Development of a machine learning-based real-time location system to streamline acute endovascular intervention in acute stroke: a proof-of-concept study. &  &  &  & E \\
+159 & Multi-dimensional cascades neural network models for the segmentation of retinal vessels in colour fundus images &  &  &  & E \\
+160 & AI Quantification of Vascular Lesions in Mouse Fundus Fluorescein Angiography. &  &  &  & I \\
+161 & The Clinical Utility Of AI Models In Diagnostic And Endovascular Radiology &  &  &  & E \\
+162 & Deep reinforcement learning for cerebral anterior vessel tree extraction from 3D CTA images. &  &  &  & E \\
+163 & Benchmark dataset for clot detection in ischemic stroke vessel-based imaging: CODEC-IV. &  &  &  & E \\
+164 & Response to: ‘Deep learning synthetic angiograms for individuals unable to undergo contrast-guided laser treatment in aggressive retinopathy of prematurity’ &  &  &  & U \\
+165 & Proximal femur segmentation and quantification in dual-energy subtraction tomosynthesis: A novel approach to fracture risk assessment. &  &  &  & I \\
+166 & Femoropopliteal Artery Stent Detection in Fluoroscopy Using Otsu's Preprocessing and CNN Segmentation &  &  &  & I \\
+167 & Automatic viewing angles prediction for endovascular treatment in intracranial aneurysm &  &  &  & I \\
+168 & Summertime for Cardiovascular AI. &  &  &  & U \\
+169 & Is Artificial Intelligence-Based Quantitative Coronary Angiography Ready for Clinical Adoption? &  &  &  & U \\
+170 & Deep Learning-Based Automated Thrombolysis in Cerebral Infarction Scoring: A Timely Proof-of-Principle Study. &  &  &  & I \\
+171 & Stent-RD-UNet: A Deep Learning Network for Real-Time Pose Estimation and Tracking of Aortic Stents in Image-Assisted Interventions &  &  &  & I \\
+172 & Automated catheter segmentation and tip detection in cerebral angiography with topology-aware geometric deep learning. &  &  &  & I \\
+173 & A Deep-Learning Model for Stroke Subtype Identification in Moyamoya Disease Based on Digital Subtraction Angiography. &  &  &  & U \\
+174 & Optimizing Input Selection for Cardiac Model Training and Inference: An Efficient 3D CNN-based Approach to Automate Coronary Angiogram Video Selection &  &  &  & I \\
+175 & WHITE MATTER HYPERINTENSITY AND MULTI-REGION BRAIN MRI SEGMENTATION USING CONVOLUTIONAL NEURAL NETWORK &  &  &  & U \\
+176 & Prediction of treatment outcome for branch retinal vein occlusion using convolutional neural network-based retinal fluorescein angiography. &  &  &  & I \\
+177 & Determinants of COVID-19 vaccine hesitancy among students and parents in Sentinel Schools Network of Catalonia, Spain. &  &  &  & U \\
+178 & Deep learning based tracked X-ray for surgery guidance &  &  &  & I \\
+179 & Authors' response to letter to the editor regarding impact of artificial intelligence arrhythmia mapping on time to first ablation, procedure duration, and fluoroscopy use. &  &  &  & U \\
+180 & Intraoperative guidance of orthopaedic instruments using 3D correspondence of 2D object instance segmentations &  &  &  & I \\
+181 & DCA-YOLOv8: A Novel Framework Combined with AICI Loss Function for Coronary Artery Stenosis Detection. &  &  &  & U \\
+182 & Old Habits Die Hard: Can AI Help Bring Coronary Angiography Into the 21st Century? &  &  &  & U \\
+183 & EfficientNetB0-Based End-to-End Diagnostic System for Diabetic Retinopathy Grading and Macular Edema Detection. &  &  &  & U \\
+184 & DSA Image Analysis of Clinical Features and Nursing Care of Cerebral Aneurysm Patients Based on the Deep Learning Algorithm. &  &  &  & I \\
+185 & Deep Learning-Based Approach to Automatically Assess Coronary Distensibility Following Kawasaki Disease. &  &  &  & I \\
+186 & Fusion of Biplane Fluoroscopy With Fiber Bragg Grating for 3D Catheter Shape Reconstruction &  &  &  & U \\
+187 & Editor's choice to the May 2022 issue : Fully automated quantification of cardiac chambers and function in 2D echo by Deep Learning, and a modern atlas of invasive coronary angiographic views. &  &  &  & E \\
+188 & Lesion detection in age-related macular degeneration with a multi-modal imaging and machine learning approach. &  &  &  & E \\
+189 & Deep Learning for CAD Prediction: X-ray Angiography Insights &  &  &  & U \\
+190 & AI-quantified epicardial adipose tissue and prediction of future myocardial infarction in patients with cardiometabolic disease: a post-hoc analysis from the SCOT-HEART trial. &  &  &  & E \\
+191 & Autonomous skeletal landmark localization toward agentic C-arm control. &  &  &  & U \\
+192 & Deep Ensemble Learning to Detect Retinal Vascular Leakage on Ultrawide-Field Fundus Photographs of Patients With Uveitis. &  &  &  & U \\
+193 & Dynamic-Computed Tomography Angiography for Cerebral Vessel Templates and Segmentation &  &  &  & E \\
+194 & When Plaque Helps Us DECIDE. &  &  &  & U \\
+195 & Deep Learning Model for Real-Time Catheter Tracking from Fluoroscopy &  &  &  & U \\
+196 & Changes in donor vessel physiology following coronary computed tomography angiography guided chronic total occlusion percutaneous coronary intervention: insights from computed tomography fractional flow reserve and artificial intelligence-guided ischemia model. &  &  &  & U \\
+197 & Vision-language model for report generation and outcome prediction in CT pulmonary angiogram. &  &  &  & E \\
+198 & Automated Echocardiographic Detection of Severe Coronary Artery Disease Using Artificial Intelligence. &  &  &  & E \\
+199 & A Memory Efficient Adversarial Attention Tree-Structured Deep Learning Model for Classification &  &  &  & E \\
+200 & Towards Automatic Prediction of Outcome in Treatment of Cerebral Aneurysms. &  &  &  & U \\
+201 & Deep Learning Analysis of Indocyanine Green Fluoroscopy of Ureters in Robotic Cystectomy: Toward Reducing Ureteroenteric Strictures. &  &  &  & I \\
+202 & SPARNet: A Framework for Airway Invasion Tracking from Fluoroscopic Videos of Dysphagia Patients. &  &  &  & I \\
+203 & Automated assessment of right ventricular systolic function from coronary angiograms with video-based artificial intelligence algorithms: development, validation, comparison against humans, and prospective deployment. &  &  &  & I \\
+204 & S-MEOD: A Novel Evaluation Metric for Frame-Based Medical Object Detection. &  &  &  & I \\
+205 & Fluoroscopic image-driven deep learning model for predicting intussusception irreducibility during air enema in children. &  &  &  & I \\
+206 & YOLO11-based detection of manometry sensors in video-fluoroscopy imaging for computer-aided multimodal assessment of swallowing. &  &  &  & I \\
+207 & Toward real-time autonomous navigation: transformer-based catheter tip tracking in fluoroscopy. &  &  &  & I \\
+208 & AngioCAD: A public x-ray angiography dataset and an adaptive fusion framework for stenosis detection. &  &  &  & I \\
+209 & TransUNet for automated segmentation of intracranial aneurysms in digital subtraction angiography: A dual-center validation study. &  &  &  & I \\
+210 & Quantitative Assessment of Fluorescein Angiography Leakage via Deep Learning in Pediatric Uveitis: Correlation with Clinical Parameters. &  &  &  & I \\
+211 & A Deep Learning Model for Artery of Adamkiewicz Detection in Bronchial Artery Embolization: A Multicenter Retrospective Study. &  &  &  & I \\
+212 & PASAformer: Cerebrovascular Disease Classification with Medical Prior-Guided Adapter and Pathology-Aware Sparse Attention. &  &  &  & I \\
+213 & Artificial intelligence risk stratification from dynamic digital subtraction angiography radiomics predicts pulmonary embolism and associates with clinical outcomes in deep vein thrombosis: A retrospective cohort study. &  &  &  & I \\
+214 & Machine learning-enabled prediction of hemorrhagic transformation post-thrombectomy using quantitative DSA. &  &  &  & I \\
+215 & Artificial intelligence classification of rectal neoplasia by endoscopic fluorescence perfusion analysis. &  &  &  & I \\
+216 & Identifying Pathogenesis of Acute Coronary Syndromes using Sequence Contrastive Learning in Coronary Angiography. &  &  &  & I \\
+217 & Multi-graph Graph matching for coronary artery semantic labeling in invasive coronary angiograms. &  &  &  & I \\
+218 & Catheter detection and segmentation in X-ray images via multi-task learning. &  &  &  & I \\
+219 & Deep learning-based frame synthesis enables radiation dose reduction in digital subtraction angiography imaging: a multicenter study &  &  &  & I \\
+220 & CDSA-Net:Collaborative Decoupling of Vascular Structure and Background for High-Fidelity Coronary Digital Subtraction Angiography &  &  &  & I \\
+221 & Real-Time Tracking of Flexible Markers in Low-Contrast Fluoroscopy Using a Deep Neural Network Trained Solely on Synthetic Data &  &  &  & I \\
+222 & SIX: A Self-Supervised Interactive Algorithm for Low-Dose X-Ray Fluoroscopy Image Denoising &  &  &  & I \\
+223 & Coronary Artery Segmentation and Vessel-Type Classification in X-Ray Angiography &  &  &  & I \\
+224 & From Prompts to Pipelines: Evaluating LLM-Generated Medical Image Segmentation Baselines &  &  &  & I \\
+225 & Development and Validation of an Interpretable Hemodynamics-Based Machine Learning Model for Predicting Cerebral Arteriovenous Malformation Rupture. &  &  &  & I \\
+226 & Texture-Based Preprocessing Framework with nnU-Net Model for Accurate Intracranial Artery Segmentation. &  &  &  & I \\
+227 & Multimodal machine learning for 5-year mortality prediction after percutaneous coronary intervention. &  &  &  & I \\
+228 & AI-Based Denoising and Identification of Neuromodulation Lead Locations from Limited Intraoperative Fluoroscopy Images. &  &  &  & I \\
+229 & Optimized aortic root segmentation during transcatheter aortic valve implantation. &  &  &  & I \\
+230 & Marker-Less Lung Tumor Tracking from Real-Time Color X-Ray Fluoroscopic Images Using Cross-Patient Deep Learning Model. &  &  &  & I \\
+231 & Feasibility of Multimodal Deep Learning for Automated Staging of Familial Exudative Vitreoretinopathy Using Color Fundus Photographs and Fluorescein Angiography. &  &  &  & I \\
+232 & Intracranial aneurysm segmentation on digital subtraction angiography: a retrospective and multi-center study. &  &  &  & I \\
+233 & Real-Time Artificial Intelligence-Assisted Middle Meningeal Artery Embolization Using Liquid Embolic Agents for Chronic Subdural Hematoma: A Preliminary Experience. &  &  &  & I \\
+234 & Quantitative DSA Analysis of MCA Aneurysms Using SymDIRECT Pixel Clustering: A Novel Framework for Objective Post-Treatment Evaluation. &  &  &  & I \\
+235 & Deep learning-based dual-energy subtraction synthesis from single-energy kV x-ray fluoroscopy for markerless tumor tracking. &  &  &  & I \\
+236 & Explainable AI for raising confidence in deep learning-based tumor tracking models. &  &  &  & I \\
+237 & Design and optimization of an automatic deep learning-based cerebral reperfusion scoring (TICI) using thrombus localization. &  &  &  & I \\
+238 & Semi-automatic segmentation of elongated interventional instruments for online calibration of C-arm imaging system. &  &  &  & I \\
+239 & Generative deep-learning-model based contrast enhancement for digital subtraction angiography using a text-conditioned image-to-image model. &  &  &  & I \\
+240 & Machine Learning-Assisted Prediction of Persistent Incomplete Occlusion in Intracranial Aneurysms From Angiographic Parametric Imaging-Derived Features. &  &  &  & I \\
+241 & End-to-end 2D/3D registration from pre-operative MRI to intra-operative fluoroscopy for orthopedic procedures. &  &  &  & I \\
+242 & Real-Time Coronary Artery Dominance Classification from Angiographic Images Using Advanced Deep Video Architectures. &  &  &  & I \\
+243 & Training a deep learning model to predict the anatomy irradiated in fluoroscopic x-ray images. &  &  &  & I \\
+244 & Improving automatic cerebral 3D-2D CTA-DSA registration. &  &  &  & I \\
+245 & Automatic transformer-based grading of multiple retinal inflammatory signs in uveitis on fluorescein angiography. &  &  &  & I \\
+246 & Accuracy of segment anything model for classification of vascular stenosis in digital subtraction angiography. &  &  &  & I \\
+247 & Lightweight attention network for guidewire segmentation and localization in clinical fluoroscopic images of vascular interventional surgery. &  &  &  & I \\
+248 & perfDSA: Automatic Perfusion Imaging in Cerebral Digital Subtraction Angiography. &  &  &  & I \\
+249 & Optimizing Input Selection for Cardiac Model Training and Inference: An Efficient 3D Convolutional Neural Networks-Based Approach to Automate Coronary Angiogram Video Selection. &  &  &  & I \\
+250 & Linking sequence restoration capability of shuffled coronary angiography to coronary artery disease diagnosis. &  &  &  & I \\
+251 & Machine Learning Analysis of Videourodynamics to Predict Incident Hydronephrosis in Patients With Spina Bifida. &  &  &  & I \\
+252 & Intraoperative stenosis detection in X-ray coronary angiography via temporal fusion and attention-based CNN. &  &  &  & I \\
+253 & CVFSNet: A Cross View Fusion Scoring Network for end-to-end mTICI scoring. &  &  &  & I \\
+254 & CDKD-w+: A Keyframe Recognition Method for Coronary Digital Subtraction Angiography Video Sequence Based on w+ Space Encoding. &  &  &  & I \\
+255 & Technique selection and technical developments for 2D dual-energy subtraction angiography on an interventional C-arm. &  &  &  & I \\
+256 & Development of a Deep Learning Model for Automating Implant Position in Total Hip Arthroplasty. &  &  &  & I \\
+257 & Automated stenosis estimation of coronary angiographies using end-to-end learning. &  &  &  & I \\
+258 & Deep Learning Models for Automatic Classification of Anatomic Location in Abdominopelvic Digital Subtraction Angiography. &  &  &  & I \\
+259 & Deep Learning-Based Detection of Malignant Bile Duct Stenosis in Fluoroscopy Images of Endoscopic Retrograde Cholangiopancreatography. &  &  &  & I \\
+260 & Rupture risk assessment in cerebral arteriovenous malformations: an ensemble model using hemodynamic and morphological features. &  &  &  & I \\
+261 & Large-scale pretrained frame generative model enables real-time low-dose DSA imaging: An AI system development and multi-center validation study. &  &  &  & I \\
+262 & Assessing superficial temporal artery-middle cerebral artery anastomosis patency using FLOW 800 hemodynamics. &  &  &  & I \\
+263 & Predicting Intracranial Aneurysm Rupture: A Multifactor Analysis Combining Radscore, Morphology, and PHASES Parameters. &  &  &  & I \\
+264 & Enhanced Cerebrovascular Extraction Using Vessel-Specific Preprocessing of Time-Series Digital Subtraction Angiograph &  &  &  & I \\
+265 & OccluNet: Spatio-Temporal Deep Learning for Occlusion Detection on DSA &  &  &  & I \\
+266 & CTNet: A CNN-Transformer Dual-Branch Network for 2D-3D Rigid Registration &  &  &  & I \\
+267 & Deep learning fluoroscopy denoising: a beam quality insensitive approach &  &  &  & I \\
+268 & DSA-NRP: No-Reflow Prediction from Angiographic Perfusion Dynamics in Stroke EVT &  &  &  & I \\
+269 & Abstract 097: Real‐time AI‐assisted MMA embolization using liquid embolic agents for chronic subdural hematoma &  &  &  & I \\
+270 & Reducing motion artifacts in craniocervical background subtraction angiography with deformable registration and unsupervised deep learning. &  &  &  & I \\
+271 & Optimizing Modified Barium Swallow Exam Workflow: Automating Pre-Analysis Video Sorting in Swallowing Function Assessment. &  &  &  & I \\
+272 & Parathyroid gland identification and angiography classification using simple machine learning methods. &  &  &  & I \\
+273 & First In-Vivo demonstration of 1000fps High Speed Coronary Angiography (HSCA) in a swine animal model. &  &  &  & I \\
+274 & Simulation-informed learning for time-resolved angiographic contrast agent concentration reconstruction. &  &  &  & I \\
+275 & DSA Quantitative Analysis and Predictive Modeling of Obliteration in Cerebral AVM following Stereotactic Radiosurgery. &  &  &  & I \\
+276 & Automatic localization of anatomical landmarks in head cine fluoroscopy images via deep learning. &  &  &  & I \\
+277 & Optimizing neurointerventional procedures: an algorithm for embolization coil detection and automated collimation to enable dose reduction. &  &  &  & I \\
+278 & Automated Laryngeal Invasion Detector of Boluses in Videofluoroscopic Swallowing Study Videos Using Action Recognition-Based Networks. &  &  &  & I \\
+279 & A novel post-processing technique for correcting symmetric implant ambiguity in measuring total knee arthroplasty kinematics from single-plane fluoroscopy. &  &  &  & I \\
+280 & CAVE: Cerebral artery-vein segmentation in digital subtraction angiography. &  &  &  & I \\
+281 & A deep learning method to identify and localize large-vessel occlusions from cerebral digital subtraction angiography. &  &  &  & I \\
+282 & A feasibility study assessing quantitative indocyanine green angiographic predictors of reconstructive complications following nipple-sparing mastectomy. &  &  &  & I \\
+283 & Cross-modality Labeling Enables Noninvasive Capillary Quantification as a Sensitive Biomarker for Assessing Cardiovascular Risk. &  &  &  & I \\
+284 & Automatic Detection of 30 Fundus Diseases Using Ultra-Widefield Fluorescein Angiography with Deep Experts Aggregation. &  &  &  & I \\
+285 & Significantly better precision with new machine learning versus manual image registration software in processing images from single-plane fluoroscopy to determine tibiofemoral kinematics following total knee replacement. &  &  &  & I \\
+286 & Radiation reduction for interventional radiology imaging: a video frame interpolation solution. &  &  &  & I \\
+287 & Training of a deep learning based digital subtraction angiography method using synthetic data. &  &  &  & I \\
+288 & Topology observing 3D device reconstruction from continuous-sweep limited angle fluoroscopy. &  &  &  & I \\
+289 & Development of an Artificial Intelligence Tool for Intraoperative Guidance During Endovascular Abdominal Aortic Aneurysm Repair. &  &  &  & I \\
+290 & Fully automatic algorithm for detecting and tracking anatomical shoulder landmarks on fluoroscopy images with artificial intelligence. &  &  &  & I \\
+291 & A Fully Differentiable Framework for 2D/3D Registration and the Projective Spatial Transformers. &  &  &  & I \\
+292 & Deep learning-based cerebral aneurysm segmentation and morphological analysis with three-dimensional rotational angiography. &  &  &  & I \\
+293 & Unsupervised deep learning for the matching of vascular anatomy in multiple digital subtraction angiograms &  &  &  & I \\
+294 & DFA-Net: Dual multi-scale feature aggregation network for vessel segmentation in X-ray digital subtraction angiography &  &  &  & I \\
+295 & Artifact-aware Digital Subtraction Angiogram Image Generation for Head and Neck Vessels &  &  &  & I \\
+296 & Enhancing texture detail recovery in low-dose x-ray fluoroscopic images with a multi-frame deep learning framework &  &  &  & I \\
+297 & ABLSpineLevelCheck: Localization of Vertebral Levels on Fluoroscopy via Semi-supervised Abductive Learning &  &  &  & I \\
+298 & A Patient-Specific Registration of Coronary Angiogram-Fluoroscopy by Similarity- Based Transfer Learning &  &  &  & I \\
+299 & Use of Yolo Detection for 3D Pose Tracking of Cardiac Catheters Using Bi-Plane Fluoroscopy &  &  &  & I \\
+300 & A study on the influence of radiation dose on device tracking accuracy during continuous-sweep limited angle fluoroscopy &  &  &  & I \\
+301 & Unsupervised Training of a Dynamic Context-Aware Deep Denoising Framework for Low-Dose Fluoroscopic Imaging &  &  &  & I \\
+302 & Deformable Model-to-Image Registration Toward Augmented Reality-Guided Endovascular Interventions &  &  &  & I \\
+303 & 4DRGS: 4D Radiative Gaussian Splatting for Efficient 3D Vessel Reconstruction from Sparse-View Dynamic DSA Images &  &  &  & I \\
+304 & MoSt-DSA: Modeling Motion and Structural Interactions for Direct Multi-Frame Interpolation in DSA Images &  &  &  & I \\
+305 & A Deep Learning Model for Coronary Artery Segmentation and Quantitative Stenosis Detection in Angiographic Images &  &  &  & I \\
+306 & Deep learning approaches for image restoration in invasive coronary angiography &  &  &  & I \\
+307 & Automated Interpretation of Fundus Fluorescein Angiography with Multi-Retinal Lesion Segmentation &  &  &  & I \\
+308 & Deep Learning to Estimate Left Ventricular Ejection Fraction From Routine Coronary Angiographic Images. &  &  &  & I \\
+309 & Pelphix: Surgical Phase Recognition from X-ray Images in Percutaneous Pelvic Fixation. &  &  &  & I \\
+310 & USING CONVOLUTIONAL NEURAL NETWORK-BASED SEGMENTATION FOR IMAGE-BASED COMPUTATIONAL FLUID DYNAMICS SIMULATIONS OF BRAIN ANEURYSMS: INITIAL EXPERIENCE IN AUTOMATED MODEL CREATION. &  &  &  & I \\
+311 & An Improved Microaneurysm Detection Model Based on SwinIR and YOLOv8. &  &  &  & I \\
+312 & TBENet:A two-branch boundary enhancement Network for cerebrovascular segmentation. &  &  &  & I \\
+313 & Use of deep learning to segment bolus during videofluoroscopic swallow studies. &  &  &  & I \\
+314 & A framework of myocardial bridge detection with x-ray angiography sequence. &  &  &  & I \\
+315 & Joint Track Machine Learning: An Autonomous Method of Measuring Total Knee Arthroplasty Kinematics From Single-Plane X-Ray Images. &  &  &  & I \\
+316 & Automatic prediction model for online diaphragm motion tracking based on optical surface monitoring by machine learning. &  &  &  & I \\
+317 & Deep Learning of Videourodynamics to Classify Bladder Dysfunction Severity in Patients With Spina Bifida. &  &  &  & I \\
+318 & High-throughput 3DRA segmentation of brain vasculature and aneurysms using deep learning. &  &  &  & I \\
+319 & A deep learning based dual encoder-decoder framework for anatomical structure segmentation in chest X-ray images. &  &  &  & I \\
+320 & Coronary artery stenosis detection via proposal-shifted spatial-temporal transformer in X-ray angiography. &  &  &  & I \\
+321 & Deep Learning Subtraction Angiography: Improved Generalizability with Transfer Learning. &  &  &  & I \\
+322 & Jigsaw training-based background reverse attention transformer network for guidewire segmentation. &  &  &  & I \\
+323 & Automated detection of arterial landmarks and vascular occlusions in patients with acute stroke receiving digital subtraction angiography using deep learning. &  &  &  & I \\
+324 & Learning spatiotemporal features of DSA using 3D CNN and BiConvGRU for ischemic moyamoya disease detection. &  &  &  & I \\
+325 & A Coordinate-Regression-Based Deep Learning Model for Catheter Detection during Structural Heart Interventions &  &  &  & I \\
+326 & 3D Guidewire Shape Reconstruction from Monoplane Fluoroscopic Images &  &  &  & I \\
+327 & ConTrack: Contextual Transformer for Device Tracking in X-ray &  &  &  & I \\
+328 & A motion-level-aware denoising framework for x-ray fluoroscopic images &  &  &  & I \\
+329 & Prolonged turbulence and deposition of LDL cholesterol caused atherosclerotic lesion in femoral arteries and spared the iliac arteries. Why? A dynamic angiography and machine learning analysis &  &  &  & I \\
+330 & Machine learning-assisted fluoroscopy of bladder function in awake mice. &  &  &  & I \\
+331 & Automatic landmark detection and mapping for 2D/3D registration with BoneNet. &  &  &  & I \\
+332 & Initial investigation of the use of angiographic parametric imaging for early prognosis of delayed cerebral ischemia in patients with subarachnoid hemorrhage. &  &  &  & I \\
+333 & Quantitative angiography prognosis of intracranial aneurysm treatment failure using parametric imaging and distal vessel analysis. &  &  &  & I \\
+334 & Real-time Detection of Patient Head Position and Cephalometric Landmarks from Neuro-Interventional Procedure Images Using Machine Learning for Patient Eye-Lens Dose Prediction. &  &  &  & I \\
+335 & Automated Detection of Vascular Leakage in Fluorescein Angiography - A Proof of Concept. &  &  &  & I \\
+336 & InterNet: Detection of Active Abdominal Arterial Bleeding Using Emergency Digital Subtraction Angiography Imaging With Two-Stage Deep Learning. &  &  &  & I \\
+337 & Optical flow estimation of coronary angiography sequences based on semi-supervised learning. &  &  &  & I \\
+338 & Deep learning-based classification of DSA image sequences of patients with acute ischemic stroke. &  &  &  & I \\
+339 & Deep learning-based framework for motion-compensated image fusion in catheterization procedures. &  &  &  & I \\
+340 & Real-time automatic prediction of treatment response to transcatheter arterial chemoembolization in patients with hepatocellular carcinoma using deep learning based on digital subtraction angiography videos. &  &  &  & I \\
+341 & Deep Learning Segmentation in 2D X-ray Images and Non-Rigid Registration in Multi-Modality Images of Coronary Arteries. &  &  &  & I \\
+342 & Maskless 2-Dimensional Digital Subtraction Angiography Generation Model for Abdominal Vasculature using Deep Learning. &  &  &  & I \\
+343 & Using a Convolutional Neural Network and Convolutional Long Short-term Memory to Automatically Detect Aneurysms on 2D Digital Subtraction Angiography Images: Framework Development and Validation. &  &  &  & I \\
+344 & Spatio-temporal deep learning for automatic detection of intracranial vessel perforation in digital subtraction angiography during endovascular thrombectomy. &  &  &  & I \\
+345 & Edge-enhancement densenet for X-ray fluoroscopy image denoising in cardiac electrophysiology procedures. &  &  &  & I \\
+346 & Identification of successful cerebral reperfusions (mTICI ≥2b) using an artificial intelligence strategy. &  &  &  & I \\
+347 & A Unified Framework for Multi-Guidewire Endpoint Localization in Fluoroscopy Images. &  &  &  & I \\
+348 & Deep learning-enabled ultra-widefield retinal vessel segmentation with an automated quality-optimized angiographic phase selection tool. &  &  &  & I \\
+349 & Personalized Pre- and Post-Operative Hemodynamic Assessment of Aortic Coarctation from 3D Rotational Angiography. &  &  &  & I \\
+350 & Robust Landmark-based Stent Tracking in X-ray Fluoroscopy &  &  &  & I \\
+351 & [Development of the DSA Method for Coronary Angiography Using Deep Learning Techniques]. &  &  &  & I \\
+352 & Breathing-Compensated Neural Networks for Real Time C-Arm Pose Estimation in Lung CT-Fluoroscopy Registration &  &  &  & I \\
+353 & Towards Real-time pose estimation of the Mitral Valve Robot under C-arm X-ray Fluoroscopy. &  &  &  & I \\
+354 & Towards real time guide wire shape extraction in fluoroscopic sequences: A two phase deep learning scheme to extract sparse curvilinear structures. &  &  &  & I \\
+355 & Multi-Modality guidance based surgical navigation for percutaneous endoscopic transforaminal discectomy. &  &  &  & I \\
+356 & Deformable 3D-2D registration for high-precision guidance and verification of neuroelectrode placement. &  &  &  & I \\
+357 & Transfer learning from an artificial radiograph-landmark dataset for registration of the anatomic skull model to dual fluoroscopic X-ray images. &  &  &  & I \\
+358 & Automated Grading of Diabetic Retinopathy with Ultra-Widefield Fluorescein Angiography and Deep Learning. &  &  &  & I \\
+359 & Deep learning-based reconstruction of interventional tools and devices from four X-ray projections for tomographic interventional guidance. &  &  &  & I \\
+360 & Robust Orthogonal-View 2-D/3-D Rigid Registration for Minimally Invasive Surgery. &  &  &  & I \\
+361 & The Aneurysm Occlusion Assistant, an AI platform for real time surgical guidance of intracranial aneurysms. &  &  &  & I \\
+362 & autoTICI: Automatic Brain Tissue Reperfusion Scoring on 2D DSA Images of Acute Ischemic Stroke Patients. &  &  &  & I \\
+363 & Automatic detection of leakage point in central serous chorioretinopathy of fundus fluorescein angiography based on time sequence deep learning. &  &  &  & I \\
+364 & Multi-View Convolutional Neural Networks in Rupture Risk Assessment of Small, Unruptured Intracranial Aneurysms. &  &  &  & I \\
+365 & Deep neural network-based detection and segmentation of intracranial aneurysms on 3D rotational DSA. &  &  &  & I \\
+366 & Use of quantitative angiographic methods with a data-driven model to evaluate reperfusion status (mTICI) during thrombectomy. &  &  &  & I \\
+367 & Transfer Learning for Nonrigid 2D/3D Cardiovascular Images Registration. &  &  &  & I \\
+368 & Recognition of moyamoya disease and its hemorrhagic risk using deep learning algorithms: sourced from retrospective studies. &  &  &  & I \\
+369 & Quantitative analysis of flow vortices: differentiation of unruptured and ruptured medium-sized middle cerebral artery aneurysms. &  &  &  & I \\
+370 & Abstract P494: Automatically Predicting Modified Treatment in Cerebral Ischemia Scores From Patient Digital Subtraction Angiography Using Deep Learning &  &  &  & I \\
+371 & Model-to-Image Registration via Deep Learning towards Image-Guided Endovascular Interventions &  &  &  & I \\
+372 & Deep-Learning-Based Registration of Diagnostic Angiogram and Live Fluoroscopy for Percutaneous Coronary Intervention &  &  &  & I \\
+373 & Stent enhancement using marker response network and focus conversion learning in x-ray fluoroscopy sequences &  &  &  & I \\
+374 & Using a Convolutional Neural Network and Convolutional Long Short-term Memory to Automatically Detect Aneurysms on 2D-DSA Images (Preprint) &  &  &  & I \\
+375 & Automatic detection and tracking of the region of interest during fluoroscopy-guided procedures for radiation exposure reduction &  &  &  & I \\
+376 & Real-Time Multi-Guidewire Endpoint Localization in Fluoroscopy Images &  &  &  & I \\
+377 & Automated Deep Learning Analysis of Angiography Video Sequences for Coronary Artery Disease &  &  &  & I \\
+378 & End-to-End Deep Learning Model for Cardiac Cycle Synchronization from Multi-View Angiographic Sequences. &  &  &  & I \\
+379 & Deep neural networks for ECG-free cardiac phase and end-diastolic frame detection on coronary angiographies. &  &  &  & I \\
+380 & Pyramid attention recurrent networks for real-time guidewire segmentation and tracking in intraoperative X-ray fluoroscopy. &  &  &  & I \\
+381 & Catheter segmentation in X-ray fluoroscopy using synthetic data and transfer learning with light U-nets. &  &  &  & I \\
+382 & A machine learning-based real-time tumor tracking system for fluoroscopic gating of lung radiotherapy. &  &  &  & I \\
+383 & Adaptive weighted log subtraction based on neural networks for markerless tumor tracking using dual-energy fluoroscopy. &  &  &  & I \\
+384 & Automatic Diagnosis Based on Spatial Information Fusion Feature for Intracranial Aneurysm. &  &  &  & I \\
+385 & Automatic radiomic feature extraction using deep learning for angiographic parametric imaging of intracranial aneurysms. &  &  &  & I \\
+386 & Semantic Segmentation to Extract Coronary Arteries in Fluoroscopy Angiograms &  &  &  & I \\
+387 & Multiscale dense convolutional neural network for DSA cerebrovascular segmentation &  &  &  & I \\
+388 & Fully automated intracranial aneurysm detection and segmentation from digital subtraction angiography series using an end-to-end spatiotemporal deep neural network &  &  &  & I \\
+389 & Optimization of DSA image data input to a machine learning aneurysm identifier &  &  &  & I \\
+390 & Image processing using Convolutional Neural Network (CNN) for Region of Interest (ROI) fluoroscopy &  &  &  & I \\
+391 & Multi-resolution CNN for brain vessel segmentation from cerebrovascular images of intracranial aneurysm: a comparison of U-Net and DeepMedic &  &  &  & I \\
+392 & Deep learning convolutional networks for image quality assessment in ultra-widefield fluorescein angiography &  &  &  & I \\
+393 & Computer-assisted intra-operative verification of surgical outcome for the treatment of syndesmotic injuries through contralateral side comparison. &  &  &  & I \\
+394 & Enabling machine learning in X-ray-based procedures via realistic simulation of image formation. &  &  &  & I \\
+395 & A deep learning framework for automatic detection of arbitrarily shaped fiducial markers in intrafraction fluoroscopic images. &  &  &  & I \\
+396 & Commissioning of a fluoroscopic-based real-time markerless tumor tracking system in a superconducting rotating gantry for carbon-ion pencil beam scanning treatment. &  &  &  & I \\
+397 & Deep learning based guidewire segmentation in x-ray images &  &  &  & I \\
+398 & Deformable Cardiovascular Image Registration via Multi-Channel Convolutional Neural Network &  &  &  & I \\
+399 & Use of a convolutional neural network for aneurysm identification in digital subtraction angiography &  &  &  & I \\
+400 & Feasibility study for use of angiographic parametric imaging and deep neural networks for intracranial aneurysm occlusion prediction &  &  &  & I \\
+401 & Feasibility study of deep neural networks to classify intracranial aneurysms using angiographic parametric imaging &  &  &  & I \\
+402 & Microcatheter Shaping for Intracranial Aneurysm Coiling Using Artificial Intelligence-Assisted Technique &  &  &  & I \\
+403 & Automatic Annotation of Hip Anatomy in Fluoroscopy for Robust and Efficient 2D/3D Registration &  &  &  & I \\
+404 & Estimation of attenuator mask from region of interest (ROI) dose-reduced images for brightness equalization using convolutional neural networks &  &  &  & I \\
+405 & A novel real-time computational framework for detecting catheters and rigid guidewires in cardiac catheterization procedures. &  &  &  & I \\
+406 & Automatic hyoid bone detection in fluoroscopic images using deep learning. &  &  &  & I \\
+407 & LUMEN-A deep learning pipeline for analysis of the 3D morphology of the cerebral lenticulostriate arteries from time-of-flight 7T MRI. &  &  &  & E \\
+408 & Integrating traditional statistics and explainable machine learning for risk stratification of atrial fibrillation recurrence after pulsed field ablation: a hypothesis-generating single-center study. &  &  &  & E \\
+409 & DSA-CNN: an fpga-integrated deformable systolic array for convolutional neural network acceleration &  &  &  & U \\
+410 & Machine Learning-Enabled Automated Large Vessel Occlusion Detection Improves Transfer Times at Primary Stroke Centers. &  &  &  & E \\
+411 & Automated interpretation of retinal vein occlusion based on fundus fluorescein angiography images using deep learning: A retrospective, multi-center study. &  &  &  & E \\
+412 & Nonperfused Retinal Capillaries-A New Method Developed on OCT and OCTA. &  &  &  & E \\
+413 & Adverse cardiovascular events in coronary Plaques not undeRgoing pErcutaneous coronary intervention evaluateD with optIcal Coherence Tomography. The PREDICT-AI risk model. &  &  &  & E \\
+414 & Diagnosis model for assessing chronic thromboembolic pulmonary hypertension in high-altitude pulmonary embolism patients: a machine learning approach. &  &  &  & E \\
+415 & Assessing vascular complexity of PAOD patients by deep learning-based segmentation and fractal dimension &  &  &  & E \\
+416 & Beyond coronary artery calcium score: can lipoprotein(a) and artificial intelligence-coronary computed tomography angiography unmask 'invisible' residual cardiovascular risk? &  &  &  & E \\
+417 & Coronary CT Angiography for PCI Planning and Guidance: A Comprehensive Narrative Review. &  &  &  & E \\
+418 & Differentiation between epileptic and functional/dissociative seizures using density spectral array of ictal single-channel EEG with deep learning. &  &  &  & E \\
+419 & Reproducibility and across-site transferability of an improved deep learning approach for aneurysm detection and segmentation in time-of-flight MR-angiograms. &  &  &  & E \\
+420 & Inflammatory risk and cardiovascular events in patients without obstructive coronary artery disease: the ORFAN multicentre, longitudinal cohort study. &  &  &  & E \\
+421 & Multidimensional Pelvic Fluoroscopy: A New and Novel Technique for Assessing Safety and Accuracy of Percutaneous Iliosacral Screw Fixation. &  &  &  & E \\
+422 & Neural network assessment of aortic, iliac, renal, and mesenteric artery calcification in CTA: Normalized scoring framework and comparison to threshold-based method. &  &  &  & E \\
+423 & Left, Then Right Internal Carotid Artery Dissection: A Case Report. &  &  &  & E \\
+424 & When physics meets machine learning: a survey of physics-informed machine learning &  &  &  & E \\
+425 & Soul: An OCTA dataset based on Human Machine Collaborative Annotation Framework. &  &  &  & E \\
+426 & Medialization of the Hip's Center with Periacetabular Osteotomy: Validation of Assessment with Plain Radiographs. &  &  &  & E \\
+427 & Tourist Routes Recommender System Supported by Artificial Intelligence &  &  &  & E \\
+428 & Rationale and design of a multicenter, prospective, diagnostic clinical study: A study protocol for evaluating the diagnostic validation of deep learning-based noninvasive CT-FFR for in-stent restenosis. &  &  &  & E \\
+429 & Risk prediction for elderly cognitive impairment by radiomic and morphological quantification analysis based on a cerebral MRA imaging cohort. &  &  &  & E \\
+430 & Nailfold Microhemorrhage Segmentation with Modified U-Shape Convolutional Neural Network &  &  &  & E \\
+431 & Artificial intelligence-based iliofemoral deep venous thrombosis detection using a clinical approach. &  &  &  & E \\
+432 & Challenges of Artificial Intelligence in Strategic Decisions: Talent Management &  &  &  & U \\
+433 & High-resolution deep learning reconstruction for coronary CTA: compared efficacy of stenosis evaluation with other methods at in vitro and in vivo studies. &  &  &  & E \\
+434 & Artificial intelligence for retinal diseases. &  &  &  & E \\
+435 & The automatic evaluation of steno-occlusive changes in time-of-flight magnetic resonance angiography of moyamoya patients using a 3D coordinate attention residual network. &  &  &  & E \\
+436 & Fundus blood flow density changes in the smoking population by artificial intelligence-based optical coherence tomography angiography. &  &  &  & E \\
+437 & Quantification of intermittent retinal capillary perfusion in retinal vein occlusion and proliferative diabetic retinopathy. &  &  &  & E \\
+438 & CT perfusion-based delta-radiomics models to identify collateral vessel formation after revascularization in patients with moyamoya disease. &  &  &  & E \\
+439 & Relations Between Pulsatility in the Optic Nerve Head or Peripapillary Retinal Vessels and the Rate of Progression in Glaucoma. &  &  &  & E \\
+440 & DB-UNet: MLP Based Dual Branch UNet for Accurate Vessel Segmentation in OCTA Images &  &  &  & E \\
+441 & Quality assessment of colour fundus and fluorescein angiography images using deep learning. &  &  &  & E \\
+442 & Diagnostic performance of a novel deep learning attenuation correction software for MPI using a cardio dedicated CZT camera. Experience in the clinical practice. &  &  &  & E \\
+443 & Association of Serum Vitamin D With Macular Microvascular Structure in Type 2 Diabetic Mellitus Without Diabetic Retinopathy: A Cross-Sectional Study. &  &  &  & E \\
+444 & Automatic quantification of myocardium and pericardial fat from coronary computed tomography angiography: a multicenter study. &  &  &  & E \\
+445 & Non-destructive detection of early wheat germination via deep learning-optimized terahertz imaging. &  &  &  & E \\
+446 & Artificial intelligence and cloud based platform for fully automated PCI guidance from coronary angiography-study protocol. &  &  &  & E \\
+447 & Interpretable and reproducible machine learning model for coronary calcification and segment-level stenoses stratification on computed tomography angiography. &  &  &  & E \\
+448 & Identification and risk stratification of coronary disease by artificial intelligence-enabled ECG. &  &  &  & E \\
+449 & Robust Vascular Segmentation for Raw Complex Images of Laser Speckle Contrast Based on Weakly Supervised Learning &  &  &  & E \\
+450 & Prognostic efficacy of peri-coronary adipose tissue volume and computed tomography derived fractional flow reserve alone and in combination on outcome of patients with chronic coronary syndrome &  &  &  & E \\
+451 & Cardiologist user experience of artificial intelligence-based quantitative coronary angiography. &  &  &  & E \\
+452 & Image Quality Assessment of Artificial Intelligence Iterative Reconstruction for Low-dose Bronchial Artery CTA in Preoperative Hemoptysis Patients. &  &  &  & E \\
+453 & Motion robust coronary MR angiography using zigzag centric ky-kz trajectory and high-resolution deep learning reconstruction. &  &  &  & E \\
+454 & A Multi-Scale Hyper Representation Network for Semantic Segmentation of Pulmonary Circulation Vessels in Pathology Assessment &  &  &  & E \\
+455 & The Digital Revolution in Cardiac Ischemia: Artificial Intelligence (AI)-Enhanced Detection, Diagnosis, and Risk Stratification. &  &  &  & E \\
+456 & The clinical and imaging data fusion model for single-period cerebral CTA collateral circulation assessment. &  &  &  & E \\
+457 & Machine learning to predict high-risk coronary artery disease on CT in the SCOT-HEART trial. &  &  &  & E \\
+458 & Imaging, post-processing and navigation: Surgical applications in pelvic fracture treatment. &  &  &  & E \\
+459 & Artificial Intelligence in Marketing Strategic Decisions via Product Portfolio Optimization &  &  &  & E \\
+460 & Deep learning differentiates between healthy and diabetic mouse ears from optical coherence tomography angiography images. &  &  &  & E \\
+461 & Editorial: Insights in cardiovascular imaging: 2021. &  &  &  & U \\
+462 & Retinal Vessel Plexus Differentiation Based on OCT Angiography Using Deep Learning. &  &  &  & E \\
+463 & Cardiovascular CT, MRI, and PET/CT in 2021: Review of Key Articles. &  &  &  & E \\
+464 & A Review on Dynamic Security Assessment of Power System Based on Machine Learning &  &  &  & E \\
+465 & Super-resolution deep learning image reconstruction: image quality and myocardial homogeneity in coronary computed tomography angiography. &  &  &  & E \\
+466 & Interpretable Diabetic Retinopathy Diagnosis Based on Biomarker Activation Map. &  &  &  & E \\
+467 & Validation of quantitative perfusion cardiovascular magnetic resonance employing deconvolution techniques with Tofts, modified-Tofts, and Fermi function models against <sup>15</sup>O-water positron emission tomography. &  &  &  & E \\
+468 & Deep learning on pre-procedural computed tomography and clinical data predicts outcome following stroke thrombectomy. &  &  &  & E \\
+469 & Coronary Artery Disease: Role of Computed Tomography and Recent Advances. &  &  &  & E \\
+470 & Individual risk assessment for rupture of abdominal aortic aneurysm using artificial intelligence. &  &  &  & E \\
+471 & Classification of pachychoroid disease on ultrawide-field indocyanine green angiography using auto-machine learning platform. &  &  &  & E \\
+472 & Bridging the resources gap: deep learning for fluorescein angiography and optical coherence tomography macular thickness map image translation. &  &  &  & E \\
+473 & Machine learning applications for vascular stenosis detection in computed tomography angiography: a systematic review and meta-analysis &  &  &  & E \\
+474 & Detection of glaucoma progression on longitudinal series of en-face macular optical coherence tomography angiography images with a deep learning model. &  &  &  & E \\
+475 & Retinal imaging technologies in cerebral malaria: a systematic review. &  &  &  & E \\
+476 & <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msup><mrow><mi>M</mi></mrow> <mn>2</mn></msup> <mi>C</mi> <mi>A</mi></mrow> </math> - <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Net</mi></mrow> </math> : Multi-scale and multi-frequency channel attentional neural network for invasive coronary angiography segmentation. &  &  &  & E \\
+477 & The Plaque Analysis Classifies the Coronary Artery Disease-Reporting and Data System (CAD-RADS) Stenosis and Plaque Burden Categories: Association of the Plaque Features, Fat Attenuation Index, Coronary Computed Tomography Fractional Flow Reserve, and the Combination of Stenosis and Calcification. &  &  &  & E \\
+478 & Development of an automatic segmentation system for anterolateral thigh flap perforators in maxillofacial reconstruction. &  &  &  & E \\
+479 & Scale-adaptive model for detection and grading of age-related macular degeneration from color retinal fundus images. &  &  &  & E \\
+480 & An Artificial Intelligence-Enabled ECG Algorithm for the Prediction and Localization of Angiography-Proven Coronary Artery Disease. &  &  &  & E \\
+481 & Real-World Performance of Large Vessel Occlusion Artificial Intelligence-Based Computer-Aided Triage and Notification Algorithms-What the Stroke Team Needs to Know. &  &  &  & E \\
+482 & Vessel-Aware Deep Learning for OCTA-Based Detection of AMD &  &  &  & E \\
+483 & Machine-Learning-Based Multi-Modal Force Estimation for Steerable Ablation Catheters. &  &  &  & E \\
+484 & Leveraging open dataset and transfer learning for accurate recognition of chronic pulmonary embolism from CT angiogram maximum intensity projection images. &  &  &  & E \\
+485 & Performance of artificial intelligence in detecting the chronic total occlusive lesions of coronary artery based on coronary computed tomographic angiography. &  &  &  & E \\
+486 & Machine learning predicts per-vessel early coronary revascularization after fast myocardial perfusion SPECT: results from multicentre REFINE SPECT registry. &  &  &  & E \\
+487 & Cavotricuspid isthmus ablation by means of very high power, short-duration, temperature-controlled lesions. &  &  &  & E \\
+488 & Predictive score for complete occlusion of intracranial aneurysms treated by flow-diverter stents using machine learning. &  &  &  & E \\
+489 & CCTA-Derived coronary plaque burden offers enhanced prognostic value over CAC scoring in suspected CAD patients. &  &  &  & E \\
+490 & Distal-vessel fractional flow reserve by computed tomography to monitor epicardial coronary artery disease. &  &  &  & E \\
+491 & Software with artificial intelligence-derived algorithms for analysing CT brain scans in people with a suspected acute stroke: a systematic review and cost-effectiveness analysis. &  &  &  & E \\
+492 & VET: Vasculature Extraction Transformer for Single-Scan Optical Coherence Tomography Angiography. &  &  &  & E \\
+493 & Quantitative Susceptibility Mapping-Derived Radiomic Features in Discriminating Multiple Sclerosis From Neuromyelitis Optica Spectrum Disorder. &  &  &  & E \\
+494 & Combined Coronary CT-Angiography and TAVI Planning: Utility of CT-FFR in Patients with Morphologically Ruled-Out Obstructive Coronary Artery Disease. &  &  &  & E \\
+495 & A Diabetic Retinopathy Classification method based on improved InceptionV3 neural network model &  &  &  & E \\
+496 & Rationale and design of the artificial intelligence scalable solution for acute myocardial infarction (ASSIST) study. &  &  &  & E \\
+497 & Chronic Total Occlusion Percutaneous Coronary Intervention: Present and Future. &  &  &  & E \\
+498 & Automated detection of a nonperfusion area caused by retinal vein occlusion in optical coherence tomography angiography images using deep learning. &  &  &  & E \\
+499 & A Comparative Classification Analysis of Abdominal Aortic Aneurysms by Machine Learning Algorithms. &  &  &  & E \\
+500 & Image Quality Improvement and Artificial Intelligence Performance in Pulmonary Embolism Detection at Deep Learning Reconstruction-Based Ultra-low Radiation Dose CT Pulmonary Angiography. &  &  &  & E \\
+501 & Can AI-enhanced coronary CT angiography estimate reduced PET myocardial blood flow? &  &  &  & E \\
+502 & CAP-Net: Carotid Artery Plaque Segmentation System Based on Computed Tomography Angiography. &  &  &  & E \\
+503 & Sub-1-min relaxation-enhanced non-contrast non-triggered cervical MRA using compressed SENSE with deep learning reconstruction in healthy volunteers. &  &  &  & E \\
+504 & Phenotyping atherosclerotic plaque and perivascular adipose tissue: signalling pathways and clinical biomarkers in atherosclerosis. &  &  &  & E \\
+505 & Deep-E Enhanced Photoacoustic Tomography Using Three-Dimensional Reconstruction for High-Quality Vascular Imaging &  &  &  & E \\
+506 & A Heterogeneous-Agent Deep Reinforcement Learning Approach for Dynamic Spectrum Access in Cognitive Wireless Networks &  &  &  & E \\
+507 & Full-Resolution Network and Dual-Threshold Iteration for Retinal Vessel and Coronary Angiograph Segmentation. &  &  &  & E \\
+508 & Dedicated convolutional neural network for noise reduction in ultra-high-resolution photon-counting detector computed tomography. &  &  &  & E \\
+509 & Comparison of Procedure and Fluoroscopy Time Between Left Bundle Branch Area Pacing and Right Ventricular Pacing for Bradycardia: The Learning Curve for the Novel Pacing Strategy &  &  &  & E \\
+510 & Implications of shunt morphology for the surgical management of extrahepatic portosystemic shunts. &  &  &  & E \\
+511 & ERS International Congress 2023: highlights from the Clinical Techniques, Imaging and Endoscopy Assembly. &  &  &  & E \\
+512 & Automated interpretation of fundus fluorescein angiography with multi-retinal vascular lesion segmentation. &  &  &  & E \\
+513 & Evaluation of AI-based detection of incidental pulmonary emboli in cardiac CT angiography scans. &  &  &  & E \\
+514 & Vessel Density Features of Optical Coherence Tomography Angiography for Classification of Optic Neuropathies Using Machine Learning. &  &  &  & E \\
+515 & Combining IVUS + OCT Data, Biomechanical Models and Machine Learning Method for Accurate Coronary Plaque Morphology Quantification and Cap Thickness and Stress/Strain Index Predictions. &  &  &  & E \\
+516 & Guiding Automated Implementation Strategies for Patients With Atherosclerotic Plaque on Coronary Computed Tomographic Angiography: Rationale and Design of the Artificial Intelligence-DECIDE Study. &  &  &  & E \\
+517 & Machine Learning in Invasive and Noninvasive Coronary Angiography. &  &  &  & E \\
+518 & Fully automated guideline-compliant diameter measurements of the thoracic aorta on ECG-gated CT angiography using deep learning. &  &  &  & E \\
+519 & Evaluating a clinically available artificial intelligence model for intracranial aneurysm detection: a multi-reader study and algorithmic audit. &  &  &  & E \\
+520 & A 2-year investigation of the impact of the computed tomography-derived fractional flow reserve calculated using a deep learning algorithm on routine decision-making for coronary artery disease management. &  &  &  & E \\
+521 & Five-year systemic complications in diabetic retinopathy with integrated optical coherence tomography angiography and glycated hemoglobin. &  &  &  & E \\
+522 & A Convolutional Neural Network Using Multimodal Retinal Imaging for Differentiation of Mild Cognitive Impairment from Normal Cognition. &  &  &  & E \\
+523 & Mask R-CNN based coronary artery segmentation in coronary computed tomography angiography &  &  &  & E \\
+524 & Short-Term Voltage Stability Assessment Based on Heterogeneous Edge-Integrated Graph Attention Network &  &  &  & E \\
+525 & JointVesselNet: Joint Volume-Projection Convolutional Embedding Networks for 3D Cerebrovascular Segmentation &  &  &  & U \\
+526 & Accelerated Non-Contrast-Enhanced Three-Dimensional Cardiovascular Magnetic Resonance Deep Learning Reconstruction. &  &  &  & E \\
+527 & Super-resolution deep learning reconstruction at coronary computed tomography angiography to evaluate the coronary arteries and in-stent lumen: an initial experience. &  &  &  & E \\
+528 & Automated and quantitative assessment of aortic root based on cardiac computed tomography angiography using a new deep-learning tool: a comparison study. &  &  &  & E \\
+529 & Evaluation of an automated intracranial aneurysm detection and rupture analysis approach using cascade detection and classification networks. &  &  &  & E \\
+530 & The value of dual-energy computed tomography angiography-based virtual monoenergetic imaging for evaluations after cerebral aneurysm clipping. &  &  &  & E \\
+531 & Optical coherence tomography angiography findings of neurovascular changes in type 2 diabetes mellitus patients without clinical diabetic retinopathy. &  &  &  & E \\
+532 & Precise Staging of Diabetic Retinopathy Through Machine Learning Analysis of Leakage Source Characteristics: A Radiomics-Driven Approach Integrating OCT-A and FFA. &  &  &  & E \\
+533 & Deep Learning-Based Automated Quantification of Coronary Artery Calcification for Contrast-Enhanced Coronary Computed Tomographic Angiography. &  &  &  & E \\
+534 & Deep learning segmentation for optical coherence tomography measurements of the lower tear meniscus. &  &  &  & E \\
+535 & The Role of CEUS in the Diagnosis and Follow-Up of Pleuropulmonary Diseases and Interventional Procedures. &  &  &  & E \\
+536 & Incremental diagnostic value of AI-derived coronary artery calcium in <sup>18</sup>F-flurpiridaz PET Myocardial Perfusion Imaging. &  &  &  & E \\
+537 & Retinal vascular connectivity network for deep learning OCTA construction from single OCT volume scan &  &  &  & E \\
+538 & Deep-learning based detection of vessel occlusions on CT-angiography in patients with suspected acute ischemic stroke. &  &  &  & E \\
+539 & Early Experience With Artificial Intelligence Software to Detect Intracranial Occlusive Stroke in Trauma Patients. &  &  &  & E \\
+540 & Few-shot learning for highly accelerated 3D time-of-flight MRA reconstruction. &  &  &  & E \\
+541 & Deep learning-based arterial subtraction images improve the detection of LR-TR algorithm for viable HCC on extracellular agents-enhanced MRI. &  &  &  & E \\
+542 & Clinical Applications of Cardiac Computed Tomography: A Focused Review for the Clinical Cardiologists. &  &  &  & E \\
+543 & Vascular changes precede tomographic changes in diabetic eyes without retinopathy and improve artificial intelligence diagnostics. &  &  &  & E \\
+544 & Training a high accuracy model to visualize blood clots during mechanical thrombectomy for the treatment of Acute Ischemic Stroke. &  &  &  & U \\
+545 & Trading off Iodine and Radiation Dose in Coronary Computed Tomography. &  &  &  & E \\
+546 & Time-variant and tissue-level collaterals predict postoperative neurological recovery and clinical outcomes of patients with endovascular thrombectomy. &  &  &  & E \\
+547 & A zero-dimensional predictive model for the pressure drop in the stenotic coronary artery based on its geometric characteristics. &  &  &  & E \\
+548 & Deep Learning Using One-stop-shop CT Scan to Predict Hemorrhagic Transformation in Stroke Patients Undergoing Reperfusion Therapy: A Multicenter Study. &  &  &  & E \\
+549 & Contour attention network for cerebrovascular segmentation from TOF-MRA volumetric images. &  &  &  & E \\
+550 & One-Class Artificial Neural Network Based Liver Vessel Segmentation &  &  &  & E \\
+551 & Review on Diabetic Retinopathy Detection Using Molecular Segmentation In Convolution Neural Network &  &  &  & E \\
+552 & Diagnostic Performance of a Deep Learning-Powered Application for Aortic Dissection Triage Prioritization and Classification. &  &  &  & E \\
+553 & Diagnostic Methods of Atherosclerotic Plaque and the Assessment of Its Prognostic Significance-A Narrative Review. &  &  &  & E \\
+554 & Novel deep learning method for coronary artery tortuosity detection through coronary angiography. &  &  &  & U \\
+555 & Self-calibration of C-arm imaging system using interventional instruments during an intracranial biplane angiography. &  &  &  & E \\
+556 & Application of AI in cardiovascular multimodality imaging. &  &  &  & E \\
+557 & Deep Learning Algorithm Predicts Angiographic Coronary Artery Disease in Stable Patients Using Only a Standard 12-Lead Electrocardiogram. &  &  &  & E \\
+558 & Prognostic value of CT myocardial perfusion imaging and CT-derived fractional flow reserve for major adverse cardiac events in patients with coronary artery disease. &  &  &  & E \\
+559 & Artificial intelligence in OCT angiography. &  &  &  & E \\
+560 & Automated segmentation of thoracic aortic lumen and vessel wall on three-dimensional bright- and black-blood magnetic resonance imaging using nnU-Net. &  &  &  & E \\
+561 & Hemodynamic Impairments of Evaluating Symptomatic Intracranial Atherosclerotic Stenosis using Quantitative Flow Ratio on Digital Subtraction Angiography : A Comparison with Computed Tomography Perfusion, MRI and Fractional Flow Reserve. &  &  &  & E \\
+562 & 3D mobile regression vision transformer for collateral imaging in acute ischemic stroke. &  &  &  & E \\
+563 & Securing Cryptography in the Age of Quantum Computing and AI: Threats, Implementations, and Strategic Response &  &  &  & E \\
+564 & A deep learning-based fully automatic and clinical-ready framework for regional myocardial segmentation and myocardial ischemia evaluation. &  &  &  & E \\
+565 & Angiography-Derived Microvascular Resistance: Elegant Theory, Elusive Accuracy. &  &  &  & U \\
+566 & Recognition of sports and daily activities through deep learning and convolutional block attention. &  &  &  & E \\
+567 & Coordinate-aware three-dimensional neural network for lower extremity arterial stenosis classification in CT angiography. &  &  &  & E \\
+568 & TREAT-Netv2: regional wall motion-informed video-tabular fusion for ACS treatment prediction. &  &  &  & E \\
+569 & Bifascicular Block Associated With Myocardial Infarction: A Marker of Proximal Left Anterior Descending Artery Occlusion Confirmed by the Artificial Intelligence-Based Smartphone App Queen of Hearts. &  &  &  & E \\
+570 & The Impact of a Neuroradiologist on the Report of a Real-World CT Perfusion Imaging Map Derived from Artificial Intelligence/Machine Learning-Driven Software. &  &  &  & E \\
+571 & Correction: Machine learning detects symptomatic patients with carotid plaques based on 6-type calcium configuration classification on CT angiography. &  &  &  & E \\
+572 & Development of a machine learning-based radiomics model of perivascular adipose tissue for predicting stroke risk in patients with asymptomatic carotid stenosis: a multicenter study. &  &  &  & E \\
+573 & Predicting Hypertension Persistence in Coarctation of the Aorta: A Feasibility Study. &  &  &  & E \\
+574 & Integration- and separation-aware adversarial model for cerebrovascular segmentation from TOF-MRA. &  &  &  & E \\
+575 & Integrated CT-derived fractional flow reserve and perivascular fat attenuation index: a multimodal approach to predict in-stent restenosis. &  &  &  & E \\
+576 & A deep learning based pipeline for optical coherence tomography angiography. &  &  &  & E \\
+577 & Glaucoma detection using non-perfused areas in OCTA. &  &  &  & E \\
+578 & MP30-20 IS PULSED FLUOROSCOPY SAFE FOR EMERGENT URETERAL STENT INSERTION? &  &  &  & E \\
+579 & Non - invasive modelling methodology for the diagnosis of coronary artery disease using fuzzy cognitive maps. &  &  &  & E \\
+580 & Correction to: Motion robust coronary MR angiography using zigzag centric ky-kz trajectory and high-resolution deep learning reconstruction. &  &  &  & E \\
+581 & High-resolution automated free-breathing coronary magnetic resonance angiography in comparison with coronary computed tomography angiography. &  &  &  & E \\
+582 & DeepVesselNet: Vessel Segmentation, Centerline Prediction, and Bifurcation Detection in 3-D Angiographic Volumes. &  &  &  & E \\
+583 & Development of a Non-Invasive Machine-Learned Point-of-Care Rule-Out Test for Coronary Artery Disease. &  &  &  & E \\
+584 & Multimodal fusion with deep neural networks for leveraging CT imaging and electronic health record: a case-study in pulmonary embolism detection. &  &  &  & E \\
+585 & The novel proteomic signature for cardiac allograft vasculopathy. &  &  &  & E \\
+586 & Detection of Plus Disease in Retinopathy of Prematurity Using Deep Learning Models: Evaluating Vision Transformers and ResNet Architectures &  &  &  & E \\
+587 & MultiD4CAD: Multimodal Dataset composed of CT and Clinical Features for Coronary Artery Disease Analysis. &  &  &  & E \\
+588 & High-Resolution Cone-Beam Tomography for Assessing Angiogenesis in Jawbone Regeneration Models. &  &  &  & E \\
+589 & Effectiveness of artificial intelligent cardiac remote monitoring system for evaluating asymptomatic myocardial ischemia in patients with coronary heart disease. &  &  &  & E \\
+590 & Open Set Wireless Signal Classification: Augmenting Deep Learning with Expert Feature Classifiers &  &  &  & E \\
+591 & Cortical Vessel Segmentation for Neuronavigation Using Vesselness-Enforced Deep Neural Networks &  &  &  & E \\
+592 & Prognostic Value of Computed Tomography-Derived Fractional Flow Reserve Comparison With Myocardial Perfusion Imaging. &  &  &  & E \\
+593 & Neural Bellman-Ford Networks: A General Graph Neural Network Framework for Link Prediction &  &  &  & E \\
+594 & Deep learning-reconstructed time-maximum intensity projection versus iterative reconstruction for collateral assessment in acute anterior circulation ischemic stroke. &  &  &  & E \\
+595 & Leveraging GPT-4o for Automated Extraction and Categorization of CAD-RADS Features From Free-Text Coronary CT Angiography Reports: Diagnostic Study. &  &  &  & E \\
+596 & Super-resolution deep learning in pediatric CTA for congenital heart disease: enhancing intracardiac visualization under free-breathing conditions. &  &  &  & E \\
+597 & Utilization of deep learning to quantify fluid volume of neovascular age-related macular degeneration patients based on swept-source OCT imaging: The ONTARIO study. &  &  &  & E \\
+598 & Deep learning estimation of three-dimensional left atrial shape from two-chamber and four-chamber cardiac long axis views. &  &  &  & E \\
+599 & Impact of Optical Coherence Tomography (OCT) for Periodontitis Diagnostics: Current Overview and Advances. &  &  &  & E \\
+600 & Detection of femoropopliteal arterial steno-occlusion at MR angiography: initial experience with artificial intelligence. &  &  &  & E \\
+601 & A Multiscale Bidirectional Spiral Scanning State Space Mamba Network for Retinal Vessel Segmentation &  &  &  & E \\
+602 & The Effect of Deep Learning Segmentation on Placental T2* Estimation &  &  &  & E \\
+603 & Two-stage deep learning for accelerated 3D time-of-flight MRA without matched training data. &  &  &  & E \\
+604 & The role of artificial intelligence in cardiovascular research: Fear less and live bolder. &  &  &  & E \\
+605 & AI GRID GAMES &  &  &  & E \\
+606 & Evaluation of the diagnostic value of joint PET myocardial perfusion and metabolic imaging for vascular stenosis in patients with obstructive coronary artery disease. &  &  &  & E \\
+607 & Coronary physiology instantaneous wave-free ratio (iFR) derived from x-ray angiography using artificial intelligence deep learning models: a pilot study. &  &  &  & U \\
+608 & Pulsed Field Ablation Using a Novel Biphasic Catheter vs Thermal Ablation for Paroxysmal Atrial Fibrillation: InsightPFA Trial. &  &  &  & E \\
+609 & Evaluation of a CTA-based convolutional neural network for infarct volume prediction in anterior cerebral circulation ischaemic stroke. &  &  &  & E \\
+610 & Enhancement of Stress ECG Performance with Machine Learning: A Single-Center Study. &  &  &  & E \\
+611 & Near-Infrared Autofluorescence in Non-Infectious Uveitis: A Review. &  &  &  & E \\
+612 & Artificial Intelligence CT Texture Radiomics for Outcome Prediction After EVAR: A Narrative Review. &  &  &  & E \\
+613 & Deep Learning-Based Cardiac CT Coronary Motion Correction Method with Temporal Weight Adjustment: Clinical Data Evaluation. &  &  &  & E \\
+614 & Temporal Relationship-Aware Treadmill Exercise Test Analysis Network for Coronary Artery Disease Diagnosis. &  &  &  & E \\
+615 & Non-invasive physiological assessment of intermediate coronary stenoses from plain angiography through artificial intelligence: the STARFLOW system. &  &  &  & E \\
+616 & Deep-learning approach for automated thickness measurement of epithelial tissue and scab using optical coherence tomography. &  &  &  & E \\
+617 & Risk of esophageal thermal injury during catheter ablation for atrial fibrillation guided by different ablation index. &  &  &  & E \\
+618 & Developments in X-Ray Contrast Media and the Potential Impact on Computed Tomography. &  &  &  & E \\
+619 & Evaluation of AI-enhanced non-mydriatic fundus photography for diabetic retinopathy screening. &  &  &  & E \\
+620 & Automatic Identification of Bioprostheses on X-ray Angiographic Sequences of Transcatheter Aortic Valve Implantation Procedures Using Deep Learning. &  &  &  & E \\
+621 & Central venous catheters tip positioning: Insights from a retrospective analysis. &  &  &  & E \\
+622 & Integrated Deep Learning Model for the Detection, Segmentation, and Morphologic Analysis of Intracranial Aneurysms Using CT Angiography. &  &  &  & E \\
+623 & BV-GAN: 3D time-of-flight magnetic resonance angiography cerebrovascular vessel segmentation using adversarial CNNs. &  &  &  & E \\
+624 & A fusion model of deep learning and conventional features based on computed tomography angiography of carotid plaque for predicting the risk of acute ischemic stroke. &  &  &  & E \\
+625 & The Issue of Proxies and Choice Architectures. Why EU Law Matters for Recommender Systems. &  &  &  & E \\
+626 & Coronary computed tomography angiographic detection of in-stent restenosis via deep learning reconstruction: a feasibility study. &  &  &  & E \\
+627 & Modality alignment contrastive learning for severity assessment of COVID-19 from lung ultrasound and clinical information. &  &  &  & E \\
+628 & Progress and clinical translation in hepatocellular carcinoma of deep learning in hepatic vascular segmentation &  &  &  & E \\
+629 & Algorithm for Retinal Vessel Segmentation based on Axial Transformer and Convolutional Neural Network &  &  &  & E \\
+630 & Difference in periventricular anastomosis in child and adult moyamoya disease: a vascular morphology study. &  &  &  & E \\
+631 & Evaluating the Efficacy of Perplexity Scores in Distinguishing AI-Generated and Human-Written Abstracts. &  &  &  & E \\
+632 & Rapid and automatic hemodynamic assessment: integration of deep learning-based image segmentation, vessel reconstruction, and CFD prediction &  &  &  & E \\
+633 & Multimodal deep learning for liver cancer applications: a scoping review. &  &  &  & E \\
+634 & Improved visualization of intracranial distal arteries with multiple 2D slice dynamic ASL-MRA and super-resolution convolutional neural network. &  &  &  & E \\
+635 & Detection and quantification of fluorescein angiography leakage: From manual grading to advances in machine learning. &  &  &  & E \\
+636 & Minimizing human-induced variability in quantitative angiography for a robust and explainable AI-based occlusion prediction in flow diverter-treated aneurysms. &  &  &  & U \\
+637 & Deep learning-aided extraction of outer aortic surface from CT angiography scans of patients with Stanford type B aortic dissection. &  &  &  & E \\
+638 & Clinically Explainable Disease Diagnosis Based on Biomarker Activation Map. &  &  &  & E \\
+639 & The Accuracy in Rupture Risk Prediction of Intracranial Aneurysms by Artificial Intelligence Algorithms Using Imaging Data From CTA and DSA: A Systematic Review and Meta-Analysis. &  &  &  & E \\
+640 & Reconstruction of high-resolution 6×6-mm OCT angiograms using deep learning. &  &  &  & E \\
+641 & Automatic lung cancer detection from CT image using improved deep neural network and ensemble classifier &  &  &  & E \\
+642 & Machine-learning based segmentation of the optic nerve head using multi-contrast Jones matrix optical coherence tomography with semi-automatic training dataset generation. &  &  &  & E \\
+643 & Robot-Assisted CT-Guided Biopsy with an Artificial Intelligence-Based Needle-Path Generator: An Experimental Evaluation Using a Phantom Model. &  &  &  & E \\
+644 & New Insights Into Pathogenesis, Diagnosis, and Management of Cardiac Allograft Vasculopathy. &  &  &  & E \\
+645 & Global channel attention networks for intracranial vessel segmentation &  &  &  & E \\
+646 & Machine Learning Model for Atherosclerosis Evaluation and Cardiovascular Risk Prediction Based on Coronary CT Angiography-Analysis From the CREATION Registry. &  &  &  & E \\
+647 & Digital twins to embodied artificial intelligence: review and perspective &  &  &  & E \\
+648 & New Insights into Molecular Mechanisms and Radiomics in Non-Contrast CT for Aortic Dissection: A Case Report and Literature Review. &  &  &  & E \\
+649 & Evaluation of a Deep Learning Tool for Detecting Large Vessel Occlusion and Intracranial Hemorrhage on Noncontrast Computed Tomography Scans. &  &  &  & E \\
+650 & Graph neural networks for automatic extraction and labeling of the coronary artery tree in CT angiography. &  &  &  & E \\
+651 & Improved Stroke Care in a Primary Stroke Centre Using AI-Decision Support. &  &  &  & E \\
+652 & Age-Related Scattered Hypofluorescent Spots as an Adverse Prognostic Factor for Polypoidal Choroidal Vasculopathy. &  &  &  & E \\
+653 & A deep-learning model for intracranial aneurysm detection on CT angiography images in China: a stepwise, multicentre, early-stage clinical validation study. &  &  &  & E \\
+654 & Use of Electrocardiograms to Identify Coronary Artery Disease: Cross-Validation of an Artificial Intelligence Model. &  &  &  & E \\
+655 & The Role of Non-invasive Tests in Pulmonary Embolism. &  &  &  & E \\
+656 & Edge Impulse: An MLOps Platform for Tiny Machine Learning &  &  &  & E \\
+657 & Primary User Activity Prediction in DSA Networks using Recurrent Structures &  &  &  & E \\
+658 & Right versus left eye asymmetry of microvasculature in diabetes revealed by optical coherence tomography angiography. &  &  &  & E \\
+659 & Bibliometric and visualized analysis of diabetic macular edema. &  &  &  & E \\
+660 & Quantitative texture analysis using machine learning for predicting interpretable pulmonary perfusion from non-contrast computed tomography in pulmonary embolism patients. &  &  &  & E \\
+661 & Clinical Course of Patients in Cardiogenic Shock Stratified by Phenotype. &  &  &  & E \\
+662 & Artificial intelligence in interventional radiology: state of the art. &  &  &  & E \\
+663 & Artificial Intelligence Iterative Reconstruction in Computed Tomography Angiography: An Evaluation on Pulmonary Arteries and Aorta With Routine Dose Settings. &  &  &  & E \\
+664 & The auto segmentation for cardiac structures using a dual-input deep learning network based on vision saliency and transformer. &  &  &  & E \\
+665 & Lipoproteins predicting coronary lesion complexity in premature coronary artery disease: a supervised machine learning approach. &  &  &  & E \\
+666 & Transforming breast reconstruction: the pioneering role of artificial intelligence in preoperative planning. &  &  &  & E \\
+667 & Coronary angiography image segmentation based on PSPNet. &  &  &  & E \\
+668 & Photoacoustic digital brain and deep-learning-assisted image reconstruction. &  &  &  & E \\
+669 & Cross-modality synthesis of ultra-widefield fluorescein angiography from ultra-widefield color fundus photography for diabetic retinopathy via UWFDR-GAN. &  &  &  & E \\
+670 & Performance of image-based deep learning models for aortic dissection segmentation and diagnosis: a systematic review and meta-analysis. &  &  &  & E \\
+671 & CT Angiographic and Plaque Predictors of Functionally Significant Coronary Disease and Outcome Using Machine Learning. &  &  &  & E \\
+672 & Artificial intelligence-based apps for screening and diagnosing diabetic retinopathy and common ocular disorders. &  &  &  & E \\
+673 & Semi-automatic annotation of brain vessels in magnetic resonance angiography images. &  &  &  & E \\
 \end{longtable}
