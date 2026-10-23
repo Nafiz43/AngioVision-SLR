@@ -20,7 +20,7 @@
   \label{fig:venn_gaps}
 \end{figure*}
 
-Twelve research gaps, identified across the 194 included studies, can be organized into four thematic clusters that reflect the structural
+Twelve research gaps, identified across the 122 included studies, can be organized into four thematic clusters that reflect the structural
 layers at which the current literature exhibits shortcomings (Figure~\ref{fig:venn_gaps}). The first cluster, \textit{Data
 Infrastructure} (C1), encompasses gaps in dataset size, public
 availability, cross-institutional generalizability, and
@@ -105,147 +105,147 @@ fluoroscopic image analysis.}
 % ---- Row 1 ----
 \textbf{G1:} Absence of Public Benchmarks
 &
-\tabitem Small, private, single-center datasets dominate; most cohorts contain fewer than 200 patients \cite{ref72}.\newline
-\tabitem No publicly available, annotated benchmark dataset specific to angiographic imaging exists \cite{ref4,ref50,ref56}.\newline
-\tabitem Absence of shared benchmarks makes cross-study comparison practically impossible \cite{ref38}.\newline
-\tabitem Inconsistent evaluation protocols prevent measurement of field-wide progress \cite{ref89}.
+\tabitem Small, private, single-center datasets dominate; 43 of the 95 studies that report patient numbers include fewer than 200 patients \cite{ref20,R1609,R1362,R1674,R1680,ref93}.\newline
+\tabitem Public, annotated datasets are lacking for many angiographic tasks, devices and territories; only 20 of 120 studies use a public dataset and 3 release their own data \cite{ref178,ref35,ref36,ref67,ref97,ref162}.\newline
+\tabitem Absence of shared benchmarks makes cross-study comparison practically impossible \cite{R0100,ref43,ref48,ref92,ref94,ref95}.\newline
+\tabitem Inconsistent evaluation protocols prevent measurement of field-wide progress \cite{R2411,ref100}.
 &
-\tabitem Construct and release large-scale multi-institutional angiographic datasets with standardized pixel-level annotations and defined train/test splits \cite{ref29,ref75}.\newline
-\tabitem Organize dedicated challenge benchmarks modeled on established medical image segmentation competitions \cite{ref39}.\newline
-\tabitem Mandate inter-rater reliability protocols in annotation guidelines to ensure label quality.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Define standard evaluation metrics and phantom-versus-patient evaluation subsets \cite{ref29}.
+\tabitem Construct and release large-scale multi-institutional angiographic datasets with standardized pixel-level annotations and defined train/test splits \cite{R0099,ref35,ref97}.\newline
+\tabitem Organize dedicated challenge benchmarks modeled on established medical image segmentation competitions.\newline
+\tabitem Mandate inter-rater reliability protocols in annotation guidelines to ensure label quality \cite{R1213}.\newline
+\tabitem Define standard evaluation metrics and phantom-versus-patient evaluation subsets \cite{R0058}.
 \\
 \dashedrule
 
 % ---- Row 2 ----
 \textbf{G2:} Generalizability \& Domain Shift
 &
-\tabitem Models trained on a single vendor or acquisition protocol consistently fail to transfer to external settings \cite{ref29,ref38,ref93}.\newline
-\tabitem Domain shift between synthetic training data and real clinical images remains unresolved \cite{ref52,ref74}.\newline
-\tabitem Methods validated on coronary angiography degrade when applied to cerebral, renal, or peripheral vasculature \cite{ref40,ref56,ref75}.\newline
-\tabitem Multi-center heterogeneity in frame rate, contrast dosing, and radiation settings is rarely addressed \cite{ref25,ref51,ref92}.
+\tabitem Models trained on a single vendor or acquisition protocol consistently fail to transfer to external settings \cite{ref91,ref178,ref38,ref56,ref93,ref99}.\newline
+\tabitem Domain shift between synthetic training data and real clinical images remains unresolved \cite{R1565,ref43,ref52,ref67,ref74,R3910}.\newline
+\tabitem Methods validated on coronary angiography degrade when applied to cerebral, renal, or peripheral vasculature \cite{ref208,R4204,R4557,ref179}.\newline
+\tabitem Multi-center heterogeneity in frame rate, contrast dosing, and radiation settings is rarely addressed \cite{ref42,R3093,R1680,ref92}.
 &
-\tabitem Treat external multi-institutional validation as a required component, not an optional addition \cite{ref75}.\newline
-\tabitem Develop domain adaptation methods tailored to variable contrast concentration, dose, frame rate, and motion profiles.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Extend personalized federated learning frameworks to accommodate non-identical cross-center data distributions.\newline
-\tabitem Establish domain shift benchmarks to quantify performance degradation across imaging vendors \cite{ref152}.
+\tabitem Treat external multi-institutional validation as a required component, not an optional addition \cite{ref198,R2873,ref65,ref94,ref152,ref155}.\newline
+\tabitem Develop domain adaptation methods tailored to variable contrast concentration, dose, frame rate, and motion profiles \cite{ref64}.\newline
+\tabitem Extend personalized federated learning frameworks to accommodate non-identical cross-center data distributions \cite{R2443}.\newline
+\tabitem Establish domain shift benchmarks to quantify performance degradation across imaging vendors \cite{ref95}.
 \\
 \dashedrule
 
 % ---- Row 3 ----
 \textbf{G3:} Temporal Modeling \& Video-Level Analysis
 &
-\tabitem Most methods treat each frame as an independent 2D image, discarding hemodynamic flow and contrast propagation dynamics \cite{ref50,ref52,ref93}.\newline
-\tabitem Temporal models are typically restricted to short fixed-length clips, not full variable-length sequences \cite{ref36,ref67}.\newline
-\tabitem Procedural phase transitions during interventional procedures are not explicitly modeled \cite{ref25}.\newline
-\tabitem Respiratory and cardiac motion are treated as noise rather than informative temporal signals.  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
+\tabitem Most methods treat each frame as an independent 2D image, discarding hemodynamic flow and contrast propagation dynamics \cite{ref64,ref15,R1541,ref50,ref82,ref10}.\newline
+\tabitem Temporal models are typically restricted to short fixed-length clips, not full variable-length sequences \cite{R1222,R3149,R3712}.\newline
+\tabitem Procedural phase transitions during interventional procedures are not explicitly modeled \cite{R3129,R4208,ref94,R2443}.\newline
+\tabitem Respiratory and cardiac motion are treated as noise rather than informative temporal signals \cite{ref36,R4220,ref34}.
 &
-\tabitem Develop architectures that model the complete temporal structure of angiographic acquisitions, including mask, injection, and washout phases \cite{ref32,ref66}.\newline
-\tabitem Evaluate video Transformer architectures with long-range attention and state-space models for efficient long-sequence processing \cite{ref25,ref66,ref93}.\newline
-\tabitem Explore temporal self-supervised pretraining on large archives of unannotated fluoroscopic video.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Incorporate explicit hemodynamic priors into temporal model design.  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
+\tabitem Develop architectures that model the complete temporal structure of angiographic acquisitions, including mask, injection, and washout phases \cite{R1939,ref46,R1609}.\newline
+\tabitem Evaluate video Transformer architectures with long-range attention and state-space models for efficient long-sequence processing \cite{ref42,R1222,ref104}.\newline
+\tabitem Explore temporal self-supervised pretraining on large archives of unannotated fluoroscopic video \cite{R2400,ref39}.\newline
+\tabitem Incorporate explicit hemodynamic priors into temporal model design \cite{ref43,ref46}.
 \\
 \dashedrule
 
 % ---- Row 4 ----
 \textbf{G4:} 2D Constraints \& 3D Reconstruction
 &
-\tabitem Angiographic projections collapse 3D vascular anatomy, introducing foreshortening, vessel overlap, and depth loss \cite{ref35,ref40,ref66}.\newline
-\tabitem The vast majority of methods operate exclusively on single-plane 2D projections.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Robust 3D reconstruction from monoplane or biplane projections under intraoperative time constraints remains unsolved \cite{ref43}.\newline
-\tabitem 2D/3D registration accuracy is insufficient for routine intraoperative use.  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
+\tabitem Angiographic projections collapse 3D vascular anatomy, introducing foreshortening, vessel overlap, and depth loss \cite{R1263,R1503,R1565,ref60,ref97,ref35}.\newline
+\tabitem The vast majority of methods operate exclusively on single-plane 2D projections \cite{R3129,ref148,ref43,ref78,R4557}.\newline
+\tabitem Robust 3D reconstruction from monoplane or biplane projections under intraoperative time constraints remains unsolved \cite{R3164,R2466,ref46,ref96}.\newline
+\tabitem 2D/3D registration accuracy is insufficient for routine intraoperative use \cite{ref40,R3910,ref99,ref92}.
 &
-\tabitem Develop multi-view learning architectures that fuse information across projection angles \cite{ref66}.\newline
-\tabitem Investigate physics-informed networks incorporating known projection geometry and contrast agent kinetics \cite{ref43}.\newline
-\tabitem Leverage rotational angiographic acquisitions for temporally informed 3D reconstruction.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Systematically combine intraoperative cone-beam CT with fluoroscopic AI pipelines to provide 3D context.  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
+\tabitem Develop multi-view learning architectures that fuse information across projection angles \cite{ref148,R4557,ref35,R2466}.\newline
+\tabitem Investigate physics-informed networks incorporating known projection geometry and contrast agent kinetics \cite{ref43,R3164}.\newline
+\tabitem Leverage rotational angiographic acquisitions for temporally informed 3D reconstruction \cite{ref152,R3338}.\newline
+\tabitem Systematically combine intraoperative cone-beam CT with fluoroscopic AI pipelines to provide 3D context.
 \\
 \dashedrule
 
 % ---- Row 5 ----
 \textbf{G5:} Annotation Scarcity \& Annotation-Efficient Learning
 &
-\tabitem Manual annotation requires substantial physician time and specialized expertise per labeled study \cite{ref67}.\newline
-\tabitem Annotation is subject to significant intra- and inter-observer variability, rarely quantified in included studies \cite{ref4,ref56}.\newline
-\tabitem Synthetic data generation partially addresses scarcity, but synthetic-to-real domain gaps persist \cite{ref52,ref74}.\newline
-\tabitem Semi-supervised and self-supervised methods are underrepresented across angiographic analysis tasks.  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
+\tabitem Manual annotation requires substantial physician time and specialized expertise per labeled study \cite{R0521,ref34,ref56,R4204,R4208,ref162}.\newline
+\tabitem Annotation is subject to significant intra- and inter-observer variability, rarely quantified in included studies \cite{ref28,R1213,ref208,R1674,ref75,R3661}.\newline
+\tabitem Synthetic data generation partially addresses scarcity, but synthetic-to-real domain gaps persist \cite{ref64,ref52,ref74}.\newline
+\tabitem Semi-supervised and self-supervised methods are underrepresented across angiographic analysis tasks \cite{ref2,ref57,R2411}.
 &
-\tabitem Systematically evaluate semi-supervised, self-supervised, and active learning strategies with explicit performance-versus-label-count analysis \cite{ref74}.\newline
-\tabitem Pursue foundation model pretraining on large archives of unlabeled fluoroscopic video.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Validate generative data augmentation methods informed by realistic vascular anatomy models and imaging physics \cite{ref52}.\newline
-\tabitem Develop annotation tools that integrate uncertainty estimation to prioritize the most informative cases for expert labeling.
+\tabitem Systematically evaluate semi-supervised, self-supervised, and active learning strategies with explicit performance-versus-label-count analysis \cite{R2411,ref94,R3164,R2400}.\newline
+\tabitem Pursue foundation model pretraining on large archives of unlabeled fluoroscopic video \cite{R2400}.\newline
+\tabitem Validate generative data augmentation methods informed by realistic vascular anatomy models and imaging physics \cite{ref64,ref43,R1939}.\newline
+\tabitem Develop annotation tools that integrate uncertainty estimation to prioritize the most informative cases for expert labeling \cite{ref84}.
 \\
 \dashedrule
 
 % ---- Row 6 ----
 \textbf{G6:} Prospective Clinical Validation \& Outcome Assessment
 &
-\tabitem Nearly all included studies rely on retrospective analysis of previously acquired images \cite{ref42,ref76,ref84,ref91}.\newline
-\tabitem Prospective validation in live clinical settings is almost entirely absent from the literature \cite{ref25,ref51}.\newline
-\tabitem Retrospective evaluation cannot measure the effect of AI outputs on physician behavior or patient outcomes.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Demonstrated technical performance does not establish clinical value or cost-effectiveness \cite{ref198}.
+\tabitem Nearly all included studies rely on retrospective analysis of previously acquired images \cite{ref42,ref38,R3052,R3093,R3126,ref76}.\newline
+\tabitem Prospective validation in live clinical settings is almost entirely absent from the literature \cite{ref102,ref91,R0521,R1362,R1503,ref75}.\newline
+\tabitem Retrospective evaluation cannot measure the effect of AI outputs on physician behavior or patient outcomes \cite{R0100,ref208,ref80}.\newline
+\tabitem Demonstrated technical performance does not establish clinical value or cost-effectiveness \cite{ref152,ref40,ref82,R3661}.
 &
-\tabitem Design prospective clinical evaluation frameworks in collaboration between AI researchers and clinicians from the outset \cite{ref42}.\newline
-\tabitem Pursue randomized controlled trials comparing outcomes under standard-of-care versus AI-assisted decision-making \cite{ref25,ref76}.\newline
-\tabitem Engage regulatory bodies early to define the evidence standards required for clinical deployment \cite{ref39}.\newline
-\tabitem Develop AI interface designs that integrate model outputs into existing workflow without adding cognitive burden \cite{ref84}.
+\tabitem Design prospective clinical evaluation frameworks in collaboration between AI researchers and clinicians from the outset \cite{ref198,R4557}.\newline
+\tabitem Pursue randomized controlled trials comparing outcomes under standard-of-care versus AI-assisted decision-making \cite{ref48}.\newline
+\tabitem Engage regulatory bodies early to define the evidence standards required for clinical deployment.\newline
+\tabitem Develop AI interface designs that integrate model outputs into existing workflow without adding cognitive burden \cite{R1362,ref198}.
 \\
 \dashedrule
 
 % ---- Row 7 ----
 \textbf{G7:} Explainability \& Model Transparency
 &
-\tabitem Most deep learning models produce predictions without clinically interpretable justification.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Existing attention visualization approaches provide limited mechanistic insight \cite{ref89}.\newline
-\tabitem Silent failure modes in out-of-distribution inputs are a particular concern for patient safety \cite{ref25}.\newline
-\tabitem Regulatory and clinical trust requirements are not satisfied by aggregate performance metrics alone \cite{ref89}.
+\tabitem Most deep learning models produce predictions without clinically interpretable justification \cite{ref25,R3164,ref173,ref92}.\newline
+\tabitem Existing attention visualization approaches provide limited mechanistic insight \cite{R0643,R3155}.\newline
+\tabitem Silent failure modes in out-of-distribution inputs are a particular concern for patient safety \cite{ref161}.\newline
+\tabitem Regulatory and clinical trust requirements are not satisfied by aggregate performance metrics alone \cite{R1680,R2400,ref89}.
 &
-\tabitem Treat uncertainty quantification as a core design requirement, communicating confidence alongside every prediction \cite{ref25}.\newline
-\tabitem Develop failure detection systems that flag out-of-distribution inputs for mandatory human review \cite{ref25}.\newline
-\tabitem Design intermediate representations aligned with clinically meaningful anatomical and hemodynamic concepts.\newline
-\tabitem Evaluate whether explainability outputs demonstrably improve clinical decision-making in prospective user studies \cite{ref89}.
+\tabitem Treat uncertainty quantification as a core design requirement, communicating confidence alongside every prediction \cite{ref161,ref46}.\newline
+\tabitem Develop failure detection systems that flag out-of-distribution inputs for mandatory human review \cite{ref161}.\newline
+\tabitem Design intermediate representations aligned with clinically meaningful anatomical and hemodynamic concepts \cite{R4204,R0521}.\newline
+\tabitem Evaluate whether explainability outputs demonstrably improve clinical decision-making in prospective user studies \cite{R1939}.
 \\
 \dashedrule
 
 % ---- Row 8 ----
 \textbf{G8:} Multi-Modal Data Integration
 &
-\tabitem Studies predominantly process angiographic images in isolation, discarding complementary clinical data \cite{ref32}.\newline
-\tabitem Pressure wire measurements, IVUS, OCT, CTA, ECG, and laboratory biomarkers are routinely available but unused \cite{ref91}.\newline
-\tabitem Missing modalities at inference time, common in clinical practice, are rarely addressed \cite{ref25,ref84}.\newline
-\tabitem Longitudinal multi-modal datasets linking intraoperative imaging to procedural outcomes are essentially absent.  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
+\tabitem Studies predominantly process angiographic images in isolation, discarding complementary clinical data \cite{ref91,R0643,R1263,ref71}.\newline
+\tabitem Pressure wire measurements, IVUS, OCT, CTA, ECG, and laboratory biomarkers are routinely available but unused \cite{ref198,ref25,ref32,R1609,ref46,shi2021temporal}.\newline
+\tabitem Missing modalities at inference time, common in clinical practice, are rarely addressed \cite{R2411}.\newline
+\tabitem Longitudinal multi-modal datasets linking intraoperative imaging to procedural outcomes are essentially absent \cite{ref62,ref30}.
 &
-\tabitem Develop architectures capable of fusing imaging, hemodynamic, and structured clinical data with explicit handling of missing modalities \cite{ref25,ref32}.\newline
-\tabitem Construct longitudinal multi-modal cohort datasets linking angiographic sequences to post-procedural outcomes \cite{ref91}.\newline
-\tabitem Explore vision-language model architectures for integrating free-text clinical notes with imaging features.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Define outcome-oriented multi-modal training objectives that directly optimize for clinically meaningful predictions \cite{ref42}.
+\tabitem Develop architectures capable of fusing imaging, hemodynamic, and structured clinical data with explicit handling of missing modalities \cite{ref42,R0643,ref76,ref102}.\newline
+\tabitem Construct longitudinal multi-modal cohort datasets linking angiographic sequences to post-procedural outcomes \cite{R0643,ref76}.\newline
+\tabitem Explore vision-language model architectures for integrating free-text clinical notes with imaging features \cite{R0643}.\newline
+\tabitem Define outcome-oriented multi-modal training objectives that directly optimize for clinically meaningful predictions \cite{ref42,ref127}.
 \\
 \dashedrule
 
 % ---- Row 9 ----
 \textbf{G9:} Class Imbalance \& Rare Pathology Coverage
 &
-\tabitem Rare events such as vessel perforation, intracranial aneurysm, and gastrointestinal bleeding are severely underrepresented \cite{ref80}.\newline
-\tabitem Standard training objectives produce models biased toward majority classes with poor sensitivity for critical minority cases \cite{ref4,ref25,ref89}.\newline
-\tabitem Rare anatomical variants and complex lesion morphologies are systematically excluded from study cohorts \cite{ref50}.\newline
-\tabitem Aggregate performance metrics obscure minority-class failure, masking clinically important shortcomings \cite{ref80,ref89}.
+\tabitem Rare events such as vessel perforation, intracranial aneurysm, and gastrointestinal bleeding are severely underrepresented \cite{ref15,R1541,ref60,ref80,ref144,ref227}.\newline
+\tabitem Standard training objectives produce models biased toward majority classes with poor sensitivity for critical minority cases \cite{ref161,ref25,ref35,ref48,ref79,ref56}.\newline
+\tabitem Rare anatomical variants and complex lesion morphologies are systematically excluded from study cohorts \cite{ref91,R0521,R0570,ref179,ref4,R3155}.\newline
+\tabitem Aggregate performance metrics obscure minority-class failure, masking clinically important shortcomings \cite{R0099,ref34,ref89,ref127}.
 &
-\tabitem Systematically evaluate oversampling, cost-sensitive learning, hard negative mining, and generative augmentation across imbalance ratios \cite{ref4,ref80}.\newline
-\tabitem Explicitly target underrepresented pathology types in dataset construction rather than excluding them.\newline  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\tabitem Mandate stratified reporting of performance metrics for rare classes alongside aggregate figures \cite{ref80}.\newline
-\tabitem Develop rare-event simulation pipelines for synthetic augmentation of clinically critical minority cases \cite{ref80}.
+\tabitem Systematically evaluate oversampling, cost-sensitive learning, hard negative mining, and generative augmentation across imbalance ratios \cite{ref46,R3712,ref97,ref162,ref155,ref62}.\newline
+\tabitem Explicitly target underrepresented pathology types in dataset construction rather than excluding them \cite{R1541,ref80}.\newline
+\tabitem Mandate stratified reporting of performance metrics for rare classes alongside aggregate figures \cite{ref75}.\newline
+\tabitem Develop rare-event simulation pipelines for synthetic augmentation of clinically critical minority cases.
 \\
 \dashedrule
 
 % ---- Row 10 ----
 \textbf{G10:} Privacy-Preserving \& Multi-Institutional Learning
 &
-\tabitem Patient privacy regulations and data governance barriers prevent centralization of large angiographic datasets \cite{ref75}.\newline
-\tabitem Federated learning for angiographic analysis is barely represented in the reviewed literature; only one study explicitly adopts this framework.\newline
-\tabitem Non-identical data distributions across institutions complicate federated model training \cite{ref92}.\newline
+\tabitem Patient privacy regulations and data governance barriers prevent centralization of large angiographic datasets \cite{ref52,ref75,ref95,ref162,R0570}.\newline
+\tabitem Federated learning for angiographic analysis is barely represented in the reviewed literature; only one study explicitly adopts this framework \cite{R2443}.\newline
+\tabitem Non-identical data distributions across institutions complicate federated model training \cite{R2443}.\newline
 \tabitem Auditability and accountability requirements for federated clinical AI systems are unaddressed.
 &
-\tabitem Develop federated learning frameworks specifically tailored to large angiographic video inputs with efficient communication protocols.\newline
+\tabitem Develop federated learning frameworks specifically tailored to large angiographic video inputs with efficient communication protocols \cite{R2443}.\newline
 \tabitem Evaluate differential privacy and secure multi-party computation approaches for their impact on model utility.\newline
 \tabitem Establish standardized data use agreements and federated audit mechanisms for cross-institutional AI training.\newline
 \tabitem Benchmark personalized federated approaches against centralized baselines as a function of institutional data heterogeneity.
@@ -255,27 +255,27 @@ fluoroscopic image analysis.}
 % ---- Row 11 ----
 \textbf{G11}: Imaging Biomarkers \& Clinical Outcome Prediction
 &
-\tabitem Most methods focus on intermediate imaging tasks rather than on direct clinical outcome prediction \cite{ref25,ref84}.\newline
-\tabitem Demonstrating detection or segmentation accuracy does not establish impact on revascularization decisions or survival \cite{ref42,ref91}.\newline
-\tabitem Longitudinal cohort designs linking imaging findings to follow-up clinical endpoints are largely absent \cite{ref72,ref76}.\newline
-\tabitem Outcome-supervised training objectives have not been systematically explored in the angiographic domain \cite{ref84,ref91}.
+\tabitem Most methods focus on intermediate imaging tasks rather than on direct clinical outcome prediction \cite{R1680,ref91,ref92}.\newline
+\tabitem Demonstrating detection or segmentation accuracy does not establish impact on revascularization decisions or survival \cite{R1362,R1680,ref91}.\newline
+\tabitem Longitudinal cohort designs linking imaging findings to follow-up clinical endpoints are largely absent \cite{ref84,R3093,ref89}.\newline
+\tabitem Outcome-supervised training objectives have not been systematically explored in the angiographic domain \cite{ref79}.
 &
-\tabitem Construct longitudinal datasets linking intraoperative angiographic images to post-procedural endpoints including re-intervention rates and mortality \cite{ref42,ref76}.\newline
-\tabitem Develop outcome-supervised training objectives that directly optimize for clinically meaningful event prediction \cite{ref84}.\newline
-\tabitem Apply imaging biomarker discovery workflows combining feature extraction with survival and outcome modeling \cite{ref72}.\newline
-\tabitem Integrate procedural databases and electronic health record data with angiographic image archives to enable outcome-linked training \cite{ref84,ref91}.
+\tabitem Construct longitudinal datasets linking intraoperative angiographic images to post-procedural endpoints including re-intervention rates and mortality \cite{ref42,ref76,ref102}.\newline
+\tabitem Develop outcome-supervised training objectives that directly optimize for clinically meaningful event prediction \cite{R1263,R1609,ref72,R0643}.\newline
+\tabitem Apply imaging biomarker discovery workflows combining feature extraction with survival and outcome modeling \cite{R1263,ref76,ref28}.\newline
+\tabitem Integrate procedural databases and electronic health record data with angiographic image archives to enable outcome-linked training \cite{R0643,ref127}.
 \\
 \dashedrule
 
 % ---- Row 12 ----
 \textbf{G12}: Large Language Models \& Structured Reporting
 &
-\tabitem LLM application to angiographic reporting and clinical knowledge integration is almost entirely unexplored; only one study in this review addresses this area.\newline
-\tabitem Free-text angiographic reports contain rich structured information routinely discarded in downstream analyses.\newline
-\tabitem The only included study on LLM-based report structuring is geographically restricted to Korean institutions and relies on proprietary models, limiting reproducibility.\newline
+\tabitem Language-model use is almost entirely unexplored; only one included study encodes procedural free-text reports with a pretrained language model, as one input of a mortality-prediction model \cite{R0643}.\newline
+\tabitem Free-text angiographic reports contain rich structured information routinely discarded in downstream analyses \cite{R0099,R0521}.\newline
+\tabitem That study draws on a cohort from a single country (South Korea) and uses frozen general-purpose encoders rather than models adapted to angiographic reporting \cite{R0643}.\newline
 \tabitem Multimodal vision-language models for integrated image-and-report reasoning have not been evaluated in this domain.
 &
-\tabitem Evaluate open-source LLMs and vision-language models for angiographic report structuring, finding extraction, and downstream decision support.\newline
+\tabitem Evaluate open-source LLMs and vision-language models for angiographic report structuring, finding extraction, and downstream decision support \cite{R0643}.\newline
 \tabitem Develop end-to-end pipelines that integrate structured imaging outputs with natural language generation for automated report synthesis.\newline
 \tabitem Construct standardized angiographic reporting ontologies to provide a shared vocabulary for cross-institutional NLP model training.\newline
 \tabitem Benchmark open-source models against proprietary baselines on diverse international angiographic report corpora.
@@ -286,7 +286,7 @@ fluoroscopic image analysis.}
 \subsection{Toward an Actionable Roadmap}
 \label{sec:actionable_roadmap}
 
-While Table~\ref{tab:research_gaps} documents the evidence base and candidate mitigation strategies for each gap, it does not by itself prioritize where the field should act first or specify how progress could be measured. Table~\ref{tab:cbm_roadmap} distills this analysis into a compact, actionable roadmap: for each gap, it reports the number of included studies documenting the gap in the literature (Evidence Count, computed directly from the citations underlying Table~\ref{tab:research_gaps}), the clinical risk of leaving the gap unaddressed, the corresponding computational opportunity, and a concrete benchmark or evaluation recommendation that would make progress on the gap measurable. Gaps with the largest evidence bases (G1, G2, G6) represent the most extensively documented structural barriers in the current literature, whereas gaps with a narrow evidence base (G7, G10, G12) reflect emerging but still underexplored directions.
+While Table~\ref{tab:research_gaps} documents the evidence base and candidate mitigation strategies for each gap, it does not by itself prioritize where the field should act first or specify how progress could be measured. Table~\ref{tab:cbm_roadmap} distills this analysis into a compact, actionable roadmap: for each gap, it reports the number of included studies documenting the gap in the literature (Evidence Count: the number of included studies whose full text explicitly documents the gap, each supported by a verbatim quotation recorded during extraction), the clinical risk of leaving the gap unaddressed, the corresponding computational opportunity, and a concrete benchmark or evaluation recommendation that would make progress on the gap measurable. Gaps with the largest evidence bases (G2, G1, G3; 68, 65 and 63 of the 120 studies with full text) represent the most extensively documented structural barriers in the current literature, whereas gaps with a narrow evidence base (G12, G10, G11; 2, 8 and 9 studies) reflect emerging but still underexplored directions.
 
 \footnotesize
 \begin{longtable}{>{\raggedright\arraybackslash}p{2.1cm}
@@ -295,7 +295,7 @@ While Table~\ref{tab:research_gaps} documents the evidence base and candidate mi
                   >{\raggedright\arraybackslash}p{4.1cm}
                   >{\raggedright\arraybackslash}p{4.3cm}}
 
-\caption{CBM-facing actionable roadmap synthesizing each research gap identified in Table~\ref{tab:research_gaps} into clinical risk, computational opportunity, and a concrete benchmark or evaluation recommendation. Evidence Count is the number of distinct included studies cited as documenting each gap in Table~\ref{tab:research_gaps}.}
+\caption{CBM-facing actionable roadmap synthesizing each research gap identified in Table~\ref{tab:research_gaps} into clinical risk, computational opportunity, and a concrete benchmark or evaluation recommendation. Evidence Count is the number of included studies (of the 120 with retrievable full text) whose full text explicitly documents each gap.}
 \label{tab:cbm_roadmap} \\
 
 \toprule
@@ -316,74 +316,74 @@ While Table~\ref{tab:research_gaps} documents the evidence base and candidate mi
 \bottomrule
 \endlastfoot
 
-\textbf{G1} Absence of Public Benchmarks & 32 &
+\textbf{G1} Absence of Public Benchmarks & 65 &
 Reported performance cannot be verified to generalize beyond the originating institution before deployment, risking undetected failure in new clinical settings. &
 Large-scale, standardized, publicly released multi-institutional datasets with defined train/test splits. &
 Organize a public challenge benchmark with standardized metrics and phantom-versus-patient evaluation subsets. \\
 \dashedrule
 
-\textbf{G2} Generalizability \& Domain Shift & 28 &
+\textbf{G2} Generalizability \& Domain Shift & 68 &
 Models validated at a single site, vendor, or vascular territory may silently degrade elsewhere, producing unreliable outputs during patient care without warning. &
 Domain adaptation and personalized federated learning tailored to cross-vendor, cross-protocol, and cross-territory variation. &
 Require external multi-institutional validation and report a domain-shift benchmark quantifying degradation across imaging vendors. \\
 \dashedrule
 
-\textbf{G3} Temporal Modeling \& Video-Level Analysis & 15 &
+\textbf{G3} Temporal Modeling \& Video-Level Analysis & 63 &
 Discarding hemodynamic flow and contrast-propagation dynamics risks missing clinically important temporal signals a frame-independent model cannot detect. &
 Video-transformer and state-space architectures modeling full acquisition phases (mask, injection, washout) with hemodynamic priors. &
 Evaluate on full variable-length real acquisitions with metrics scoring temporal fidelity, not accuracy on short fixed-length clips alone. \\
 \dashedrule
 
-\textbf{G4} 2D Constraints \& 3D Reconstruction & 14 &
+\textbf{G4} 2D Constraints \& 3D Reconstruction & 48 &
 Foreshortening, vessel overlap, and depth loss from monoplane 2D projections can cause missed or mis-measured lesions during intraoperative decisions. &
 Multi-view and physics-informed 3D reconstruction from mono-/biplane or rotational angiographic acquisitions. &
 Standardized 2D/3D registration accuracy benchmark evaluated under intraoperative time constraints. \\
 \dashedrule
 
-\textbf{G5} Annotation Scarcity \& Annotation-Efficient Learning & 18 &
+\textbf{G5} Annotation Scarcity \& Annotation-Efficient Learning & 51 &
 Reliance on scarce expert annotation with unquantified inter-observer variability threatens label reliability for safety-critical model training. &
 Semi-/self-supervised and active learning, foundation-model pretraining on large archives of unlabeled fluoroscopic video. &
 Report performance-versus-label-count curves for each annotation-efficient method, rather than accuracy at a single fixed label budget. \\
 \dashedrule
 
-\textbf{G6} Prospective Clinical Validation \& Outcome Assessment & 19 &
+\textbf{G6} Prospective Clinical Validation \& Outcome Assessment & 43 &
 Because almost no studies validate prospectively, there is no evidence these models change physician behavior or patient outcomes in live care. &
 Prospective evaluation frameworks and outcome-supervised training designed jointly with clinicians from the outset. &
 Randomized controlled trials comparing standard-of-care versus AI-assisted decision-making as the evaluation standard. \\
 \dashedrule
 
-\textbf{G7} Explainability \& Model Transparency & 5 &
+\textbf{G7} Explainability \& Model Transparency & 12 &
 Predictions without interpretable justification, and unflagged out-of-distribution failures, can silently mislead clinicians and undermine patient safety. &
 Uncertainty quantification and failure-detection systems flagging out-of-distribution inputs for mandatory human review. &
 Prospective user studies testing whether explainability outputs measurably improve clinical decision-making, not qualitative attention maps alone. \\
 \dashedrule
 
-\textbf{G8} Multi-Modal Data Integration & 11 &
+\textbf{G8} Multi-Modal Data Integration & 15 &
 Ignoring routinely available complementary data (IVUS, OCT, ECG, labs) means models may miss clinically decisive information a clinician would normally use. &
 Fusion architectures with explicit handling of missing modalities; vision-language integration of free-text clinical notes. &
 Outcome-oriented multi-modal benchmarks that explicitly test performance under missing-modality conditions. \\
 \dashedrule
 
-\textbf{G9} Class Imbalance \& Rare Pathology Coverage & 12 &
+\textbf{G9} Class Imbalance \& Rare Pathology Coverage & 41 &
 Models biased toward majority classes may have poor sensitivity for rare but critical events (e.g., perforation, aneurysm) -- precisely the cases where failure is most dangerous. &
 Cost-sensitive learning, hard negative mining, and rare-event simulation or generative augmentation. &
 Mandate stratified per-class sensitivity reporting for rare pathologies alongside aggregate accuracy metrics. \\
 \dashedrule
 
-\textbf{G10} Privacy-Preserving \& Multi-Institutional Learning & 5 &
+\textbf{G10} Privacy-Preserving \& Multi-Institutional Learning & 8 &
 Data governance barriers blocking multi-institutional pooling constrain how representative and safe models can be before wide deployment. &
 Federated learning frameworks and differential privacy / secure multi-party computation for angiographic video. &
 Benchmark personalized federated approaches against centralized baselines as a function of institutional data heterogeneity. \\
 \dashedrule
 
-\textbf{G11} Imaging Biomarkers \& Clinical Outcome Prediction & 11 &
+\textbf{G11} Imaging Biomarkers \& Clinical Outcome Prediction & 9 &
 Strong segmentation or detection accuracy does not establish that a model improves revascularization decisions or survival, so technical success may not translate to patient benefit. &
 Outcome-supervised training objectives and imaging-biomarker discovery combined with survival modeling. &
 Longitudinal cohort evaluation linking imaging-derived predictions to real clinical endpoints (re-intervention rate, mortality), not intermediate task metrics alone. \\
 \dashedrule
 
-\textbf{G12} Large Language Models \& Structured Reporting & 1 &
-With only one included study (geographically and model-restricted), there is essentially no evidence base for LLM-assisted angiographic reporting, so its safety and reliability for clinical use is unknown. &
+\textbf{G12} Large Language Models \& Structured Reporting & 2 &
+With only one included study using a language model, and only as a frozen report encoder, there is essentially no evidence base for LLM-assisted angiographic reporting, so its safety and reliability for clinical use is unknown. &
 Open-source LLM and vision-language pipelines for angiographic report structuring and finding extraction. &
 Benchmark open-source against proprietary models on diverse international angiographic report corpora using a standardized reporting ontology. \\
 
