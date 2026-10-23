@@ -1,14 +1,7 @@
 \renewcommand{\arraystretch}{1.2}
 \begin{table*}[ht]
 \centering
-\caption{Adoption rate of explicit temporal modeling (any category other than
-``No Temporal Use'' or ``Not reported in extraction'' in
-Table~\ref{tab:temporal_taxonomy}) by primary task, imaging modality, and
-anatomical territory, computed over the 206 records that reached full-text
-extraction. Rows with fewer than 5 records are omitted for reliability; four
-tasks (Anomaly Detection, 3D Reconstruction \& Depth Estimation, Image
-Registration, Landmark \& Keypoint Detection; 5 records total) and one
-modality (explicit multi-modal fusion; 1 record) are omitted on this basis.}
+\caption{Adoption rate of explicit temporal modeling (any category other than ``No Temporal Use'' or ``Not determinable'' in Table~\ref{tab:temporal_taxonomy}) by primary task, imaging modality, and anatomical territory, computed over the 120 included studies with retrievable full text. Rows with fewer than 5 studies are omitted for reliability: Background Subtraction (4); Other task (1); Other modality (1); Peripheral (1); Other Thoracic (incl. aortic) (2); Multi-region (1); Not reported (1).}
 \label{tab:temporal_crosstab}
 \begin{tabularx}{\textwidth}{@{}X r r@{}}
 \toprule
@@ -16,34 +9,27 @@ modality (explicit multi-modal fusion; 1 record) are omitted on this basis.}
 \midrule
 \multicolumn{3}{@{}l}{\textit{By Primary Task}} \\
 \hdashline
-Temporal Sequence Modelling & 10 & 90\% \\
-Disease Classification \& Grading & 13 & 77\% \\
-Contrast Flow Analysis & 11 & 36\% \\
-Object Detection \& Localisation & 31 & 32\% \\
-Catheter \& Device Tracking & 16 & 31\% \\
-Outcome Prediction & 11 & 27\% \\
-Other / uncategorized task & 39 & 26\% \\
-Image Enhancement \& Denoising & 10 & 20\% \\
-Motion Correction \& Registration & 6 & 17\% \\
-Vessel Segmentation & 46 & 13\% \\
-Background Subtraction & 8 & 13\% \\
+Temporal Sequence Modelling & 6 & 100\% \\
+Contrast Flow Analysis & 9 & 89\% \\
+Outcome Prediction & 9 & 89\% \\
+Image Enhancement \& Denoising & 9 & 89\% \\
+Disease Classification \& Grading & 31 & 81\% \\
+Vessel Segmentation & 15 & 80\% \\
+Motion Correction \& Registration & 9 & 78\% \\
+Object Detection \& Localisation & 18 & 72\% \\
+Catheter \& Device Tracking & 9 & 67\% \\
 \midrule
 \multicolumn{3}{@{}l}{\textit{By Imaging Modality}} \\
 \hdashline
-DSA & 90 & 34\% \\
-X-ray / Fluoroscopy & 92 & 33\% \\
-DSA + Fluoroscopy (explicit dual-modality) & 5 & 20\% \\
-Other / uncategorized modality & 8 & 0\% \\
+DSA & 56 & 86\% \\
+X-ray / Fluoroscopy & 58 & 78\% \\
+DSA + Fluoroscopy (both) & 5 & 60\% \\
 \midrule
 \multicolumn{3}{@{}l}{\textit{By Anatomical Territory}} \\
 \hdashline
-Cardiac & 43 & 44\% \\
-Other Thoracic & 6 & 33\% \\
-Neurologic & 61 & 30\% \\
-Abdominopelvic & 20 & 30\% \\
-Multi-region & 7 & 29\% \\
-Other / uncategorized territory & 51 & 27\% \\
-Peripheral & 8 & 25\% \\
+Neurologic & 49 & 90\% \\
+Cardiac & 56 & 77\% \\
+Abdominopelvic & 10 & 60\% \\
 \bottomrule
 \end{tabularx}
 \end{table*}

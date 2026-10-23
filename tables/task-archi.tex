@@ -7,53 +7,43 @@
 \toprule
 \textbf{Task} & \textbf{Representative Architectures} \\
 \midrule
-3D Reconstruction \& Depth Estimation &
-Deep Segmentation + Bi-Plane Reconstruction~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Anomaly Detection &
-Support Vector Machine, X3D Family~\cite{ref25} \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Background Subtraction &
-CNNs~\cite{ref52}, U-Net Family~\cite{ref40}, GAN-based Models, CDSA-Net~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Catheter \& Device Tracking &
-U-Net Family, FCN-based Networks, Vision Transformer Hybrids~\cite{ref56}, R-CNN Family, Bayesian Filtering + Siamese~\cite{ref99}, Support Vector Machine, PAR-Net~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Contrast Flow Analysis &
-CNNs~\cite{ref69}, ResNet Family, U-Net Family~\cite{ref28}, Recurrent Models (GRU)~\cite{ref96}, Physics-Informed Learning~\cite{ref43}, pix2pix, SymDIRECT~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Disease Classification \& Grading &
-ResNet Family, DenseNet Family~\cite{ref62}, EfficientNet Family~\cite{ref76}, Vision Transformer Family, X3D Family~\cite{ref25}, CVFSNet~\cite{ref35}, Faster R-CNN, Dr-SAM~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Image Enhancement \& Denoising &
-CNNs~\cite{ref10}, U-Net Family~\cite{ref39}, GAN-based Models~\cite{ref93}, Edge-Enhancement DenseNet, RED-CNN, AaDSA, EEDN~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Image Registration &
-Projective Spatial Transformers (U-Net based)~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Landmark \& Keypoint Detection &
-Hourglass-based Detection~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Motion Correction \& Registration &
-U-Net Family~\cite{ref40}, CNNs~\cite{ref96}, Projective Spatial Transformer, JTML~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Object Detection \& Localization &
-YOLO Family, Transformer Detection~\cite{ref66}, R-CNN Family, RetinaNet, ResNet Family~\cite{ref100}, DenseNet Family~\cite{ref78}, U-Net Family, Siamese Networks, Tree-based Models~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Outcome Prediction &
-Dense Neural Networks, DenseNet Family~\cite{ref42}, EfficientNet Family~\cite{ref76}, ResNet Family~\cite{ref71}, Recurrent Models~\cite{ref96}, Tree-based Models, Parametric Imaging~\cite{ref72}, SPARNet~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Temporal Sequence Modeling &
-CNNs~\cite{ref20}, ResNet Family~\cite{ref62}, Tree-based Models, Recurrent Models, Deep Channel Attention~\cite{ref97}, MoSt-DSA~\cite{ref104}, SAVE-Net~\cite{ref152}, SepConv++~\cite{ref51} \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Vessel Segmentation &
-U-Net Family, Temporal Attention Networks~\cite{ref64}, DenseNet Family~\cite{ref97}, nnU-Net~\cite{ref15}, CAVE~\cite{ref50}, FSTIF-UNet~\cite{ref63}, DOSTA-Net~\cite{ref64}, Channel Attention (SDAN)~\cite{ref97}, UniverSeg, DeepMedic, DFA-Net, MA-Net, MDA-Net, TAG-DL~\cite{ref56}, TBENet~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
-\hdashline
-Other &
-ResNet Family~\cite{ref30}, SegFormer-style Transformer, Diffusion/Generative Models~\cite{ref39}, U-Net Family, VGG-based Models~\cite{ref94}, X3D-S~\cite{ref25}, YOLO Family, FluoroSAM, HyperMorph~\cite{ref40}, Light U-Net, RAFT~\cite{ref74}, nnU-Net+pix2pix cGAN~ \\  % TODO(slr-122): citation(s) to studies outside the 122 removed here; claim needs re-support or rewording
+
+Disease Classification \& Grading ($n=31$) &
+CNN classifiers (17), recurrent (LSTM/GRU) (5), hybrid CNN--Transformer (3). Examples: DeepRV~\cite{ref198}, ResNet101~\cite{R0099}, X3D~\cite{ref102}, SeqCon~\cite{ref91}, YOLOv8~\cite{R0521}, ResNet-50~\cite{ref161} \\[2pt]
+
+Object Detection \& Localisation ($n=18$) &
+object detectors (10), U-Net/encoder--decoder (3), hybrid CNN--Transformer (3). Examples: YOLOv10x~\cite{R0058}, YOLO Attention~\cite{R0570}, UOA Detector~\cite{ref190}, 2D ResUNet++~\cite{ref20}, 2D convolutional neural network~\cite{R1213}, LT-YOLO~\cite{R1222} \\[2pt]
+
+Vessel Segmentation ($n=15$) &
+U-Net/encoder--decoder (14), hybrid CNN--Transformer (1). Examples: DOSTA-Net~\cite{ref64}, TCA-Net~\cite{ref2}, nnU-Net~\cite{ref15}, TVS-Net~\cite{ref34}, U-Net++~\cite{ref211}, ATFNet~\cite{R1674} \\[2pt]
+
+Catheter \& Device Tracking ($n=9$) &
+U-Net/encoder--decoder (5), other learned models (2), hybrid CNN--Transformer (2). Examples: Stent-RD-UNet~\cite{ref178}, Neuro-Vascular Assist~\cite{R1362}, TAG-DL~\cite{ref56}, ConTrack~\cite{R3149}, U-Net~\cite{ref79}, Improved U-Net~\cite{ref162} \\[2pt]
+
+Contrast Flow Analysis ($n=9$) &
+U-Net/encoder--decoder (4), CNN classifiers (3), other learned models (2). Examples: custom convolutional neural network~\cite{R0100}, perfDSA~\cite{ref28}, YOLOv8m~\cite{R1680}, U-Net~\cite{R1725}, ResNet~\cite{ref43}, Physics-informed neural network~\cite{R2786} \\[2pt]
+
+Image Enhancement \& Denoising ($n=9$) &
+other learned models (4), U-Net/encoder--decoder (3), hybrid CNN--Transformer (2). Examples: SAVE-Net~\cite{ref152}, GenDSA~\cite{ref39}, SepConv++~\cite{ref51}, GaraMoSt~\cite{R2490}, MoSt-DSA~\cite{ref104}, ASRNet~\cite{R3126} \\[2pt]
+
+Motion Correction \& Registration ($n=9$) &
+U-Net/encoder--decoder (4), other learned models (4), non-learning (1). Examples: VGG encoders~\cite{R2400}, Residual U-Net~\cite{ref227}, 4DRGS~\cite{R2466}, TiAVox~\cite{R3164}, SSDR network~\cite{R3338}, RAFT~\cite{ref74} \\[2pt]
+
+Outcome Prediction ($n=9$) &
+classical ML (5), other learned models (2), hybrid CNN--Transformer (1). Examples: hybrid transformer-UNet~\cite{ref42}, XGBoost~\cite{ref127}, CLIP ViT-B/32~\cite{R0643}, Deep neural network~\cite{R1263}, logistic regression~\cite{R1503}, gradient boosting classifier~\cite{R1609} \\[2pt]
+
+Temporal Sequence Modelling ($n=6$) &
+recurrent (LSTM/GRU) (2), CNN classifiers (2), generative (GAN/diffusion) (1). Examples: CDKD-w+~\cite{ref36}, STA-IPCon~\cite{ref57}, Auxiliary Input in Training~\cite{R2411}, ResNet-50~\cite{ref148}, U-Net-like vesselness network~\cite{ref95}, MGR-Net~\cite{ref96} \\[2pt]
+
+Background Subtraction ($n=4$) &
+other learned models (1), U-Net/encoder--decoder (1), generative (GAN/diffusion) (1). Examples: HyperMorph~\cite{ref40}, 3D U-Net~\cite{ref52}, pix2pix~\cite{ref93}, rigid registration with mutual information~\cite{R4804} \\[2pt]
+
+Other ($n=1$) &
+other learned models (1). Examples: AngioPlus Core~\cite{R3052} \\[2pt]
+
 \bottomrule
 \end{tabularx}
-\caption{Task-wise mapping of representative architectural families. Architecturally similar variants (e.g., U-Net derivatives, ResNet variants, YOLO versions, and Transformer-based models) are grouped to improve readability.}
+\caption{Task-wise mapping of architectural families across the 120 included studies with retrievable full text. For each primary task, $n$ is the number of studies, the three most frequent families of the proposed model are listed with their study counts, and up to six named architectures are given with the study that proposes or uses them.}
 \label{tab:task_architecture_clean}
 \end{table*}
 
