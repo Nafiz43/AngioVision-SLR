@@ -167,64 +167,43 @@ All screening was performed with deterministic decoding (\emph{temperature}=0) t
 \section{Appendix C. Title/Abstract Screening Validation Sample}
 \label{appendix:screening_validation}
 
-This appendix reports the full 673-record sample used for the expanded validation of the title/abstract screening pipeline described in Section~\ref{sec:validation}. This validation is scoped to the pipeline's confident INCLUDE/EXCLUDE decisions only; the 195 records the pipeline marked UNCERTAIN (and 1 ERROR) are out of scope, since those are already auto-flagged for human review by the primary pipeline rather than being a confident decision to audit. The sample size was seeded by Cochran's sample-size formula for a proportion with a finite-population correction \cite{cochran1977sampling}, using the error rates observed in an initial 200-record pilot (restricted to its 140 in-scope INCLUDE/EXCLUDE records) and stratified on the pipeline's own predicted decision \cite{buderer1996statistical}: a full census of the 276 records with pipeline decision INCLUDE (precision stratum), plus a 397-record probability sample of the 4,293 records with pipeline decision EXCLUDE (recall/miss-rate stratum, drawn above the Cochran/FPC minimum of 168 -- itself sized using the rule-of-three upper bound on the pilot's observed zero-false-negative rate \cite{hanley1983zero} -- to add margin on the recall estimate), for a combined target of 673. Every record is independently screened by two human annotators (Reviewer A, Reviewer B), blind to the pipeline decision and to each other, against the same inclusion/exclusion criteria (I1--I4, E1--E5) used by the primary screening pipeline; disagreements are resolved by a third, blinded adjudicator. Table~\ref{tab:screening_validation_full} reports, for every sampled record, the two independent decisions, the final adjudicated label, and the original stage-1 pipeline decision (I = Include, E = Exclude; no UNCERTAIN/U entries appear here since those records are out of scope for this table). As of this draft, annotation is in progress and the Reviewer A/B/Final columns are blank pending completion; the table is regenerated automatically from the completed annotations via \texttt{11\_generate\_validation\_appendix\_table.py}.
+This appendix concerns the expert validation of the title/abstract screening described in Section~\ref{sec:validation}: a census of all 134 records the pipeline labelled INCLUDE plus a random sample of 357 of the 4,930 records it labelled EXCLUDE (Cochran's formula with finite-population correction, $p=0.5$, $e=0.05$~\cite{cochran1977sampling}), 491 records in total, each screened by an interventional radiologist blind to the pipeline decision.
 
+% TODO(slr-122): the table below still lists the superseded 673-record candidate set; regenerate it from labeling_app/sample_current.csv + labels.csv (491 rows: record, stratum, pipeline decision, expert decision) or drop it.
 \input{tables/screening_validation_full}
 
 \section{Appendix D. Stage 2 Full-Text Data Extraction Schema and Prompt}
 \label{appendix:extraction_schema}
 
-This appendix documents the structured data extraction stage that followed full-text screening. For every record advancing to full-text review, the complete article (converted to Markdown) was submitted to a large language model (model: \texttt{gpt-oss:20b}, deterministic decoding with \emph{temperature}=0) together with the system prompt below, and the model's response was parsed as a single JSON object populating the extraction schema. Records for which the initial response failed to parse as valid JSON were resubmitted to a dedicated repair pass (see \texttt{04\_stage2\_extraction.py}) before being accepted into the structured database described in Section~\ref{sec:results}.
+This appendix documents the structured data extraction stage that followed full-text screening. Each of the 120 included studies with retrievable full text was converted to Markdown and processed by Claude Opus 5.5~\cite{anthropic2026opus55} (high reasoning effort) in its own freshly initialized context, containing only the extraction instructions, the JSON schema and that one article. The model wrote a single JSON object per study; every object was validated against the JSON schema and every verbatim quotation was checked programmatically against the article text, and objects failing either check were corrected and re-validated before acceptance.
 
-\subsection{Extraction System Prompt and Schema}
-
-\begin{quote}
-\small
-You are a systematic literature review (SLR) data extraction assistant specializing in deep learning and medical image analysis research. You will be given the full text of a research article in Markdown format. Your task is to extract structured bibliographic, methodological, and evaluative information precisely and completely to support a PRISMA-compliant systematic review on deep learning methods for angiographic sequence analysis.
-
-\medskip
-\textbf{Extraction rules}
-\begin{itemize}
-\item If a field cannot be determined from the text, return \texttt{null} for that field.
-\item Do not infer, guess, or hallucinate values not explicitly stated or clearly implied in the paper.
-\item For list fields, return an empty list \texttt{[]} if none are found -- do not return \texttt{null}.
-\item For enumerated fields (those with ``\texttt{|}'' options), choose the closest matching value. If none fit, use \texttt{"other"} and explain in the nearest descriptive field.
-\item Keywords are taken verbatim from the paper's keyword section if present; otherwise up to 10 salient domain terms are extracted from the abstract and body.
-\item Architecture names are extracted as the authors name them (e.g., ``nnU-Net'', ``ResNet-50'') -- the model does not map them to a family itself.
-\item Task labels reflect the clinical or technical goal of the work, not just the algorithmic operation.
-\item The extraction is exhaustive for the evaluation section: all reported metrics are captured, not just the primary one.
-\end{itemize}
-
-\medskip
-\textbf{Schema fields, grouped by section}
+\subsection{Extraction Schema}
 
 \begin{description}
-\item[\texttt{study\_identity}] title, journal/venue, year, publication\_type (\texttt{journal} $\vert$ \texttt{conference} $\vert$ \texttt{preprint} $\vert$ \texttt{other})
-\item[\texttt{keywords}] free-text list of author or extracted keywords
-\item[\texttt{imaging}] modality (\texttt{DSA} $\vert$ \texttt{fluoroscopy} $\vert$ \texttt{DSA+fluoroscopy} $\vert$ \texttt{X-ray} $\vert$ \texttt{CT-angiography} $\vert$ \texttt{MR-angiography} $\vert$ \texttt{ultrasound} $\vert$ \texttt{multi-modal} $\vert$ \texttt{other}), anatomy (\texttt{coronary} $\vert$ \texttt{cerebral} $\vert$ \texttt{peripheral} $\vert$ \texttt{abdominal} $\vert$ \texttt{retinal} $\vert$ \texttt{pulmonary} $\vert$ \texttt{multi} $\vert$ \texttt{other}), anatomy detail, frame rate (fps), sequence length (frames), image resolution, contrast agent used (bool)
-\item[\texttt{dataset}] source (\texttt{public} $\vert$ \texttt{private} $\vert$ \texttt{phantom} $\vert$ \texttt{synthetic} $\vert$ \texttt{mixed}), dataset name/URL, number of patients/sequences/frames/annotations, annotation type (\texttt{manual} $\vert$ \texttt{semi-automatic} $\vert$ \texttt{automatic} $\vert$ \texttt{none}), annotator count, inter-rater agreement reported (bool), train/test split description, data augmentation used (bool), class imbalance addressed (bool)
-\item[\texttt{task}] primary task (one of the fifteen task categories used throughout Section~\ref{sec:results}, or \texttt{other}), secondary tasks (list), task description, clinical application
-\item[\texttt{method}] architecture name and description, input type (\texttt{2D\_frame} $\vert$ \texttt{3D\_sequence} $\vert$ \texttt{optical\_flow} $\vert$ \texttt{multi-frame\_stack} $\vert$ \texttt{mixed} $\vert$ \texttt{other}), temporal modelling (bool) and mechanism, pretrained backbone/dataset, training supervision (\texttt{fully\_supervised} $\vert$ \texttt{self\_supervised} $\vert$ \texttt{weakly\_supervised} $\vert$ \texttt{semi\_supervised} $\vert$ \texttt{unsupervised} $\vert$ \texttt{other}), loss functions, post-processing steps, computational framework, hardware used, inference time reported (bool), model complexity reported (bool)
-\item[\texttt{evaluation}] all reported metrics, primary metric and value, full list of (metric, value, dataset split) triples, comparator methods, ablation study performed (bool), statistical significance reported (bool), validation design (\texttt{held\_out\_test} $\vert$ \texttt{cross\_validation} $\vert$ \texttt{prospective} $\vert$ \texttt{external\_validation} $\vert$ \texttt{other}), failure case analysis (bool)
-\item[\texttt{clinical\_validation}] clinical expert involved (bool), reader study performed (bool), patient outcome measured (bool), regulatory approval mentioned (bool), clinical deployment mentioned (bool)
-\item[\texttt{reproducibility}] open-source code/data (bool) and URLs, hyperparameters reported (bool), training details sufficient (bool)
-\item[\texttt{study\_quality}] stated limitations, stated future work
+\item[\texttt{study}] title, year, venue, publication type (journal, full conference paper, conference abstract, preprint, book chapter, other), whether the available text is a full paper, country of data.
+\item[\texttt{imaging}] modality (DSA, X-ray/fluoroscopy, both, other), anatomical territory (neurologic, cardiac, aortic/thoracic, abdominopelvic, peripheral, multi-region), acquisition geometry, frame rate, frames per sequence, vendors.
+\item[\texttt{dataset}] numbers of patients, sequences, images and centers, number of vendors, data origin (clinical, phantom, synthetic, mixed), public dataset used, data released, split level (patient, sequence, frame, site), annotation type, number and expertise of annotators, inter-rater agreement.
+\item[\texttt{task}] primary task (one of the ten categories in Figure~\ref{fig:task_distribution}, or other), secondary tasks, task description, clinical application.
+\item[\texttt{method}] architecture names and family, temporal-modeling category (Table~\ref{tab:temporal_taxonomy}) with a supporting quotation, input dimensionality, supervision, pretraining, synthetic training data, physics-informed design, multimodal inputs, class-imbalance handling, uncertainty quantification, explainability method, federated or privacy-preserving learning, use of language or vision--language models, inference-time reporting.
+\item[\texttt{evaluation}] validation design (internal split, cross-validation, external validation, prospective), up to 25 reported results of the proposed method (metric, value, value rescaled to 0--100, split, task), comparators, comparison with clinicians, ablation, statistical testing, confidence intervals, subgroup or per-class reporting, failure analysis.
+\item[\texttt{clinical}] study design (retrospective, prospective, randomized), reader study, patient outcome measured, clinical deployment or live use, regulatory considerations.
+\item[\texttt{reproducibility}] code and model-weight availability, hyperparameters reported.
+\item[\texttt{gaps}] for each research gap G1--G12 (Table~\ref{tab:research_gaps}), whether the article documents it, addresses it, both or neither, with a verbatim quotation and its section.
+\item[\texttt{claim2024}] the 44 CLAIM 2024 items, each scored as reported, not reported or not applicable; a CLAIM cluster counts as met when at least half of its applicable items are reported.
 \end{description}
 
-\medskip
-The model was instructed to respond only with a single JSON object matching this schema, with no surrounding commentary or markdown fences.
-\end{quote}
-
-The full field-level system prompt and its JSON schema literal, along with the JSON-repair fallback prompt, are implemented verbatim in \texttt{04\_stage2\_extraction.py} in the project code repository (Appendix~\ref{appendix:code_data_availability}), which is the authoritative source in the event of any discrepancy with the summary above.
+The complete instructions, the JSON schema and the validator are provided with the extraction outputs (Appendix~\ref{appendix:code_data_availability}).
 
 \section{Appendix E. Code and Data Availability}
 \label{appendix:code_data_availability}
 
-All screening and extraction code used in this review, including the title/abstract screening pipeline, the stage 2 full-text extraction pipeline (\texttt{04\_stage2\_extraction.py}), the CLAIM 2024 assessment code, the inter-rater validation analysis (\texttt{annotation\_consistency\_calculate.py}), and all figure/table generation scripts, is available at \url{https://github.com/Nafiz43/AngioVision}. The repository is publicly accessible; no formal open-source license or tagged/archived (e.g., Zenodo) release corresponding to this manuscript version has been assigned at the time of writing.
+All screening and extraction code used in this review, including the title/abstract screening pipeline, the stage 2 full-text extraction instructions, schema and validator (\texttt{INSTRUCTIONS.md}, \texttt{schema.json}, \texttt{validate.py}), the CLAIM 2024 assessment code, the inter-rater validation analysis (\texttt{annotation\_consistency\_calculate.py}), and all figure/table generation scripts, is available at \url{https://github.com/Nafiz43/AngioVision}. The repository is publicly accessible; no formal open-source license or tagged/archived (e.g., Zenodo) release corresponding to this manuscript version has been assigned at the time of writing.
 
-The structured dataset produced by the extraction pipeline (one JSON record per record reaching full-text extraction, following the schema in Appendix~\ref{appendix:extraction_schema}) is provided as \texttt{results/stage2\_results.jsonl} in the same repository. A small number of records require manual title verification (see the note in Appendix~\ref{appendix:included_studies}); this does not affect the completeness of the extracted fields used in the analyses reported here. Screening-stage outputs (\texttt{results/stage1\_results.csv}) and the CLAIM 2024 reporting-quality assessment outputs are provided alongside it.
+The structured dataset produced by the extraction pipeline (one JSON record per record reaching full-text extraction, following the schema in Appendix~\ref{appendix:extraction_schema}) is provided as one JSON file per study (120 files). %
+% TODO(slr-122): the extraction kit lives in the PRIVATE repo Nafiz43/angiovision-slr-extraction together with copyrighted full texts; publish only INSTRUCTIONS.md, schema.json, validate.py and out/*.json, and update this paragraph with the public location.
+ Screening-stage outputs (\texttt{results/stage1\_results.csv}) and the CLAIM 2024 reporting-quality assessment outputs are provided alongside it.
 
 \section{Appendix F. List of Included Studies}
 \label{appendix:included_studies}
 
-The full reference list in the bibliography constitutes the list of included studies: every included study is cited at least once, either narratively in the text or via the aggregate \texttt{nocite} block in \texttt{00-main.tex} (documented at that location) for studies discussed only through summary figures/tables rather than individual in-text citation. At the time of writing, 187 of the 194 included studies were confirmed to resolve to a bibliography entry by automated title matching against \texttt{results/stage2\_results.jsonl}; the remaining seven records did not have a title recovered by the automated full-text extraction pipeline (recorded as ``Untitled'' in the extraction output). These seven entries are being reconciled manually against the source PDFs, and a dedicated table of all 194 included studies (citation key, title, year, venue, primary task, and architecture) will be included as supplementary material in the code repository.
+The full reference list in the bibliography constitutes the list of included studies: every included study is cited at least once, either narratively in the text or via the aggregate \texttt{nocite} block in \texttt{00-main.tex} (documented at that location) for studies discussed only through summary figures/tables rather than individual in-text citation. All 122 included studies resolve to a bibliography entry; apart from these, the bibliography contains only the methodological references cited in Sections~\ref{sec:llm-pipeline}--\ref{sec:stats-methods}. Two of the 122 (R4468, R4475) could not be retrieved in full text and appear in no full-text analysis.
