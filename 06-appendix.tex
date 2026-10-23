@@ -198,9 +198,7 @@ The complete instructions, the JSON schema and the validator are provided with t
 
 All screening and extraction code used in this review, including the title/abstract screening pipeline, the stage 2 full-text extraction instructions, schema and validator (\texttt{INSTRUCTIONS.md}, \texttt{schema.json}, \texttt{validate.py}), the CLAIM 2024 assessment code, the dual-review screening decisions and agreement analysis (\texttt{validation/screening\_agreement.py}), and all figure/table generation scripts, is available at \url{https://github.com/Nafiz43/AngioVision}. The repository is publicly accessible; no formal open-source license or tagged/archived (e.g., Zenodo) release corresponding to this manuscript version has been assigned at the time of writing.
 
-The structured dataset produced by the extraction pipeline (one JSON record per record reaching full-text extraction, following the schema in Appendix~\ref{appendix:extraction_schema}) is provided as one JSON file per study (120 files). %
-% TODO(slr-122): the extraction kit lives in the PRIVATE repo Nafiz43/angiovision-slr-extraction together with copyrighted full texts; publish only INSTRUCTIONS.md, schema.json, validate.py and out/*.json, and update this paragraph with the public location.
- Screening-stage outputs (\texttt{results/stage1\_results.csv}) and the CLAIM 2024 reporting-quality assessment outputs are provided alongside it.
+The review data are publicly available at \url{https://github.com/Nafiz43/angiovision-slr-data}: the stage-1 decision for each of the 5,064 screened records together with the final eligibility decision; the 491-record validation sample with both reviewers' decisions, the consensus labels and the agreement script; the extraction instructions, JSON schema and validator; and the 120 validated extraction records (one JSON file per study, including the CLAIM 2024 item scores). Full texts are not redistributed for copyright reasons.
 
 \section{Appendix F. List of Included Studies}
 \label{appendix:included_studies}
