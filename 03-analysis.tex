@@ -10,7 +10,7 @@ Importantly, temporal modeling is not the sole focus of this analysis but rather
 \subsection{Study Selection and Review Corpus}
 The literature search and screening process resulted in a final review corpus of 120 studies. Figure~\ref{fig:prisma} presents the complete study selection workflow in accordance with the PRISMA 2020 reporting guidelines.
 
-The initial database search identified 5,829 candidate records, comprising 4,071 records retrieved from PubMed/MEDLINE and 1,758 records obtained from Semantic Scholar. Following record aggregation, duplicate detection identified and removed 765 duplicate entries, yielding 5,064 unique records, all of which advanced to title and abstract screening.
+The initial database search identified 5,829 candidate records, comprising 4,071 records retrieved from PubMed/\allowbreak MEDLINE and 1,758 records obtained from Semantic Scholar. Following record aggregation, duplicate detection identified and removed 765 duplicate entries, yielding 5,064 unique records, all of which advanced to title and abstract screening.
 
 The LLM-assisted title and abstract screening labelled 134 records as eligible and excluded 4,930: 4,831 failed at least one inclusion criterion and 99 were excluded on the exclusion criteria (E1: 3, E2: 95, E3: 1). Two reviewers then independently screened all 134 eligible records and a random sample of 357 excluded records (Section~\ref{sec:validation}), agreeing on 487 of the 491 ($\kappa=0.978$) and resolving the four disagreements by discussion; following the resulting consensus, 14 of the 134 were excluded and 2 of the sampled excluded records were added, giving 122 studies sought for full-text retrieval. Both added records had been excluded by the LLM on criterion I2, so Figure~\ref{fig:prisma} lists 4,829 rather than 4,831 LLM inclusion failures, and every count in the exclusion box is a record actually excluded. Full text could not be retrieved for 2 of them despite institutional access and alternative search efforts; following PRISMA 2020, these are reported as not retrieved, and the review corpus comprises the 120 studies assessed in full text. Three of the 120 studies are earlier versions (preprint or conference paper) of another included study and are counted as separate records.
 
@@ -46,7 +46,7 @@ Measured against the consensus gold standard (Section~\ref{sec:validation}), the
 \label{fig:temporal_trends}
 \end{figure}
 
-Figure~\ref{fig:temporal_trends} reveals a strongly non-uniform evolution of the field over time. No study published before 2018 met the inclusion criteria, and the earliest included work (2018--2019, six studies) is isolated and methodologically heterogeneous, suggesting that angiographic sequence analysis was not yet established as a coherent computational problem.
+Figure~\ref{fig:temporal_trends} reveals a strongly non-uniform evolution of the field over time. No study published before 2018 met the inclusion criteria, and the earliest included work (2018--2019, five studies) is isolated and methodologically heterogeneous, suggesting that angiographic sequence analysis was not yet established as a coherent computational problem.
 
 A first structural shift emerges around 2018--2020, coinciding with broader adoption of deep encoder--decoder architectures in medical imaging. However, the most significant transition occurs after 2020, where publication volume increases sharply and remains consistently elevated through 2025. This period aligns with the wider availability of deep learning frameworks, pretrained convolutional backbones and annotated angiographic datasets; Transformer-based temporal models arrived later, with all ten such studies in the corpus published from 2023 onward (Section~\ref{subsec:temporal_taxonomy}).
 
@@ -54,7 +54,7 @@ Importantly, the growth curve has not yet stabilized. The partial-year 2026 coun
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
-\textbf{Finding 1.} The field exhibits sustained post-2020 expansion, with approximately 78\% of studies (93/120) published in the last five years (2022--2026). This confirms that angiographic sequence analysis is still an emerging research area with rapidly evolving methodological and clinical priorities.
+\textbf{Finding 1.} The field exhibits sustained post-2020 expansion, with approximately 78\% of studies (94/120) published in the last five years (2022--2026). This confirms that angiographic sequence analysis is still an emerging research area with rapidly evolving methodological and clinical priorities.
 \end{mdframed}
 \vspace{0.25cm}
 
@@ -88,7 +88,7 @@ an even sharper concentration is observed in anatomical coverage. Cardiac and ne
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
-\textbf{Finding 2.} The literature is heavily concentrated in nearly equal exclusive use of either DSA or X-ray/fluoroscopy, with almost no systematic exploration of multi-modal learning. Anatomical coverage is even more skewed, with cardiac and neurologic territories together accounting for nearly 90\% of studies, limiting the validity of most existing methods across anatomic contexts.
+\textbf{Finding 2.} Studies use DSA or X-ray/\allowbreak fluoroscopy in nearly equal numbers but almost never both, and multi-modal learning is largely unexplored. Anatomical coverage is even more skewed, with cardiac and neurologic territories together accounting for nearly 90\% of studies, limiting the validity of most existing methods across anatomic contexts.
 \end{mdframed}
 \vspace{0.25cm}
 
@@ -143,7 +143,7 @@ Applying this taxonomy across the 120 included studies with retrievable full tex
 
 \input{tables/temporal_crosstab}
 
-Table~\ref{tab:temporal_crosstab} quantifies adoption of temporal modeling across task, modality, and anatomical dimensions. Adoption varies by task: it is universal for Temporal Sequence Modelling (100\%) -- expected, since the task is temporal by definition -- and high for Contrast Flow Analysis, Outcome Prediction and Image Enhancement \& Denoising (89\% each), Disease Classification \& Grading (81\%) and Vessel Segmentation (80\%), and lowest for Object Detection \& Localisation (72\%) and Catheter \& Device Tracking (67\%). By imaging modality, DSA studies incorporate temporal mechanisms somewhat more often (86\%) than X-ray/fluoroscopy studies (78\%). By anatomical territory, adoption is highest for neurologic studies (90\%), followed by cardiac (77\%) and abdominopelvic (60\%) studies. By publication year, the adoption rate was 50\% in 2018--2019 (3 of 6 studies), ranged from 77\% to 100\% between 2020 and 2025, and fell to 62\% in the partial year 2026.
+Table~\ref{tab:temporal_crosstab} quantifies adoption of temporal modeling across task, modality, and anatomical dimensions. Adoption varies by task: it is universal for Temporal Sequence Modelling (100\%) -- expected, since the task is temporal by definition -- and high for Contrast Flow Analysis, Outcome Prediction and Image Enhancement \& Denoising (89\% each), Disease Classification \& Grading (81\%) and Vessel Segmentation (80\%), and lowest for Object Detection \& Localisation (72\%) and Catheter \& Device Tracking (67\%). By imaging modality, DSA studies incorporate temporal mechanisms somewhat more often (86\%) than X-ray/fluoroscopy studies (78\%). By anatomical territory, adoption is highest for neurologic studies (90\%), followed by cardiac (77\%) and abdominopelvic (60\%) studies. By publication year, the adoption rate was 40\% in 2018--2019 (2 of 5 studies), ranged from 75\% to 100\% between 2020 and 2025, and fell to 59\% (10 of 17) in the partial year 2026.
 
 High adoption, however, conceals shallow use. Of the 97 temporally aware studies, 49 rely on fixed, non-learned mechanisms (frame aggregation, optical flow or registration, and hemodynamic models), and only 48 (40.0\% of the corpus) learn temporal representations with recurrent, 3D/video or Transformer/state-space architectures. Learned temporal modeling is concentrated in disease classification and grading (21 of 31 studies), while it is absent from image enhancement \& denoising and catheter \& device tracking (0 of 9 each) and nearly absent from contrast flow analysis and outcome prediction (1 of 9 each), precisely the tasks whose targets are defined by temporal dynamics. Its share has risen from 31.7\% of studies published in 2018--2022 (13 of 41) to 44.3\% of those published in 2023--2026 (35 of 79), and all ten Transformer or state-space studies appeared from 2023 onward. In terms of model input, 41 studies (34.2\%) feed a short stack of frames rather than the full sequence. Consistent with this picture, 63 studies explicitly describe limited temporal modeling as a limitation or open problem (gap G3, Section~\ref{sec:research_gaps}), including 51 of the 97 studies that already model time.
 

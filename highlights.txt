@@ -4,4 +4,4 @@ Highlights
 - Most studies (80.8%) use time, but half rely on fixed, non-learned operations
 - Transformer or state-space temporal models appear in 8.3% of studies, all since 2023
 - Cardiac and neurologic studies make up nearly 90% of the angiography AI literature
-- External validation (15%) and data release (2.5%) are rare; twelve gaps identified
+- External validation (16%) and data release (2.5%) are rare; twelve gaps identified
