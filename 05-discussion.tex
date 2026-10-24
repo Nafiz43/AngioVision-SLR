@@ -14,6 +14,19 @@ Reported performance is uniformly high (family means of 86.6--89.9 on a 0--100 s
 
 The research gaps identified in this review suggest that future progress will depend less on incremental architectural improvements and more on addressing structural challenges related to data availability, evaluation, validation, and clinical integration. Large multi-institutional datasets, benchmark challenges, temporally aware learning architectures, multi-modal data fusion, uncertainty-aware models, and prospective outcome-driven studies represent particularly important directions for future investigation. Emerging paradigms such as foundation models, self-supervised learning, federated learning, and vision-language systems may further accelerate progress if accompanied by rigorous validation and transparent reporting practices.
 
+\subsection{Limitations}
+\label{sec:limitations}
+This review has several limitations. First, the search covered two databases, PubMed/MEDLINE and Semantic Scholar, and English-language records up to 15 May 2026. Engineering venues reached Semantic Scholar unevenly: MICCAI and ACM proceedings and arXiv-only preprints are likely underrepresented (Section~\ref{sec:search}).
+
+Second, title and abstract screening was performed by an LLM. Dual human review of all 134 pipeline inclusions and a random sample of 357 exclusions corrected the corpus where the sample reached, but the two eligible studies found in that sample imply that about 28 eligible studies (95\% CI roughly 8--100) may remain among the 4,930 pipeline exclusions. The corpus should therefore be read as a large, validated sample of the field rather than a census, and counts of studies per category as lower bounds.
+
+Third, data extraction for all 120 studies was performed by an LLM, and a single reviewer audited a 5\% sample. Agreement was high (97.1\% of 444 values), but the residual errors concentrate in interpretive judgments such as research-gap status and individual CLAIM item scores, and a 6-study audit cannot rule out larger error rates for rare fields. The temporal-modeling categories likewise depend on what authors describe; for two studies the mechanism could not be determined.
+
+Fourth, we assessed reporting quality with CLAIM 2024 but did not apply a formal risk-of-bias tool, and, given the heterogeneity of datasets, tasks and metrics, we did not pool performance in a meta-analysis. Reported performance values should not be read as estimates of real-world accuracy.
+
+Finally, the review protocol was not prospectively registered; full text could not be retrieved for 2 of the 122 eligible studies; and three included records are earlier versions of another included study, which slightly inflates some category counts.
+
+\subsection{Conclusion}
 Overall, this review synthesized 120 studies investigating deep learning methods for angiographic sequence analysis and provides a robust and contemporary systematic characterization of these methods, including how temporal information is utilized across angiographic imaging tasks. The results reveal a rapidly growing research area that has achieved substantial advances in segmentation, detection, classification, and image enhancement, yet remains constrained by limited datasets, inconsistent evaluation practices, insufficient external validation, and temporal modeling that is widespread but rarely learned across the full sequence.
 
 
