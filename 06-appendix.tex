@@ -19,7 +19,7 @@ This appendix provides the exact, database-specific queries, execution dates, fi
 
 \textbf{Execution date:} 2026-05-25. \textbf{Interface:} Semantic Scholar Graph API v1 (\texttt{/paper/search} endpoint).
 
-\textbf{Filters applied:} publication year restricted to 2000--2026. No venue, study-type, or field-of-study filters were applied. Because the Semantic Scholar API does not support the same field-tagged Boolean syntax as PubMed, the search was decomposed into 22 shorter, relaxed free-text queries combining an imaging term (angiography, DSA, or fluoroscopy) with an AI/ML term, executed independently and merged. This design choice trades query precision for recall, consistent with the goal of maximizing sensitivity during automated retrieval and deferring precision to the downstream LLM-assisted screening stage.
+\textbf{Filters applied:} publication year restricted to 2000--2026. No venue, study-type, or field-of-study filters were applied. Because the Semantic Scholar API does not support the same field-tagged Boolean syntax as PubMed, the search was decomposed into 22 shorter, relaxed free-text queries combining an imaging term (angiography, DSA, or fluoroscopy) with an AI/ML term, executed independently and merged. For each query the first 100 relevance-ranked results were retained (the API page size), and records returned by more than one query were counted once by Semantic Scholar paper identifier before the total below. Decomposing the query trades precision for recall, consistent with the goal of maximizing sensitivity during automated retrieval and deferring precision to the downstream LLM-assisted screening stage.
 
 \begin{quote}
 \raggedright\small\texttt{
