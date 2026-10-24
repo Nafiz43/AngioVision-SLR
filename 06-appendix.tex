@@ -1,7 +1,7 @@
 \section{Reproducible Search Log and Database-Specific Queries}
 \label{appendix:search_log}
 
-This appendix provides the exact, database-specific queries, execution dates, filters, and retrieval statistics used for the structured search described in Section~\ref{sec:eligibility}, to allow the search to be independently audited, reproduced, or extended to additional databases.
+This appendix provides the exact, database-specific queries, execution dates, filters, and retrieval statistics used for the structured search described in Section~\ref{sec:search}, to allow the search to be independently audited, reproduced, or extended to additional databases.
 
 \subsection{PubMed/MEDLINE}
 
@@ -31,7 +31,7 @@ deep learning angiography; deep learning digital subtraction angiography; machin
 
 \subsection{Deduplication and Aggregation}
 
-Records from both sources were pooled and deduplicated first by DOI (case-insensitive exact match) and, for records lacking a DOI, by normalized title (lowercased, punctuation-stripped exact match). This yielded 5{,}064 unique records from an initial pool of 5{,}829 (765 duplicates removed: 759 within/across PubMed, 5 within/across Semantic Scholar, with the remainder resolved at aggregation), matching the counts reported in Section~\ref{sec:eligibility}.
+Records from both sources were pooled and deduplicated first by DOI (case-insensitive exact match) and, for records lacking a DOI, by normalized title (lowercased, punctuation-stripped exact match). This yielded 5{,}064 unique records from an initial pool of 5{,}829 (765 duplicates removed: 759 within/across PubMed, 5 within/across Semantic Scholar, with the remainder resolved at aggregation), matching the counts in Figure~\ref{fig:prisma}.
 
 \subsection{Sources Not Queried}
 
@@ -236,4 +236,4 @@ The review data are publicly available at \url{https://github.com/Nafiz43/angiov
 \section{List of Included Studies}
 \label{appendix:included_studies}
 
-The full reference list in the bibliography constitutes the list of included studies: every included study is cited at least once, either narratively in the text or via the aggregate \texttt{nocite} block in \texttt{00-main.tex} (documented at that location) for studies discussed only through summary figures/tables rather than individual in-text citation. All 120 included studies resolve to a bibliography entry; apart from these, the bibliography contains only the methodological references cited in Sections~\ref{sec:llm-pipeline}--\ref{sec:stats-methods}. The two eligible records whose full text could not be retrieved (R4468, R4475) are not part of the corpus and are listed only in Appendix~\ref{appendix:screening_validation}.
+The included studies are listed in the bibliography: every one of the 120 included studies has a bibliography entry, whether it is cited individually in the text or contributes only to the aggregate figures and tables. Apart from these, the bibliography contains the background references of Section~\ref{sec:introduction} and the methodological references of the Methodology and Results sections. The record identifier, title, year, venue and DOI of each included study are given in \texttt{extraction/manifest.csv} in the public data repository. The two eligible records whose full text could not be retrieved (R4468, R4475) are not part of the corpus and appear only in Supplementary Table~S1.

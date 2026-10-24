@@ -135,7 +135,7 @@ fluoroscopic image analysis.}
 % ---- Row 3 ----
 \textbf{G3:} Temporal Modeling \& Video-Level Analysis
 &
-\tabitem Most methods treat each frame as an independent 2D image, discarding hemodynamic flow and contrast propagation dynamics \cite{ref64,ref15,R1541,ref50,ref82,ref10}.\newline
+\tabitem Temporal information is mostly used shallowly: 21 of 120 studies process each frame independently, and half of the 97 temporally aware studies rely on fixed operations rather than learned temporal representations of flow and contrast propagation \cite{ref64,ref15,R1541,ref50,ref82,ref10}.\newline
 \tabitem Temporal models are typically restricted to short fixed-length clips, not full variable-length sequences \cite{R1222,R3149,R3712}.\newline
 \tabitem Procedural phase transitions during interventional procedures are not explicitly modeled \cite{R3129,R4208,ref94,R2443}.\newline
 \tabitem Respiratory and cardiac motion are treated as noise rather than informative temporal signals \cite{ref36,R4220,ref34}.
@@ -180,7 +180,7 @@ fluoroscopic image analysis.}
 % ---- Row 6 ----
 \textbf{G6:} Prospective Clinical Validation \& Outcome Assessment
 &
-\tabitem Nearly all included studies rely on retrospective analysis of previously acquired images \cite{ref42,ref38,R3052,R3093,R3126,ref76}.\newline
+\tabitem Of the 61 studies that state their design, 57 analyze previously acquired images retrospectively \cite{ref42,ref38,R3052,R3093,R3126,ref76}.\newline
 \tabitem Prospective validation in live clinical settings is almost entirely absent from the literature \cite{ref102,ref91,R0521,R1362,R1503,ref75}.\newline
 \tabitem Retrospective evaluation cannot measure the effect of AI outputs on physician behavior or patient outcomes \cite{R0100,ref208,ref80}.\newline
 \tabitem Demonstrated technical performance does not establish clinical value or cost-effectiveness \cite{ref152,ref40,ref82,R3661}.
@@ -295,7 +295,7 @@ While Table~\ref{tab:research_gaps} documents the evidence base and candidate mi
                   >{\raggedright\arraybackslash}p{4.1cm}
                   >{\raggedright\arraybackslash}p{4.3cm}}
 
-\caption{CBM-facing actionable roadmap synthesizing each research gap identified in Table~\ref{tab:research_gaps} into clinical risk, computational opportunity, and a concrete benchmark or evaluation recommendation. Evidence Count is the number of included studies (of the 120 with retrievable full text) whose full text explicitly documents each gap.}
+\caption{Actionable roadmap synthesizing each research gap identified in Table~\ref{tab:research_gaps} into clinical risk, computational opportunity, and a concrete benchmark or evaluation recommendation. Evidence Count is the number of included studies (of the 120 with retrievable full text) whose full text explicitly documents each gap.}
 \label{tab:cbm_roadmap} \\
 
 \toprule
