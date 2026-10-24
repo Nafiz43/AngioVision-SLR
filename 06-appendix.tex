@@ -1,7 +1,7 @@
-\section{Appendix A. Reproducible Search Log and Database-Specific Queries}
+\section{Reproducible Search Log and Database-Specific Queries}
 \label{appendix:search_log}
 
-This appendix provides the exact, database-specific queries, execution dates, filters, and retrieval statistics used for the structured search described in Section~\ref{sec:eligibility}, to allow the search to be independently audited, reproduced, or extended to additional databases.
+This appendix provides the exact, database-specific queries, execution dates, filters, and retrieval statistics used for the structured search described in Section~\ref{sec:search}, to allow the search to be independently audited, reproduced, or extended to additional databases.
 
 \subsection{PubMed/MEDLINE}
 
@@ -13,218 +13,227 @@ This appendix provides the exact, database-specific queries, execution dates, fi
 \small\texttt{(angiograph*[tiab] OR fluoroscop*[tiab] OR "digital subtraction angiography"[tiab] OR DSA[tiab]) AND ("deep learning"[tiab] OR "machine learning"[tiab] OR CNN[tiab] OR transformer[tiab] OR "artificial intelligence"[tiab] OR AI[tiab]) AND ("2000"[pdat] : "3000"[pdat]) AND english[lang]}
 \end{quote}
 
-\textbf{Retrieved:} 4{,}071 records before deduplication; 3{,}312 unique records after within-source and cross-source deduplication (759 duplicates removed).
+\textbf{Retrieved:} 4{,}071 records before deduplication.
 
 \subsection{Semantic Scholar}
 
 \textbf{Execution date:} 2026-05-25. \textbf{Interface:} Semantic Scholar Graph API v1 (\texttt{/paper/search} endpoint).
 
-\textbf{Filters applied:} publication year restricted to 2000--2026. No venue, study-type, or field-of-study filters were applied. Because the Semantic Scholar API does not support the same field-tagged Boolean syntax as PubMed, the search was decomposed into 21 shorter, relaxed free-text queries combining an imaging term (angiography, DSA, or fluoroscopy) with an AI/ML term, executed independently and merged. This design choice trades query precision for recall, consistent with the goal of maximizing sensitivity during automated retrieval and deferring precision to the downstream LLM-assisted screening stage.
+\textbf{Filters applied:} publication year restricted to 2000--2026. No venue, study-type, or field-of-study filters were applied. Because the Semantic Scholar API does not support the same field-tagged Boolean syntax as PubMed, the search was decomposed into 22 shorter, relaxed free-text queries combining an imaging term (angiography, DSA, or fluoroscopy) with an AI/ML term, executed independently and merged. For each query the first 100 relevance-ranked results were retained (the API page size), and records returned by more than one query were counted once by Semantic Scholar paper identifier before the total below. Decomposing the query trades precision for recall, consistent with the goal of maximizing sensitivity during automated retrieval and deferring precision to the downstream LLM-assisted screening stage.
 
 \begin{quote}
-\small\texttt{
+\raggedright\small\texttt{
 deep learning angiography; deep learning digital subtraction angiography; machine learning angiography; deep learning fluoroscopy; artificial intelligence angiography; CNN angiography; transformer angiography; deep learning DSA; neural network DSA; machine learning DSA; artificial intelligence DSA; machine learning fluoroscopy; neural network fluoroscopy; artificial intelligence fluoroscopy; CNN fluoroscopy; deep learning vessel segmentation angiography; deep learning vascular imaging; neural network vascular segmentation; deep learning cerebrovascular angiography; deep learning coronary angiography; deep learning peripheral angiography; deep learning retinal angiography
 }
 \end{quote}
 
-\textbf{Retrieved:} 1{,}758 records before deduplication; 1{,}753 unique records after deduplication (5 duplicates removed).
+\textbf{Retrieved:} 1{,}758 records before deduplication.
 
 \subsection{Deduplication and Aggregation}
 
-Records from both sources were pooled and deduplicated first by DOI (case-insensitive exact match) and, for records lacking a DOI, by normalized title (lowercased, punctuation-stripped exact match). This yielded 5{,}064 unique records from an initial pool of 5{,}829 (765 duplicates removed: 759 within/across PubMed, 5 within/across Semantic Scholar, with the remainder resolved at aggregation), matching the counts reported in Section~\ref{sec:eligibility}.
+Records from both sources were pooled and deduplicated first by DOI (case-insensitive exact match) and, for records lacking a DOI, by normalized title (lowercased, punctuation-stripped exact match). This yielded 5{,}064 unique records from an initial pool of 5{,}829 (765 duplicates removed: 749 records retrieved by both databases, 11 duplicates within the PubMed results and 5 within the Semantic Scholar results), matching the counts in Figure~\ref{fig:prisma}.
 
 \subsection{Sources Not Queried}
 
-\textbf{arXiv} was not queried directly. This was a deliberate scope decision to prioritize peer-reviewed venues over unreviewed preprints, rather than an oversight; an arXiv query string was drafted and is retained in the fetcher codebase for future extensions of this search but was not executed for the present review. \textbf{Scopus} and \textbf{Web of Science} were also not queried as part of the automated retrieval pipeline; we note this explicitly as a scope limitation rather than a claim of comprehensive database coverage. As reported in Section~\ref{sec:eligibility}, a retrospective venue audit of the 206 records reaching full-text extraction found that Semantic Scholar's aggregation nonetheless surfaced substantial IEEE (19 records, 9.2\%) and SPIE (15 records, 7.3\%) content, but only a single MICCAI/LNCS record and no ACM-venue records, indicating that coverage of ACM- and MICCAI-specific venues remains a limitation of the present search strategy.
+\textbf{arXiv} was not queried directly. This was a deliberate scope decision to prioritize peer-reviewed venues over unreviewed preprints, rather than an oversight; an arXiv query string was drafted and is retained in the fetcher codebase for future extensions of this search but was not executed for the present review. \textbf{Scopus} and \textbf{Web of Science} were also not queried as part of the automated retrieval pipeline; we note this explicitly as a scope limitation rather than a claim of comprehensive database coverage. As reported in Section~\ref{sec:search}, a retrospective venue audit of the 120 included studies found that Semantic Scholar's aggregation surfaced substantial IEEE (11 studies, 9.2\%) and SPIE (11 studies, 9.2\%) content, but only three MICCAI records and one other Springer LNCS workshop paper and no ACM-venue record, so coverage of ACM- and MICCAI-specific venues remains a limitation of the present search strategy.
 
-\section{Appendix B. Stage 1 Screening Prompts}
+\section{Stage 1 Screening Prompts}
 \label{appendix:screening_prompts}
 
-This appendix provides the prompts used during the title--abstract screening stage of the systematic review. Screening was implemented using a two-gate architecture. The first gate evaluated whether a study satisfied all predefined inclusion criteria. Only studies passing the inclusion gate were evaluated using the exclusion gate. The model was instructed to base all decisions solely on information explicitly available in the title and abstract.
+This appendix reproduces verbatim the system prompts used for title--abstract screening with Qwen3.8 (27B) through Ollama at temperature 0 (code in the \texttt{screening/pipeline} folder of the public data repository). Each record was sent as a user message containing only its title and abstract. The model answered every criterion with YES or NO in a fixed JSON object; malformed responses were sent to a repair prompt, and a response that still could not be parsed was treated as failing the inclusion gate.
 
-\subsection{Prompt A: Inclusion Screening}
+Every record was first assessed by the inclusion gate (Prompt A). Records passing it, together with every record whose PubMed publication type identifies a non-research document (editorial, comment, letter, erratum, retraction and similar; 95 records), were then assessed by the exclusion gate (Prompt B). For the latter records E2 was set deterministically from the publication type and combined with the model's answer by logical OR, so the model could add but never remove an exclusion reason. A record was included only if it passed the inclusion gate and triggered no exclusion criterion. Note that the general statement in both prompts that the defaults keep a silent record in the review holds for I1, I3 and E1--E3 only; the defaults of I2 and I4 are NO (Section~\ref{sec:title-abstract-sceening}).
 
-\begin{quote}
-You are a systematic review assistant performing the \textbf{inclusion screening stage}.
+\subsection{Prompt A: Inclusion Gate}
+\begin{lstlisting}
+You are a systematic review assistant performing the INCLUSION gate.
+Your task is to decide whether a paper meets ALL inclusion criteria for a review on
+deep learning and machine learning methods applied to angiographic image sequences.
 
-Your task is to determine whether a research article satisfies all inclusion criteria for a systematic review of computational methods applied to angiographic image sequences.
+Answer every criterion YES or NO. There is no uncertain option. Judge only what the
+title and abstract state or clearly imply; do not infer unstated capabilities,
+datasets, or results.
 
-\medskip
+Every criterion ends with a DEFAULT line stating the answer to give when the text
+does not address that criterion. Apply the default rather than guessing. The
+defaults are set so that silence keeps a record in the review, because a wrongly
+retained record is corrected at full-text screening while a wrongly excluded
+record is never seen again.
 
-\textbf{Review Scope}
 
-The review focuses on computational methods, including deep learning, machine learning, and traditional image processing approaches, applied to temporally ordered Digital Subtraction Angiography (DSA) or fluoroscopic image sequences.
+INCLUSION CRITERIA (ALL four must be YES to pass):
 
-Representative tasks include:
+I1. Angiographic modality.
+Does the work use imaging in which blood vessels are opacified by an intravascular
+contrast medium, acquired by catheter-based angiography, Digital Subtraction
+Angiography, or contrast fluoroscopy?
+YES: coronary, cerebral, peripheral, visceral, pulmonary, renal, or hepatic
+angiography; invasive or cine coronary angiography; rotational or 4D DSA; arterial,
+venous, or combined phases; selective or non-selective injection.
+NO: CT, CT angiography, MRI, MR angiography, ultrasound, echocardiography, OCT,
+OCTA, retinal fundus imaging, nuclear medicine, or plain radiography; fluoroscopy
+without vessel opacification, such as barium and gastrointestinal studies, swallow
+studies, orthopaedic or spinal guidance, C-arm imaging of bone or hardware, and
+device or catheter placement.
+This criterion asks only about modality. Do not consider frame count, task, or method.
+DEFAULT: if the modality is named only as "angiography" or "angiographic" with no
+further detail, answer YES.
 
-\begin{itemize}
-\item Image enhancement and denoising
-\item Artifact reduction
-\item Motion correction and registration
-\item Vessel segmentation
-\item Detection and localization
-\item Classification
-\item Temporal sequence analysis
-\item Outcome prediction
-\end{itemize}
+I2. Temporal sequence.
+Does the work use temporally ordered multi-frame data, rather than single images only?
+YES: any use of a run, series, cine, video, frame sequence, or temporal information;
+any task that requires time, such as motion correction, tracking, flow or perfusion
+estimation, or temporal denoising.
+NO: the text states the work operates on single static frames, individual selected
+images, or one frame per case.
+This criterion asks only about the temporal dimension. Do not consider modality,
+task, or method.
+DEFAULT: if frame count, temporality, the mention of time, the mention of order, the mention of sequences are not mentioned, answer NO.
 
-\medskip
+I3. In-scope computational task.
+Does the work address at least one of these tasks: image quality enhancement,
+denoising, artefact reduction, contrast or dose reduction, motion correction,
+registration, vessel segmentation, vessel or lesion detection, stenosis
+quantification, classification, localization, tracking, reconstruction, synthesis or
+inpainting, flow or perfusion quantification, or clinical outcome prediction from
+imaging?
+YES: any of the above, by deep learning, classical machine learning, or traditional
+image processing.
+NO: the imaging serves only as a clinical endpoint read by humans; the study concerns
+hardware, contrast agents, radiation dose measurement, workflow, or cost, with no
+algorithmic component.
+This criterion asks only what task is performed. Do not consider who developed the
+method or whether it was evaluated.
+DEFAULT: if the work is described as automated, AI-based, or computational without
+naming a task, answer YES.
 
-\textbf{Inclusion Criteria}
+I4. Evaluation against data.
+Does the work report, or state that it performed, an evaluation of the method
+against data?
+YES: any quantitative result or metric; a stated comparison against baselines,
+ground truth, or expert readers; a stated validation, test, or cross-validation
+procedure; a named dataset with reported performance; a statement that the method
+was evaluated, validated, or tested.
+NO: the text presents only a concept, proposal, protocol, architecture, or system
+description, and states no evaluation of any kind.
+This criterion asks only whether an evaluation occurred. Specific numbers are not
+required; depth of evaluation is assessed at full text.
+DEFAULT: if no evaluation is mentioned either way, answer NO.
 
-All of the following criteria must be satisfied:
+Decision rules:
+- "pass": ALL four criteria are YES.
+- "fail": At least one criterion is NO. List the failing criterion/criteria.
 
-\begin{description}
-\item[I1:] The imaging modality is DSA or fluoroscopy and contains temporally ordered image sequences.
-\item[I2:] The study addresses at least one computational image analysis task relevant to angiographic imaging.
-\item[I3:] The methodology is described with sufficient technical detail to identify the principal computational approach.
-\item[I4:] Quantitative evaluation results are reported.
-\end{description}
+Respond ONLY with this JSON object. Every value is exactly "YES" or "NO".
+Output nothing else: no preamble, no markdown fences, no explanation, no extra keys.
 
-\medskip
+{"I1":"YES","I2":"YES","I3":"YES","I4":"YES"}
 
-\textbf{Decision Rules}
+Rules:
+- Answer each of I1 to I4 with the single word YES or NO, nothing more.
+- Never write a sentence, a reason, or any text outside this JSON object.
+- Every criterion has a DEFAULT. Use it. Never answer with anything but YES or NO.
+\end{lstlisting}
 
-\begin{itemize}
-\item \textbf{Pass}: All four inclusion criteria are clearly satisfied.
-\item \textbf{Fail}: One or more inclusion criteria are not satisfied.
-\item \textbf{Uncertain}: The title and abstract do not provide sufficient information to confidently determine eligibility.
-\end{itemize}
+\subsection{Prompt B: Exclusion Gate}
+\begin{lstlisting}
+You are a systematic review assistant performing the EXCLUSION gate.
+The paper has already passed the inclusion gate. Your task is to check whether any
+exclusion criterion applies and the paper should be rejected.
 
-\medskip
+These criteria test properties of the PUBLICATION itself, not its content. Content is
+handled entirely by the inclusion gate - do not re-judge modality, task, or method here.
 
-Base your assessment solely on information explicitly stated in the title and abstract. Do not infer information that is not clearly described.
+Answer every criterion YES or NO. There is no uncertain option. Judge only what the
+title and abstract state or clearly imply; do not infer unstated capabilities,
+datasets, or results.
 
-For each article, provide:
+Every criterion ends with a DEFAULT line stating the answer to give when the text
+does not address that criterion. Apply the default rather than guessing. The
+defaults are set so that silence keeps a record in the review, because a wrongly
+retained record is corrected at full-text screening while a wrongly excluded
+record is never seen again.
 
-\begin{enumerate}
-\item A screening decision (\texttt{Pass}, \texttt{Fail}, or \texttt{Uncertain})
-\item The inclusion criteria satisfied
-\item The inclusion criteria not satisfied
-\item A concise rationale supporting the decision
-\item An indication of whether human review is recommended
-\end{enumerate}
-\end{quote}
+EXCLUSION CRITERIA (ANY one YES excludes the record):
 
-\subsection{Prompt B: Exclusion Screening}
+E1. Not a full-length publication.
+Is the record a conference abstract, meeting abstract, poster, or extended abstract
+published without a full methods section?
+YES: titles beginning "Abstract No."; publication in a meeting supplement; a length
+of one to two pages.
+NO: full peer-reviewed conference papers, including MICCAI, SPIE Medical Imaging,
+ISBI, IPCAI, and CVPR proceedings, which are in scope; journal articles of any length.
+DEFAULT: if publication form is not indicated, answer NO.
 
-\begin{quote}
-You are a systematic review assistant performing the \textbf{exclusion screening stage}.
+E2. Non-research document type.
+Is the record an editorial, commentary, letter, correspondence, reply, opinion,
+viewpoint, perspective, narrative or systematic review, case report, correction,
+erratum, retraction notice, or withdrawal notice?
+YES: the title or abstract identifies the record as one of these forms.
+NO: research articles, methods papers, benchmarking and comparison studies, and
+validation studies, including those containing a literature survey.
+DEFAULT: if document type is not indicated, answer NO.
 
-The article has already satisfied all inclusion criteria. Your task is to determine whether any exclusion criterion applies.
+E3. Not in English.
+Is the full text unavailable in English?
+YES: the record states a non-English full text.
+NO: an English abstract with a complete English full text; non-English author names,
+affiliations, or institutions.
+DEFAULT: if language is not indicated, answer NO.
 
-\medskip
+Decision rules:
+- "pass": NO exclusion criteria triggered - paper survives the exclusion gate.
+- "fail": At least one exclusion criterion is YES. List the triggering criterion/criteria.
 
-\textbf{Exclusion Criteria}
+Respond ONLY with this JSON object. Every value is exactly "YES" or "NO".
+Output nothing else: no preamble, no markdown fences, no explanation, no extra keys.
 
-A study is excluded if any of the following criteria are satisfied:
+{"E1":"NO","E2":"NO","E3":"NO"}
 
-\begin{description}
-\item[E1:] The study focuses exclusively on CT, MRI, ultrasound, or static radiographic imaging without DSA or fluoroscopy.
-\item[E2:] The study analyzes only a single static image and does not incorporate temporally ordered image sequences.
-\item[E3:] The article is a review, commentary, editorial, or clinical narrative without an original computational contribution.
-\item[E4:] The publication is available only as an abstract, poster, or brief summary without sufficient methodological detail.
-\item[E5:] The article is not available in English.
-\end{description}
+Rules:
+- Answer each of E1 to E3 with the single word YES or NO, nothing more.
+- YES means the exclusion criterion applies and the record is excluded.
+- Never write a sentence, a reason, or any text outside this JSON object.
+- Every criterion has a DEFAULT. Use it. Never answer with anything but YES or NO.
+\end{lstlisting}
 
-\medskip
-
-\textbf{Decision Rules}
-
-\begin{itemize}
-\item \textbf{Pass}: No exclusion criteria are triggered.
-\item \textbf{Fail}: One or more exclusion criteria are triggered.
-\item \textbf{Uncertain}: Insufficient information is available to determine whether an exclusion criterion applies.
-\end{itemize}
-
-\medskip
-
-Base your assessment solely on information explicitly stated in the title and abstract. Do not infer information that is not clearly described.
-
-For each article, provide:
-
-\begin{enumerate}
-\item A screening decision (\texttt{Pass}, \texttt{Fail}, or \texttt{Uncertain})
-\item The exclusion criteria triggered
-\item A concise rationale supporting the decision
-\item An indication of whether human review is recommended
-\end{enumerate}
-\end{quote}
-
-\subsection{Screening Decision Logic}
-
-The final screening outcome was determined according to the following decision framework:
-
-\begin{itemize}
-\item Inclusion Pass + Exclusion Pass $\rightarrow$ Include
-\item Inclusion Fail $\rightarrow$ Exclude
-\item Inclusion Pass + Exclusion Fail $\rightarrow$ Exclude
-\item Any Uncertain Decision $\rightarrow$ Human Review
-\end{itemize}
-
-All screening was performed with deterministic decoding (\emph{temperature}=0) to maximize reproducibility and minimize decision variability across records.
-
-\section{Appendix C. Title/Abstract Screening Validation Sample}
+\section{Title/Abstract Screening Validation Sample}
 \label{appendix:screening_validation}
 
-This appendix reports the full 444-record sample used for the expanded validation of the title/abstract screening pipeline described in Section~\ref{sec:validation}. This validation is scoped to the pipeline's confident INCLUDE/EXCLUDE decisions only; the 195 records the pipeline marked UNCERTAIN (and 1 ERROR) are out of scope, since those are already auto-flagged for human review by the primary pipeline rather than being a confident decision to audit. The sample size was derived from Cochran's sample-size formula for a proportion with a finite-population correction \cite{cochran1977sampling}, seeded by the error rates observed in an initial 200-record pilot (restricted to its 140 in-scope INCLUDE/EXCLUDE records) and stratified on the pipeline's own predicted decision \cite{buderer1996statistical}: a full census of the 276 records with pipeline decision INCLUDE (precision stratum), plus a 168-record probability sample of the 4,293 records with pipeline decision EXCLUDE (recall/miss-rate stratum, sized using the rule-of-three upper bound on the pilot's observed zero-false-negative rate \cite{hanley1983zero}), for a combined target of 444. Every record is independently screened by two human annotators (Reviewer A, Reviewer B), blind to the pipeline decision and to each other, against the same inclusion/exclusion criteria (I1--I4, E1--E5) used by the primary screening pipeline; disagreements are resolved by a third, blinded adjudicator. Table~\ref{tab:screening_validation_full} reports, for every sampled record, the two independent decisions, the final adjudicated label, and the original stage-1 pipeline decision (I = Include, E = Exclude; no UNCERTAIN/U entries appear here since those records are out of scope for this table). As of this draft, annotation is in progress and the Reviewer A/B/Final columns are blank pending completion; the table is regenerated automatically from the completed annotations via \texttt{11\_generate\_validation\_appendix\_table.py}.
+This appendix lists the dual human review of the title/abstract screening described in Section~\ref{sec:validation}: a census of all 134 records the pipeline labelled INCLUDE plus a random sample of 357 of the 4,930 records it labelled EXCLUDE (Cochran's formula with finite-population correction, $p=0.5$, $e=0.05$~\cite{cochran1977sampling}), 491 records in total. Each record was screened independently by two reviewers (R1, an interventional radiologist; R2, a biomedical AI researcher), blind to the pipeline decision; disagreements were resolved by discussion to give the consensus (Final) label.
 
-\input{tables/screening_validation_full}
+The record-level decisions for all 491 records (record identifier, title, both reviewers' decisions, the consensus label and the pipeline decision) are provided in Supplementary Table~S1 and in the public data repository (Appendix~\ref{appendix:code_data_availability}).
 
-\section{Appendix D. Stage 2 Full-Text Data Extraction Schema and Prompt}
+\section{Stage 2 Full-Text Data Extraction Schema}
 \label{appendix:extraction_schema}
 
-This appendix documents the structured data extraction stage that followed full-text screening. For every record advancing to full-text review, the complete article (converted to Markdown) was submitted to a large language model (model: \texttt{gpt-oss:20b}, deterministic decoding with \emph{temperature}=0) together with the system prompt below, and the model's response was parsed as a single JSON object populating the extraction schema. Records for which the initial response failed to parse as valid JSON were resubmitted to a dedicated repair pass (see \texttt{04\_stage2\_extraction.py}) before being accepted into the structured database described in Section~\ref{sec:results}.
+This appendix documents the structured data extraction stage that followed full-text screening. Each of the 120 included studies with retrievable full text was converted to Markdown and processed by Claude Opus 5.5~\cite{anthropic2026opus55} (high reasoning effort) in its own freshly initialized context, containing only the extraction instructions, the JSON schema and that one article. The model wrote a single JSON object per study; every object was validated against the JSON schema and every verbatim quotation was checked programmatically against the article text, and objects failing either check were corrected and re-validated before acceptance.
 
-\subsection{Extraction System Prompt and Schema}
-
-\begin{quote}
-\small
-You are a systematic literature review (SLR) data extraction assistant specializing in deep learning and medical image analysis research. You will be given the full text of a research article in Markdown format. Your task is to extract structured bibliographic, methodological, and evaluative information precisely and completely to support a PRISMA-compliant systematic review on deep learning methods for angiographic sequence analysis.
-
-\medskip
-\textbf{Extraction rules}
-\begin{itemize}
-\item If a field cannot be determined from the text, return \texttt{null} for that field.
-\item Do not infer, guess, or hallucinate values not explicitly stated or clearly implied in the paper.
-\item For list fields, return an empty list \texttt{[]} if none are found -- do not return \texttt{null}.
-\item For enumerated fields (those with ``\texttt{|}'' options), choose the closest matching value. If none fit, use \texttt{"other"} and explain in the nearest descriptive field.
-\item Keywords are taken verbatim from the paper's keyword section if present; otherwise up to 10 salient domain terms are extracted from the abstract and body.
-\item Architecture names are extracted as the authors name them (e.g., ``nnU-Net'', ``ResNet-50'') -- the model does not map them to a family itself.
-\item Task labels reflect the clinical or technical goal of the work, not just the algorithmic operation.
-\item The extraction is exhaustive for the evaluation section: all reported metrics are captured, not just the primary one.
-\end{itemize}
-
-\medskip
-\textbf{Schema fields, grouped by section}
+\subsection{Extraction Schema}
 
 \begin{description}
-\item[\texttt{study\_identity}] title, journal/venue, year, publication\_type (\texttt{journal} $\vert$ \texttt{conference} $\vert$ \texttt{preprint} $\vert$ \texttt{other})
-\item[\texttt{keywords}] free-text list of author or extracted keywords
-\item[\texttt{imaging}] modality (\texttt{DSA} $\vert$ \texttt{fluoroscopy} $\vert$ \texttt{DSA+fluoroscopy} $\vert$ \texttt{X-ray} $\vert$ \texttt{CT-angiography} $\vert$ \texttt{MR-angiography} $\vert$ \texttt{ultrasound} $\vert$ \texttt{multi-modal} $\vert$ \texttt{other}), anatomy (\texttt{coronary} $\vert$ \texttt{cerebral} $\vert$ \texttt{peripheral} $\vert$ \texttt{abdominal} $\vert$ \texttt{retinal} $\vert$ \texttt{pulmonary} $\vert$ \texttt{multi} $\vert$ \texttt{other}), anatomy detail, frame rate (fps), sequence length (frames), image resolution, contrast agent used (bool)
-\item[\texttt{dataset}] source (\texttt{public} $\vert$ \texttt{private} $\vert$ \texttt{phantom} $\vert$ \texttt{synthetic} $\vert$ \texttt{mixed}), dataset name/URL, number of patients/sequences/frames/annotations, annotation type (\texttt{manual} $\vert$ \texttt{semi-automatic} $\vert$ \texttt{automatic} $\vert$ \texttt{none}), annotator count, inter-rater agreement reported (bool), train/test split description, data augmentation used (bool), class imbalance addressed (bool)
-\item[\texttt{task}] primary task (one of the fifteen task categories used throughout Section~\ref{sec:results}, or \texttt{other}), secondary tasks (list), task description, clinical application
-\item[\texttt{method}] architecture name and description, input type (\texttt{2D\_frame} $\vert$ \texttt{3D\_sequence} $\vert$ \texttt{optical\_flow} $\vert$ \texttt{multi-frame\_stack} $\vert$ \texttt{mixed} $\vert$ \texttt{other}), temporal modelling (bool) and mechanism, pretrained backbone/dataset, training supervision (\texttt{fully\_supervised} $\vert$ \texttt{self\_supervised} $\vert$ \texttt{weakly\_supervised} $\vert$ \texttt{semi\_supervised} $\vert$ \texttt{unsupervised} $\vert$ \texttt{other}), loss functions, post-processing steps, computational framework, hardware used, inference time reported (bool), model complexity reported (bool)
-\item[\texttt{evaluation}] all reported metrics, primary metric and value, full list of (metric, value, dataset split) triples, comparator methods, ablation study performed (bool), statistical significance reported (bool), validation design (\texttt{held\_out\_test} $\vert$ \texttt{cross\_validation} $\vert$ \texttt{prospective} $\vert$ \texttt{external\_validation} $\vert$ \texttt{other}), failure case analysis (bool)
-\item[\texttt{clinical\_validation}] clinical expert involved (bool), reader study performed (bool), patient outcome measured (bool), regulatory approval mentioned (bool), clinical deployment mentioned (bool)
-\item[\texttt{reproducibility}] open-source code/data (bool) and URLs, hyperparameters reported (bool), training details sufficient (bool)
-\item[\texttt{study\_quality}] stated limitations, stated future work
+\item[\texttt{study}] title, year, venue, publication type (journal, full conference paper, conference abstract, preprint, book chapter, other), whether the available text is a full paper, country of data.
+\item[\texttt{imaging}] modality (DSA, X-ray/fluoroscopy, both, other), anatomical territory (neurologic, cardiac, aortic/thoracic, abdominopelvic, peripheral, multi-region), acquisition geometry, frame rate, frames per sequence, vendors.
+\item[\texttt{dataset}] numbers of patients, sequences, images and centers, number of vendors, data origin (clinical, phantom, synthetic, mixed), public dataset used, data released, split level (patient, sequence, frame, site), annotation type, number and expertise of annotators, inter-rater agreement.
+\item[\texttt{task}] primary task (one of the ten categories in Figure~\ref{fig:task_distribution}, or other), secondary tasks, task description, clinical application.
+\item[\texttt{method}] architecture names and family, temporal-modeling category (Table~\ref{tab:temporal_taxonomy}) with a supporting quotation, input dimensionality, supervision, pretraining, synthetic training data, physics-informed design, multimodal inputs, class-imbalance handling, uncertainty quantification, explainability method, federated or privacy-preserving learning, use of language or vision--language models, inference-time reporting.
+\item[\texttt{evaluation}] validation design (internal split, cross-validation, external validation, prospective), up to 25 reported results of the proposed method (metric, value, value rescaled to 0--100, split, task), comparators, comparison with clinicians, ablation, statistical testing, confidence intervals, subgroup or per-class reporting, failure analysis.
+\item[\texttt{clinical}] study design (retrospective, prospective, randomized), reader study, patient outcome measured, clinical deployment or live use, regulatory considerations.
+\item[\texttt{reproducibility}] code and model-weight availability, hyperparameters reported.
+\item[\texttt{gaps}] for each research gap G1--G12 (Table~\ref{tab:research_gaps}), whether the article documents it, addresses it, both or neither, with a verbatim quotation and its section.
+\item[\texttt{claim2024}] the 44 CLAIM 2024 items, each scored as reported, not reported or not applicable; a CLAIM cluster counts as met when at least half of its applicable items are reported.
 \end{description}
 
-\medskip
-The model was instructed to respond only with a single JSON object matching this schema, with no surrounding commentary or markdown fences.
-\end{quote}
+The complete instructions, the JSON schema and the validator are provided with the extraction outputs (Appendix~\ref{appendix:code_data_availability}).
 
-The full field-level system prompt and its JSON schema literal, along with the JSON-repair fallback prompt, are implemented verbatim in \texttt{04\_stage2\_extraction.py} in the project code repository (Appendix~\ref{appendix:code_data_availability}), which is the authoritative source in the event of any discrepancy with the summary above.
-
-\section{Appendix E. Code and Data Availability}
+\section{Code and Data Availability}
 \label{appendix:code_data_availability}
 
-All screening and extraction code used in this review, including the title/abstract screening pipeline, the stage 2 full-text extraction pipeline (\texttt{04\_stage2\_extraction.py}), the CLAIM 2024 assessment code, the inter-rater validation analysis (\texttt{annotation\_consistency\_calculate.py}), and all figure/table generation scripts, is available at \url{https://github.com/Nafiz43/AngioVision}. The repository is publicly accessible; no formal open-source license or tagged/archived (e.g., Zenodo) release corresponding to this manuscript version has been assigned at the time of writing.
+All code used in this review is publicly available in the data repository described below: the database search and title--abstract screening pipeline (\texttt{screening/pipeline/}), the dual-review agreement analysis (\texttt{screening\_agreement.py}), the full-text extraction instructions, JSON schema and validator (\texttt{INSTRUCTIONS.md}, \texttt{schema.json}, \texttt{validate.py}), and the scripts that regenerate every figure and table from the extraction records, including the CLAIM 2024 cohort comparison (\texttt{analysis/run\_all.sh}).
 
-The structured dataset produced by the extraction pipeline (one JSON record per record reaching full-text extraction, following the schema in Appendix~\ref{appendix:extraction_schema}) is provided as \texttt{results/stage2\_results.jsonl} in the same repository. A small number of records require manual title verification (see the note in Appendix~\ref{appendix:included_studies}); this does not affect the completeness of the extracted fields used in the analyses reported here. Screening-stage outputs (\texttt{results/stage1\_results.csv}) and the CLAIM 2024 reporting-quality assessment outputs are provided alongside it.
+The review data are publicly available at \url{https://github.com/Nafiz43/angiovision-slr-data}: the stage-1 decision for each of the 5,064 screened records together with the final eligibility decision; the 491-record validation sample with both reviewers' decisions, the consensus labels and the agreement script; the extraction instructions, JSON schema and validator; and the 120 validated extraction records (one JSON file per study, including the CLAIM 2024 item scores). Full texts are not redistributed for copyright reasons.
 
-\section{Appendix F. List of Included Studies}
+\section{List of Included Studies}
 \label{appendix:included_studies}
 
-The full reference list in the bibliography constitutes the list of included studies: every included study is cited at least once, either narratively in the text or via the aggregate \texttt{nocite} block in \texttt{00-main.tex} (documented at that location) for studies discussed only through summary figures/tables rather than individual in-text citation. At the time of writing, 187 of the 194 included studies were confirmed to resolve to a bibliography entry by automated title matching against \texttt{results/stage2\_results.jsonl}; the remaining seven records did not have a title recovered by the automated full-text extraction pipeline (recorded as ``Untitled'' in the extraction output). These seven entries are being reconciled manually against the source PDFs, and a dedicated table of all 194 included studies (citation key, title, year, venue, primary task, and architecture) will be included as supplementary material in the code repository.
+The included studies are listed in the bibliography: every one of the 120 included studies has a bibliography entry, whether it is cited individually in the text or contributes only to the aggregate figures and tables. Apart from these, the bibliography contains the background references of Section~\ref{sec:introduction} and the methodological references of the Methodology and Results sections. The record identifier, title, year, venue and DOI of each included study are given in \texttt{extraction/manifest.csv} in the public data repository. The two eligible records whose full text could not be retrieved (R4468, R4475) are not part of the corpus and appear only in Supplementary Table~S1.
