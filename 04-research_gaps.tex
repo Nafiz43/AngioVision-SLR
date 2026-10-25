@@ -1,59 +1,14 @@
-\subsection{Research Gaps and Future Research Implications}
+\subsection{Research Gaps}
 \label{sec:research_gaps}
 
 \begin{figure*}[htbp]
   \centering
   \includegraphics[height=11.5cm,width=\textwidth]{figs/venn_diagram.pdf}
-  \caption{Thematic clustering of research gaps and mitigation strategies identified in the systematic review of AI-based angiographic and fluoroscopic image analysis. The four overlapping circles represent thematic clusters: \textbf{C1 --- Data Infrastructure} (gaps G1, G2, G10; lavender); \textbf{C2 --- Modeling \& Learning} (gaps G3, G4, G5, G9; green); \textbf{C3 --- Clinical Deployment} (gaps G6, G7, G8; salmon); and \textbf{C4 --- Outcome \& Reporting} (gaps G11, G12; amber). Overlap regions carry the strategy codes (S1--S14) shared across the intersecting clusters: the C1--C2 intersection is addressed by S1 (large-scale multi-institutional datasets); the C2--C3 intersection by S8 (annotation-efficient learning) and S9 (uncertainty quantification); and the C3--C4 intersection by S10--S13 (prospective
-  trials, outcome-supervised training, longitudinal cohort datasets, and
-  vision-language integration). Strategy S1 also sits at the centre of
-  all four clusters, reflecting its foundational role across every
-  thematic domain. Strategies unique to each cluster are listed within
-  the respective circle: C1 uniquely requires S2 (challenge benchmarks),
-  S4 (federated learning), and S5 (domain adaptation); C2 uniquely
-  requires S3 (foundation model pretraining), S6 (video Transformer
-  architectures), S7 (physics-informed networks), and S14 (generative
-  augmentation). Dashes (---) denote cluster intersections for which no
-  shared strategy was identified across the reviewed literature. Gap codes
-  correspond to Table~\ref{tab:research_gaps}; strategy codes S1--S14 are
-  defined in the figure legend and summarize the mitigation strategies
-  listed in that table.}
+  \caption{Research gaps grouped into four clusters, with mitigation strategies. C1, Data Infrastructure (G1, G2, G10); C2, Modeling \& Learning (G3, G4, G5, G9); C3, Clinical Deployment (G6, G7, G8); C4, Outcome \& Reporting (G11, G12). Strategy codes (S1--S14, defined in the legend) sit in the clusters or overlaps they serve; dashes mark overlaps with no shared strategy. Gap codes follow Table~\ref{tab:research_gaps}.}
   \label{fig:venn_gaps}
 \end{figure*}
 
-Twelve research gaps, identified through topic modeling of the included studies and a synthesis of their stated limitations and future work (Section~\ref{sec:full-text-screening}), can be organized into four thematic clusters that reflect the structural
-layers at which the current literature exhibits shortcomings (Figure~\ref{fig:venn_gaps}). The first cluster, \textit{Data
-Infrastructure} (C1), encompasses gaps in dataset size, public
-availability, cross-institutional generalizability, and
-privacy-preserving learning (G1, G2, G10); these are upstream constraints
-whose resolution is a precondition for progress in every other area. The
-second cluster, \textit{Modeling \& Learning} (C2), groups the
-methodological gaps that limit what can be done even when data are
-available: inadequate temporal modeling of angiographic video sequences,
-the restriction to 2D projections, annotation scarcity, and class
-imbalance (G3, G4, G5, G9). The third cluster, \textit{Clinical
-Deployment} (C3), captures the gap between technical feasibility and
-clinical readiness: the near-total absence of prospective validation, the
-lack of model explainability, and the failure to integrate complementary
-imaging modalities (G6, G7, G8). The fourth cluster, \textit{Outcome \&
-Reporting} (C4), addresses the most distal translation gap: the
-disconnection between imaging-level task performance and the clinical
-outcome prediction and structured reporting capabilities that would make
-AI tools genuinely useful at the point of care (G11, G12). As shown in
-Figure~\ref{fig:venn_gaps}, these clusters are not independent. The
-C1--C2 intersection is bridged by the construction of large-scale
-annotated datasets (S1), which simultaneously enables better model
-training and reduces annotation burden. The C2--C3 intersection is
-addressed by annotation-efficient learning strategies (S8) and
-uncertainty quantification frameworks (S9), both of which are
-prerequisites for safe clinical deployment of models trained under data
-constraints. The C3--C4 intersection is where prospective trial design
-(S10), outcome-supervised training (S11), longitudinal cohort datasets
-(S12), and vision-language integration (S13) converge, reflecting the
-interdependence of clinical validation and outcome reporting. Strategy S1
-occupies the centre of all four clusters because the availability of
-large, diverse, well-annotated angiographic datasets is the single
-intervention with the broadest leverage across every identified gap. Table~\ref{tab:research_gaps} catalogs the supporting evidence for each gap and outlines the corresponding future research directions.
+We identified twelve research gaps and grouped them into four clusters (Figure~\ref{fig:venn_gaps}). \textit{Data Infrastructure} (C1: G1, G2, G10) covers dataset size and availability, generalization across sites and privacy-preserving learning; these are preconditions for progress elsewhere. \textit{Modeling \& Learning} (C2: G3, G4, G5, G9) covers limited temporal modeling, the restriction to 2D projections, annotation scarcity and class imbalance. \textit{Clinical Deployment} (C3: G6, G7, G8) covers the lack of prospective validation, explainability and multi-modal integration. \textit{Outcome \& Reporting} (C4: G11, G12) covers the gap between image-level performance and clinical outcomes and structured reporting. The clusters overlap: large annotated datasets (S1) serve all four, annotation-efficient learning (S8) and uncertainty quantification (S9) link modeling to deployment, and prospective trials, outcome-supervised training, longitudinal cohorts and vision--language models (S10--S13) link deployment to outcomes. Table~\ref{tab:research_gaps} lists the evidence for each gap and the corresponding strategies.
 
 % A systematic analysis of the limitations and future work directions
 % reported across the 194 included studies reveals a set of recurring,
@@ -77,9 +32,7 @@ intervention with the broadest leverage across every identified gap. Table~\ref{
                   >{\raggedright\arraybackslash}p{6.2cm}
                   >{\raggedright\arraybackslash}p{6.2cm}}
 
-\caption{Evidence-driven research gaps and proposed future directions
-identified from the systematic review of AI-based angiographic and
-fluoroscopic image analysis.}
+\caption{Research gaps, supporting evidence from the included studies, and mitigation strategies.}
 \label{tab:research_gaps} \\
 
 \toprule
@@ -153,12 +106,12 @@ fluoroscopic image analysis.}
 &
 \tabitem Angiographic projections collapse 3D vascular anatomy, introducing foreshortening, vessel overlap, and depth loss \cite{R1263,R1503,R1565,ref60,ref97,ref35}.\newline
 \tabitem The vast majority of methods operate exclusively on single-plane 2D projections \cite{R3129,ref148,ref43,ref78,R4557}.\newline
-\tabitem Robust 3D reconstruction from monoplane or biplane projections under intraoperative time constraints remains unsolved \cite{R3164,R2466,ref46,ref96}.\newline
+\tabitem Accurate 3D reconstruction from monoplane or biplane projections under intraoperative time constraints remains unsolved \cite{R3164,R2466,ref46,ref96}.\newline
 \tabitem 2D/3D registration accuracy is insufficient for routine intraoperative use \cite{ref40,R3910,ref99,ref92}.
 &
 \tabitem Develop multi-view learning architectures that fuse information across projection angles \cite{ref148,R4557,ref35,R2466}.\newline
 \tabitem Investigate physics-informed networks incorporating known projection geometry and contrast agent kinetics \cite{ref43,R3164}.\newline
-\tabitem Leverage rotational angiographic acquisitions for temporally informed 3D reconstruction \cite{ref152,R3338}.\newline
+\tabitem Use rotational angiographic acquisitions for temporally informed 3D reconstruction \cite{ref152,R3338}.\newline
 \tabitem Systematically combine intraoperative cone-beam CT with fluoroscopic AI pipelines to provide 3D context \cite{R2466,R3164,ref39}.
 \\
 \dashedrule
@@ -166,8 +119,8 @@ fluoroscopic image analysis.}
 % ---- Row 5 ----
 \textbf{G5:} Annotation Scarcity \& Annotation-Efficient Learning
 &
-\tabitem Manual annotation requires substantial physician time and specialized expertise per labeled study \cite{R0521,ref34,ref56,R4204,R4208,ref162}.\newline
-\tabitem Annotation is subject to significant intra- and inter-observer variability, rarely quantified in included studies \cite{ref28,R1213,ref208,R1674,ref75,R3661}.\newline
+\tabitem Manual annotation takes physician time and specialist expertise for every labeled study \cite{R0521,ref34,ref56,R4204,R4208,ref162}.\newline
+\tabitem Annotation varies within and between observers, rarely quantified in included studies \cite{ref28,R1213,ref208,R1674,ref75,R3661}.\newline
 \tabitem Synthetic data generation partially addresses scarcity, but synthetic-to-real domain gaps persist \cite{ref64,ref52,ref74}.\newline
 \tabitem Semi-supervised and self-supervised methods are underrepresented across angiographic analysis tasks \cite{ref2,ref57,R2411}.
 &
@@ -203,7 +156,7 @@ fluoroscopic image analysis.}
 &
 \tabitem Treat uncertainty quantification as a core design requirement, communicating confidence alongside every prediction \cite{ref161,ref46}.\newline
 \tabitem Develop failure detection systems that flag out-of-distribution inputs for mandatory human review \cite{ref161}.\newline
-\tabitem Design intermediate representations aligned with clinically meaningful anatomical and hemodynamic concepts \cite{R4204,R0521}.\newline
+\tabitem Design intermediate representations aligned with anatomical and hemodynamic concepts clinicians use \cite{R4204,R0521}.\newline
 \tabitem Evaluate whether explainability outputs demonstrably improve clinical decision-making in prospective user studies \cite{R1939}.
 \\
 \dashedrule
@@ -214,12 +167,12 @@ fluoroscopic image analysis.}
 \tabitem Studies predominantly process angiographic images in isolation, discarding complementary clinical data \cite{ref91,R0643,R1263,ref71}.\newline
 \tabitem Pressure wire measurements, IVUS, OCT, CTA, ECG, and laboratory biomarkers are routinely available but unused \cite{ref198,ref25,ref32,R1609,ref46,shi2021temporal}.\newline
 \tabitem Missing modalities at inference time, common in clinical practice, are rarely addressed \cite{R2411}.\newline
-\tabitem Longitudinal multi-modal datasets linking intraoperative imaging to procedural outcomes are essentially absent \cite{ref62,ref30}.
+\tabitem Longitudinal multi-modal datasets linking intraoperative imaging to procedural outcomes are almost absent \cite{ref62,ref30}.
 &
 \tabitem Develop architectures capable of fusing imaging, hemodynamic, and structured clinical data with explicit handling of missing modalities \cite{ref42,R0643,ref76,ref102}.\newline
 \tabitem Construct longitudinal multi-modal cohort datasets linking angiographic sequences to post-procedural outcomes \cite{R0643,ref76}.\newline
 \tabitem Explore vision-language model architectures for integrating free-text clinical notes with imaging features \cite{R0643}.\newline
-\tabitem Define outcome-oriented multi-modal training objectives that directly optimize for clinically meaningful predictions \cite{ref42,ref127}.
+\tabitem Define outcome-oriented multi-modal training objectives that directly target clinical outcomes \cite{ref42,ref127}.
 \\
 \dashedrule
 
@@ -262,7 +215,7 @@ fluoroscopic image analysis.}
 \tabitem Outcome-supervised training objectives have not been systematically explored in the angiographic domain \cite{ref79}.
 &
 \tabitem Construct longitudinal datasets linking intraoperative angiographic images to post-procedural endpoints including re-intervention rates and mortality \cite{ref42,ref76,ref102}.\newline
-\tabitem Develop outcome-supervised training objectives that directly optimize for clinically meaningful event prediction \cite{R1263,R1609,ref72,R0643}.\newline
+\tabitem Develop outcome-supervised training objectives that directly target clinical events \cite{R1263,R1609,ref72,R0643}.\newline
 \tabitem Apply imaging biomarker discovery workflows combining feature extraction with survival and outcome modeling \cite{R1263,ref76,ref28}.\newline
 \tabitem Integrate procedural databases and electronic health record data with angiographic image archives to enable outcome-linked training \cite{R0643,ref127}.
 \\
@@ -284,10 +237,10 @@ fluoroscopic image analysis.}
 
 \end{longtable}
 
-\subsection{Toward an Actionable Roadmap}
+\subsection{Roadmap}
 \label{sec:actionable_roadmap}
 
-While Table~\ref{tab:research_gaps} documents the evidence base and candidate mitigation strategies for each gap, it does not by itself prioritize where the field should act first or specify how progress could be measured. Table~\ref{tab:cbm_roadmap} distills this analysis into a compact, actionable roadmap: for each gap, it reports the number of included studies documenting the gap in the literature (Evidence Count: the number of included studies whose full text explicitly documents the gap, each supported by a verbatim quotation recorded during extraction), the clinical risk of leaving the gap unaddressed, the corresponding computational opportunity, and a concrete benchmark or evaluation recommendation that would make progress on the gap measurable. Gaps with the largest evidence bases (G2, G1, G3; 68, 65 and 63 of the 120 studies with full text) represent the most extensively documented structural barriers in the current literature, whereas gaps with a narrow evidence base (G12, G10, G11; 2, 8 and 9 studies) reflect emerging but still underexplored directions.
+Table~\ref{tab:cbm_roadmap} turns each gap into a clinical risk, a computational opportunity and a benchmark that would make progress measurable. Its evidence count is the number of included studies whose full text documents the gap, each backed by a verbatim quote. The best-documented gaps are G2, G1 and G3 (68, 65 and 63 of 120 studies); G12, G10 and G11 (2, 8 and 9 studies) are emerging directions with little evidence so far.
 
 \footnotesize
 \begin{longtable}{>{\raggedright\arraybackslash}p{2.1cm}
@@ -296,7 +249,7 @@ While Table~\ref{tab:research_gaps} documents the evidence base and candidate mi
                   >{\raggedright\arraybackslash}p{3.95cm}
                   >{\raggedright\arraybackslash}p{4.1cm}}
 
-\caption{Actionable roadmap synthesizing each research gap identified in Table~\ref{tab:research_gaps} into clinical risk, computational opportunity, and a concrete benchmark or evaluation recommendation. Evidence Count is the number of included studies (of the 120 with retrievable full text) whose full text explicitly documents each gap.}
+\caption{Roadmap for each research gap: clinical risk, computational opportunity and a benchmark or evaluation recommendation. Evidence count is the number of included studies whose full text documents the gap.}
 \label{tab:cbm_roadmap} \\
 
 \toprule
@@ -384,7 +337,7 @@ Longitudinal cohort evaluation linking imaging-derived predictions to real clini
 \dashedrule
 
 \textbf{G12} Large Language Models \& Structured Reporting & 2 &
-With only one included study using a language model, and only as a frozen report encoder, there is essentially no evidence base for LLM-assisted angiographic reporting, so its safety and reliability for clinical use is unknown. &
+With only one included study using a language model, and only as a frozen report encoder, there is almost no evidence base for LLM-assisted angiographic reporting, so its safety and reliability for clinical use is unknown. &
 Open-source LLM and vision-language pipelines for angiographic report structuring and finding extraction. &
 Benchmark open-source against proprietary models on diverse international angiographic report corpora using a standardized reporting ontology. \\
 

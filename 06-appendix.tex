@@ -1,13 +1,13 @@
 \section{Reproducible Search Log and Database-Specific Queries}
 \label{appendix:search_log}
 
-This appendix provides the exact, database-specific queries, execution dates, filters, and retrieval statistics used for the structured search described in Section~\ref{sec:search}, to allow the search to be independently audited, reproduced, or extended to additional databases.
+This appendix gives the exact queries, dates, filters and retrieval counts of the search described in Section~\ref{sec:search}.
 
 \subsection{PubMed/MEDLINE}
 
 \textbf{Execution date:} 2026-05-25. \textbf{Interface:} NCBI Entrez E-utilities (\texttt{esearch}), via the Biopython \texttt{Bio.Entrez} client.
 
-\textbf{Filters applied:} publication date (\texttt{pdat}) restricted to 2000--3000 (i.e., 2000 onward, with no practical upper bound other than the retrieval date), and language restricted to English (\texttt{english[lang]}). No study-type, article-type, or subject-heading filters were applied.
+\textbf{Filters applied:} publication date from 2000 onward (\texttt{pdat} 2000--3000) and English language. No study-type or subject-heading filters.
 
 \begin{quote}
 \small\texttt{(angiograph*[tiab] OR fluoroscop*[tiab] OR "digital subtraction angiography"[tiab] OR DSA[tiab]) AND ("deep learning"[tiab] OR "machine learning"[tiab] OR CNN[tiab] OR transformer[tiab] OR "artificial intelligence"[tiab] OR AI[tiab]) AND ("2000"[pdat] : "3000"[pdat]) AND english[lang]}
@@ -19,7 +19,7 @@ This appendix provides the exact, database-specific queries, execution dates, fi
 
 \textbf{Execution date:} 2026-05-25. \textbf{Interface:} Semantic Scholar Graph API v1 (\texttt{/paper/search} endpoint).
 
-\textbf{Filters applied:} publication year restricted to 2000--2026. No venue, study-type, or field-of-study filters were applied. Because the Semantic Scholar API does not support the same field-tagged Boolean syntax as PubMed, the search was decomposed into 22 shorter, relaxed free-text queries combining an imaging term (angiography, DSA, or fluoroscopy) with an AI/ML term, executed independently and merged. For each query the first 100 relevance-ranked results were retained (the API page size), and records returned by more than one query were counted once by Semantic Scholar paper identifier before the total below. Decomposing the query trades precision for recall, consistent with the goal of maximizing sensitivity during automated retrieval and deferring precision to the downstream LLM-assisted screening stage.
+\textbf{Filters applied:} publication year 2000--2026; no venue, study-type or field filters. The API does not support field-tagged Boolean syntax, so we ran the 22 free-text queries below, each pairing an imaging term with an AI term. We kept the first 100 relevance-ranked results of each query (the API page size) and counted records returned by several queries once, by Semantic Scholar paper identifier.
 
 \begin{quote}
 \raggedright\small\texttt{
@@ -35,14 +35,14 @@ Records from both sources were pooled and deduplicated first by DOI (case-insens
 
 \subsection{Sources Not Queried}
 
-\textbf{arXiv} was not queried directly. This was a deliberate scope decision to prioritize peer-reviewed venues over unreviewed preprints, rather than an oversight; an arXiv query string was drafted and is retained in the fetcher codebase for future extensions of this search but was not executed for the present review. \textbf{Scopus} and \textbf{Web of Science} were also not queried as part of the automated retrieval pipeline; we note this explicitly as a scope limitation rather than a claim of comprehensive database coverage. As reported in Section~\ref{sec:search}, a retrospective venue audit of the 120 included studies found that Semantic Scholar's aggregation surfaced substantial IEEE (11 studies, 9.2\%) and SPIE (11 studies, 9.2\%) content, but only three MICCAI records and one other Springer LNCS workshop paper and no ACM-venue record, so coverage of ACM- and MICCAI-specific venues remains a limitation of the present search strategy.
+We did not query arXiv, to prioritize peer-reviewed work, nor Scopus or Web of Science. Semantic Scholar nonetheless returned IEEE and SPIE work well, but MICCAI and ACM venues are underrepresented (Section~\ref{subsec:venues}).
 
 \section{Stage 1 Screening Prompts}
 \label{appendix:screening_prompts}
 
 This appendix reproduces verbatim the system prompts used for title--abstract screening with Qwen3.8 (27B) through Ollama at temperature 0 (code in the \texttt{screening/pipeline} folder of the public data repository). Each record was sent as a user message containing only its title and abstract. The model answered every criterion with YES or NO in a fixed JSON object; malformed responses were sent to a repair prompt, and a response that still could not be parsed was treated as failing the inclusion gate.
 
-Every record was first assessed by the inclusion gate (Prompt A). Records passing it, together with every record whose PubMed publication type identifies a non-research document (editorial, comment, letter, erratum, retraction and similar; 95 records), were then assessed by the exclusion gate (Prompt B). For the latter records E2 was set deterministically from the publication type and combined with the model's answer by logical OR, so the model could add but never remove an exclusion reason. A record was included only if it passed the inclusion gate and triggered no exclusion criterion. Note that the general statement in both prompts that the defaults keep a silent record in the review holds for I1, I3 and E1--E3 only; the defaults of I2 and I4 are NO (Section~\ref{sec:title-abstract-sceening}).
+Every record was first assessed by the inclusion gate (Prompt A). Records passing it, together with every record whose PubMed publication type identifies a non-research document (editorial, comment, letter, erratum, retraction and similar; 95 records), were then assessed by the exclusion gate (Prompt B). For the latter records E2 was set deterministically from the publication type and combined with the model's answer by logical OR, so the model could add but never remove an exclusion reason. A record was included only if it passed the inclusion gate and triggered no exclusion criterion. The prompts state that the defaults keep a silent record in the review; this holds for I1, I3 and E1--E3, while the defaults of I2 and I4 are NO.
 
 \subsection{Prompt A: Inclusion Gate}
 \begin{lstlisting}
@@ -200,16 +200,12 @@ Rules:
 \section{Title/Abstract Screening Validation Sample}
 \label{appendix:screening_validation}
 
-This appendix lists the dual human review of the title/abstract screening described in Section~\ref{sec:validation}: a census of all 134 records the pipeline labelled INCLUDE plus a random sample of 357 of the 4,930 records it labelled EXCLUDE (Cochran's formula with finite-population correction, $p=0.5$, $e=0.05$~\cite{cochran1977sampling}), 491 records in total. Each record was screened independently by two reviewers (R1, an interventional radiologist; R2, a biomedical AI researcher), blind to the pipeline decision; disagreements were resolved by discussion to give the consensus (Final) label.
-
-The record-level decisions for all 491 records (record identifier, title, both reviewers' decisions, the consensus label and the pipeline decision) are provided in Supplementary Table~S1 and in the public data repository (Appendix~\ref{appendix:code_data_availability}).
+The 491 records of the screening validation (Section~\ref{sec:validation}), all 134 pipeline inclusions and 357 sampled exclusions, are listed in Supplementary Table~S1 and in the public data repository with both reviewers' decisions (R1, interventional radiologist; R2, biomedical AI researcher), the consensus label and the pipeline decision.
 
 \section{Stage 2 Full-Text Data Extraction Schema}
 \label{appendix:extraction_schema}
 
-This appendix documents the structured data extraction stage that followed full-text screening. Each of the 120 included studies with retrievable full text was converted to Markdown and processed by Claude Opus 5.5~\cite{anthropic2026opus55} (high reasoning effort) in its own freshly initialized context, containing only the extraction instructions, the JSON schema and that one article. The model wrote a single JSON object per study; every object was validated against the JSON schema and every verbatim quotation was checked programmatically against the article text, and objects failing either check were corrected and re-validated before acceptance.
-
-\subsection{Extraction Schema}
+Each study was extracted into one JSON object (Section~\ref{sec:full-text-screening}) with the following fields.
 
 \begin{description}
 \item[\texttt{study}] title, year, venue, publication type (journal, full conference paper, conference abstract, preprint, book chapter, other), whether the available text is a full paper, country of data.
@@ -229,11 +225,9 @@ The complete instructions, the JSON schema and the validator are provided with t
 \section{Code and Data Availability}
 \label{appendix:code_data_availability}
 
-All code used in this review is publicly available in the data repository described below: the database search and title--abstract screening pipeline (\texttt{screening/pipeline/}), the dual-review agreement analysis (\texttt{screening\_agreement.py}), the full-text extraction instructions, JSON schema and validator (\texttt{INSTRUCTIONS.md}, \texttt{schema.json}, \texttt{validate.py}), and the scripts that regenerate every figure and table from the extraction records, including the CLAIM 2024 cohort comparison (\texttt{analysis/run\_all.sh}).
-
-The review data are publicly available at \url{https://github.com/Nafiz43/angiovision-slr-data}: the stage-1 decision for each of the 5,064 screened records together with the final eligibility decision; the 491-record validation sample with both reviewers' decisions, the consensus labels and the agreement script; the extraction instructions, JSON schema and validator; and the 120 validated extraction records (one JSON file per study, including the CLAIM 2024 item scores). Full texts are not redistributed for copyright reasons.
+All data and code are public at \url{https://github.com/Nafiz43/angiovision-slr-data}: the screening decision for each of the 5,064 records, the 491-record validation sample with the agreement script, the search and screening pipeline (\texttt{screening/pipeline/}), the extraction instructions, schema and validator, the 120 extraction records, and the scripts that regenerate every figure and table (\texttt{analysis/run\_all.sh}). Full texts are not shared, for copyright reasons.
 
 \section{List of Included Studies}
 \label{appendix:included_studies}
 
-The included studies are listed in the bibliography: every one of the 120 included studies has a bibliography entry, whether it is cited individually in the text or contributes only to the aggregate figures and tables. Apart from these, the bibliography contains the background references of Section~\ref{sec:introduction} and the methodological references of the Methodology and Results sections. The record identifier, title, year, venue and DOI of each included study are given in \texttt{extraction/manifest.csv} in the public data repository. The two eligible records whose full text could not be retrieved (R4468, R4475) are not part of the corpus and appear only in Supplementary Table~S1.
+All 120 included studies appear in the bibliography, whether cited in the text or only counted in figures and tables; the remaining entries are background and methods references. \texttt{extraction/manifest.csv} in the data repository lists each study's identifier, title, year, venue and DOI.
