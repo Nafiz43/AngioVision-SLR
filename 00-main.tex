@@ -94,8 +94,8 @@
 % \usepackage[authoryear,longnamesfirst]{natbib}
 \usepackage[numbers]{natbib}
 \usepackage{xurl}
-% anonymized submission: suppress the empty ORCID footnote; delete when authors are restored
-\RenewDocumentCommand\printorcid{}{}
+% print "Email addresses:" as text instead of the cas icon images, which are not in this repo
+\ExplSyntaxOn\bool_gset_true:N \g_stm_nologo_bool\ExplSyntaxOff
 
 %%%Author macros
 \def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
@@ -118,48 +118,37 @@
 \shorttitle{SLR on Angiographic Sequence Analysis}
 
 % Short author
-% \shortauthors{Khan, Filkov and Goldman}
+\shortauthors{N.I. Khan, V. Filkov and R.E. Goldman}
 
 % Main title of the paper
 \title[mode = title]{A Systematic Literature Review on Methods for Angiographic Sequence Analysis}
 
+\author[1]{Nafiz Imtiaz Khan}[orcid=0000-0003-0149-6012]
+\ead{nikhan@ucdavis.edu}
+\credit{Conceptualization, Methodology, Software, Formal analysis, Investigation, Data curation, Writing -- original draft}
 
+\author[1]{Vladimir Filkov}[orcid=0000-0003-0492-4393]
+\ead{filkov@cs.ucdavis.edu}
+\credit{Conceptualization, Supervision, Writing -- review \& editing}
 
-% \author[1]{Nafiz Imtiaz Khan}[orcid=0000-0003-0149-6012]
-% \ead{nikhan@ucdavis.edu}
-% \author[1]{Vladimir Filkov}[orcid=0000-0003-0492-4393]
-% \author[3]{Roger Eric Goldman}[orcid=0000-0003-0394-3744]
-% \cormark[1]
-% \fnmark[1]
+\author[2]{Roger Eric Goldman}[orcid=0000-0003-0394-3744]
+\cormark[1]
+\ead{regoldman@health.ucdavis.edu}
+\credit{Conceptualization, Methodology, Validation, Supervision, Funding acquisition, Writing -- review \& editing}
 
+\affiliation[1]{organization={Department of Computer Science, University of California, Davis},
+            city={Davis},
+            postcode={95616},
+            state={CA},
+            country={USA}}
 
-% \credit{Conceptualization, Methodology, Software, Formal Analysis, Writing -- Original Draft}
+\affiliation[2]{organization={Department of Radiology, School of Medicine, University of California, Davis},
+            city={Sacramento},
+            postcode={95817},
+            state={CA},
+            country={USA}}
 
-% \affiliation[1]{organization={Department of Computer Science, University of California, Davis},
-%             addressline={},
-%             city={Davis},
-%             postcode={95616},
-%             state={CA},
-%             country={USA}}
-% \ead{}
-% \ead[url]{}
-
-% % Credit authorship
-% \credit{Supervision, Conceptualization, Writing -- Review \& Editing}
-
-% \ead[url]{}
-
-% \credit{Supervision, Conceptualization, Methodology, Clinical Expertise, Writing -- Review \& Editing}
-
-% % Address/affiliation
-% \affiliation[2]{organization={Department of Radiology, School of Medicine, University of California, Davis},
-%             city={Sacramento},
-%             postcode={95817},
-%             state={CA},
-%             country={USA}}
-
-% \cortext[1]{Corresponding author}
-% \fntext[1]{}
+\cortext[1]{Corresponding author}
 
 \begin{abstract}
 Angiographic imaging, including digital subtraction angiography (DSA) and fluoroscopy, records contrast propagation over time, yet it is unclear how artificial intelligence (AI) methods use this temporal information. We conducted a PRISMA 2020-guided systematic review of computational methods that analyze angiographic image sequences and evaluate them against data. PubMed/MEDLINE and Semantic Scholar were searched from January 2000 to May 2026, identifying 5,829 records. Title and abstract screening by a large language model was validated by two independent human reviewers (inter-rater Cohen's $\kappa=0.98$), yielding 122 eligible studies, of which the 120 with retrievable full text were included. Study characteristics and reporting quality (CLAIM 2024) were extracted with a large language model and audited by a human reviewer (97.1\% of audited values correct). No risk-of-bias tool was applied, and results were synthesized descriptively without meta-analysis. Publications grew sharply after 2020, with 78\% appearing from 2022 to 2026. Cardiac and neurologic applications account for nearly 90\% of studies, and only 4\% combine DSA with fluoroscopy. Most studies (80.8\%) use temporal information, so the open question is how time is modeled rather than whether: half of these rely on fixed operations such as frame stacking, registration or curve fitting, learned sequence models cluster in classification, and Transformer or state-space temporal models appear in only 8.3\% of studies, all published since 2023. External validation (15.8\%), code release (20.8\%) and data release (2.5\%) are uncommon, and heterogeneous datasets and metrics prevent comparison of reported performance. Estimated screening recall was 0.81, so some eligible studies may have been missed. We identify twelve research gaps and outline a roadmap toward reproducible, clinically deployable AI for angiography-guided interventions. Funding: RSNA (RSCH2306). Registration: none.
