@@ -112,7 +112,7 @@ fluoroscopic image analysis.}
 \tabitem Inconsistent evaluation protocols prevent measurement of field-wide progress \cite{R2411,ref100}.
 &
 \tabitem Construct and release large-scale multi-institutional angiographic datasets with standardized pixel-level annotations and defined train/test splits \cite{R0099,ref35,ref97}.\newline
-\tabitem Organize dedicated challenge benchmarks modeled on established medical image segmentation competitions.\newline
+\tabitem Organize dedicated challenge benchmarks modeled on established medical image segmentation competitions, building on the public datasets already reused by included studies \cite{ref15,ref211,ref64,R1222,ref48,R0099}.\newline
 \tabitem Mandate inter-rater reliability protocols in annotation guidelines to ensure label quality \cite{R1213}.\newline
 \tabitem Define standard evaluation metrics and phantom-versus-patient evaluation subsets \cite{R0058}.
 \\
@@ -159,7 +159,7 @@ fluoroscopic image analysis.}
 \tabitem Develop multi-view learning architectures that fuse information across projection angles \cite{ref148,R4557,ref35,R2466}.\newline
 \tabitem Investigate physics-informed networks incorporating known projection geometry and contrast agent kinetics \cite{ref43,R3164}.\newline
 \tabitem Leverage rotational angiographic acquisitions for temporally informed 3D reconstruction \cite{ref152,R3338}.\newline
-\tabitem Systematically combine intraoperative cone-beam CT with fluoroscopic AI pipelines to provide 3D context.
+\tabitem Systematically combine intraoperative cone-beam CT with fluoroscopic AI pipelines to provide 3D context \cite{R2466,R3164,ref39}.
 \\
 \dashedrule
 
@@ -188,7 +188,7 @@ fluoroscopic image analysis.}
 &
 \tabitem Design prospective clinical evaluation frameworks in collaboration between AI researchers and clinicians from the outset \cite{ref198,R4557}.\newline
 \tabitem Pursue randomized controlled trials comparing outcomes under standard-of-care versus AI-assisted decision-making \cite{ref48}.\newline
-\tabitem Engage regulatory bodies early to define the evidence standards required for clinical deployment.\newline
+\tabitem Engage regulatory bodies early to define the evidence standards required for clinical deployment \cite{R1362,ref95,R0570}.\newline
 \tabitem Develop AI interface designs that integrate model outputs into existing workflow without adding cognitive burden \cite{R1362,ref198}.
 \\
 \dashedrule
@@ -244,12 +244,12 @@ fluoroscopic image analysis.}
 \tabitem Patient privacy regulations and data governance barriers prevent centralization of large angiographic datasets \cite{ref52,ref75,ref95,ref162,R0570}.\newline
 \tabitem Federated learning for angiographic analysis is barely represented in the reviewed literature; only one study explicitly adopts this framework \cite{R2443}.\newline
 \tabitem Non-identical data distributions across institutions complicate federated model training \cite{R2443}.\newline
-\tabitem Auditability and accountability requirements for federated clinical AI systems are unaddressed.
+\tabitem Auditability and accountability requirements for federated clinical AI systems are unaddressed, including by the one federated study \cite{R2443}.
 &
 \tabitem Develop federated learning frameworks specifically tailored to large angiographic video inputs with efficient communication protocols \cite{R2443}.\newline
 \tabitem Evaluate differential privacy and secure multi-party computation approaches for their impact on model utility.\newline
-\tabitem Establish standardized data use agreements and federated audit mechanisms for cross-institutional AI training.\newline
-\tabitem Benchmark personalized federated approaches against centralized baselines as a function of institutional data heterogeneity.
+\tabitem Establish standardized data use agreements and federated audit mechanisms for cross-institutional AI training, since data protection currently prevents release or sharing of angiographic datasets \cite{ref75,ref162}.\newline
+\tabitem Benchmark personalized federated approaches against centralized baselines as a function of institutional data heterogeneity \cite{R2443}.
 \\
 \dashedrule
 
@@ -274,12 +274,12 @@ fluoroscopic image analysis.}
 \tabitem Language-model use is almost entirely unexplored; only one included study encodes procedural free-text reports with a pretrained language model, as one input of a mortality-prediction model \cite{R0643}.\newline
 \tabitem Free-text angiographic reports contain rich structured information routinely discarded in downstream analyses \cite{R0099,R0521}.\newline
 \tabitem That study draws on a cohort from a single country (South Korea) and uses frozen general-purpose encoders rather than models adapted to angiographic reporting \cite{R0643}.\newline
-\tabitem Multimodal vision-language models for integrated image-and-report reasoning have not been evaluated in this domain.
+\tabitem Multimodal vision-language models for integrated image-and-report reasoning have not been evaluated in this domain; the only study combining images and reports used frozen general-purpose encoders \cite{R0643}.
 &
 \tabitem Evaluate open-source LLMs and vision-language models for angiographic report structuring, finding extraction, and downstream decision support \cite{R0643}.\newline
-\tabitem Develop end-to-end pipelines that integrate structured imaging outputs with natural language generation for automated report synthesis.\newline
-\tabitem Construct standardized angiographic reporting ontologies to provide a shared vocabulary for cross-institutional NLP model training.\newline
-\tabitem Benchmark open-source models against proprietary baselines on diverse international angiographic report corpora.
+\tabitem Develop end-to-end pipelines that integrate structured imaging outputs with natural language generation for automated report synthesis, a use that included studies name but do not evaluate \cite{R0521,R4204}.\newline
+\tabitem Construct standardized angiographic reporting ontologies to provide a shared vocabulary for cross-institutional NLP model training; current studies extract labels such as stenosis grade or mTICI score from free-text clinical reports \cite{R0099,ref89}.\newline
+\tabitem Benchmark open-source models against proprietary baselines on diverse international angiographic report corpora \cite{R0100}.
 \\
 
 \end{longtable}
