@@ -17,17 +17,18 @@ from pathlib import Path
 from collections import Counter
 from typing import Dict, List, Tuple
 
+import textwrap
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # === GLOBAL FONT SETTINGS ===
 plt.rcParams.update({
-    "font.size":        14,
+    "font.size":        16,
     "axes.titlesize":   17,
     "axes.labelsize":   15,
-    "xtick.labelsize":  13,
-    "ytick.labelsize":  13,
+    "xtick.labelsize":  16,
+    "ytick.labelsize":  16,
     "legend.fontsize":  13,
 })
 
@@ -285,10 +286,11 @@ def plot_distribution(series: pd.Series, title: str, filename: Path, top_n: int 
     series = series[~series.str.lower().isin(["unknown", "other"])]
     counts = series.value_counts().head(top_n).sort_values()
 
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(7.2, 7.5) if len(counts) > 7 else (6.4, 5.5))
     colors = plt.cm.tab20(np.linspace(0, 1, len(counts)))
     counts.plot(kind="barh", color=colors)
-    plt.xlabel("Count", fontsize=15)
+    plt.gca().set_yticklabels([textwrap.fill(str(x), 23) for x in counts.index])
+    plt.xlabel("Count", fontsize=17)
     plt.ylabel("")
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
@@ -338,11 +340,11 @@ def run_topical_analysis(df: pd.DataFrame, norm_venue_counts: Counter, venue_typ
     plot_index[-1] = partial_label
     bar_colors = ["skyblue"] * (len(plot_values) - 1) + ["#DD8452"]
 
-    plt.figure(figsize=(9, 5))
+    plt.figure(figsize=(6.2, 4.3))
     plt.bar(plot_index, plot_values, color=bar_colors)
-    plt.xlabel("Year", fontsize=15)
-    plt.ylabel("Number of Papers", fontsize=15)
-    plt.xticks(rotation=45)
+    plt.xlabel("Year", fontsize=17)
+    plt.ylabel("Number of Papers", fontsize=17)
+    plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / FIGURES["temporal_trends"]["file"], dpi=300)
     plt.close()
@@ -366,7 +368,7 @@ def run_topical_analysis(df: pd.DataFrame, norm_venue_counts: Counter, venue_typ
     # Figure is placed at a single (double-column) width in the manuscript
     # (~3.4in). A narrower canvas with a narrower bar width means less
     # downscaling on print, so the text renders larger and more legible.
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(6.4, 5.2))
     x = np.arange(len(labels))
     width = 0.35  # Narrower bar width, avoids overlap on the smaller canvas
 
@@ -381,14 +383,14 @@ def run_topical_analysis(df: pd.DataFrame, norm_venue_counts: Counter, venue_typ
         rotation=45,
         ha="right",
         rotation_mode="anchor",
-        fontsize=14,
+        fontsize=16,
     )
     ax.set_ylabel("Number of Papers", fontsize=16, fontweight="bold")
     ax.set_xlabel("Venue", fontsize=16, fontweight="bold")
-    ax.legend(fontsize=14, loc="upper right")
-    ax.tick_params(axis="y", labelsize=14)
+    ax.legend(fontsize=16, loc="upper right")
+    ax.tick_params(axis="y", labelsize=16)
 
-    fig.subplots_adjust(bottom=0.25)
+    fig.tight_layout()
     fig.savefig(
         OUTPUT_DIR / FIGURES["venue_stacked"]["file"],
         dpi=300,
@@ -461,8 +463,8 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     )
     plt.xscale("log")
     plt.yscale("log")
-    plt.xlabel("Venue Rank (log scale)",        fontsize=15, fontweight='bold')
-    plt.ylabel("Number of Papers (log scale)",  fontsize=15, fontweight='bold')
+    plt.xlabel("Venue Rank (log scale)",        fontsize=17, fontweight='bold')
+    plt.ylabel("Number of Papers (log scale)",  fontsize=17, fontweight='bold')
     ax.grid(True, which="major", linestyle="-", linewidth=0.8, color='#E5E7EB')
     plt.minorticks_on()
     ax.grid(True, which="minor", linestyle=":", linewidth=0.5, color='#F3F4F6')
@@ -471,7 +473,7 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     plt.close(fig)
 
     # Cumulative Dominance Curve with defined captions
-    fig2, ax2 = plt.subplots(figsize=(8, 6), facecolor='#FAFAFA')
+    fig2, ax2 = plt.subplots(figsize=(6.4, 5.2), facecolor='#FAFAFA')
     ax2.set_facecolor('#FAFAFA')
     
     # Main cumulative curve
@@ -487,15 +489,15 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     line_50 = plt.axhline(0.5, linestyle="--", color='#FF9F1C', linewidth=2.5, alpha=0.85, label="50% threshold (Yellow)")
     line_80 = plt.axhline(0.8, linestyle="--", color='#2EC4B6', linewidth=2.5, alpha=0.85, label="80% threshold (Green)")
     
-    plt.xlabel("Number of Venues (Top-k)",       fontsize=15, fontweight='bold')
-    plt.ylabel("Cumulative Share of Papers",      fontsize=15, fontweight='bold')
+    plt.xlabel("Number of Venues (Top-k)",       fontsize=17, fontweight='bold')
+    plt.ylabel("Cumulative Share of Papers",      fontsize=17, fontweight='bold')
     ax2.set_ylim(0, 1.05)
     ax2.grid(True, which="major", linestyle="-", linewidth=0.8, color='#E5E7EB')
     plt.minorticks_on()
     ax2.grid(True, which="minor", linestyle=":", linewidth=0.5, color='#F3F4F6')
     
     # Enhanced legend with caption definitions
-    ax2.legend(fontsize=12, loc="lower right", framealpha=0.95, edgecolor='black')
+    ax2.legend(fontsize=16, loc="lower right", framealpha=0.95, edgecolor='black')
     
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / "venue_cumulative_curve.pdf", dpi=300, facecolor='#FAFAFA')

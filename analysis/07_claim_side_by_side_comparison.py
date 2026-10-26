@@ -24,7 +24,7 @@ import subprocess, sys
 
 _ensure("matplotlib"); _ensure("numpy"); _ensure("pandas")
 
-import argparse, json, math, os
+import argparse, json, math, os, textwrap
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -32,15 +32,15 @@ import numpy as np
 import pandas as pd
 
 # ── Font sizes ────────────────────────────────────────────────────────────────
-FS_CLUSTER_LABEL = 19   # Y-axis cluster names
-FS_ITEMS_BADGE   = 17   # "Items 1–2" right axis
-FS_PCT_LABEL     = 18   # "72%" annotations
-FS_SECTION_BAND  = 17   # italic section labels inside bands
-FS_X_TICK        = 16
-FS_X_LABEL       = 17
-FS_REF_LINE      = 15
-FS_LEGEND_TITLE  = 16
-FS_LEGEND_BODY   = 15
+FS_CLUSTER_LABEL = 13   # Y-axis cluster names
+FS_ITEMS_BADGE   = 12   # "Items 1–2" right axis
+FS_PCT_LABEL     = 12   # "72%" annotations
+FS_SECTION_BAND  = 11   # italic section labels inside bands
+FS_X_TICK        = 11
+FS_X_LABEL       = 12
+FS_REF_LINE      = 10
+FS_LEGEND_TITLE  = 11
+FS_LEGEND_BODY   = 11
 
 # ── Cluster definitions ───────────────────────────────────────────────────────
 CLAIM2024_CLUSTERS = [
@@ -147,7 +147,7 @@ def _draw_section_bands(ax, rows_reversed, show_labels=True):
 
 
 # ── Single panel ──────────────────────────────────────────────────────────────
-def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_section_labels=True):
+def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_section_labels=False):
     rows = list(reversed(prop_rows))   # C01 at top
     n    = len(rows)
     y    = list(range(n))
@@ -188,7 +188,7 @@ def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_se
     ax.set_yticks(y)
     if show_ylabels:
         ax.set_yticklabels(
-            [r["cluster_label"] for r in rows],
+            [textwrap.fill(r["cluster_label"], 30) for r in rows],
             fontsize=FS_CLUSTER_LABEL, color="#111111",
         )
     else:
@@ -201,7 +201,7 @@ def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_se
         ax2.set_ylim(ax.get_ylim())
         ax2.set_yticks(y)
         ax2.set_yticklabels(
-            [f"Schema items {r['items_covered']}" for r in rows],
+            [f"{r['items_covered']}" for r in rows],
             fontsize=FS_ITEMS_BADGE, color="#777777",
         )
         ax2.tick_params(axis="y", length=0)
@@ -217,18 +217,18 @@ def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_se
     ax.spines[["top", "right"]].set_visible(False)
 
     # Ref-line labels at bottom
-    ax.text(0.50, -0.63, "50%", ha="center", fontsize=FS_REF_LINE, color="#aaaaaa")
-    ax.text(0.75, -0.63, "75%", ha="center", fontsize=FS_REF_LINE, color="#cccccc")
+
+
 
 
 # ── Main figure ───────────────────────────────────────────────────────────────
 def draw_comparison_plot(pre_rows, post_rows, n_pre, n_post, split_year, out_dir):
     n     = len(CLAIM2024_CLUSTERS)
-    fig_h = max(9, n * 0.78 + 4.0)
+    fig_h = 8.5
 
     fig, (ax_l, ax_r) = plt.subplots(
         1, 2,
-        figsize=(24, fig_h),
+        figsize=(9.5, fig_h),
         sharey=True,
         gridspec_kw={"wspace": 0.05},
     )
@@ -273,8 +273,8 @@ def draw_comparison_plot(pre_rows, post_rows, n_pre, n_post, split_year, out_dir
         title_fontsize=FS_LEGEND_TITLE,
         fontsize=FS_LEGEND_BODY,
         loc="lower center",
-        ncol=len(handles),
-        bbox_to_anchor=(0.5, -0.04),
+        ncol=3,
+        bbox_to_anchor=(0.5, -0.13),
         framealpha=0.95,
         edgecolor="#cccccc",
         handlelength=1.4,

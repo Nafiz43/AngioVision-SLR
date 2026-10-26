@@ -172,21 +172,21 @@ def main():
     from scipy.cluster.hierarchy import set_link_color_palette
     set_link_color_palette(CLUSTER_COLORS)
 
-    fig, ax = plt.subplots(figsize=(11, 6.5))
+    fig, ax = plt.subplots(figsize=(8, 5))
     dendrogram(
         Z,
         labels=CANONICAL_TASKS,
         orientation="right",       # leaves on the left, dissimilarity increases left-to-right
-        leaf_font_size=13,
+        leaf_font_size=15,
         color_threshold=color_threshold,
         above_threshold_color=ABOVE_THRESHOLD_COLOR,
         ax=ax,
     )
 
-    ax.set_xlabel("Tanimoto distance  (1 − co-occurrence overlap)", color=TEXT_PRIMARY)
+    ax.set_xlabel("Tanimoto distance", color=TEXT_PRIMARY)
     ax.set_ylabel("")
     ax.set_xlim(x_floor, 1.005)
-    ax.set_title("Task Category Co-occurrence (UPGMA clustering, Tanimoto distance)",
+    ax.set_title("Task category co-occurrence",
                  fontsize=15, color=TEXT_PRIMARY, pad=12)
     ax.axvline(1.0, color="#c9c8c2", linewidth=1, linestyle="--", zorder=0)
     ax.grid(axis="x", color="#e6e5e0", linewidth=0.8, zorder=0)

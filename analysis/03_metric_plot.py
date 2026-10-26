@@ -12,8 +12,8 @@ plt.rcParams.update({
     "font.size":        14,   # default text / tick labels
     "axes.titlesize":   17,   # plot titles (unused, but set for safety)
     "axes.labelsize":   15,   # x / y axis labels
-    "xtick.labelsize":  13,   # x tick labels
-    "ytick.labelsize":  13,   # y tick labels
+    "xtick.labelsize":  16,   # x tick labels
+    "ytick.labelsize":  16,   # y tick labels
     "legend.fontsize":  13,   # legend text
 })
 
@@ -133,15 +133,15 @@ variance_table.to_csv(os.path.join(out_dir, "variance_table.csv"), index=False)
 # =========================
 # 5. FIGURE 1: HISTOGRAM
 # =========================
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(8, 4.6))
 
 for group in primary_df["metric_group"].unique():
     subset = primary_df[primary_df["metric_group"] == group]["value"]
     plt.hist(subset, alpha=0.5, bins=10, label=group)
 
-plt.xlabel("Metric Value (%)", fontsize=15)
-plt.ylabel("Number of Studies", fontsize=15)
-plt.legend(fontsize=13)
+plt.xlabel("Metric Value (%)", fontsize=17)
+plt.ylabel("Number of Studies", fontsize=17)
+plt.legend(fontsize=12, loc="lower center", bbox_to_anchor=(0.5, 1.02), ncol=2)
 plt.tight_layout()
 
 plt.savefig(os.path.join(out_dir, "histogram_metrics.pdf"), bbox_inches="tight")
@@ -151,11 +151,11 @@ plt.close()
 # =========================
 # 6. FIGURE 2: KDE
 # =========================
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(8, 4.6))
 
 sns.kdeplot(data=primary_df, x="value", hue="metric_group", fill=True)
 
-plt.xlabel("Metric Value (%)", fontsize=15)
+plt.xlabel("Metric Value (%)", fontsize=17)
 plt.tight_layout()
 
 plt.savefig(os.path.join(out_dir, "kde_metrics.pdf"), bbox_inches="tight")
@@ -168,9 +168,9 @@ plt.close()
 plt.figure(figsize=(9, 5))
 
 sns.boxplot(data=primary_df, x="metric_group", y="value")
-plt.xticks(rotation=30, fontsize=13)
+plt.xticks(rotation=30, fontsize=15)
 
-plt.ylabel("Metric Value (%)", fontsize=15)
+plt.ylabel("Metric Value (%)", fontsize=17)
 plt.tight_layout()
 
 plt.savefig(os.path.join(out_dir, "boxplot_metrics.pdf"), bbox_inches="tight")
