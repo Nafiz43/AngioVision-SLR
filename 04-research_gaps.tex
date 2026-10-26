@@ -4,26 +4,13 @@
 \begin{figure*}[htbp]
   \centering
   \includegraphics[height=11.5cm,width=\textwidth]{figs/venn_diagram.pdf}
-  \caption{Research gaps grouped into four clusters, with mitigation strategies. C1, Data Infrastructure (G1, G2, G5, G10); C2, Modeling \& Learning (G3, G4, G9); C3, Clinical Deployment (G6, G7, G8); C4, Outcome \& Reporting (G11, G12). Strategy codes (S1--S14, defined in the legend) sit in the clusters or overlaps they serve; dashes mark overlaps with no shared strategy. Gap codes follow Table~\ref{tab:research_gaps}.}
+  \caption{Research gaps grouped into four clusters, with mitigation strategies. C1: Data Infrastructure (G1, G2, G5, G10); C2: Modeling \& Learning (G3, G4, G9); C3: Clinical Deployment (G6, G7, G8); C4: Outcome \& Reporting (G11, G12). Strategy codes (S1--S14, defined in the legend) sit in the clusters or overlaps they serve; dashes mark overlaps with no shared strategy. Gap codes follow Table~\ref{tab:research_gaps}.}
   \label{fig:venn_gaps}
 \end{figure*}
 
-We identified twelve research gaps and grouped them into four clusters (Figure~\ref{fig:venn_gaps}). \textit{Data Infrastructure} (C1: G1, G2, G5, G10) covers dataset size and availability, generalization across sites, annotation scarcity and privacy-preserving learning; these are preconditions for progress elsewhere. \textit{Modeling \& Learning} (C2: G3, G4, G9) covers limited temporal modeling, the restriction to 2D projections and class imbalance. \textit{Clinical Deployment} (C3: G6, G7, G8) covers the lack of prospective validation, explainability and multi-modal integration. \textit{Outcome \& Reporting} (C4: G11, G12) covers the gap between image-level performance and clinical outcomes and structured reporting. The clusters overlap: large annotated datasets (S1) serve all four, pretraining on unlabeled video (S3) and generative augmentation (S14) link data infrastructure to modeling, annotation-efficient learning (S8) spans data infrastructure, modeling and deployment, uncertainty quantification (S9) links modeling to deployment, and prospective trials, outcome-supervised training, longitudinal cohorts and vision--language models (S10--S13) link deployment to outcomes. Table~\ref{tab:research_gaps} lists the evidence for each gap and the corresponding strategies.
+We identified twelve research gaps and organized them into four clusters, which is shown in Figure~\ref{fig:venn_gaps}. \textit{Data Infrastructure} (C1: G1, G2, G5, G10) includes dataset size and availability, generalization across sites, annotation scarcity, and privacy-preserving learning. \textit{Modeling \& Learning} (C2: G3, G4, G9) includes limited temporal modeling, reliance on 2D projections, and class imbalance. \textit{Clinical Deployment} (C3: G6, G7, G8) addresses gaps in prospective validation, explainability, and multimodal integration. \textit{Outcome \& Reporting} (C4: G11, G12) addresses the connection between image-level performance and clinical outcomes, along with structured reporting.
 
-% A systematic analysis of the limitations and future work directions
-% reported across the 194 included studies reveals a set of recurring,
-% structural deficiencies in the current state of artificial intelligence
-% applied to angiographic and fluoroscopic imaging. Table~\ref{tab:research_gaps}
-% consolidates the identified gaps and the corresponding proposed directions
-% across twelve thematic research areas.
-
-% ============================================================
-% TABLE — portrait, no landscape required
-% \small reduces font to ~8.5pt, giving ~15% more horizontal room.
-% Column widths: 2.5 + 6.5 + 6.5 = 15.5 cm (fits A4 with 2 cm margins).
-% \clearpage + \onecolumn escape two-column mode for longtable.
-% \clearpage + \twocolumn restore it cleanly afterward.
-% ============================================================
+Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps across multiple clusters. Large annotated datasets (S1) support all four clusters. Pretraining on unlabeled video (S3) and generative augmentation (S14) connect data infrastructure with modeling, while annotation-efficient learning (S8) also supports clinical deployment. Uncertainty quantification (S9) connects modeling with deployment. Prospective trials, outcome-supervised training, longitudinal cohorts, and vision--language models (S10--S13) connect clinical deployment with outcomes and reporting. Table~\ref{tab:research_gaps} presents the evidence for each gap and the corresponding strategies.
 \clearpage
 \onecolumn
 \small
