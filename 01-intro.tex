@@ -1,34 +1,19 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Cardiovascular disease is one of the leading causes of death worldwide, accounting for an estimated 17.9 million deaths each year, nearly one third of all deaths~\cite{WHO2023CVD}. Catheter-based angiography is central to its diagnosis and treatment, providing real-time images of vascular anatomy and pathology during endovascular procedures~\cite{valji2011practice, kaufman2013vascular}. These procedures treat aneurysms, obstructions, malformations and traumatic injury.
+Catheter-based angiography provides real-time images of vascular anatomy and pathology during endovascular procedures, including treatment of aneurysms, obstructions, malformations and traumatic injury~\cite{valji2011practice,kaufman2013vascular}. Digital subtraction angiography (DSA) and contrast fluoroscopy capture both spatial detail and the passage of contrast through vessels. These sequences show vessel morphology and device position, while contrast arrival and washout provide information about perfusion, collateral circulation and procedural outcome that individual frames cannot fully capture~\cite{ref89}.
 
-Unlike most medical imaging, angiography is inherently temporal~\cite{ref89}. Digital subtraction angiography (DSA) and fluoroscopy record sequences of images that follow a contrast agent through the vessels. These dynamics carry information about vessel patency, perfusion, collateral circulation, stenosis severity and procedural outcome that no single frame contains.
-
-The temporal nature of angiographic data also makes it hard to analyze automatically. Respiratory and cardiac motion, differences in acquisition protocol and imaging system, and varying sequence lengths all complicate automated analysis~\cite{shi2021temporal}. These challenges have drawn AI and health researchers to methods that use both the spatial and the temporal information in angiographic sequences, with the aim of more standardized and consistent readings and a lower workload for clinicians.
-
-Angiography is also valuable for its spatial detail. Its high spatial and contrast resolution shows vessel morphology, luminal narrowing, collateral networks and device position~\cite{valji2011practice, kaufman2013vascular}, which has motivated applications ranging from vessel segmentation and landmark detection to lesion characterization, device tracking, image enhancement and procedural guidance (Section~\ref{sec:analysis}).
+Automated analysis must account for respiratory and cardiac motion, differences in acquisition protocols and imaging systems, and varying sequence lengths~\cite{shi2021temporal}. These challenges motivate methods that combine spatial and temporal information to support consistent image interpretation and procedural guidance.
 
 \subsection{AI for Angiographic Sequence Analysis}
-Deep learning has changed medical image analysis, from detection and segmentation to reconstruction and decision support~\cite{Litjens2017,Topol2019}. Convolutional, encoder--decoder, Transformer and hybrid models perform well on many tasks traditionally done by clinical experts~\cite{Litjens2017,Shen2017}. In angiography, researchers have applied these models to enhancement, vessel segmentation, motion correction, device tracking, landmark detection, outcome prediction and procedural guidance~\cite{ref99, ref100}, and many of these tasks involve information that changes over time.
+AI methods have been applied to angiographic image enhancement, vessel segmentation, motion correction, device tracking, lesion assessment and outcome prediction~\cite{ref99,ref100}. However, the literature spans clinical and engineering disciplines, with heterogeneous datasets, evaluation protocols and metrics. This fragmentation makes it difficult to compare approaches or determine how well they generalize across institutions and acquisition settings.
 
-This literature is fragmented. It is spread across cardiology, radiology, surgery, computer vision, biomedical engineering and machine learning venues, with different datasets, evaluation protocols and metrics. In particular, it is unclear how temporal information is used across tasks: whether frames are processed independently, combined by fixed operations such as stacking or registration, or modeled with learned sequence architectures. Whether learned temporal models outperform frame-independent ones cannot be settled across studies with different datasets and metrics; it requires controlled comparisons on shared benchmarks.
+A central question is how methods use temporal information: whether they process frames independently, combine them through fixed operations such as stacking or registration, or learn dependencies across a sequence. These approaches have different capabilities, but their relative effectiveness cannot be established from studies using different datasets and evaluation protocols. Controlled comparisons on shared benchmarks are needed to determine when learned temporal representations improve on simpler methods.
 
 \subsection{The Need for a Systematic Review}
-Earlier surveys cover deep learning in medical imaging at large~\cite{Litjens2017,Shen2017} or vascular imaging in general~\cite{Moccia2018}, without focusing on angiographic sequences. Reviews of AI in interventional radiology~\cite{Iezzi2019,Gurgitano2021,Mukhtar2025} describe its role in planning, guidance, workflow and interpretation, and note limited data, little external validation, heterogeneous evaluation and regulatory barriers, but they focus on clinical use rather than on the methods that analyze image sequences.
+Earlier surveys examine deep learning across medical imaging~\cite{Litjens2017,Shen2017} or blood vessel segmentation~\cite{Moccia2018}. Reviews of AI in interventional radiology address planning, guidance, interpretation and clinical workflow~\cite{Iezzi2019,Gurgitano2021,Mukhtar2025}. These perspectives provide clinical and methodological context but do not center on how computational methods analyze angiographic sequences across tasks and applications.
 
-To our knowledge, no review has examined AI methods that operate on X-ray angiographic sequences while also covering modalities, territories, tasks, architectures, temporal modeling, evaluation and reporting. Clinical translation of these methods depends on rigorous validation, transparent reporting and evidence that models generalize across institutions, vendors and patients~\cite{Tejani2024,collins2024tripod+}, so these aspects need to be assessed alongside the methods themselves.
+A sequence-focused synthesis is needed to connect imaging modalities, anatomical territories, tasks and architectures with temporal modeling strategies. Evaluation practices, reporting and reproducibility also require attention because clinical translation depends on transparent methods and evidence of generalization across institutions, vendors and patients~\cite{Tejani2024,collins2024tripod+}.
 
-\subsection{Objectives}
 \label{sec:intro-objectives}
-
-This review has four objectives:
-
-\begin{enumerate}[label=\textbf{O\arabic*.}, leftmargin=*, itemsep=4pt]
-\item \textbf{Characterize the field:} catalog AI methods, predominantly deep learning, applied to DSA and fluoroscopic sequences across clinical and technical tasks.
-\item \textbf{Examine temporal modeling:} identify how temporal information is represented across architectures and applications.
-\item \textbf{Assess evidence quality:} review datasets, evaluation practices, reporting and reproducibility.
-\item \textbf{Identify research gaps:} set out directions toward reliable, clinically deployable methods.
-\end{enumerate}
-
-The review is written for clinicians who use angiography, for medical imaging and machine learning researchers, and for developers of clinical AI systems.
+This review characterizes AI methods for DSA and fluoroscopic sequence analysis across clinical applications, computational tasks and architectures, with particular attention to how temporal information is represented. It also examines datasets, evaluation practices, reporting completeness and reproducibility, and identifies research gaps relevant to clinical translation.
