@@ -222,12 +222,89 @@ Each study was extracted into one JSON object (Section~\ref{sec:full-text-screen
 
 The complete instructions, the JSON schema and the validator are provided with the extraction outputs (Appendix~\ref{appendix:code_data_availability}).
 
-\section{Code and Data Availability}
-\label{appendix:code_data_availability}
 
-All data and code are public at \url{https://github.com/Nafiz43/angiovision-slr-data}: the screening decision for each of the 5,064 records, the 491-record validation sample with the agreement script, the search and screening pipeline (\texttt{screening/pipeline/}), the extraction instructions, schema and validator, the 120 extraction records, and the scripts that regenerate every figure and table (\texttt{analysis/run\_all.sh}). Full texts are not shared, for copyright reasons.
+\section{Grouping of CLAIM-Informed Reporting Items}
+\label{app:claim_clusters}
 
-\section{List of Included Studies}
-\label{appendix:included_studies}
+For this review, we organized 44 reporting criteria informed by
+CLAIM 2024~\cite{Tejani2024} into 12 thematic groups (C01--C12)
+to summarize reporting completeness. These groups were defined
+for our analysis and are not official CLAIM categories. The item
+numbers and descriptions below refer to the operational extraction
+schema used in this review; they do not correspond consistently
+to the numbering and definitions of the official CLAIM 2024
+checklist.
 
-All 120 included studies appear in the bibliography, whether cited in the text or only counted in figures and tables; the remaining entries are background and methods references. \texttt{extraction/manifest.csv} in the data repository lists each study's identifier, title, year, venue and DOI.
+\begin{itemize}
+    \item \textbf{C01: AI identification and abstract completeness.}
+    Items: 1 (identification of the AI technique in the title or
+    abstract); 2 (abstract reporting of study design, methods,
+    results, and conclusions).
+
+    \item \textbf{C02: Background and study objectives.}
+    Items: 3 (scientific or clinical background);
+    4 (explicit study objectives); 5 (rationale for using AI).
+
+    \item \textbf{C03: Study design and data sources.}
+    Items: 6 (prospective or retrospective study design);
+    7 (data sources and acquisition); 8 (setting and dates of
+    data collection); 9 (eligibility criteria for participants
+    or images).
+
+    \item \textbf{C04: Participants and image acquisition.}
+    Items: 10 (participant characteristics);
+    11 (de-identification and privacy);
+    12 (institutional review board approval or waiver);
+    13 (image acquisition protocol, including manufacturer
+    and acquisition parameters).
+
+    \item \textbf{C05: Reference standards and annotation.}
+    Items: 14 (reference-standard definition and method);
+    15 (number and expertise of annotators);
+    16 (inter-rater agreement or annotation quality).
+
+    \item \textbf{C06: Data partitioning and class handling.}
+    Items: 17 (training, validation, and test splits);
+    18 (partitioning method); 19 (data augmentation);
+    20 (class-imbalance handling); 21 (prevention of data leakage).
+
+    \item \textbf{C07: Model architecture and training.}
+    Items: 22 (architecture described in sufficient detail
+    for replication); 23 (pretrained weights or transfer learning);
+    24 (loss functions); 25 (optimizer, learning rate, and
+    hyperparameters); 26 (stopping criteria and training procedure).
+
+    \item \textbf{C08: Evaluation design and interpretability.}
+    Items: 27 (prespecified evaluation metrics);
+    28 (statistical analysis plan);
+    29 (confidence intervals or uncertainty);
+    30 (robustness or sensitivity analysis);
+    31 (explainability methods).
+
+    \item \textbf{C09: Performance and external validation.}
+    Items: 32 (internal held-out test results);
+    33 (external validation results);
+    34 (participant or image flow);
+    35 (failure or error analysis);
+    36 (comparison with experts or prior methods).
+
+    \item \textbf{C10: Demographic and subgroup reporting.}
+    Items: 37 (demographics of the study population);
+    38 (subgroup or stratified performance);
+    39 (fairness or bias evaluation).
+
+    \item \textbf{C11: Limitations, clinical implications,
+    and supporting documentation.}
+    Items: 40 (study limitations);
+    41 (clinical implications and intended use);
+    42 (reference to the study protocol or additional
+    technical details).
+
+    \item \textbf{C12: Reproducibility and funding disclosure.}
+    Items: 43 (availability of code, trained models, or data);
+    44 (funding sources and the role of funders).
+\end{itemize}
+% \section{List of Included Studies}
+% \label{appendix:included_studies}
+
+% All 120 included studies appear in the bibliography, whether cited in the text or only counted in figures and tables; the remaining entries are background and methods references. \texttt{extraction/manifest.csv} in the data repository lists each study's identifier, title, year, venue and DOI.
