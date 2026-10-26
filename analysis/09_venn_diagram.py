@@ -18,6 +18,7 @@ CLUSTERS = {
         'gaps'  : [
             ('G1',  'Absence of public benchmarks'),
             ('G2',  'Generalizability & domain shift'),
+            ('G5',  'Annotation scarcity'),
             ('G10', 'Privacy-preserving &\nmulti-institutional learning'),
         ],
     },
@@ -26,7 +27,6 @@ CLUSTERS = {
         'gaps'  : [
             ('G3',  'Temporal modeling & video-level analysis'),
             ('G4',  '2D constraints & 3D reconstruction'),
-            ('G5',  'Annotation scarcity'),
             ('G9',  'Class imbalance & \n rare pathology coverage'),
         ],
     },
@@ -65,13 +65,13 @@ STRATEGIES = [
 ]
 
 INTERSECTIONS = {
-    frozenset(['C1', 'C2'])             : 'S1',
-    frozenset(['C2', 'C3'])             : 'S8, S9',
+    frozenset(['C1', 'C2'])             : 'S3, S14',
+    frozenset(['C2', 'C3'])             : 'S9',
     frozenset(['C1', 'C4'])             : '—',
     frozenset(['C3', 'C4'])             : 'S10, S11,\nS12, S13',
     frozenset(['C1', 'C3'])             : '—',
     frozenset(['C2', 'C4'])             : '—',
-    frozenset(['C1', 'C2', 'C3'])       : '—',
+    frozenset(['C1', 'C2', 'C3'])       : 'S8',
     frozenset(['C1', 'C2', 'C4'])       : '—',
     frozenset(['C2', 'C3', 'C4'])       : '—',
     frozenset(['C1', 'C3', 'C4'])       : '—',
@@ -80,7 +80,7 @@ INTERSECTIONS = {
 
 UNIQUE = {
     'C1': 'S2, S4, S5',
-    'C2': 'S3, S6, S7, S14',
+    'C2': 'S6, S7',
     'C3': '—',
     'C4': '—',
 }
@@ -228,7 +228,7 @@ int_positions = {
     frozenset(['C3', 'C4'])             : (CX + 1.36, CY - 1.46),
     frozenset(['C1', 'C3'])             : (CX,         CY + 0.60),
     frozenset(['C2', 'C4'])             : (CX,         CY - 0.60),
-    frozenset(['C1', 'C2', 'C3'])       : (CX,          CY + 1.42),
+    frozenset(['C1', 'C2', 'C3'])       : (CX,          CY + 1.10),
     frozenset(['C1', 'C2', 'C4'])       : (CX - 1.42,   CY),
     frozenset(['C2', 'C3', 'C4'])       : (CX + 1.42,   CY),
     frozenset(['C1', 'C3', 'C4'])       : (CX,          CY - 1.42),
