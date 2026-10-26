@@ -122,14 +122,19 @@
 % Short author
 \shortauthors{N.I. Khan, V. Filkov and R.E. Goldman}
 
+% Suppress the generic CAS preprint footer; retain the page counter.
+\ExplSyntaxOn
+\cs_set:Npn \__first_footerline: {\mbox{}}
+\ExplSyntaxOff
+
 % Main title of the paper
 \title[mode = title]{A Systematic Literature Review on AI Methods for Angiographic Sequence Analysis}
 
-\author[1]{Nafiz Imtiaz Khan}[orcid=0000-0003-0149-6012]
+\author[1,2]{Nafiz Imtiaz Khan}[orcid=0000-0003-0149-6012]
 \ead{nikhan@ucdavis.edu}
 \credit{Conceptualization, Methodology, Software, Formal analysis, Investigation, Data curation, Writing -- original draft}
 
-\author[1]{Vladimir Filkov}[orcid=0000-0003-0492-4393]
+\author[1,2]{Vladimir Filkov}[orcid=0000-0003-0492-4393]
 \ead{filkov@cs.ucdavis.edu}
 \credit{Conceptualization, Supervision, Writing -- review \& editing}
 
