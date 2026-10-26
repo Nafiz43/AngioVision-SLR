@@ -13,7 +13,7 @@ The two reviewers agreed on 487 of the 491 records (99.2\%; Cohen's $\kappa=0.97
 Following the gold dataset, we excluded 14 LLM-eligible records and added the 2 eligible records found among the exclusions, yielding 122 eligible studies for review; Figure~\ref{fig:prisma} therefore lists 4,829 rather than 4,831 LLM inclusion failures. Full text could not be retrieved for 2 of them, therefore, the review corpus comprises 120 studies. All 491 screening decisions are listed in Supplementary Table~S1.
 
 
-The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 values. For each study, it contains 74 fields (18 study-level fields, the status of the 12 research gaps and the 44 CLAIM 2024 items). The reviewer judged 431 values correct (97.1\%; 95.1--98.3\%), and 13 as incorrect. 
+The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 values. For each study, it contains 74 fields (18 study-level fields, the status of the 12 research gaps and the 44 CLAIM-informed reporting criteria). The reviewer judged 431 values correct (97.1\%; 95.1--98.3\%), and 13 as incorrect.
 
 
 
@@ -220,29 +220,29 @@ Differences in datasets (none of the studies share a common dataset), evaluation
 \subsection{Reporting Quality and Clinical Readiness}
 \label{subsec:reporting_quality}
 
-In this subsection, we explored the reporting completeness and the evidence supporting clinical use of the selected studies against CLAIM 2024 (the RSNA reporting checklist for AI in medical imaging~\cite{Tejani2024}). The CLAIM was introduced in 2020 and was updated in 2024. To examine reporting differences surrounding the CLAIM 2024 update, we compared adherence between studies published before and after 2024.
+We assessed reporting completeness using 44 review-specific criteria informed by CLAIM 2024~\cite{Tejani2024} and separately summarized evidence supporting clinical use. The operational criteria differ from the official checklist, as documented in Appendix~\ref{app:claim_clusters}. We compared reporting completeness between studies published up to 2024 and those published from 2025 onward; this comparison does not estimate the effect of the guideline update.
 
-For the purpose of representation and analysis, we grouped 44 items in 12 checklist clusters (breakdown of the clusters are provided in Appendix \ref{app:claim_clusters}). The 12 clusters are also grouped in five parent clusters (Title/abstract: C01, Introduction: C02, Methods: C03--C08, Results (C09--C10), Discussion (C11), Reproducibility \& Transferability (C12)).  
+We grouped the 44 operational criteria into 12 review-defined reporting clusters (Appendix~\ref{app:claim_clusters}). These are organized into six broad categories: Title/Abstract (C01), Introduction (C02), Methods (C03--C08), Results (C09--C10), Discussion (C11), and Reproducibility and Transparency (C12). C12 covers reproducibility and funding disclosure.
 
-Figure~\ref{fig:forest_plot} shows adherence by 12 checklist clusters with confidence intervals, while Table~\ref{tab:claim2024_temporal} reports the comparisons between publication periods. Nearly perfect reporting of background and objectives can be seen in Figure~\ref{fig:forest_plot}, however lower and less consistent reporting can be observed for methods. Table~\ref{tab:claim2024_temporal} shows the largest differences in participant and image-acquisition reporting (C04: 49\% to 70\%, unadjusted $p=0.04$), study design and data sources (C03: 68\% to 81\%, $p=0.14$), and reference-standard and annotation reporting (C05: 71\% to 56\%, $p=0.11$). Demographic and subgroup reporting remains low (C10: 30\% and 28\%). No difference is statistically significant after Holm correction (smallest adjusted $p=0.43$). 
+Figure~\ref{fig:forest_plot} shows reporting completeness across the 12 review-defined clusters with confidence intervals, while Table~\ref{tab:claim2024_temporal} reports the comparisons between publication periods. Nearly perfect reporting of background and objectives can be seen in Figure~\ref{fig:forest_plot}, however lower and less consistent reporting can be observed for methods. Table~\ref{tab:claim2024_temporal} shows the largest differences in participant and image-acquisition reporting (C04: 49\% to 70\%, unadjusted $p=0.04$), study design and data sources (C03: 68\% to 81\%, $p=0.14$), and reference-standard and annotation reporting (C05: 71\% to 56\%, $p=0.11$). Demographic and subgroup reporting remains low (C10: 30\% and 28\%). No difference is statistically significant after Holm correction (smallest adjusted $p=0.43$).
 
 % The later group contains 43 studies, limiting the precision of these comparisons; the results do not establish that reporting remained unchanged.
 
 
 
 
-Although 74\% meet the reproducibility \& Funding disclosure cluster, only 25 studies (20.8\%) share code and 3 (2.5\%) share data. Evidence supporting clinical use was also limited: 19 studies (15.8\%) report external validation, including one that also reports prospective deployment; 3 (2.5\%) use a prospective design; 4 (3.3\%) report clinical deployment or live use; and 4 (3.3\%) discuss regulatory requirements. These categories are not mutually exclusive.
+Although 74\% meet the reproducibility and funding-disclosure cluster (C12), only 25 studies (20.8\%) share code and 3 (2.5\%) share data. Meeting C12 does not necessarily indicate artifact release because the cluster includes funding disclosure and uses a threshold of at least half of applicable items. Evidence supporting clinical use was also limited: 19 studies (15.8\%) report external validation, including one that also reports prospective deployment; 3 (2.5\%) use a prospective design; 4 (3.3\%) report clinical deployment or live use; and 4 (3.3\%) discuss regulatory requirements. These categories are not mutually exclusive.
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
-\textbf{Finding 6.} Background and objectives are well reported, but demographic and subgroup reporting, code and data sharing, and evidence of clinical use remain limited. Also, we found no statistically significant improvement in reporting adherence following the CLAIM 2024 update among the selected studies.
+\textbf{Finding 6.} Background and objectives are well reported, but demographic and subgroup reporting, code and data sharing, and evidence of clinical use remain limited. No between-period difference in reporting completeness was statistically significant after Holm correction; this does not establish unchanged reporting or measure the effect of the CLAIM 2024 update.
 \end{mdframed}
 \vspace{0.25cm}
 
 \begin{figure*}[]
 \centering
 \includegraphics[width=1\linewidth]{figs/forest_plot_claim2024_comparison.pdf}
-\caption{CLAIM 2024 adherence by cluster for studies published up to 2024 (left) and from 2025 onward (right). Diamonds show the proportion of studies meeting each cluster, with 95\% Wilson confidence intervals. Colors identify CLAIM sections, and the right axis lists the checklist items included in each cluster~\cite{Tejani2024}.}
+\caption{Reporting completeness under the review-specific CLAIM-informed schema for studies published up to 2024 (left) and from 2025 onward (right). Diamonds show the proportion meeting each review-defined cluster, with 95\% Wilson confidence intervals. Colors identify broad reporting categories; the right axis lists operational item numbers from Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}
 \label{fig:forest_plot}
 \end{figure*}
 
