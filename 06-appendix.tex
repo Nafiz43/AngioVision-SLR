@@ -40,7 +40,7 @@ We did not query arXiv, to prioritize peer-reviewed work, nor Scopus or Web of S
 \section{Stage 1 Screening Prompts}
 \label{appendix:screening_prompts}
 
-This appendix reproduces verbatim the system prompts used for title--abstract screening with Qwen3.8 (27B) through Ollama at temperature 0 (code in the \texttt{screening/pipeline} folder of the public data repository). Each record was sent as a user message containing only its title and abstract. The model answered every criterion with YES or NO in a fixed JSON object; malformed responses were sent to a repair prompt, and a response that still could not be parsed was treated as failing the inclusion gate.
+This appendix reproduces verbatim the system prompts used for title--abstract screening with Qwen3.8 (27B) through Ollama at temperature 0 (code in the \texttt{screening/pipeline} folder of the public repository). Each record was sent as a user message containing only its title and abstract. The model answered every criterion with YES or NO in a fixed JSON object; malformed responses were sent to a repair prompt, and a response that still could not be parsed was treated as failing the inclusion gate.
 
 Every record was first assessed by the inclusion gate (Prompt A). Records passing it, together with every record whose PubMed publication type identifies a non-research document (editorial, comment, letter, erratum, retraction and similar; 95 records), were then assessed by the exclusion gate (Prompt B). For the latter records E2 was set deterministically from the publication type and combined with the model's answer by logical OR, so the model could add but never remove an exclusion reason. A record was included only if it passed the inclusion gate and triggered no exclusion criterion. The prompts state that the defaults keep a silent record in the review; this holds for I1, I3 and E1--E3, while the defaults of I2 and I4 are NO.
 
@@ -200,7 +200,7 @@ Rules:
 \section{Title/Abstract Screening Validation Sample}
 \label{appendix:screening_validation}
 
-The 491 records of the screening validation (Section~\ref{sec:validation}), all 134 pipeline inclusions and 357 sampled exclusions, are listed in Supplementary Table~S1 and in the public data repository with both reviewers' decisions (R1, interventional radiologist; R2, biomedical AI researcher), the consensus label and the pipeline decision.
+The 491 records of the screening validation (Section~\ref{sec:validation}), all 134 pipeline inclusions and 357 sampled exclusions, are listed in Supplementary Table~S1 and in the public repository with both reviewers' decisions (R1, interventional radiologist; R2, biomedical AI researcher), the consensus label and the pipeline decision.
 
 \section{Stage 2 Full-Text Data Extraction Schema}
 \label{appendix:extraction_schema}
