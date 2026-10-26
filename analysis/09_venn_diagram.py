@@ -33,7 +33,7 @@ CLUSTERS = {
     'C3': {
         'name'  : 'Clinical Deployment',
         'gaps'  : [
-            ('G6',  'clinical validation'),
+            ('G6',  'Clinical validation'),
             ('G7',  'Explainability & \n model transparency'),
             ('G8',  'Multi-modal data integration'),
         ],
@@ -41,7 +41,7 @@ CLUSTERS = {
     'C4': {
         'name'  : 'Outcome & Reporting',
         'gaps'  : [
-            ('G11', 'clinical outcome prediction'),
+            ('G11', 'Clinical outcome prediction'),
             ('G12', 'LLMs & structured reporting'),
         ],
     },
@@ -268,7 +268,7 @@ for k in ['C1', 'C2', 'C3', 'C4']:
         ax.text(LX + 0.08, y_cursor, code,
                 fontsize=FS_GAP_CODE, fontweight='bold',
                 color=COLOURS[k]['txt'], ha='left', va='top', zorder=5)
-        ax.text(LX + 0.62, y_cursor, desc,
+        ax.text(LX + 0.80, y_cursor, desc,
                 fontsize=FS_GAP_DESC, color='#2E2E2E',
                 ha='left', va='top', zorder=5, linespacing=1.3)
         y_cursor -= GAP_ROW_H * (desc.count('\n') + 1)
