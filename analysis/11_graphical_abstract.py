@@ -104,7 +104,7 @@ for count, col in [(learned, LEARNED), (fixed, FIXED), (rest, NONE)]:
             fontsize=10, weight='bold', color='white' if col == LEARNED else INK)
     start -= sweep
 ax.text(cx, cy + .1, f'{(learned + fixed) / studies:.1%}', ha='center', va='center', fontsize=20, weight='bold', color=INK)
-ax.text(cx, cy - .3, 'use time', ha='center', va='center', fontsize=10.5, color=MUTED)
+ax.text(cx, cy - .3, 'use temporality', ha='center', va='center', fontsize=10.5, color=MUTED)
 for (label, col), xx in zip([('learned', LEARNED), ('fixed', FIXED), ('none', NONE)], (cx - 1.25, cx - .2, cx + .6)):
     ax.add_patch(Circle((xx, .52), .08, facecolor=col, edgecolor='#B8C2CD' if col == NONE else col, lw=.8))
     ax.text(xx + .14, .52, label, va='center', fontsize=10.5, color=INK)
