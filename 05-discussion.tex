@@ -16,24 +16,34 @@ The twelve research gaps bring these findings together. Table~\ref{tab:research_
 
 \subsection{Comparison with Prior Work}
 
-The surveys by Litjens et al.~\cite{Litjens2017} and Shen et al.~\cite{Shen2017} examine deep learning across medical imaging, while Moccia et al.~\cite{Moccia2018} review blood vessel segmentation, datasets, and evaluation metrics. Our review complements these perspectives by focusing on temporally ordered X-ray angiographic data and distinguishing fixed temporal operations from learned temporal representations. Using multiple frames may involve aggregation, registration, flow-curve fitting, or learning dependencies across a sequence; these approaches provide different temporal capabilities. Their frequency in the reviewed literature does not establish their effectiveness. Whether learned temporal models improve performance or clinical usefulness requires controlled comparisons using the same data, inputs, and evaluation protocol.
+The surveys by Litjens et al.~\cite{Litjens2017} and Shen et al.~\cite{Shen2017} examine deep learning across medical imaging, while Moccia et al.~\cite{Moccia2018} review blood vessel segmentation, datasets, and evaluation metrics. Also, the reviews by Iezzi et al.~\cite{Iezzi2019}, Gurgitano et al.~\cite{Gurgitano2021}, and Mukhtar et al.~\cite{Mukhtar2025} examine AI across interventional radiology, including planning, guidance, interpretation, and clinical workflow.
 
-The reviews by Iezzi et al.~\cite{Iezzi2019}, Gurgitano et al.~\cite{Gurgitano2021}, and Mukhtar et al.~\cite{Mukhtar2025} examine AI across interventional radiology, including planning, guidance, interpretation, and clinical workflow. Our contribution is to examine data availability, external validation, evaluation, and clinical implementation within a defined corpus of angiographic sequence studies and relate them to tasks, architectures, and temporal modeling. We also assess reporting using review-specific criteria informed by CLAIM 2024~\cite{Tejani2024} (Appendix~\ref{app:claim_clusters}). Background and objectives were more consistently reported than demographics and subgroup performance; separately, code and data release were uncommon. Meeting the broader reproducibility and funding-disclosure cluster (C12) does not necessarily indicate artifact release. These findings distinguish reporting completeness and reproducibility resources from methodological validity and evidence of clinical usefulness.
+
+
+Our review complements the prior research by focusing on temporally ordered angiographic data and distinguishing fixed temporal operations from learned temporal representations. Of the selected studies, we also examined data availability, external validation, evaluation, clinical implementation, tasks, architectures, and temporal modeling. None of the prior reviewed studies performed such detailed analysis.
+
+
+
+% Using multiple frames may involve aggregation, registration, flow-curve fitting, or learning dependencies across a sequence; these approaches provide different temporal capabilities. Their frequency in the reviewed literature does not establish their effectiveness. Whether learned temporal models improve performance or clinical usefulness requires controlled comparisons using the same data, inputs, and evaluation protocol.
+
+
+
+% within a defined corpus of angiographic sequence studies and relate them to . We also assess reporting using review-specific criteria informed by CLAIM 2024~\cite{Tejani2024} (Appendix~\ref{app:claim_clusters}).
+
+
+
+% Background and objectives were more consistently reported than demographics and subgroup performance; separately, code and data release were uncommon. Meeting the broader reproducibility and funding-disclosure cluster (C12) does not necessarily indicate artifact release. These findings distinguish reporting completeness and reproducibility resources from methodological validity and evidence of clinical usefulness.
 
 \subsection{Limitations}
 \label{sec:limitations}
+The study has several limitations:
 
-First, the search covered only PubMed/\allowbreak MEDLINE and Semantic Scholar, up to 25 May 2026. PubMed searches were restricted to English, and each Semantic Scholar query was limited to its first 100 results. Conference papers and arXiv-only preprints may therefore be underrepresented. Publication counts for 2026 also cover only part of the year and should not be compared directly with full-year counts.
 
-Second, title and abstract screening relied on an LLM. Two independent reviewers checked all 134 pipeline inclusions and a random sample of 357 exclusions, but most excluded records were not reviewed manually. Two eligible studies were found in the exclusion sample, giving an estimated 28 eligible records among the 4,930 original pipeline exclusions (95\% Wilson interval scaled to that stratum: 8--100), including the two records recovered by human review. Both failed the sequence-data criterion because their abstracts did not explicitly establish eligibility. The exclusion-by-default rules for I2 and I4 may therefore have reduced recall. The corpus is a validated sample of the retrieved literature rather than a complete census, and missed studies could affect category proportions as well as counts.
+First, full-text extraction relied on an LLM, and one reviewer audited six studies, representing 5\% of the corpus. Although 97.1\% of audited values were correct, this sample cannot establish the same accuracy for every field. Errors in interpretive categories, including temporal modeling and research gaps, may affect the synthesis. The gap analysis also depends on limitations and future directions stated by authors, so problems that were not explicitly discussed may be underrepresented.
 
-Third, full-text extraction relied on an LLM, and one reviewer audited six studies, representing 5\% of the corpus. Although 97.1\% of audited values were correct, this sample cannot establish the same accuracy for every field. Errors in interpretive categories, including temporal modeling and research gaps, may affect the synthesis. The gap analysis also depends on limitations and future directions stated by authors, so problems that were not explicitly discussed may be underrepresented.
+Fifth, we did not apply a dedicated risk-of-bias tool or conduct a meta-analysis. The reported performance distributions describe the extracted results but do not provide pooled estimates of generalization or clinical effectiveness. 
 
-Fourth, the reporting assessment used an operational schema informed by CLAIM 2024. As documented in Appendix~\ref{app:claim_clusters}, its 44 criteria do not consistently correspond to the numbering and definitions of the official checklist. The 12 thematic groups were defined for this review, and a group was counted as met when at least half of its applicable items were reported. These results should therefore be interpreted as reporting completeness under our schema, rather than strict adherence to the official CLAIM checklist. Group-level summaries may also conceal missing individual items. With 43 studies in the later publication period, the absence of statistically significant differences does not establish that reporting remained unchanged or that the guideline had no impact.
-
-Fifth, we did not apply a dedicated risk-of-bias tool or conduct a meta-analysis. The reported performance distributions describe the extracted results but do not provide pooled estimates of generalization or clinical effectiveness. Differences in study settings and evaluation methods also prevent conclusions about whether one architecture or temporal modeling strategy is superior.
-
-Finally, the review was not registered and had no published protocol. Full text was unavailable for two eligible studies, and three included records are earlier versions of another included study (R2434/R1238, R4154/R3555, and R4671/R4479 in \texttt{extraction/manifest.csv}). These related records introduce dependence and slightly inflate some counts.
+Finally, the review was not registered and had no published protocol. 
 
 \subsection{Conclusion}
 
