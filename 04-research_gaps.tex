@@ -106,7 +106,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 % ---- Row 5 ----
 \textbf{G5:} Annotation Scarcity \& Annotation-Efficient Learning\newline\textit{C1}
 &
-\tabitem Manual annotation takes physician time and specialist expertise for every labeled study \cite{R0521,ref34,ref56,R4204,R4208,ref162}.\newline
+\tabitem Manual data annotation takes significant amount of physician time and specialist expertise for every labeled study \cite{R0521,ref34,ref56,R4204,R4208,ref162}.\newline
 \tabitem Annotation varies within and between observers, rarely quantified in included studies \cite{ref28,R1213,ref208,R1674,ref75,R3661}.\newline
 \tabitem Synthetic data generation partially addresses scarcity, but synthetic-to-real domain gaps persist \cite{ref64,ref52,ref74}.\newline
 \tabitem Semi-supervised and self-supervised methods are underrepresented across angiographic analysis tasks \cite{ref2,ref57,R2411}.
@@ -121,7 +121,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 % ---- Row 6 ----
 \textbf{G6:} Prospective Clinical Validation \& Outcome Assessment\newline\textit{C3}
 &
-\tabitem Of the 61 studies that state their design, 57 analyze previously acquired images retrospectively \cite{ref42,ref38,R3052,R3093,R3126,ref76}.\newline
+\tabitem Among the 61 studies that report their design, 57 are retrospective analyses of previously acquired images. \cite{ref42,ref38,R3052,R3093,R3126,ref76}.\newline
 \tabitem Prospective validation in live clinical settings is almost entirely absent from the literature \cite{ref102,ref91,R0521,R1362,R1503,ref75}.\newline
 \tabitem Retrospective evaluation cannot measure the effect of AI outputs on physician behavior or patient outcomes \cite{R0100,ref208,ref80}.\newline
 \tabitem Demonstrated technical performance does not establish clinical value or cost-effectiveness \cite{ref152,ref40,ref82,R3661}.
@@ -136,12 +136,12 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 % ---- Row 7 ----
 \textbf{G7:} Explainability \& Model Transparency\newline\textit{C3}
 &
-\tabitem Most deep learning models produce predictions without clinically interpretable justification \cite{ref25,R3164,ref173,ref92}.\newline
+\tabitem Most deep learning models lack clinically relevant interpretable justification \cite{ref25,R3164,ref173,ref92}.\newline
 \tabitem Existing attention visualization approaches provide limited mechanistic insight \cite{R0643,R3155}.\newline
 \tabitem Silent failure modes in out-of-distribution inputs are a particular concern for patient safety \cite{ref161}.\newline
 \tabitem Regulatory and clinical trust requirements are not satisfied by aggregate performance metrics alone \cite{R1680,R2400,ref89}.
 &
-\tabitem Treat uncertainty quantification as a core design requirement, communicating confidence alongside every prediction \cite{ref161,ref46}.\newline
+\tabitem Treat uncertainty quantification as a core design requirement, which will confidence alongside every prediction \cite{ref161,ref46}.\newline
 \tabitem Develop failure detection systems that flag out-of-distribution inputs for mandatory human review \cite{ref161}.\newline
 \tabitem Design intermediate representations aligned with anatomical and hemodynamic concepts clinicians use \cite{R4204,R0521}.\newline
 \tabitem Evaluate whether explainability outputs demonstrably improve clinical decision-making in prospective user studies \cite{R1939}.
