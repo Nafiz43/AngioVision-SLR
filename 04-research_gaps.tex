@@ -8,7 +8,7 @@
   \label{fig:venn_gaps}
 \end{figure*}
 
-We identified twelve research gaps and organized them into four clusters, which are shown in Figure~\ref{fig:venn_gaps}. \textit{Data Infrastructure} (C1: G1, G2, G5, G10) includes dataset size and availability, generalization across sites, annotation scarcity, and privacy-preserving learning. \textit{Modeling \& Learning} (C2: G3, G4, G9) includes limited temporal modeling, reliance on 2D projections, and class imbalance. \textit{Clinical Deployment} (C3: G6, G7, G8) addresses gaps in prospective validation, explainability, and multimodal integration. \textit{Outcome \& Reporting} (C4: G11, G12) addresses the connection between image-level performance and clinical outcomes, along with structured reporting.
+We identified twelve research gaps (G1--G12) and organized them into four clusters (C1--C4), which are shown in Figure~\ref{fig:venn_gaps}. \textit{Data Infrastructure} (C1: G1, G2, G5, G10) includes dataset size and availability, generalization across sites, annotation scarcity, and privacy-preserving learning. \textit{Modeling \& Learning} (C2: G3, G4, G9) includes limited temporal modeling, reliance on 2D projections, and class imbalance. \textit{Clinical Deployment} (C3: G6, G7, G8) addresses gaps in prospective validation, explainability, and multimodal integration. \textit{Outcome \& Reporting} (C4: G11, G12) addresses the connection between image-level performance and clinical outcomes, along with structured reporting.
 
 Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps across multiple clusters. Large annotated datasets (S1) support all four clusters. Pretraining on unlabeled video (S3) and generative augmentation (S14) connect data infrastructure with modeling, while annotation-efficient learning (S8) also supports clinical deployment. Uncertainty quantification (S9) connects modeling with deployment. Prospective trials, outcome-supervised training, longitudinal cohorts, and vision--language models (S10--S13) connect clinical deployment with outcomes and reporting. Table~\ref{tab:research_gaps} presents the evidence for each gap and the corresponding strategies.
 \clearpage
@@ -51,10 +51,10 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Absence of shared benchmarks makes cross-study comparison practically impossible \cite{R0100,ref43,ref48,ref92,ref94,ref95}.\newline
 \tabitem Inconsistent evaluation protocols prevent measurement of field-wide progress \cite{R2411,ref100}.
 &
-\tabitem Construct and release large-scale multi-institutional angiographic datasets with standardized pixel-level annotations and defined train/test splits \cite{R0099,ref35,ref97}.\newline
+\tabitem Construct and release large-scale multi-institutional angiographic datasets with standardized annotations and defined train/test splits \cite{R0099,ref35,ref97}.\newline
 \tabitem Organize dedicated challenge benchmarks modeled on established medical image segmentation competitions, building on the public datasets already reused by included studies \cite{ref15,ref211,ref64,R1222,ref48,R0099}.\newline
 \tabitem Mandate inter-rater reliability protocols in annotation guidelines to ensure label quality \cite{R1213}.\newline
-\tabitem Define standard evaluation metrics and phantom-versus-patient evaluation subsets \cite{R0058}.
+% \tabitem Define standard evaluation metrics and phantom-versus-patient evaluation subsets \cite{R0058}.
 \\
 \dashedrule
 
@@ -69,14 +69,14 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Treat external multi-institutional validation as a required component, not an optional addition \cite{ref198,R2873,ref65,ref94,ref152,ref155}.\newline
 \tabitem Develop domain adaptation methods tailored to variable contrast concentration, dose, frame rate, and motion profiles \cite{ref64}.\newline
 \tabitem Extend personalized federated learning frameworks to accommodate non-identical cross-center data distributions \cite{R2443}.\newline
-\tabitem Establish domain shift benchmarks to quantify performance degradation across imaging vendors \cite{ref95}.
+\tabitem Establish domain shift benchmarks to quantify performance degradation across different imaging vendors \cite{ref95}.
 \\
 \dashedrule
 
 % ---- Row 3 ----
 \textbf{G3:} Temporal Modeling \& Video-Level Analysis\newline\textit{C2}
 &
-\tabitem Temporal information is mostly used shallowly: 21 of 120 studies process each frame independently, and half of the 97 temporally aware studies rely on fixed operations rather than learned temporal representations of flow and contrast propagation \cite{ref64,ref15,R1541,ref50,ref82,ref10}.\newline
+\tabitem Temporal information is mostly used scarcely: 21 of 120 studies process each frame independently, and half of the 97 temporally aware studies rely on fixed operations rather than learned temporal representations of flow and contrast propagation \cite{ref64,ref15,R1541,ref50,ref82,ref10}.\newline
 \tabitem Temporal models are typically restricted to short fixed-length clips, not full variable-length sequences \cite{R1222,R3149,R3712}.\newline
 \tabitem Procedural phase transitions during interventional procedures are not explicitly modeled \cite{R3129,R4208,ref94,R2443}.\newline
 \tabitem Respiratory and cardiac motion are treated as noise rather than informative temporal signals \cite{ref36,R4220,ref34}.
