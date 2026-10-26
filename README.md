@@ -4,7 +4,7 @@
 
 **This is the canonical, actively maintained repository for the AngioVision systematic literature review. All future manuscript edits, screening updates, extraction corrections, and analysis changes should be made here.**
 
-It brings together the manuscript for *A Systematic Literature Review on AI Methods for Angiographic Sequence Analysis*, its supplementary material, screening decisions, human screening validation, structured study extractions, and the code used to produce the analyses. You do not need to clone or use the former `angiovision-slr-data` repository to work on the paper or regenerate analyses from the committed extraction records.
+It brings together the manuscript for *Artificial Intelligence for Angiographic Sequence Analysis: A Systematic Review of Temporal Modeling, Clinical Readiness, and Research Gaps*, its supplementary material, screening decisions, human screening validation, structured study extractions, and the code used to produce the analyses. You do not need to clone or use the former `angiovision-slr-data` repository to work on the paper or regenerate analyses from the committed extraction records.
 
 The repository contains the project's shared manuscript and reproducibility materials. It does **not** distribute copyrighted full-text articles, private credentials, or a complete model runtime. Repeating full-text quotation checks or rerunning external searches requires the additional inputs described below.
 
