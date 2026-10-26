@@ -39,6 +39,7 @@ The 491-record validation sample contains all 134 pipeline inclusions and 357 sa
 | [`references.bib`](references.bib) | Bibliography used by the main manuscript. |
 | [`figs/`](figs/) and [`tables/`](tables/) | Committed figures, tables, and supporting summaries for the manuscript. |
 | [`supplementary/`](supplementary/) | Separate supplementary LaTeX document, Table S1 screening validation records, and Table S2 PRISMA checklist. |
+| [`00_supplementary_file.pdf`](00_supplementary_file.pdf) | Compiled supplementary material (Table S1 screening validation records, Table S2 PRISMA 2020 checklist), built from `supplementary/supplementary.tex`. |
 | [`screening/`](screening/) | Screening decisions for all 5,064 records, dual-review annotations, agreement calculation, and search/screening pipeline. |
 | [`extraction/`](extraction/) | Extraction instructions, JSON schema, schema generator, validator, study manifest, conversion script, and 120 study-level JSON records. |
 | [`analysis/`](analysis/) | Scripts for topical, metric, task/architecture, reporting-cluster, overlap, and task-clustering analyses. |
