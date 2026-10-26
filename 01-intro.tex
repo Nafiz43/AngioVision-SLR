@@ -3,7 +3,7 @@
 
 Catheter-based angiography provides real-time images of vascular anatomy and pathology during endovascular procedures, which include treatment of aneurysms, obstructions, malformations and traumatic injury~\cite{valji2011practice,kaufman2013vascular}. Digital subtraction angiography (DSA) and contrast fluoroscopy capture both spatial detail and the passage of contrast through vessels. These sequences show vessel morphology and device position, while contrast arrival and washout provide information about perfusion, collateral circulation and procedural outcome that individual frames cannot fully capture~\cite{ref89}.
 
-Therefore, the analysis of such procedures must account for respiratory and cardiac motion, differences in acquisition protocols and imaging systems, and varying sequence lengths~\cite{shi2021temporal}. These challenges motivate methods that combine spatial and temporal information to support consistent image interpretation and procedural guidance.
+The analysis of such sequences must account for respiratory and cardiac motion, differences in acquisition protocols and imaging systems, and varying sequence lengths~\cite{shi2021temporal}. These challenges motivate methods that combine spatial and temporal information to support consistent image interpretation and procedural guidance.
 
 \subsection{AI for Angiographic Sequence Analysis}
 AI methods have been applied to various angiographic tasks, such as image enhancement, vessel segmentation, motion correction, device tracking, lesion assessment and outcome prediction~\cite{ref99,ref100}. However, the literature spans clinical and engineering disciplines, with heterogeneous datasets, evaluation protocols and metrics. This fragmentation makes it difficult to compare approaches or determine how well they generalize across institutions and acquisition settings.
@@ -15,10 +15,10 @@ Moreover, there are numerous approaches available to capture temporality in a da
 \subsection{The Need for a Systematic Review}
 Earlier surveys examine deep learning across medical imaging~\cite{Litjens2017,Shen2017} or blood vessel segmentation~\cite{Moccia2018}. Reviews of AI in interventional radiology address planning, guidance, interpretation and clinical workflow~\cite{Iezzi2019,Gurgitano2021,Mukhtar2025}. These perspectives provide clinical and methodological context but do not center on how computational methods analyze angiographic sequences across tasks and applications.
 
-Nonetheless, a sequence-focused synthesis is needed to connect imaging modalities, anatomical territories, tasks and architectures with temporal modeling strategies. Evaluation practices, reporting and reproducibility also require attention because clinical translation depends on transparent methods and evidence of generalization across institutions, vendors and patients~\cite{Tejani2024,collins2024tripod+}.
+Therefore, a sequence-focused synthesis is needed to connect imaging modalities, anatomical territories, tasks and architectures with temporal modeling strategies. Evaluation practices, reporting and reproducibility also require attention because clinical translation depends on transparent methods and evidence of generalization across institutions, vendors and patients~\cite{Tejani2024,collins2024tripod+}.
 
 
-To our knowledge, no review has examined AI methods that operate on angiographic sequences while also covering modalities, territories, tasks, architectures, temporal modeling, evaluation and reporting. Clinical translation of these methods depends on rigorous validation, transparent reporting and evidence that models generalize across institutions, vendors and patients~\cite{Tejani2024,collins2024tripod+}, so these aspects need to be assessed alongside the methods themselves.
+To our knowledge, no review has examined AI methods that operate on angiographic sequences while also covering modalities, territories, tasks, architectures, temporal modeling, evaluation and reporting.
 
 \subsection{Objectives}
 \label{sec:intro-objectives}
