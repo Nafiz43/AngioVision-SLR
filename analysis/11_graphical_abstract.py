@@ -21,14 +21,17 @@ ROOT = Path(__file__).resolve().parents[1]
 
 ns = {}
 for node in ast.parse((ROOT / 'analysis/09_venn_diagram.py').read_text()).body:
-    if isinstance(node, ast.Assign) and getattr(node.targets[0], 'id', '') in {'CLUSTERS', 'COLOURS'}:
+    if isinstance(node, ast.Assign) and getattr(node.targets[0], 'id', '') in {'CLUSTERS', 'COLOURS', 'INTERSECTIONS', 'UNIQUE'}:
         name = node.targets[0].id
-        if name == 'COLOURS':
+        if name == 'INTERSECTIONS':
+            ns[name] = {frozenset(ast.literal_eval(k.args[0])): ast.literal_eval(v)
+                        for k, v in zip(node.value.keys, node.value.values)}
+        elif name == 'COLOURS':
             ns[name] = {ast.literal_eval(k): {kw.arg: ast.literal_eval(kw.value) for kw in v.keywords}
                         for k, v in zip(node.value.keys, node.value.values)}
         else:
             ns[name] = ast.literal_eval(node.value)
-clusters, colours = ns['CLUSTERS'], ns['COLOURS']
+clusters, colours, inter, unique = ns['CLUSTERS'], ns['COLOURS'], ns['INTERSECTIONS'], ns['UNIQUE']
 
 screened = sum(1 for _ in csv.DictReader(open(ROOT / 'screening/stage1_llm_decisions.csv')))
 cats = [json.load(open(f))['method'].get('temporal_category') for f in glob.glob(str(ROOT / 'extraction/out/R*.json'))]
@@ -107,21 +110,41 @@ for (label, col), xx in zip([('learned', LEARNED), ('fixed', FIXED), ('none', NO
     ax.text(xx + .14, .52, label, va='center', fontsize=10.5, color=INK)
 arrow(8.4, 8.9)
 
-# 4. Research-gap clusters.
+# 4. Research-gap clusters with mitigation strategies (S codes), laid out as in the article's Venn figure.
 names = {'C1': 'Data\ninfrastructure', 'C2': 'Modeling &\nlearning', 'C3': 'Clinical\ndeployment', 'C4': 'Outcome &\nreporting'}
-r, d, vx, vy = .95, .64, 10.45, 2.4
-centres = {'C1': (vx - d, vy + d), 'C2': (vx + d, vy + d), 'C3': (vx - d, vy - d), 'C4': (vx + d, vy - d)}
+r, h, v, vx, vy = 1.0, .78, .7, 10.8, 2.45
+centres = {'C1': (vx - h, vy), 'C2': (vx, vy + v), 'C3': (vx + h, vy), 'C4': (vx, vy - v)}
 for k, (x, y) in centres.items():
     c = colours[k]
-    ax.add_patch(Circle((x, y), r, facecolor=c['fill'], edgecolor=c['edge'], alpha=.55, lw=1.2))
-push = {'C1': (-1, 1), 'C2': (1, 1), 'C3': (-1, -1), 'C4': (1, -1)}
-for k, (x, y) in centres.items():
+    ax.add_patch(Circle((x, y), r, facecolor=c['fill'], edgecolor=c['edge'], alpha=.5, lw=1.2))
+lobe = {'C1': (vx - 1.25, vy), 'C2': (vx, vy + 1.27), 'C3': (vx + 1.25, vy), 'C4': (vx, vy - 1.27)}
+for k, (tx, ty) in lobe.items():
     c = colours[k]
-    sx, sy = push[k]
-    tx, ty = x + .3 * sx, y + .3 * sy
-    ax.text(tx, ty + .13, names[k], ha='center', va='center', fontsize=9.8, weight='bold', color=c['txt'], linespacing=1.05)
-    ax.text(tx, ty - .27, ' '.join(g[0] for g in clusters[k]['gaps']), ha='center', va='center', fontsize=8.5, color=c['txt'])
-caption(vx, f'{gap_total} research gaps')
+    strat = unique.get(k, '—')
+    lines = [(names[k], 8.6, 'bold'), (' '.join(g[0] for g in clusters[k]['gaps']), 7.6, 'normal')]
+    if strat != '—':
+        lines.append((strat.replace(', ', ' '), 7.6, 'bold'))
+    if k in ('C2', 'C4'):
+        ax.text(tx, ty + (.06 if k == 'C2' else -.06), names[k].replace('\n', ' '), ha='center', va='center',
+                fontsize=8.6, weight='bold', color=c['txt'])
+        rest_lines = lines[1:]
+        ax.text(tx, ty + (-.17 if k == 'C2' else .17), '   '.join(t for t, _, _ in rest_lines), ha='center',
+                va='center', fontsize=7.6, color=c['txt'])
+    else:
+        ax.text(tx, ty + .3, names[k], ha='center', va='center', fontsize=8.2, weight='bold', color=c['txt'], linespacing=1.05)
+        for n, (t, fs, w) in enumerate(lines[1:]):
+            ax.text(tx, ty - .12 - n * .22, t, ha='center', va='center', fontsize=fs, weight=w, color=c['txt'])
+spots = {('C1', 'C2'): (vx - .55, vy + .55), ('C2', 'C3'): (vx + .55, vy + .55),
+         ('C3', 'C4'): (vx + .55, vy - .55), ('C1', 'C4'): (vx - .55, vy - .55),
+         ('C1', 'C2', 'C3'): (vx, vy + .4), ('C1', 'C2', 'C3', 'C4'): (vx, vy - .08)}
+for keys, (x, y) in spots.items():
+    label = inter.get(frozenset(keys), '—')
+    if label == '—':
+        continue
+    ax.text(x, y, ' '.join(label.replace('\n', ' ').replace(',', ' ').split()).replace('S10 S11 S12 S13', 'S10–S13'),
+            ha='center', va='center', fontsize=7.8, weight='bold', color=INK)
+n_strat = len({t for v in list(inter.values()) + list(unique.values()) for t in v.replace(',', ' ').split() if t.startswith('S')})
+caption(vx, f'{gap_total} research gaps, {n_strat} strategies (S)')
 
 for ext in ('pdf', 'png'):
     fig.savefig(ROOT / f'graphical_abstract.{ext}', dpi=300, facecolor='white')
