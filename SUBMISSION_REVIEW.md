@@ -30,7 +30,7 @@ Reviewed against the author-provided `guide.pdf` (saved 26 October 2026). Base m
 - Upload the compiled supplementary material separately with a concise caption; the guide says supplementary files are published as supplied.
 - Complete Elsevier's declarations tool even when there are no competing interests; upload its resulting Word document (.doc or .docx). This is separate from the manuscript declaration.
 - Enter the approved author details in the submission portal. Confirm corresponding-author contact details and any required third-party permissions during submission; author approval of the listed metadata and declarations was reported by the author.
-- Upload `graphical_abstract.pdf` as the separate graphical abstract (vector PDF); `graphical_abstract.png` is a 2250 x 1350 pixel preview. Rebuild with `python3 analysis/11_graphical_abstract.py`. The graphic summarizes 120 studies, 12 gaps, four clusters and 14 mitigation strategies; overlapping circles are schematic, not proportional set sizes.
+- Upload `graphical_abstract.pdf` as the separate graphical abstract (vector PDF); `graphical_abstract.png` is a 3900 x 1500 pixel (13:5) preview. Rebuild with `python3 analysis/11_graphical_abstract.py`. The graphic summarizes 120 studies, 12 gaps, four clusters and 14 mitigation strategies; overlapping circles are schematic, not proportional set sizes.
 - An ethics statement now explains that approval and consent were not required for this review of published literature without recruitment or collection of identifiable individual-level data.
 - A graphical abstract is encouraged, not mandatory. Double-column LaTeX is permitted. Seven keywords are within the allowed range. A data availability statement and funding statement are already present.
 
