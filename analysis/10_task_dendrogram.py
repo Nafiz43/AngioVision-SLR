@@ -43,13 +43,13 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 
 # === GLOBAL FONT SETTINGS (consistent with 01_topical_analysis.py) ===
-# Drawn at the manuscript text width (6.84 in): 10 pt here prints at 10 pt.
+# Drawn at the manuscript text width (6.84 in): 8 pt here prints at 8 pt.
 plt.rcParams.update({
-    "font.size":        10,
-    "axes.titlesize":   10,
-    "axes.labelsize":   10,
-    "xtick.labelsize":  10,
-    "ytick.labelsize":  10,
+    "font.size":        8,
+    "axes.titlesize":   8,
+    "axes.labelsize":   8,
+    "xtick.labelsize":  8,
+    "ytick.labelsize":  8,
 })
 
 # === CONFIGURATION ===
@@ -178,7 +178,7 @@ def main():
         Z,
         labels=CANONICAL_TASKS,
         orientation="right",       # leaves on the left, dissimilarity increases left-to-right
-        leaf_font_size=10,
+        leaf_font_size=8,
         color_threshold=color_threshold,
         above_threshold_color=ABOVE_THRESHOLD_COLOR,
         ax=ax,

@@ -92,15 +92,15 @@ COLOURS = {
     'C4': dict(fill='#FAC775', edge='#854F0B', txt='#412402'),
 }
 
-# Drawn at the manuscript text width (6.84 in) without cropping, so 10 pt here
-# prints at 10 pt, matching the body text.
+# Drawn at the manuscript text width (6.84 in) without cropping, so 8 pt here
+# prints at 8 pt, the caption size.
 from pathlib import Path
 import textwrap
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'analysis-results'
 OUT.mkdir(exist_ok=True)
-fig = plt.figure(figsize=(6.84, 8.6), facecolor='white')
-ax = fig.add_axes([0, .645, 1, .355])
+fig = plt.figure(figsize=(6.84, 7.4), facecolor='white')
+ax = fig.add_axes([0, .588, 1, .412])
 ax.set(xlim=(-3.5, 3.5), ylim=(-2.32, 2.32), aspect='equal')
 ax.axis('off')
 centres = {'C1':(-1.25,0), 'C2':(0,1.05), 'C3':(1.25,0), 'C4':(0,-1.05)}
@@ -109,35 +109,35 @@ for k,(x,y) in centres.items():
 labels = {'C1':(-1.65,0), 'C2':(0,1.75), 'C3':(1.65,0), 'C4':(0,-1.75)}
 for k,(x,y) in labels.items():
     gaps=', '.join(g[0] for g in CLUSTERS[k]['gaps'])
-    ax.text(x,y,k+'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=10,color=COLOURS[k]['txt'],bbox=dict(fc='white',ec='none',alpha=.8,pad=2))
+    ax.text(x,y,k+'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=8,color=COLOURS[k]['txt'],bbox=dict(fc='white',ec='none',alpha=.8,pad=2))
 positions = {frozenset(['C1','C2']):(-.85,.85),frozenset(['C2','C3']):(.85,.85),frozenset(['C1','C4']):(-.85,-.85),frozenset(['C3','C4']):(.85,-.85),frozenset(['C1','C2','C3']):(0,.57),frozenset(['C1','C2','C3','C4']):(0,0)}
 for region,(x,y) in positions.items():
     label=INTERSECTIONS[region]
     if label == '—':
         continue
-    ax.text(x,y,label,ha='center',va='center',fontsize=10,weight='bold',bbox=dict(fc='white',ec='none',alpha=.85,pad=2))
+    ax.text(x,y,label,ha='center',va='center',fontsize=8,weight='bold',bbox=dict(fc='white',ec='none',alpha=.85,pad=2))
 R=fig.canvas.get_renderer()
 def below(t,panel,gap):
     # Next entry starts under the drawn text, so wrapped lines never collide.
     return t.get_window_extent(R).transformed(panel.transAxes.inverted()).y0-gap
-left=fig.add_axes([.025,.005,.45,.635]); right=fig.add_axes([.515,.005,.46,.635])
+left=fig.add_axes([.025,.005,.45,.575]); right=fig.add_axes([.515,.005,.46,.575])
 for panel in (left,right):
     panel.set(xlim=(0,1),ylim=(0,1)); panel.axis('off')
-left.text(0,1,'Research gaps',fontsize=10,weight='bold',va='top')
+left.text(0,1,'Research gaps',fontsize=8,weight='bold',va='top')
 y=.94
 for k,cluster in CLUSTERS.items():
-    y=below(left.text(0,y,k+'  '+cluster['name'],fontsize=10,weight='bold',color=COLOURS[k]['txt'],va='top'),left,.014)
+    y=below(left.text(0,y,k+'  '+cluster['name'],fontsize=8,weight='bold',color=COLOURS[k]['txt'],va='top'),left,.014)
     for code,desc in cluster['gaps']:
-        lines=textwrap.fill(' '.join(desc.split()),36)
-        left.text(0,y,code,fontsize=10,weight='bold',va='top')
-        y=below(left.text(.13,y,lines,fontsize=10,va='top',linespacing=1.1),left,.008)
+        lines=textwrap.fill(' '.join(desc.split()),44)
+        left.text(0,y,code,fontsize=8,weight='bold',va='top')
+        y=below(left.text(.13,y,lines,fontsize=8,va='top',linespacing=1.1),left,.008)
     y-=.022
-right.text(0,1,'Mitigation strategies',fontsize=10,weight='bold',va='top')
+right.text(0,1,'Mitigation strategies',fontsize=8,weight='bold',va='top')
 y=.94
 for code,desc in STRATEGIES:
-    lines=textwrap.fill(' '.join(desc.split()),40)
-    right.text(0,y,code,fontsize=10,weight='bold',va='top')
-    y=below(right.text(.12,y,lines,fontsize=10,va='top',linespacing=1.1),right,.008)
+    lines=textwrap.fill(' '.join(desc.split()),50)
+    right.text(0,y,code,fontsize=8,weight='bold',va='top')
+    y=below(right.text(.12,y,lines,fontsize=8,va='top',linespacing=1.1),right,.008)
 for ext in ('pdf','png'):
     fig.savefig(OUT / ('venn_diagram.'+ext),dpi=300,facecolor='white')
 plt.close(fig)

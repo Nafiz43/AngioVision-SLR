@@ -115,8 +115,20 @@
 
 \begin{document}
 \let\WriteBookmarks\relax
-\def\floatpagepagefraction{1}
-\def\textpagefraction{.001}
+% Let floats sit with text instead of being deferred to half-empty float pages.
+\renewcommand{\topfraction}{.9}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.1}
+\renewcommand{\floatpagefraction}{.85}
+\renewcommand{\dbltopfraction}{.9}
+\renewcommand{\dblfloatpagefraction}{.7}
+\makeatletter % float pages fill from the top
+\setlength{\@fptop}{0pt}\setlength{\@dblfptop}{0pt}
+\makeatother
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\setcounter{dbltopnumber}{3}
 % Short title
 \shorttitle{SLR on Angiographic Sequence Analysis}
 

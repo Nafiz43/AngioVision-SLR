@@ -8,15 +8,15 @@ import numpy as np
 # =========================
 # GLOBAL FONT SETTINGS
 # =========================
-# The histogram is drawn at the manuscript text width (6.84 in), so 10 pt here
-# prints at 10 pt, matching the body text.
+# The histogram is drawn at the manuscript text width (6.84 in), so 8 pt here
+# prints at 8 pt, the caption size.
 plt.rcParams.update({
-    "font.size":        10,   # default text / tick labels
-    "axes.titlesize":   10,   # plot titles (unused, but set for safety)
-    "axes.labelsize":   10,   # x / y axis labels
-    "xtick.labelsize":  10,   # x tick labels
-    "ytick.labelsize":  10,   # y tick labels
-    "legend.fontsize":  10,   # legend text
+    "font.size":        8,   # default text / tick labels
+    "axes.titlesize":   8,   # plot titles (unused, but set for safety)
+    "axes.labelsize":   8,   # x / y axis labels
+    "xtick.labelsize":  8,   # x tick labels
+    "ytick.labelsize":  8,   # y tick labels
+    "legend.fontsize":  8,   # legend text
 })
 
 # =========================
@@ -135,7 +135,7 @@ variance_table.to_csv(os.path.join(out_dir, "variance_table.csv"), index=False)
 # =========================
 # 5. FIGURE 1: HISTOGRAM
 # =========================
-plt.figure(figsize=(6.84, 3.4))
+plt.figure(figsize=(6.84, 2.5))
 
 for group in primary_df["metric_group"].unique():
     subset = primary_df[primary_df["metric_group"] == group]["value"]
@@ -143,7 +143,8 @@ for group in primary_df["metric_group"].unique():
 
 plt.xlabel("Metric Value (%)")
 plt.ylabel("Number of Studies")
-plt.legend(loc="lower center", bbox_to_anchor=(0.5, 1.02), ncol=2)
+plt.ylim(top=plt.ylim()[1] * 1.2)  # headroom so the legend clears the bars
+plt.legend(loc="upper left")
 plt.tight_layout()
 
 plt.savefig(os.path.join(out_dir, "histogram_metrics.pdf"))

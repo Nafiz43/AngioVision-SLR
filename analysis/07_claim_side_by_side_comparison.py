@@ -32,16 +32,16 @@ import numpy as np
 import pandas as pd
 
 # ── Font sizes ────────────────────────────────────────────────────────────────
-# Drawn at the manuscript text width (6.84 in): 10 pt here prints at 10 pt.
-FS_CLUSTER_LABEL = 10   # Y-axis cluster names
-FS_ITEMS_BADGE   = 10   # "Items 1–2" right axis
-FS_PCT_LABEL     = 10   # "72%" annotations
-FS_SECTION_BAND  = 10   # italic section labels inside bands
-FS_X_TICK        = 10
-FS_X_LABEL       = 10
-FS_REF_LINE      = 10
-FS_LEGEND_TITLE  = 10
-FS_LEGEND_BODY   = 10
+# Drawn at the manuscript text width (6.84 in): 8 pt here prints at 8 pt.
+FS_CLUSTER_LABEL = 8   # Y-axis cluster names
+FS_ITEMS_BADGE   = 8   # "Items 1–2" right axis
+FS_PCT_LABEL     = 8   # "72%" annotations
+FS_SECTION_BAND  = 8   # italic section labels inside bands
+FS_X_TICK        = 8
+FS_X_LABEL       = 8
+FS_REF_LINE      = 8
+FS_LEGEND_TITLE  = 8
+FS_LEGEND_BODY   = 8
 
 # ── Cluster definitions ───────────────────────────────────────────────────────
 CLAIM2024_CLUSTERS = [
@@ -225,13 +225,13 @@ def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_se
 # ── Main figure ───────────────────────────────────────────────────────────────
 def draw_comparison_plot(pre_rows, post_rows, n_pre, n_post, split_year, out_dir):
     n     = len(CLAIM2024_CLUSTERS)
-    fig_h = 7.6
+    fig_h = 5.4
 
     fig, (ax_l, ax_r) = plt.subplots(
         1, 2,
         figsize=(6.84, fig_h),
         sharey=True,
-        gridspec_kw=dict(wspace=0.05, left=0.33, right=0.91, top=0.94, bottom=0.20),
+        gridspec_kw=dict(wspace=0.05, left=0.27, right=0.91, top=0.94, bottom=0.21),
     )
 
     # Section names are already conveyed by the shared legend below, so the
@@ -249,7 +249,7 @@ def draw_comparison_plot(pre_rows, post_rows, n_pre, n_post, split_year, out_dir
     # Vertical divider
     fig.add_artist(
         plt.Line2D(
-            [0.62, 0.62], [0.20, 0.97],  # midway between the panels
+            [0.59, 0.59], [0.21, 0.97],  # midway between the panels
             transform=fig.transFigure,
             color="#cccccc", linewidth=1.2, linestyle="--",
         )

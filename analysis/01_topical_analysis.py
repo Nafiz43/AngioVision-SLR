@@ -23,16 +23,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # === GLOBAL FONT SETTINGS ===
-# Figures are drawn at their printed width (COL_W / TEXT_W), so 10 pt here is
-# 10 pt in the manuscript, matching the body text.
+# Figures are drawn at their printed width (COL_W / TEXT_W), so 8 pt here is
+# 8 pt in the manuscript, the caption size.
 COL_W, TEXT_W = 3.30, 6.84  # inches: cas-dc column width and text width
 plt.rcParams.update({
-    "font.size":        10,
-    "axes.titlesize":   10,
-    "axes.labelsize":   10,
-    "xtick.labelsize":  10,
-    "ytick.labelsize":  10,
-    "legend.fontsize":  10,
+    "font.size":        8,
+    "axes.titlesize":   8,
+    "axes.labelsize":   8,
+    "xtick.labelsize":  8,
+    "ytick.labelsize":  8,
+    "legend.fontsize":  8,
 })
 
 # === CONFIGURATION ===

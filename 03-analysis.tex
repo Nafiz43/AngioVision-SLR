@@ -34,7 +34,7 @@ The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 va
 
 \subsection{Publication Trends}
 \label{subsec:trends}
-\begin{figure}[]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=1\linewidth]{figs/temporal_trends.pdf}
 \caption{Included studies by publication year. The 2026 bar covers a partial year.}
@@ -67,7 +67,7 @@ Figure~\ref{fig:modality_distribution} shows that DSA and X-ray/fluoroscopy are 
 
 
 \label{subsec:modality_anatomy}
-\begin{figure}[]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=1\linewidth]{figs/modality_distribution.pdf}
 \caption{Imaging modality distribution across included studies.}
@@ -76,7 +76,7 @@ Figure~\ref{fig:modality_distribution} shows that DSA and X-ray/fluoroscopy are 
 
 \label{fig:modality_distribution}
 \end{figure}
-\begin{figure}[]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=1\linewidth]{figs/anatomy_distribution.pdf}
 \caption{Anatomical distribution across included studies. The Neurologic category includes cerebral and spinal vascular territories.}
@@ -95,7 +95,7 @@ Tasks whose output is itself temporal remain rare: temporal sequence modeling (6
 
 
 \label{subsec:tasks_architectures}
-\begin{figure*}[]
+\begin{figure*}[!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/task_distribution.pdf}
 \caption{Distribution of primary computational tasks across included studies.}
@@ -112,7 +112,7 @@ This subsection examines how often computational task categories occur together 
 
 Figure~\ref{fig:task_dendrogram} shows that most task categories merge near the maximum Tanimoto distance, which indicates limited overlap across the literature. Three pairs merge at relatively lower distances: contrast flow analysis with outcome prediction, classification \& detection, and temporal sequence modeling with segmentation. These pairings are consistent with workflows in which flow measurements inform outcome prediction, detected lesions are subsequently graded, or vessel segmentation incorporates filling-phase information. They suggest possible groupings for a coarser taxonomy, although the high merge distances overall indicate that even these associations are limited. Image enhancement \& device tracking, as well as motion correction \& background subtraction, connect to the remaining categories only at the highest merge distances.
 
-\begin{figure*}[]
+\begin{figure*}[!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/task_dendrogram.pdf}
 \caption{Average-linkage clustering of ten computational task categories using Tanimoto distances between their study-membership sets, including primary and secondary task assignments. Merges further left indicate greater overlap. All merge distances fall between 0.75 and 1.00; the axis is restricted to this range, and the two sub-clusters with the lowest merge distances are highlighted in color.}
@@ -162,19 +162,22 @@ Figure~\ref{fig:venue_curve} shows that the studies are distributed across 79 ve
 \end{mdframed}
 \vspace{0.25cm}
 
-\begin{figure}[]
+% Figures 7 and 8 share one full-width float so they do not leave half-empty column pages;
+% width= sets the cas-dc caption width for each side.
+\begin{figure*}[pos=!tp,width=\columnwidth]
+\begin{minipage}[t]{\columnwidth}
 \centering
-\includegraphics[width=1\linewidth]{figs/venue_analysis_stacked.pdf}
+\includegraphics[width=\linewidth]{figs/venue_analysis_stacked.pdf}
 \caption{Top publication venues by study count, stratified by venue type. IJCARS: International Journal of Computer Assisted Radiology and Surgery; IEEE TMI: IEEE Transactions on Medical Imaging; MedIA: Medical Image Analysis; JIIM: Journal of Imaging Informatics in Medicine; Sci.\ Rep.: Scientific Reports; SPIE: Proceedings of SPIE; MICCAI: International Conference on Medical Image Computing and Computer-Assisted Intervention; SWITCH@MICCAI: SWITCH workshop at MICCAI; ICBME: Iranian Conference on Biomedical Engineering; JACC: Journal of the American College of Cardiology.}
 \label{fig:venue_stacked}
-\end{figure}
-
-\begin{figure}[]
+\end{minipage}\hfill
+\begin{minipage}[t]{\columnwidth}
 \centering
-\includegraphics[width=1\linewidth]{figs/venue_cumulative_curve.pdf}
+\includegraphics[width=\linewidth]{figs/venue_cumulative_curve.pdf}
 \caption{Cumulative share of the 120 studies with a stated venue across 79 venues, ranked by study count. Dashed lines mark 50\% (yellow) and 80\% (green).}
 \label{fig:venue_curve}
-\end{figure}
+\end{minipage}
+\end{figure*}
 
 
 \subsection{Reported Performance}
@@ -195,7 +198,7 @@ Differences in datasets (few studies share a common dataset), evaluation protoco
 
 
 
-\begin{figure*}[]
+\begin{figure*}[!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/histogram_metrics.pdf}
 \caption{Distributions of reported performance values by metric family, expressed on a 0--100 scale. Values are descriptive and do not represent pooled performance estimates.}
@@ -205,7 +208,7 @@ Differences in datasets (few studies share a common dataset), evaluation protoco
 
 % Figure~\ref{fig:metric_kde} provides a smoothed view of these distributions, making their concentration and spread easier to distinguish.
 
-% \begin{figure}[]
+% \begin{figure}[!htbp]
 % \centering
 % \includegraphics[width=1\linewidth]{figs/kde_metrics.pdf}
 % \caption{Kernel density estimates showing smoothed distributions of reported performance values by metric family. Differences in study settings and metric definitions limit direct comparisons.}
@@ -222,6 +225,8 @@ We assessed reporting completeness using 44 review-specific criteria informed by
 
 We grouped the 44 operational criteria into 12 review-defined reporting clusters (Appendix~\ref{app:claim_clusters}). These are organized into six broad categories: Title/Abstract (C01), Introduction (C02), Methods (C03--C08), Results (C09--C10), Discussion (C11), and Reproducibility and Transparency (C12). C12 covers reproducibility and funding disclosure.
 
+\input{tables/claim_2024_comaprison}
+
 Figure~\ref{fig:forest_plot} shows reporting completeness across the 12 review-defined clusters with confidence intervals, while Table~\ref{tab:claim2024_temporal} reports the comparisons between publication periods. Nearly perfect reporting of background and objectives can be seen in Figure~\ref{fig:forest_plot}; however, lower and less consistent reporting can be observed for methods. Table~\ref{tab:claim2024_temporal} shows the largest differences in participant and image-acquisition reporting (C04: 49\% to 70\%, unadjusted $p=0.04$), study design and data sources (C03: 68\% to 81\%, $p=0.14$), and reference-standard and annotation reporting (C05: 71\% to 56\%, $p=0.11$). Demographic and subgroup reporting remains low (C10: 30\% and 28\%). No difference is statistically significant after Holm correction (smallest adjusted $p=0.43$).
 
 % The later group contains 43 studies, limiting the precision of these comparisons; the results do not establish that reporting remained unchanged.
@@ -237,11 +242,9 @@ Although 74\% meet the reproducibility and funding-disclosure cluster (C12), onl
 \end{mdframed}
 \vspace{0.25cm}
 
-\begin{figure*}[]
+\begin{figure*}[!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/forest_plot_claim2024_comparison.pdf}
 \caption{Reporting completeness under the review-specific CLAIM-informed schema for studies published up to 2024 (left) and from 2025 onward (right). Diamonds show the proportion meeting each review-defined cluster, with 95\% Wilson confidence intervals. Colors identify broad reporting categories; the right axis lists operational item numbers from Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}
 \label{fig:forest_plot}
 \end{figure*}
-
-\input{tables/claim_2024_comaprison}
