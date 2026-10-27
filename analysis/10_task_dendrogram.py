@@ -43,12 +43,13 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 
 # === GLOBAL FONT SETTINGS (consistent with 01_topical_analysis.py) ===
+# Drawn at the manuscript text width (6.84 in): 8 pt here prints at 8 pt.
 plt.rcParams.update({
-    "font.size":        14,
-    "axes.titlesize":   17,
-    "axes.labelsize":   15,
-    "xtick.labelsize":  13,
-    "ytick.labelsize":  13,
+    "font.size":        8,
+    "axes.titlesize":   8,
+    "axes.labelsize":   8,
+    "xtick.labelsize":  8,
+    "ytick.labelsize":  8,
 })
 
 # === CONFIGURATION ===
@@ -172,22 +173,22 @@ def main():
     from scipy.cluster.hierarchy import set_link_color_palette
     set_link_color_palette(CLUSTER_COLORS)
 
-    fig, ax = plt.subplots(figsize=(11, 6.5))
+    fig, ax = plt.subplots(figsize=(6.84, 4.2))
     dendrogram(
         Z,
         labels=CANONICAL_TASKS,
         orientation="right",       # leaves on the left, dissimilarity increases left-to-right
-        leaf_font_size=13,
+        leaf_font_size=8,
         color_threshold=color_threshold,
         above_threshold_color=ABOVE_THRESHOLD_COLOR,
         ax=ax,
     )
 
-    ax.set_xlabel("Tanimoto distance  (1 − co-occurrence overlap)", color=TEXT_PRIMARY)
+    ax.set_xlabel("Tanimoto distance", color=TEXT_PRIMARY)
     ax.set_ylabel("")
     ax.set_xlim(x_floor, 1.005)
-    ax.set_title("Task Category Co-occurrence (UPGMA clustering, Tanimoto distance)",
-                 fontsize=15, color=TEXT_PRIMARY, pad=12)
+    ax.set_title("Task category co-occurrence",
+                 color=TEXT_PRIMARY, pad=8)
     ax.axvline(1.0, color="#c9c8c2", linewidth=1, linestyle="--", zorder=0)
     ax.grid(axis="x", color="#e6e5e0", linewidth=0.8, zorder=0)
     ax.set_axisbelow(True)
@@ -198,7 +199,7 @@ def main():
     plt.setp(ax.get_xticklabels(), color=TEXT_PRIMARY)
 
     plt.tight_layout()
-    plt.savefig(OUTPUT_PDF, dpi=300, bbox_inches="tight")
+    plt.savefig(OUTPUT_PDF, dpi=300)
     plt.close()
     print(f"Saved dendrogram to: {OUTPUT_PDF}")
 

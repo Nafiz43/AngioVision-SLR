@@ -92,237 +92,52 @@ COLOURS = {
     'C4': dict(fill='#FAC775', edge='#854F0B', txt='#412402'),
 }
 
-OUT_PDF = '../analysis-results/venn_diagram.pdf'
-OUT_PNG = '../analysis-results/venn_diagram.png'
-
-# ════════════════════════════════════════════════════════
-#  LAYOUT CONSTANTS
-# ════════════════════════════════════════════════════════
-
-FIG_W, FIG_H = 19.0, 12.5
-
-CX, CY   = 9.20, 5.80
-R        = 2.40
-D        = 1.95
-ALPHA    = 0.34
-
-# ── Font sizes (all increased) ───────────────────────────
-# FS_PANEL_HEADER  = 13.5
-# FS_CLUSTER_LABEL = 11.5
-# FS_CLUSTER_ID    = 19.0
-# FS_GAP_CODE      = 10.5
-# FS_GAP_DESC      = 10.5
-# FS_STRAT_CODE    = 10.5
-# FS_STRAT_DESC    = 10.5
-# FS_ANN           = 9.8
-# FS_INT           = 10.5
-# FS_KEY_HEADER    = 11.0
-# FS_KEY_LABEL     = 9.8
-# FS_NOTE          = 9.2
-
-
-# ── Font sizes (substantially larger, same layout) ───────
-
-FS_PANEL_HEADER  = 17
-FS_CLUSTER_LABEL = 18
-FS_CLUSTER_ID    = 26
-
-FS_GAP_CODE      = 17
-FS_GAP_DESC      = 16.5
-
-FS_STRAT_CODE    = 17
-FS_STRAT_DESC    = 16.5
-
-FS_ANN           = 16
-FS_INT           = 16
-
-FS_KEY_HEADER    = 16
-FS_KEY_LABEL     = 16
-
-FS_NOTE          = 10.5
-
-GAP_ROW_H    = 0.42
-STRAT_ROW_H  = 0.68
-CLUSTER_GAP  = 0.56
-KEY_ROW_H    = 0.42
-
-LX, LTY = 0.22, 12.00
-RX, RTY = 14.50, 12.00
-LW      = 3.80
-RW      = 4.10
-
-# ════════════════════════════════════════════════════════
-#  DRAWING
-# ════════════════════════════════════════════════════════
-
-fig = plt.figure(figsize=(FIG_W, FIG_H))
-fig.patch.set_facecolor('white')
-ax  = fig.add_axes([0, 0, 1, 1])
-ax.set_xlim(0, FIG_W);  ax.set_ylim(0, FIG_H)
-ax.set_aspect('equal');  ax.axis('off')
-
-CXY = {
-    'C1': (CX - D, CY),
-    'C2': (CX,     CY + D),
-    'C3': (CX + D, CY),
-    'C4': (CX,     CY - D),
-}
-
-for k, (cx, cy) in CXY.items():
-    ax.add_patch(Circle((cx, cy), R,
-                         fc=COLOURS[k]['fill'], ec='none',
-                         alpha=ALPHA, zorder=2))
-    ax.add_patch(Circle((cx, cy), R,
-                         fc='none', ec=COLOURS[k]['edge'],
-                         lw=1.9, zorder=3))
-
-id_offsets = {
-    'C1': (CXY['C1'][0] - 0.98, CXY['C1'][1] + 1.28),
-    'C2': (CXY['C2'][0],         CXY['C2'][1] + 1.28),
-    'C3': (CXY['C3'][0] + 0.98, CXY['C3'][1] + 1.28),
-    'C4': (CXY['C4'][0],         CXY['C4'][1] - 1.28),
-}
-for k, (x, y) in id_offsets.items():
-    ax.text(x, y, k, fontsize=FS_CLUSTER_ID, fontweight='bold',
-            color=COLOURS[k]['txt'], ha='center', va='center', zorder=6)
-
-def vtext(x, y, txt, fs, color, bold=False, faint=False):
-    ax.text(x, y, txt,
-            fontsize   = fs,
-            color      = '#AAAAAA' if faint else color,
-            fontweight = 'bold' if (bold and not faint) else 'normal',
-            style      = 'italic',
-            ha='center', va='center',
-            alpha      = 0.55 if faint else 1.0,
-            zorder     = 8,
-            linespacing= 1.5,
-            bbox=dict(boxstyle='round,pad=0.18', fc='white',
-                      ec='none', alpha=0.55 if faint else 0.62))
-
-cx1,cy1 = CXY['C1']; cx2,cy2 = CXY['C2']
-cx3,cy3 = CXY['C3']; cx4,cy4 = CXY['C4']
-
-gap_codes = {k: ', '.join(g[0] for g in v['gaps'])
-             for k, v in CLUSTERS.items()}
-
-vtext(cx1 - 0.60, cy1 + 0.16,
-      f"Gaps: {gap_codes['C1']}\nUnique: {UNIQUE['C1']}",
-      FS_ANN, COLOURS['C1']['txt'])
-
-vtext(cx2, cy2 + 0.72,
-      f"Gaps: {gap_codes['C2']}          Unique: {UNIQUE['C2']}",
-      FS_ANN, COLOURS['C2']['txt'])
-
-vtext(cx3 + 0.60, cy3 + 0.16,
-      f"Gaps: {gap_codes['C3']}\nUnique: {UNIQUE['C3']}",
-      FS_ANN, COLOURS['C3']['txt'])
-
-vtext(cx4, cy4 - 0.72,
-      f"Gaps: {gap_codes['C4']}          Unique: {UNIQUE['C4']}",
-      FS_ANN, COLOURS['C4']['txt'])
-
-int_positions = {
-    frozenset(['C1', 'C2'])             : (CX - 1.36, CY + 1.46),
-    frozenset(['C2', 'C3'])             : (CX + 1.36, CY + 1.46),
-    frozenset(['C1', 'C4'])             : (CX - 1.36, CY - 1.46),
-    frozenset(['C3', 'C4'])             : (CX + 1.36, CY - 1.46),
-    frozenset(['C1', 'C3'])             : (CX,         CY + 0.60),
-    frozenset(['C2', 'C4'])             : (CX,         CY - 0.60),
-    frozenset(['C1', 'C2', 'C3'])       : (CX,          CY + 1.10),
-    frozenset(['C1', 'C2', 'C4'])       : (CX - 1.42,   CY),
-    frozenset(['C2', 'C3', 'C4'])       : (CX + 1.42,   CY),
-    frozenset(['C1', 'C3', 'C4'])       : (CX,          CY - 1.42),
-}
-
-for region, (x, y) in int_positions.items():
-    label = INTERSECTIONS.get(region, '—')
-    faint = (label == '—')
-    vtext(x, y, label, FS_INT,
-          color='#1A1A1A', bold=True, faint=faint)
-
-all4 = frozenset(['C1', 'C2', 'C3', 'C4'])
-ax.text(CX, CY, INTERSECTIONS.get(all4, 'S1'),
-        fontsize=12.0, fontweight='bold', color='#1A1A1A',
-        ha='center', va='center', zorder=10,
-        bbox=dict(boxstyle='round,pad=0.35', fc='white',
-                  ec='#888888', lw=1.3, alpha=0.96))
-
-# ── LEFT PANEL ────────────────────────────────────────────
-def panel_header(x, y, txt, width):
-    ax.text(x, y, txt, fontsize=FS_PANEL_HEADER, fontweight='bold',
-            color='#1A1A1A', ha='left', va='top', zorder=5)
-    ax.plot([x, x + width], [y - 0.24, y - 0.24],
-            color='#CCCCCC', lw=0.9, zorder=5)
-
-panel_header(LX, LTY, 'Research Gaps', LW)
-
-y_cursor = LTY - 0.44
-for k in ['C1', 'C2', 'C3', 'C4']:
-    ax.text(LX, y_cursor,
-            f"{k} — {CLUSTERS[k]['name']}",
-            fontsize=FS_CLUSTER_LABEL, fontweight='bold',
-            color=COLOURS[k]['txt'], ha='left', va='top', zorder=5)
-    y_cursor -= 0.40
-
-    for code, desc in CLUSTERS[k]['gaps']:
-        ax.text(LX + 0.08, y_cursor, code,
-                fontsize=FS_GAP_CODE, fontweight='bold',
-                color=COLOURS[k]['txt'], ha='left', va='top', zorder=5)
-        ax.text(LX + 0.80, y_cursor, desc,
-                fontsize=FS_GAP_DESC, color='#2E2E2E',
-                ha='left', va='top', zorder=5, linespacing=1.3)
-        y_cursor -= GAP_ROW_H * (desc.count('\n') + 1)
-
-    y_cursor -= CLUSTER_GAP
-
-# ── RIGHT PANEL ───────────────────────────────────────────
-panel_header(RX, RTY, 'Mitigation Strategies', RW)
-
-sy = RTY - 0.44
-for code, desc in STRATEGIES:
-    ax.text(RX + 0.02, sy, code,
-            fontsize=FS_STRAT_CODE, fontweight='bold',
-            color='#1A1A1A', ha='left', va='top', zorder=5)
-    ax.text(RX + 0.60, sy, desc,
-            fontsize=FS_STRAT_DESC, color='#2E2E2E',
-            ha='left', va='top', zorder=5, linespacing=1.38)
-    sy -= STRAT_ROW_H
-
-# ── Colour key ────────────────────────────────────────────
-sy -= 0.20
-ax.text(RX, sy, 'Cluster colour key:',
-        fontsize=FS_KEY_HEADER, fontweight='bold',
-        color='#1A1A1A', ha='left', va='top', zorder=5)
-sy -= 0.38
-
-key_entries = [
-    (k, f"{k} — {CLUSTERS[k]['name']} "
-        f"({', '.join(g[0] for g in CLUSTERS[k]['gaps'])})")
-    for k in ['C1', 'C2', 'C3', 'C4']
-]
-for k, lbl in key_entries:
-    rect = FancyBboxPatch(
-        (RX + 0.02, sy - 0.11), 0.30, 0.22,
-        boxstyle='square,pad=0',
-        fc=COLOURS[k]['fill'], ec=COLOURS[k]['edge'],
-        lw=0.9, alpha=0.85, zorder=5)
-    ax.add_patch(rect)
-    ax.text(RX + 0.44, sy + 0.01, lbl,
-            fontsize=FS_KEY_LABEL, color=COLOURS[k]['txt'],
-            ha='left', va='center', zorder=5)
-    sy -= KEY_ROW_H
-
-sy -= 0.14
-# ax.text(RX, sy,
-#         'Codes inside Venn = shared strategies.\n'
-#         'Dashes (—) = no strategy documented across those clusters.\n'
-#         'Centre (all four clusters): S1 only.',
-#         fontsize=FS_NOTE, color='#666666', style='italic',
-#         ha='left', va='top', zorder=5, linespacing=1.5)
-
-import os
-os.makedirs('analysis-results', exist_ok=True)
-fig.savefig(OUT_PDF, dpi=300, bbox_inches='tight', facecolor='white')
-fig.savefig(OUT_PNG, dpi=200, bbox_inches='tight', facecolor='white')
-print(f"Saved: {OUT_PDF}")
-print(f"Saved: {OUT_PNG}")
+# Drawn at the manuscript text width (6.84 in) without cropping, so 8 pt here
+# prints at 8 pt, the caption size.
+from pathlib import Path
+import textwrap
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / 'analysis-results'
+OUT.mkdir(exist_ok=True)
+fig = plt.figure(figsize=(6.84, 7.4), facecolor='white')
+ax = fig.add_axes([0, .588, 1, .412])
+ax.set(xlim=(-3.5, 3.5), ylim=(-2.32, 2.32), aspect='equal')
+ax.axis('off')
+centres = {'C1':(-1.25,0), 'C2':(0,1.05), 'C3':(1.25,0), 'C4':(0,-1.05)}
+for k,(x,y) in centres.items():
+    ax.add_patch(Circle((x,y),1.25,fc=COLOURS[k]['fill'],ec=COLOURS[k]['edge'],alpha=.45,lw=1.3))
+labels = {'C1':(-1.78,0), 'C2':(0,1.75), 'C3':(1.78,0), 'C4':(0,-1.75)}
+for k,(x,y) in labels.items():
+    gaps=', '.join(g[0] for g in CLUSTERS[k]['gaps'])
+    ax.text(x,y,k+'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=8,color=COLOURS[k]['txt'])
+positions = {frozenset(['C1','C2']):(-.85,.85),frozenset(['C2','C3']):(.85,.85),frozenset(['C1','C4']):(-.85,-.85),frozenset(['C3','C4']):(.85,-.85),frozenset(['C1','C2','C3']):(0,.57),frozenset(['C1','C2','C3','C4']):(0,0)}
+for region,(x,y) in positions.items():
+    label=INTERSECTIONS[region]
+    if label == '—':
+        continue
+    ax.text(x,y,label,ha='center',va='center',fontsize=8,weight='bold')
+R=fig.canvas.get_renderer()
+def below(t,panel,gap):
+    # Next entry starts under the drawn text, so wrapped lines never collide.
+    return t.get_window_extent(R).transformed(panel.transAxes.inverted()).y0-gap
+left=fig.add_axes([.025,.005,.45,.575]); right=fig.add_axes([.515,.005,.46,.575])
+for panel in (left,right):
+    panel.set(xlim=(0,1),ylim=(0,1)); panel.axis('off')
+left.text(0,1,'Research gaps',fontsize=8,weight='bold',va='top')
+y=.94
+for k,cluster in CLUSTERS.items():
+    y=below(left.text(0,y,k+'  '+cluster['name'],fontsize=8,weight='bold',color=COLOURS[k]['txt'],va='top'),left,.014)
+    for code,desc in cluster['gaps']:
+        lines=textwrap.fill(' '.join(desc.split()),44)
+        left.text(0,y,code,fontsize=8,weight='bold',va='top')
+        y=below(left.text(.13,y,lines,fontsize=8,va='top',linespacing=1.1),left,.008)
+    y-=.022
+right.text(0,1,'Mitigation strategies',fontsize=8,weight='bold',va='top')
+y=.94
+for code,desc in STRATEGIES:
+    lines=textwrap.fill(' '.join(desc.split()),50)
+    right.text(0,y,code,fontsize=8,weight='bold',va='top')
+    y=below(right.text(.12,y,lines,fontsize=8,va='top',linespacing=1.1),right,.008)
+for ext in ('pdf','png'):
+    fig.savefig(OUT / ('venn_diagram.'+ext),dpi=300,facecolor='white')
+plt.close(fig)
