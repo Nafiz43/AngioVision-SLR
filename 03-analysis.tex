@@ -6,11 +6,13 @@ This section contains the methodological results and the analyses of the selecte
 \subsection{Study Selection and Review Corpus}
 The screening search identified 5,829 records (PubMed/\allowbreak MEDLINE 4,071; Semantic Scholar 1,758). After removing 765 duplicates, 5,064 records remained. The LLM labelled 134 as eligible and excluded 4,930: 4,831 failed at least one inclusion criterion and 99 met an exclusion criterion (E1: 3, E2: 95, E3: 1). The PRISMA diagram of this eligibility analysis is shown in Figure~\ref{fig:prisma}.
 
-Applying Cochran's formula, we set the validation sample at 357 of the 4,930 exclusions; we also included all the LLM-eligible articles, which resulted in 491 records for manual review.
+Applying Cochran's \cite{cochran1977sampling} formula, we set the validation sample at 357 of the 4,930 exclusions; we also included all the LLM-eligible articles, which resulted in 491 records for manual review.
 
 The two reviewers agreed on 487 of the 491 records (99.2\%; Cohen's $\kappa=0.978$, 95\% CI 0.957--0.999). The four cases with disagreements were resolved through discussion by the annotators. After resolving the disagreements, we obtained the gold dataset.
 
-Following the gold dataset, we excluded 14 LLM-eligible records and added the 2 eligible records found among the exclusions, yielding 122 eligible studies for review; Figure~\ref{fig:prisma} therefore lists 4,829 rather than 4,831 LLM inclusion failures. Full text could not be retrieved for 2 of them; therefore, the review corpus comprises 120 studies. All 491 screening decisions are listed in Supplementary Table~S1.
+Following the gold dataset, we excluded 14 LLM-eligible records and added the 2 eligible records found among the exclusions, yielding 122 eligible studies for review; Figure~\ref{fig:prisma} therefore lists 4,829 rather than 4,831 LLM inclusion failures. Full text could not be retrieved for 2 of them; therefore, the review corpus comprises 120 studies. 
+
+% All 491 screening decisions are listed in Supplementary Table~S1.
 
 
 The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 values. For each study, it contains 74 fields (18 study-level fields, the status of the 12 research gaps and the 44 CLAIM-informed reporting criteria). The reviewer judged 431 values correct (97.1\%; 95.1--98.3\%), and 13 as incorrect.
@@ -41,7 +43,10 @@ The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 va
 \label{fig:temporal_trends}
 \end{figure}
 
-The trend of the selected articles is shown in Figure~\ref{fig:temporal_trends}, which shows that no included study predates 2018, and only five appeared in 2018--2019. Output rose sharply after 2020 and stayed high through 2025; the partial year 2026 already exceeds several earlier full years. Transformer-based temporal models appeared later; all ten such studies were published from 2023 onward.
+The trend of the selected articles is shown in Figure~\ref{fig:temporal_trends}, which shows that no included study predates 2018, and only five appeared in 2018--2019. Output rose sharply after 2020 and stayed high through 2025; the partial year 2026 already exceeds several earlier full years. 
+
+
+% Transformer-based temporal models appeared later; all ten such studies were published from 2023 onward.
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]

@@ -5,7 +5,7 @@ This appendix gives the exact queries, dates, filters and retrieval counts of th
 
 \subsection{PubMed/MEDLINE}
 
-\textbf{Execution date:} 2026-05-25. \textbf{Interface:} NCBI Entrez E-utilities (\texttt{esearch}), via the Biopython \texttt{Bio.Entrez} client.
+\textbf{Execution date:} 2026-07-31. \textbf{Interface:} NCBI Entrez E-utilities (\texttt{esearch}), via the Biopython \texttt{Bio.Entrez} client.
 
 \textbf{Filters applied:} publication date from 2000 onward (\texttt{pdat} 2000--3000) and English language. No study-type or subject-heading filters.
 
@@ -17,9 +17,11 @@ This appendix gives the exact queries, dates, filters and retrieval counts of th
 
 \subsection{Semantic Scholar}
 
-\textbf{Execution date:} 2026-05-25. \textbf{Interface:} Semantic Scholar Graph API v1 (\texttt{/paper/search} endpoint).
+\textbf{Execution date:} 2026-07-31. \textbf{Interface:} Semantic Scholar Graph API v1 (\texttt{/paper/search} endpoint).
 
-\textbf{Filters applied:} publication year 2000--2026; no venue, study-type or field filters. The API does not support field-tagged Boolean syntax, so we ran the 22 free-text queries below, each pairing an imaging term with an AI term. We kept the first 100 relevance-ranked results of each query (the API page size) and counted records returned by several queries once, by Semantic Scholar paper identifier.
+\textbf{Filters applied:} publication year 2000--2026; no venue, study-type or field filters. The API does not support field-tagged Boolean syntax, so we ran the 22 free-text queries below, each pairing an imaging term with an AI term.
+
+% We kept the first 100 relevance-ranked results of each query (the API page size) and counted records returned by several queries once, by Semantic Scholar paper identifier.
 
 \begin{quote}
 \raggedright\small\texttt{
@@ -29,13 +31,13 @@ deep learning angiography; deep learning digital subtraction angiography; machin
 
 \textbf{Retrieved:} 1{,}758 records before deduplication.
 
-\subsection{Deduplication and Aggregation}
+% \subsection{Deduplication and Aggregation}
 
-Records from both sources were pooled and deduplicated first by DOI (case-insensitive exact match) and, for records lacking a DOI, by normalized title (lowercased, punctuation-stripped exact match). This yielded 5{,}064 unique records from an initial pool of 5{,}829 (765 duplicates removed: 749 records retrieved by both databases, 11 duplicates within the PubMed results and 5 within the Semantic Scholar results), matching the counts in Figure~\ref{fig:prisma}.
+% Records from both sources were pooled and deduplicated first by DOI (case-insensitive exact match) and, for records lacking a DOI, by normalized title (lowercased, punctuation-stripped exact match). This yielded 5{,}064 unique records from an initial pool of 5{,}829 (765 duplicates removed: 749 records retrieved by both databases, 11 duplicates within the PubMed results and 5 within the Semantic Scholar results), matching the counts in Figure~\ref{fig:prisma}.
 
-\subsection{Sources Not Queried}
+% \subsection{Sources Not Queried}
 
-We did not query arXiv, to prioritize peer-reviewed work, nor Scopus or Web of Science. Semantic Scholar nonetheless returned IEEE and SPIE work well, but MICCAI and ACM venues are underrepresented (Section~\ref{subsec:venues}).
+% We did not query arXiv, to prioritize peer-reviewed work, nor Scopus or Web of Science. Semantic Scholar nonetheless returned IEEE and SPIE work well, but MICCAI and ACM venues are underrepresented (Section~\ref{subsec:venues}).
 
 \section{Stage 1 Screening Prompts}
 \label{appendix:screening_prompts}
