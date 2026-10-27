@@ -36,7 +36,7 @@ The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 va
 
 \subsection{Publication Trends}
 \label{subsec:trends}
-\begin{figure}[!htbp]
+\begin{figure}[pos=!htbp]
 \centering
 \includegraphics[width=1\linewidth]{figs/temporal_trends.pdf}
 \caption{Included studies by publication year. The 2026 bar covers a partial year.}
@@ -72,7 +72,7 @@ X-ray/fluoroscopy (58 studies, 48\%) and DSA (56, 47\%) are almost equally commo
 
 
 \label{subsec:modality_anatomy}
-\begin{figure}[!htbp]
+\begin{figure}[pos=!htbp]
 \centering
 \includegraphics[width=1\linewidth]{figs/anatomy_distribution.pdf}
 \caption{Anatomical distribution across included studies. The Neurologic category includes cerebral and spinal vascular territories.}
@@ -91,7 +91,7 @@ Tasks whose output is itself temporal remain rare: temporal sequence modeling (6
 
 
 \label{subsec:tasks_architectures}
-\begin{figure*}[!tp]
+\begin{figure*}[pos=!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/task_distribution.pdf}
 \caption{Distribution of primary computational tasks across included studies.}
@@ -108,7 +108,7 @@ This subsection examines how often computational task categories occur together 
 
 Figure~\ref{fig:task_dendrogram} shows that most task categories merge near the maximum Tanimoto distance, which indicates limited overlap across the literature. Three pairs merge at relatively lower distances: contrast flow analysis with outcome prediction, classification \& detection, and temporal sequence modeling with segmentation. These pairings are consistent with workflows in which flow measurements inform outcome prediction, detected lesions are subsequently graded, or vessel segmentation incorporates filling-phase information. They suggest possible groupings for a coarser taxonomy, although the high merge distances overall indicate that even these associations are limited. Image enhancement \& device tracking, as well as motion correction \& background subtraction, connect to the remaining categories only at the highest merge distances.
 
-\begin{figure*}[!tp]
+\begin{figure*}[pos=!tp]
 \centering
 \includegraphics[width=1\linewidth, height=10cm]{figs/task_dendrogram.pdf}
 \caption{Average-linkage clustering of ten computational task categories using Tanimoto distances between their study-membership sets, including primary and secondary task assignments. Merges further left indicate greater overlap. All merge distances fall between 0.75 and 1.00; the axis is restricted to this range, and the two sub-clusters with the lowest merge distances are highlighted in color.}
@@ -194,7 +194,7 @@ Differences in datasets (few studies share a common dataset), evaluation protoco
 
 
 
-\begin{figure*}[!tp]
+\begin{figure*}[pos=!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/histogram_metrics.pdf}
 \caption{Distributions of reported performance values by metric family, expressed on a 0--100 scale. Values are descriptive and do not represent pooled performance estimates.}
@@ -238,7 +238,7 @@ Although 74\% meet the reproducibility and funding-disclosure cluster (C12), onl
 \end{mdframed}
 \vspace{0.25cm}
 
-\begin{figure*}[!tp]
+\begin{figure*}[pos=!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/forest_plot_claim2024_comparison.pdf}
 \caption{Reporting completeness under the review-specific CLAIM-informed schema for studies published up to 2024 (left) and from 2025 onward (right). Diamonds show the proportion meeting each review-defined cluster, with 95\% Wilson confidence intervals. Colors identify broad reporting categories; the right axis lists operational item numbers from Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}

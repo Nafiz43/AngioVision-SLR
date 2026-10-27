@@ -15,6 +15,7 @@
 \usepackage{float}
 \usepackage{subcaption}
 \usepackage{mdframed}
+\mdfsetup{nobreak=true} % keep each Finding box in one piece
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{listings}
@@ -22,12 +23,12 @@
 \usepackage{array}
 \usepackage{pdflscape}
 \usepackage{microtype}
-\usepackage{arydshln}
+% arydshln removed: it breaks tabularx in current TeX Live; tables use \dashedrule.
 \usepackage{enumerate}
 \usepackage{tabularx}
 % --- Lists/columns ---
 \usepackage{multicol}
-\usepackage{flushend} % Balance the two columns on the final page.
+% flushend removed: with current TeX Live it overflowed columns into the footer.
 \usepackage{enumitem}
 \usepackage{longtable}
 % \usepackage{listings}
