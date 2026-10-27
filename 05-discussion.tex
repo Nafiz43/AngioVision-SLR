@@ -10,9 +10,9 @@ Second, the literature is concentrated in a small number of clinical settings. C
 
 Third, reported performance is generally high, but its interpretation is limited by inconsistent evaluation. Public datasets are used by 20 studies, yet only three release their own data, and there is no common evaluation framework across the reviewed tasks. Differences in datasets, reference standards, and metrics make cross-study rankings unreliable. Therefore, public data benchmarks need to be built with defined test sets and consistent outcome definitions.
 
-Fourth, evidence supporting clinical use remains limited. Only 19 studies report external validation, three use a prospective design, and four report clinical deployment or live use. These findings indicate that most evidence concerns technical performance rather than benefit during clinical care. Similarly, the reporting comparison shown in Figure~\ref{fig:forest_plot} found no statistically significant differences between studies published up to 2024 and those published from 2025 onward after Holm correction. This does not establish unchanged reporting or measure the effect of the CLAIM 2024 update.
+Fourth, evidence supporting clinical use remains limited. Only 19 studies report external validation, three use a prospective design, and four report clinical deployment or live use. These findings indicate that most evidence concerns technical performance rather than benefit during clinical care. Similarly, the reporting comparison shown in Figure~\ref{fig:forest_plot} found no statistically significant differences between studies published up to 2024 and those published from 2025 onward after Holm correction. 
 
-The twelve research gaps bring these findings together. Table~\ref{tab:research_gaps} shows that model development is closely connected to data availability, annotation quality, evaluation, and clinical integration. Generalization, public benchmarks, and temporal modeling are the most frequently documented gaps, appearing in 68, 65, and 63 studies, respectively. These provide immediate priorities for further work. Federated learning, language models, and structured reporting are less represented and should be treated as directions requiring evaluation rather than established solutions.
+% The twelve research gaps bring these findings together. Table~\ref{tab:research_gaps} shows that model development is closely connected to data availability, annotation quality, evaluation, and clinical integration. Generalization, public benchmarks, and temporal modeling are the most frequently documented gaps, appearing in 68, 65, and 63 studies, respectively. These provide immediate priorities for further work. Federated learning, language models, and structured reporting are less represented and should be treated as directions requiring evaluation rather than established solutions.
 
 \subsection{Comparison with Prior Work}
 
@@ -39,14 +39,17 @@ Our review complements the prior research by focusing on temporally ordered angi
 The study has several limitations:
 
 
-First, full-text extraction relied on an LLM, and one reviewer audited six studies, representing 5\% of the corpus. Although 97.1\% of audited values were correct, this sample cannot establish the same accuracy for every field. Errors in interpretive categories, including temporal modeling and research gaps, may affect the synthesis. The gap analysis also depends on limitations and future directions stated by authors, so problems that were not explicitly discussed may be underrepresented.
+First, our search was limited to PubMed/\allowbreak MEDLINE because these sources were accessible through their APIs. We did not extend the search to additional databases because of restrictions on API access. Relevant studies indexed elsewhere may therefore have been missed, limiting the completeness of the review and potentially affecting the distribution of topics and publication venues.
 
-Second, we did not apply a dedicated risk-of-bias tool or conduct a meta-analysis. The reported performance distributions describe the extracted results but do not provide pooled estimates of generalization or clinical effectiveness.
+
+Second, full-text extraction relied on an LLM, and one reviewer audited six studies, representing 5\% of the corpus. Although 97.1\% of audited values were correct, this sample cannot establish the same accuracy for every field. Errors in interpretive categories, including temporal modeling and research gaps, may affect the synthesis. The gap analysis also depends on limitations and future directions stated by authors, therefore, problems that were not explicitly discussed may be underrepresented.
+
+Third, we did not apply a dedicated risk-of-bias tool or conduct a meta-analysis. The reported performance distributions describe the extracted results but do not provide pooled estimates of generalization or clinical effectiveness.
+
+
 
 Finally, the review was not registered and had no published protocol. 
 
 \subsection{Conclusion}
 
-This review shows growing interest in angiographic sequence analysis, with applications spanning classification, detection, segmentation, tracking, and image enhancement. Temporal information is widely used, but learned temporal representations remain concentrated in a few tasks. High reported performance is accompanied by limited data sharing, inconsistent evaluation, and little prospective evidence of clinical benefit.
-
-Further progress requires shared multi-institutional datasets, task-specific benchmarks, controlled evaluation of temporal methods, and validation across vascular territories and acquisition settings. Prospective studies should then establish whether these methods improve clinical decisions, procedural workflow, or patient outcomes. These steps are necessary to turn technical improvements into reliable tools for angiography-guided care.
+This review shows growing interest in angiographic sequence analysis, with applications spanning classification, detection, segmentation, tracking, and image enhancement. Temporal information is widely used, but learned temporal representations remain concentrated in a few tasks. High reported performance is accompanied by limited data sharing, inconsistent evaluation, and little prospective evidence of clinical benefit. Hence, further progress requires shared multi-institutional datasets, task-specific benchmarks, controlled evaluation of temporal methods, and validation across vascular territories and acquisition settings. Prospective studies should then establish whether these methods improve clinical decisions, procedural workflow, or patient outcomes. These steps are necessary to turn technical improvements into reliable tools for angiography-guided care.

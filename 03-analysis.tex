@@ -4,18 +4,18 @@
 This section contains the methodological results and the analyses of the selected articles. We first report study selection and the validation of screening and extraction, then the characteristics of the 120 included studies: publication trends, modalities and territories, tasks and architectures, temporal modeling, venues, reported performance and reporting quality.
 
 \subsection{Study Selection and Review Corpus}
-The screening search identified 5,829 records (PubMed/\allowbreak MEDLINE 4,071; Semantic Scholar 1,758). After removing 765 duplicates, 5,064 records remained. The LLM labelled 134 as eligible and excluded 4,930: 4,831 failed at least one inclusion criterion and 99 met an exclusion criterion (E1: 3, E2: 95, E3: 1). The PRISMA diagram of this eligibility analysis is shown in Figure~\ref{fig:prisma}.
+The screening search identified 5,829 records (PubMed/\allowbreak MEDLINE 4,071; Semantic Scholar 1,758). After removing 765 duplicates, 5,064 records remained. The LLM labelled 134 as eligible and excluded 4,930. 4,831 failed at least one inclusion criterion and 99 met an exclusion criterion (E1: 3, E2: 95, E3: 1). The PRISMA diagram of this eligibility analysis is shown in Figure~\ref{fig:prisma}.
 
 Applying Cochran's \cite{cochran1977sampling} formula, we set the validation sample at 357 of the 4,930 exclusions; we also included all the LLM-eligible articles, which resulted in 491 records for manual review.
 
-The two reviewers agreed on 487 of the 491 records (99.2\%; Cohen's $\kappa=0.978$, 95\% CI 0.957--0.999). The four cases with disagreements were resolved through discussion by the annotators. After resolving the disagreements, we obtained the gold dataset.
+The two reviewers agreed on 487 of the 491 records (99.2\%; Cohen's $\kappa=0.978$, 95\% CI 0.957--0.999). The four cases with disagreements were resolved through discussion by the annotators. The resultant data, after resolution of the disagreements, served as the manually validated dataset.
 
-Following the gold dataset, we excluded 14 LLM-eligible records and added the 2 eligible records found among the exclusions, yielding 122 eligible studies for review; Figure~\ref{fig:prisma} therefore lists 4,829 rather than 4,831 LLM inclusion failures. Full text could not be retrieved for 2 of them; therefore, the review corpus comprises 120 studies. 
+Of the manually validated records, we excluded 14 LLM-eligible records and added the 2 eligible records found among the exclusions, yielding 122 eligible studies for review; Figure~\ref{fig:prisma} therefore lists 4,829 rather than 4,831 LLM inclusion failures. Full text could not be retrieved for 2 of the studies; therefore, the final review corpus comprises 120 studies. 
 
 % All 491 screening decisions are listed in Supplementary Table~S1.
 
 
-The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 values. For each study, it contains 74 fields (18 study-level fields, the status of the 12 research gaps and the 44 CLAIM-informed reporting criteria). The reviewer judged 431 values correct (97.1\%; 95.1--98.3\%), and 13 as incorrect.
+The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 values. For each study, it contains 74 fields (18 study-level fields, the status of the 12 research gaps and the 44 CLAIM-informed reporting criteria). The reviewer judged 431 values correct (97.1\%; 95.1--98.3\%).
 
 
 
@@ -43,7 +43,7 @@ The full-text LLM extraction audit covered 6 of the 120 studies (5\%) and 444 va
 \label{fig:temporal_trends}
 \end{figure}
 
-The trend of the selected articles is shown in Figure~\ref{fig:temporal_trends}, which shows that no included study predates 2018, and only five appeared in 2018--2019. Output rose sharply after 2020 and stayed high through 2025; the partial year 2026 already exceeds several earlier full years. 
+The trend of the selected articles,  Figure~\ref{fig:temporal_trends}, shows that no included study predates 2018, and only five appeared in 2018--2019. Output rose sharply after 2020 and stayed high through the study inclusion end date. The partial year 2026 already exceeds several earlier full years. 
 
 
 % Transformer-based temporal models appeared later; all ten such studies were published from 2023 onward.
@@ -55,10 +55,10 @@ The trend of the selected articles is shown in Figure~\ref{fig:temporal_trends},
 \vspace{0.25cm}
 
 \subsection{Imaging Modalities and Anatomical Coverage}
-This subsection summarizes the imaging modalities used by the included studies and the anatomical territories they address; the anatomical distribution is shown in Figure~\ref{fig:anatomy_distribution}.
+This subsection summarizes the imaging modalities used by the included studies and the anatomical territories they address. The anatomical distribution is shown in Figure~\ref{fig:anatomy_distribution}.
 
 
-X-ray/fluoroscopy (58 studies, 48\%) and DSA (56, 47\%) are almost equally common, but they are rarely studied jointly: only 5 studies (4\%) use both. Cardiac (47\%) and neurologic (41\%) applications, which include cerebral and spinal vascular territories, make up nearly 90\% of the corpus, while abdominopelvic, peripheral and other thoracic territories are rare (Figure~\ref{fig:anatomy_distribution}). Whether models trained on coronary or cerebral angiography transfer to other vascular regions is rarely tested.
+X-ray/fluoroscopy (58 studies, 48\%) and DSA (56, 47\%) are almost equally common, but they are rarely studied jointly: only 5 studies (4\%) use both. Cardiac (47\%) and neurologic (41\%) applications, which include cerebral and spinal vascular territories, make up nearly 90\% of the corpus, while abdominopelvic, peripheral, and other thoracic territories are rare (Figure~\ref{fig:anatomy_distribution}). Whether models trained on coronary or cerebral angiography transfer to other vascular regions is rarely tested.
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
@@ -85,9 +85,9 @@ X-ray/fluoroscopy (58 studies, 48\%) and DSA (56, 47\%) are almost equally commo
 \subsection{Computational Tasks and Model Architectures}
 Here, we examined the computational tasks addressed by the included studies and the model architectures used to perform them. We categorized studies by their primary task and summarized the architectures used within each category to characterize the methodological focus of the literature. Figure~\ref{fig:task_distribution} presents the distribution of primary tasks across the 120 studies, while Table~\ref{tab:task_architecture_clean} summarizes the corresponding architectures.
 
-Figure~\ref{fig:task_distribution} shows that disease classification and grading is the most common primary task (31 of 120 studies), followed by object detection \& localization (18) and vessel segmentation (15). Regarding the model architectures (Table~\ref{tab:task_architecture_clean}) involved in those tasks, 14 of the 15 segmentation studies use encoder--decoder models, mostly U-Net variants; detection studies use YOLO, DETR and R-CNN detectors on ResNet backbones; classification relies on ResNet-style CNNs, with Transformers increasingly added. It can be observed that most architectures are adapted from natural-image computer vision rather than designed specifically for angiography.
+Figure~\ref{fig:task_distribution} shows that disease classification and grading is the most common primary task (31 of 120 studies), followed by object detection \& localization (18) and vessel segmentation (15). Regarding the model architectures (Table~\ref{tab:task_architecture_clean}) involved in those tasks, 14 of the 15 segmentation studies use encoder--decoder models, mostly U-Net variants; detection studies use YOLO, DETR and R-CNN detectors on ResNet backbones; classification relies on ResNet-style CNNs, with Transformers increasingly added. The majority of architectures are adapted from natural-image computer vision rather than designed specifically for angiography.
 
-Tasks whose output is itself temporal remain rare: temporal sequence modeling (6 studies) and contrast flow analysis (9). Many spatial tasks, such as segmentation, detection and classification, use several frames only to stabilize a per-frame prediction (discussed in detail in Section~\ref{subsec:temporal_taxonomy}).
+Tasks whose output is itself temporal remain rare: temporal sequence modeling (6 studies) and contrast flow analysis (9). Many spatial tasks, such as segmentation, detection, and classification, use several frames only to stabilize a per-frame prediction (discussed in detail in Section~\ref{subsec:temporal_taxonomy}).
 
 
 \label{subsec:tasks_architectures}
@@ -234,7 +234,7 @@ Although 74\% meet the reproducibility and funding-disclosure cluster (C12), onl
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
-\textbf{Finding 6.} Background and objectives are well reported, but demographic and subgroup reporting, code and data sharing, and evidence of clinical use remain limited. No between-period difference in reporting completeness was statistically significant after Holm correction; this does not establish unchanged reporting or measure the effect of the CLAIM 2024 update.
+\textbf{Finding 6.} Background and objectives are well reported, but demographic and subgroup reporting, code and data sharing, and evidence of clinical use remain limited. We found no statistically significant difference in reporting in studies up until 2024 and 2025 onward.
 \end{mdframed}
 \vspace{0.25cm}
 
