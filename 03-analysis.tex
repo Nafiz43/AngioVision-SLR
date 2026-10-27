@@ -179,7 +179,7 @@ Figure~\ref{fig:venue_curve} shows that the studies are distributed across 79 ve
 \subsection{Reported Performance}
 \label{subsec:performance}
 
-This subsection examines the reported performance values and their variation across metric families. The values are grouped by metric family and their distributions are shown as a histogram on a scale of 0--100 in Figure~\ref{fig:metric_histogram}. These summaries describe reported results rather than pooled estimates of model performance.
+Reported performance metrics are the main basis on which studies compare methods, but each value is meaningful only together with the dataset, validation design and metric definition that produced it. This subsection examines the reported performance values and their variation across metric families. The values are grouped by metric family and their distributions are shown as a histogram on a scale of 0--100 in Figure~\ref{fig:metric_histogram}. These summaries describe reported results rather than pooled estimates of model performance.
 
 It can be observed from Figure~\ref{fig:metric_histogram} that reported scores are concentrated near the upper end of the scale (average~88\%), although several studies report substantially lower values. Accuracy and detection precision/recall have the widest spread (SD 12.0 and 12.5, respectively), whereas Dice/F1 scores are more tightly grouped (SD 7.5). AUC values show intermediate variation (SD 8.7). Despite these differences in spread, the four metric families have similar mean values (Accuracy, precision \& recall, Dice/F1, AUC), ranging from 86.6 to 89.9. 
 
@@ -241,6 +241,6 @@ Although 74\% meet the reproducibility and funding-disclosure cluster (C12), onl
 \begin{figure*}[pos=!tp]
 \centering
 \includegraphics[width=1\linewidth]{figs/forest_plot_claim2024_comparison.pdf}
-\caption{Reporting completeness under the review-specific CLAIM-informed schema for studies published up to 2024 (left) and from 2025 onward (right). Diamonds show the proportion meeting each review-defined cluster, with 95\% Wilson confidence intervals. Colors identify broad reporting categories; the right axis lists operational item numbers from Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}
+\caption{Reporting completeness under the review-specific CLAIM-informed schema for studies published up to 2024 (left) and from 2025 onward (right). The split follows the publication of CLAIM 2024~\cite{Tejani2024}. Diamonds show the proportion meeting each review-defined cluster, with 95\% Wilson confidence intervals. Colors identify broad reporting categories; the right axis lists operational item numbers from Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}
 \label{fig:forest_plot}
 \end{figure*}
