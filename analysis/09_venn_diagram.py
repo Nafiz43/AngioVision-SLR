@@ -106,16 +106,16 @@ ax.axis('off')
 centres = {'C1':(-1.25,0), 'C2':(0,1.05), 'C3':(1.25,0), 'C4':(0,-1.05)}
 for k,(x,y) in centres.items():
     ax.add_patch(Circle((x,y),1.25,fc=COLOURS[k]['fill'],ec=COLOURS[k]['edge'],alpha=.45,lw=1.3))
-labels = {'C1':(-1.65,0), 'C2':(0,1.75), 'C3':(1.65,0), 'C4':(0,-1.75)}
+labels = {'C1':(-1.78,0), 'C2':(0,1.75), 'C3':(1.78,0), 'C4':(0,-1.75)}
 for k,(x,y) in labels.items():
     gaps=', '.join(g[0] for g in CLUSTERS[k]['gaps'])
-    ax.text(x,y,k+'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=8,color=COLOURS[k]['txt'],bbox=dict(fc='white',ec='none',alpha=.8,pad=2))
+    ax.text(x,y,k+'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=8,color=COLOURS[k]['txt'])
 positions = {frozenset(['C1','C2']):(-.85,.85),frozenset(['C2','C3']):(.85,.85),frozenset(['C1','C4']):(-.85,-.85),frozenset(['C3','C4']):(.85,-.85),frozenset(['C1','C2','C3']):(0,.57),frozenset(['C1','C2','C3','C4']):(0,0)}
 for region,(x,y) in positions.items():
     label=INTERSECTIONS[region]
     if label == '—':
         continue
-    ax.text(x,y,label,ha='center',va='center',fontsize=8,weight='bold',bbox=dict(fc='white',ec='none',alpha=.85,pad=2))
+    ax.text(x,y,label,ha='center',va='center',fontsize=8,weight='bold')
 R=fig.canvas.get_renderer()
 def below(t,panel,gap):
     # Next entry starts under the drawn text, so wrapped lines never collide.
