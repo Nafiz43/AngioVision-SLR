@@ -23,13 +23,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # === GLOBAL FONT SETTINGS ===
+# Figures are drawn at their printed width (COL_W / TEXT_W), so 10 pt here is
+# 10 pt in the manuscript, matching the body text.
+COL_W, TEXT_W = 3.30, 6.84  # inches: cas-dc column width and text width
 plt.rcParams.update({
-    "font.size":        16,
-    "axes.titlesize":   17,
-    "axes.labelsize":   15,
-    "xtick.labelsize":  16,
-    "ytick.labelsize":  16,
-    "legend.fontsize":  13,
+    "font.size":        10,
+    "axes.titlesize":   10,
+    "axes.labelsize":   10,
+    "xtick.labelsize":  10,
+    "ytick.labelsize":  10,
+    "legend.fontsize":  10,
 })
 
 # === CONFIGURATION ===
@@ -286,11 +289,11 @@ def plot_distribution(series: pd.Series, title: str, filename: Path, top_n: int 
     series = series[~series.str.lower().isin(["unknown", "other"])]
     counts = series.value_counts().head(top_n).sort_values()
 
-    plt.figure(figsize=(7.2, 7.5) if len(counts) > 7 else (6.4, 5.5))
+    plt.figure(figsize=(TEXT_W, 4.2) if len(counts) > 7 else (COL_W, 3.0))
     colors = plt.cm.tab20(np.linspace(0, 1, len(counts)))
     counts.plot(kind="barh", color=colors)
     plt.gca().set_yticklabels([textwrap.fill(str(x), 23) for x in counts.index])
-    plt.xlabel("Count", fontsize=17)
+    plt.xlabel("Count")
     plt.ylabel("")
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
@@ -340,10 +343,10 @@ def run_topical_analysis(df: pd.DataFrame, norm_venue_counts: Counter, venue_typ
     plot_index[-1] = partial_label
     bar_colors = ["skyblue"] * (len(plot_values) - 1) + ["#DD8452"]
 
-    plt.figure(figsize=(6.2, 4.3))
+    plt.figure(figsize=(COL_W, 2.7))
     plt.bar(plot_index, plot_values, color=bar_colors)
-    plt.xlabel("Year", fontsize=17)
-    plt.ylabel("Number of Papers", fontsize=17)
+    plt.xlabel("Year")
+    plt.ylabel("Number of Papers")
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / FIGURES["temporal_trends"]["file"], dpi=300)
@@ -365,10 +368,7 @@ def run_topical_analysis(df: pd.DataFrame, norm_venue_counts: Counter, venue_typ
     journal_values    = [journal_counts.get(v, 0)    for v in labels]
     conference_values = [conference_counts.get(v, 0) for v in labels]
 
-    # Figure is placed at a single (double-column) width in the manuscript
-    # (~3.4in). A narrower canvas with a narrower bar width means less
-    # downscaling on print, so the text renders larger and more legible.
-    fig, ax = plt.subplots(figsize=(6.4, 5.2))
+    fig, ax = plt.subplots(figsize=(COL_W, 3.3))
     x = np.arange(len(labels))
     width = 0.35  # Narrower bar width, avoids overlap on the smaller canvas
 
@@ -383,19 +383,13 @@ def run_topical_analysis(df: pd.DataFrame, norm_venue_counts: Counter, venue_typ
         rotation=45,
         ha="right",
         rotation_mode="anchor",
-        fontsize=16,
     )
-    ax.set_ylabel("Number of Papers", fontsize=16, fontweight="bold")
-    ax.set_xlabel("Venue", fontsize=16, fontweight="bold")
-    ax.legend(fontsize=16, loc="upper right")
-    ax.tick_params(axis="y", labelsize=16)
+    ax.set_ylabel("Number of Papers", fontweight="bold")
+    ax.set_xlabel("Venue", fontweight="bold")
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=2, frameon=False)
 
     fig.tight_layout()
-    fig.savefig(
-        OUTPUT_DIR / FIGURES["venue_stacked"]["file"],
-        dpi=300,
-        bbox_inches="tight",
-    )
+    fig.savefig(OUTPUT_DIR / FIGURES["venue_stacked"]["file"], dpi=300)
     plt.close(fig)
 
 
@@ -463,8 +457,8 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     )
     plt.xscale("log")
     plt.yscale("log")
-    plt.xlabel("Venue Rank (log scale)",        fontsize=17, fontweight='bold')
-    plt.ylabel("Number of Papers (log scale)",  fontsize=17, fontweight='bold')
+    plt.xlabel("Venue Rank (log scale)", fontweight='bold')
+    plt.ylabel("Number of Papers (log scale)", fontweight='bold')
     ax.grid(True, which="major", linestyle="-", linewidth=0.8, color='#E5E7EB')
     plt.minorticks_on()
     ax.grid(True, which="minor", linestyle=":", linewidth=0.5, color='#F3F4F6')
@@ -473,31 +467,31 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     plt.close(fig)
 
     # Cumulative Dominance Curve with defined captions
-    fig2, ax2 = plt.subplots(figsize=(6.4, 5.2), facecolor='#FAFAFA')
+    fig2, ax2 = plt.subplots(figsize=(COL_W, 2.8), facecolor='#FAFAFA')
     ax2.set_facecolor('#FAFAFA')
     
     # Main cumulative curve
     plt.plot(
         metrics["ranks"], metrics["cumulative"],
-        color='#023E8A', linewidth=2.5, marker='s',
-        markersize=9, markerfacecolor='#FFFFFF',
+        color='#023E8A', linewidth=1.5, marker='s',
+        markersize=4, markerfacecolor='#FFFFFF',
         markeredgecolor='#023E8A', markeredgewidth=1.8, zorder=3,
         label="Cumulative Share"
     )
     
     # Reference lines with explicit labels
-    line_50 = plt.axhline(0.5, linestyle="--", color='#FF9F1C', linewidth=2.5, alpha=0.85, label="50% threshold (Yellow)")
-    line_80 = plt.axhline(0.8, linestyle="--", color='#2EC4B6', linewidth=2.5, alpha=0.85, label="80% threshold (Green)")
+    line_50 = plt.axhline(0.5, linestyle="--", color='#FF9F1C', linewidth=1.5, alpha=0.85, label="50% threshold")
+    line_80 = plt.axhline(0.8, linestyle="--", color='#2EC4B6', linewidth=1.5, alpha=0.85, label="80% threshold")
     
-    plt.xlabel("Number of Venues (Top-k)",       fontsize=17, fontweight='bold')
-    plt.ylabel("Cumulative Share of Papers",      fontsize=17, fontweight='bold')
+    plt.xlabel("Number of Venues (Top-k)", fontweight='bold')
+    plt.ylabel("Cumulative Share of Papers", fontweight='bold')
     ax2.set_ylim(0, 1.05)
     ax2.grid(True, which="major", linestyle="-", linewidth=0.8, color='#E5E7EB')
     plt.minorticks_on()
     ax2.grid(True, which="minor", linestyle=":", linewidth=0.5, color='#F3F4F6')
     
     # Enhanced legend with caption definitions
-    ax2.legend(fontsize=16, loc="lower right", framealpha=0.95, edgecolor='black')
+    ax2.legend(loc="lower right", framealpha=0.95, edgecolor='black')
     
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / "venue_cumulative_curve.pdf", dpi=300, facecolor='#FAFAFA')

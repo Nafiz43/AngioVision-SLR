@@ -32,15 +32,16 @@ import numpy as np
 import pandas as pd
 
 # ── Font sizes ────────────────────────────────────────────────────────────────
-FS_CLUSTER_LABEL = 13   # Y-axis cluster names
-FS_ITEMS_BADGE   = 12   # "Items 1–2" right axis
-FS_PCT_LABEL     = 12   # "72%" annotations
-FS_SECTION_BAND  = 11   # italic section labels inside bands
-FS_X_TICK        = 11
-FS_X_LABEL       = 12
+# Drawn at the manuscript text width (6.84 in): 10 pt here prints at 10 pt.
+FS_CLUSTER_LABEL = 10   # Y-axis cluster names
+FS_ITEMS_BADGE   = 10   # "Items 1–2" right axis
+FS_PCT_LABEL     = 10   # "72%" annotations
+FS_SECTION_BAND  = 10   # italic section labels inside bands
+FS_X_TICK        = 10
+FS_X_LABEL       = 10
 FS_REF_LINE      = 10
-FS_LEGEND_TITLE  = 11
-FS_LEGEND_BODY   = 11
+FS_LEGEND_TITLE  = 10
+FS_LEGEND_BODY   = 10
 
 # ── Cluster definitions ───────────────────────────────────────────────────────
 CLAIM2024_CLUSTERS = [
@@ -188,7 +189,7 @@ def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_se
     ax.set_yticks(y)
     if show_ylabels:
         ax.set_yticklabels(
-            [textwrap.fill(r["cluster_label"], 30) for r in rows],
+            [textwrap.fill(r["cluster_label"], 28) for r in rows],
             fontsize=FS_CLUSTER_LABEL, color="#111111",
         )
     else:
@@ -208,7 +209,7 @@ def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_se
         ax2.spines[["top", "left", "bottom"]].set_visible(False)
 
     # Axis styling
-    ax.set_xlim(0.0, 1.18)
+    ax.set_xlim(0.0, 1.3)
     ax.set_ylim(-0.7, n - 0.3)
     ax.set_xlabel("Proportion  (95% Wilson CI)", fontsize=FS_X_LABEL, labelpad=8)
     ax.set_xticks([0, 0.25, 0.50, 0.75, 1.0])
@@ -224,13 +225,13 @@ def _draw_panel(ax, prop_rows, n_studies, show_ylabels, show_right_axis, show_se
 # ── Main figure ───────────────────────────────────────────────────────────────
 def draw_comparison_plot(pre_rows, post_rows, n_pre, n_post, split_year, out_dir):
     n     = len(CLAIM2024_CLUSTERS)
-    fig_h = 8.5
+    fig_h = 7.6
 
     fig, (ax_l, ax_r) = plt.subplots(
         1, 2,
-        figsize=(9.5, fig_h),
+        figsize=(6.84, fig_h),
         sharey=True,
-        gridspec_kw={"wspace": 0.05},
+        gridspec_kw=dict(wspace=0.05, left=0.33, right=0.91, top=0.94, bottom=0.20),
     )
 
     # Section names are already conveyed by the shared legend below, so the
@@ -242,13 +243,13 @@ def draw_comparison_plot(pre_rows, post_rows, n_pre, n_post, split_year, out_dir
     _draw_panel(ax_r, post_rows, n_studies=n_post,
                 show_ylabels=False, show_right_axis=True, show_section_labels=False)
 
-    ax_l.set_title(f"≤{split_year}", fontsize=FS_X_LABEL + 2, pad=12)
-    ax_r.set_title(f">{split_year}", fontsize=FS_X_LABEL + 2, pad=12)
+    ax_l.set_title(f"≤{split_year}", fontsize=FS_X_LABEL, pad=8)
+    ax_r.set_title(f">{split_year}", fontsize=FS_X_LABEL, pad=8)
 
     # Vertical divider
     fig.add_artist(
         plt.Line2D(
-            [0.5, 0.5], [0.06, 0.96],
+            [0.62, 0.62], [0.20, 0.97],  # midway between the panels
             transform=fig.transFigure,
             color="#cccccc", linewidth=1.2, linestyle="--",
         )
@@ -274,20 +275,19 @@ def draw_comparison_plot(pre_rows, post_rows, n_pre, n_post, split_year, out_dir
         fontsize=FS_LEGEND_BODY,
         loc="lower center",
         ncol=3,
-        bbox_to_anchor=(0.5, -0.13),
+        bbox_to_anchor=(0.5, 0.0),
         framealpha=0.95,
         edgecolor="#cccccc",
         handlelength=1.4,
         handleheight=1.0,
     )
 
-    plt.tight_layout(rect=[0, 0.05, 1, 1])
 
     os.makedirs(out_dir, exist_ok=True)
     pdf = os.path.join(out_dir, "forest_plot_claim2024_comparison.pdf")
     png = os.path.join(out_dir, "forest_plot_claim2024_comparison.png")
-    fig.savefig(pdf, bbox_inches="tight", dpi=300)
-    fig.savefig(png, bbox_inches="tight", dpi=300)
+    fig.savefig(pdf, dpi=300)
+    fig.savefig(png, dpi=300)
     plt.close(fig)
     print(f"Saved: {pdf}")
     print(f"Saved: {png}")

@@ -92,15 +92,16 @@ COLOURS = {
     'C4': dict(fill='#FAC775', edge='#854F0B', txt='#412402'),
 }
 
-# Draw at approximately final manuscript width so 10-pt labels remain legible.
+# Drawn at the manuscript text width (6.84 in) without cropping, so 10 pt here
+# prints at 10 pt, matching the body text.
 from pathlib import Path
 import textwrap
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'analysis-results'
 OUT.mkdir(exist_ok=True)
-fig = plt.figure(figsize=(7.2, 9.0), facecolor='white')
-ax = fig.add_axes([0, .57, 1, .43])
-ax.set(xlim=(-3.5, 3.5), ylim=(-2.4, 2.4), aspect='equal')
+fig = plt.figure(figsize=(6.84, 8.6), facecolor='white')
+ax = fig.add_axes([0, .645, 1, .355])
+ax.set(xlim=(-3.5, 3.5), ylim=(-2.32, 2.32), aspect='equal')
 ax.axis('off')
 centres = {'C1':(-1.25,0), 'C2':(0,1.05), 'C3':(1.25,0), 'C4':(0,-1.05)}
 for k,(x,y) in centres.items():
@@ -114,29 +115,29 @@ for region,(x,y) in positions.items():
     label=INTERSECTIONS[region]
     if label == '—':
         continue
-    ax.text(x,y,label,ha='center',va='center',fontsize=11,weight='bold',bbox=dict(fc='white',ec='none',alpha=.85,pad=2))
-# All absent combinations are represented explicitly in a compact note.
-ax.text(0,-2.35,'Codes in overlaps identify shared strategies; unlabelled overlaps have none.',ha='center',fontsize=9)
-left=fig.add_axes([.025,.02,.45,.53]); right=fig.add_axes([.515,.02,.46,.53])
+    ax.text(x,y,label,ha='center',va='center',fontsize=10,weight='bold',bbox=dict(fc='white',ec='none',alpha=.85,pad=2))
+R=fig.canvas.get_renderer()
+def below(t,panel,gap):
+    # Next entry starts under the drawn text, so wrapped lines never collide.
+    return t.get_window_extent(R).transformed(panel.transAxes.inverted()).y0-gap
+left=fig.add_axes([.025,.005,.45,.635]); right=fig.add_axes([.515,.005,.46,.635])
 for panel in (left,right):
     panel.set(xlim=(0,1),ylim=(0,1)); panel.axis('off')
-left.text(0,1,'Research gaps',fontsize=12,weight='bold',va='top')
+left.text(0,1,'Research gaps',fontsize=10,weight='bold',va='top')
 y=.94
 for k,cluster in CLUSTERS.items():
-    left.text(0,y,k+'  '+cluster['name'],fontsize=10,weight='bold',color=COLOURS[k]['txt'],va='top');y-=.055
+    y=below(left.text(0,y,k+'  '+cluster['name'],fontsize=10,weight='bold',color=COLOURS[k]['txt'],va='top'),left,.014)
     for code,desc in cluster['gaps']:
-        lines=textwrap.fill(' '.join(desc.split()),39)
-        left.text(0,y,code,fontsize=9.5,weight='bold',va='top')
-        left.text(.13,y,lines,fontsize=9.5,va='top',linespacing=1.1)
-        y-=.038*len(lines.splitlines())+.009
-    y-=.025
-right.text(0,1,'Mitigation strategies',fontsize=12,weight='bold',va='top')
+        lines=textwrap.fill(' '.join(desc.split()),36)
+        left.text(0,y,code,fontsize=10,weight='bold',va='top')
+        y=below(left.text(.13,y,lines,fontsize=10,va='top',linespacing=1.1),left,.008)
+    y-=.022
+right.text(0,1,'Mitigation strategies',fontsize=10,weight='bold',va='top')
 y=.94
 for code,desc in STRATEGIES:
-    lines=textwrap.fill(' '.join(desc.split()),43)
-    right.text(0,y,code,fontsize=9.5,weight='bold',va='top')
-    right.text(.12,y,lines,fontsize=9.5,va='top',linespacing=1.1)
-    y-=.030*len(lines.splitlines())+.006
+    lines=textwrap.fill(' '.join(desc.split()),40)
+    right.text(0,y,code,fontsize=10,weight='bold',va='top')
+    y=below(right.text(.12,y,lines,fontsize=10,va='top',linespacing=1.1),right,.008)
 for ext in ('pdf','png'):
-    fig.savefig(OUT / ('venn_diagram.'+ext),dpi=300,bbox_inches='tight',facecolor='white')
+    fig.savefig(OUT / ('venn_diagram.'+ext),dpi=300,facecolor='white')
 plt.close(fig)
