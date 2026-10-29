@@ -99,8 +99,10 @@ import textwrap
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'analysis-results'
 OUT.mkdir(exist_ok=True)
-fig = plt.figure(figsize=(6.84, 7.4), facecolor='white')
-ax = fig.add_axes([0, .588, 1, .412])
+# ponytail: list panels keep their old absolute size; the extra height all goes to the Venn.
+H = 8.2
+fig = plt.figure(figsize=(6.84, H), facecolor='white')
+ax = fig.add_axes([0, 4.351/H, 1, 1-4.351/H])
 ax.set(xlim=(-3.5, 3.5), ylim=(-2.32, 2.32), aspect='equal')
 ax.axis('off')
 centres = {'GC1':(-1.25,0), 'GC2':(0,1.05), 'GC3':(1.25,0), 'GC4':(0,-1.05)}
@@ -120,7 +122,7 @@ R=fig.canvas.get_renderer()
 def below(t,panel,gap):
     # Next entry starts under the drawn text, so wrapped lines never collide.
     return t.get_window_extent(R).transformed(panel.transAxes.inverted()).y0-gap
-left=fig.add_axes([.025,.005,.45,.575]); right=fig.add_axes([.515,.005,.46,.575])
+left=fig.add_axes([.025,.037/H,.45,4.255/H]); right=fig.add_axes([.515,.037/H,.46,4.255/H])
 for panel in (left,right):
     panel.set(xlim=(0,1),ylim=(0,1)); panel.axis('off')
 left.text(0,1,'Research gaps',fontsize=8,weight='bold',va='top')
