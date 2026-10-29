@@ -219,7 +219,7 @@ Each study was extracted into one JSON object (Section~\ref{sec:full-text-screen
 \item[\texttt{clinical}] study design (retrospective, prospective, randomized), reader study, patient outcome measured, clinical deployment or live use, regulatory considerations.
 \item[\texttt{reproducibility}] code and model-weight availability, hyperparameters reported.
 \item[\texttt{gaps}] for each research gap G1--G12 (Table~\ref{tab:research_gaps}), whether the article documents it, addresses it, both or neither, with a verbatim quotation and its section.
-\item[\texttt{claim2024}] 44 review-specific reporting criteria informed by CLAIM 2024 (Appendix~\ref{app:claim_clusters}), each scored as reported, not reported or not applicable; a reporting cluster counts as met when at least half of its applicable items are reported.
+\item[\texttt{claim2024}] The 44 CLAIM 2024 items (Appendix~\ref{app:claim_clusters}), each scored as reported, not reported or not applicable; a checklist subsection counts as reported when at least half of its applicable items are reported.
 \end{description}
 
 The complete instructions, the JSON schema and the validator are provided with the extraction outputs at \url{https://github.com/Nafiz43/AngioVision-SLR}.
@@ -230,86 +230,26 @@ The complete instructions, the JSON schema and the validator are provided with t
 
 % All data and code are public at \url{https://github.com/Nafiz43/AngioVision-SLR}: the screening decision for each of the 5,064 records, the 491-record validation sample with the agreement script, the search and screening pipeline (\texttt{screening/pipeline/}), the extraction instructions, schema and validator, the 120 extraction records, and the scripts that regenerate every figure and table (\texttt{analysis/run\_all.sh}). Full texts are not shared, for copyright reasons.
 
-\section{Grouping of CLAIM-Informed Reporting Items}
+\section{Scoring of CLAIM 2024 Items}
 \label{app:claim_clusters}
 
-For this review, we organized 44 reporting criteria informed by
-CLAIM 2024~\cite{Tejani2024} into 12 thematic groups (C01--C12)
-to summarize reporting completeness. These groups were defined
-for our analysis and are not official CLAIM categories. The item
-numbers and descriptions below refer to the operational extraction
-schema used in this review; they do not correspond consistently
-to the numbering and definitions of the official CLAIM 2024
-checklist.
+We scored every included study against the 44 items of the CLAIM 2024 checklist~\cite{Tejani2024}, using the official item numbers and the official subsections as groups. Thirty items were derived from the main extraction schema; where several schema fields correspond to one CLAIM item, the item counts as reported only when all applicable fields are reported. The remaining 14 items (marked $\dagger$) were scored in a targeted second pass against the official wording, with a verbatim supporting quote required for every item marked as reported.
 
 \begin{itemize}
-    \item \textbf{C01: AI identification and abstract completeness.}
-    Items: 1 (identification of the AI technique in the title or
-    abstract); 2 (abstract reporting of study design, methods,
-    results, and conclusions).
-
-    \item \textbf{C02: Background and study objectives.}
-    Items: 3 (scientific or clinical background);
-    4 (explicit study objectives); 5 (rationale for using AI).
-
-    \item \textbf{C03: Study design and data sources.}
-    Items: 6 (prospective or retrospective study design);
-    7 (data sources and acquisition); 8 (setting and dates of
-    data collection); 9 (eligibility criteria for participants
-    or images).
-
-    \item \textbf{C04: Participants and image acquisition.}
-    Items: 10 (participant characteristics);
-    11 (de-identification and privacy);
-    12 (institutional review board approval or waiver);
-    13 (image acquisition protocol, including manufacturer
-    and acquisition parameters).
-
-    \item \textbf{C05: Reference standards and annotation.}
-    Items: 14 (reference-standard definition and method);
-    15 (number and expertise of annotators);
-    16 (inter-rater agreement or annotation quality).
-
-    \item \textbf{C06: Data partitioning and class handling.}
-    Items: 17 (training, validation, and test splits);
-    18 (partitioning method); 19 (data augmentation);
-    20 (class-imbalance handling); 21 (prevention of data leakage).
-
-    \item \textbf{C07: Model architecture and training.}
-    Items: 22 (architecture described in sufficient detail
-    for replication); 23 (pretrained weights or transfer learning);
-    24 (loss functions); 25 (optimizer, learning rate, and
-    hyperparameters); 26 (stopping criteria and training procedure).
-
-    \item \textbf{C08: Evaluation design and interpretability.}
-    Items: 27 (prespecified evaluation metrics);
-    28 (statistical analysis plan);
-    29 (confidence intervals or uncertainty);
-    30 (robustness or sensitivity analysis);
-    31 (explainability methods).
-
-    \item \textbf{C09: Performance and external validation.}
-    Items: 32 (internal held-out test results);
-    33 (external validation results);
-    34 (participant or image flow);
-    35 (failure or error analysis);
-    36 (comparison with experts or prior methods).
-
-    \item \textbf{C10: Demographic and subgroup reporting.}
-    Items: 37 (demographics of the study population);
-    38 (subgroup or stratified performance);
-    39 (fairness or bias evaluation).
-
-    \item \textbf{C11: Limitations, clinical implications,
-    and supporting documentation.}
-    Items: 40 (study limitations);
-    41 (clinical implications and intended use);
-    42 (reference to the study protocol or additional
-    technical details).
-
-    \item \textbf{C12: Reproducibility and funding disclosure.}
-    Items: 43 (availability of code, trained models, or data);
-    44 (funding sources and the role of funders).
+    \item \textbf{Title and abstract (1--2).} 1 identification as an AI study; 2 structured summary of design, methods, results and conclusions.
+    \item \textbf{Introduction (3--4).} 3 scientific and clinical background, including the intended role of AI; 4 aims and objectives.
+    \item \textbf{Study design (5--6).} 5 prospective or retrospective; 6$\dagger$ study goal and intended use.
+    \item \textbf{Data (7--13).} 7 data sources; 8 inclusion and exclusion criteria; 9$\dagger$ data preprocessing; 10$\dagger$ selection of data subsets; 11 de-identification; 12$\dagger$ missing data; 13 image acquisition protocol.
+    \item \textbf{Reference standard (14--18).} 14 definition of the reference standard; 15$\dagger$ rationale for choosing it; 16 source of annotations and annotator qualifications; 17$\dagger$ annotation of the test set; 18 inter- and intrarater variability.
+    \item \textbf{Data partitions (19--20).} 19 assignment of data to partitions; 20$\dagger$ level at which partitions are disjoint.
+    \item \textbf{Testing data (21).} 21$\dagger$ intended sample size.
+    \item \textbf{Model (22--24).} 22 detailed model description; 23$\dagger$ software libraries and frameworks; 24 initialization of model parameters.
+    \item \textbf{Training (25--27).} 25 training details (augmentation, objective function, hyperparameters, stopping criteria); 26$\dagger$ selection of the final model; 27$\dagger$ ensembling.
+    \item \textbf{Evaluation (28--34).} 28 performance metrics and comparison with prior models; 29 statistical significance and uncertainty; 30 robustness or sensitivity analysis; 31 explainability; 32 evaluation on internal data; 33 testing on external data; 34$\dagger$ clinical trial registration.
+    \item \textbf{Results: data (35--36).} 35 numbers of patients or examinations included and excluded; 36 demographic and clinical characteristics.
+    \item \textbf{Results: model performance (37--39).} 37$\dagger$ performance on all partitions and datasets; 38$\dagger$ diagnostic performance estimates with their precision; 39 failure analysis.
+    \item \textbf{Discussion (40--41).} 40 limitations; 41 implications for practice.
+    \item \textbf{Other information (42--44).} 42 reference to the full protocol or technical details; 43 availability of software, model or data; 44 funding and role of funders.
 \end{itemize}
 % \section{List of Included Studies}
 % \label{appendix:included_studies}

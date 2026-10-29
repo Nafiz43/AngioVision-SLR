@@ -8,7 +8,7 @@
 
 \begin{table}[pos=!htbp]
   \centering
-  \caption{Reporting completeness by review-defined CLAIM-informed cluster, studies published up to 2024 vs.\ from 2025 onward. The split follows the publication of CLAIM 2024~\cite{Tejani2024}. Items are the operational criteria listed in Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}
+  \caption{Reporting completeness by CLAIM 2024 checklist subsection, studies published up to 2024 vs.\ from 2025 onward. The split follows the publication of CLAIM 2024~\cite{Tejani2024}. Items are official CLAIM 2024 item numbers (Appendix~\ref{app:claim_clusters}).}
   \label{tab:claim2024_temporal}
 
   \footnotesize
@@ -17,8 +17,7 @@
 
   \resizebox{\columnwidth}{!}{%
   \begin{tabular}{@{}
-      l
-      p{5.4cm}
+      p{3.4cm}
       c
       r r
       r r
@@ -27,17 +26,16 @@
 
     \toprule
 
-    \multicolumn{1}{l}{\textbf{ID}} &
-    \multicolumn{1}{l}{\textbf{Cluster}} &
+    \multicolumn{1}{l}{\textbf{Subsection}} &
     \multicolumn{1}{c}{\textbf{Items}} &
     \multicolumn{2}{c}{$\boldsymbol{\leq 2024}$ \textbf{(N\,=\,77)}} &
     \multicolumn{2}{c}{$\boldsymbol{\geq 2025}$ \textbf{(N\,=\,43)}} &
     \multicolumn{1}{c}{$\boldsymbol{\Delta}$ \textbf{($p$)}} \\
 
-    \cmidrule(lr){4-5}
-    \cmidrule(lr){6-7}
+    \cmidrule(lr){3-4}
+    \cmidrule(lr){5-6}
 
-    & & &
+    & &
     \textbf{\%} & \textbf{95\% CI} &
     \textbf{\%} & \textbf{95\% CI} &
     \\
@@ -45,92 +43,97 @@
     \midrule
 
     \rowcolor{claimTA!15}
-    \multicolumn{8}{l}{\textbf{\textcolor{claimTA}{Title/Abstract}}} \\
+    \multicolumn{7}{l}{\textbf{\textcolor{claimTA}{Title/Abstract}}} \\
 
-    C01 & AI identification \& abstract completeness & 1--2
+    Title \& abstract & 1--2
     & 100\% & [95, 100]
     & 100\% & [92, 100]
     & $\pm0\%$ (1.00) \\
 
     \midrule
-
     \rowcolor{claimIntro!15}
-    \multicolumn{8}{l}{\textbf{\textcolor{claimIntro}{Introduction}}} \\
+    \multicolumn{7}{l}{\textbf{\textcolor{claimIntro}{Introduction}}} \\
 
-    C02 & Background \& study objectives & 3--5
+    Introduction & 3--4
     & 100\% & [95, 100]
-    & 98\% & [88, 100]
-    & $-2\%$ (0.36) \\
+    & 100\% & [92, 100]
+    & $\pm0\%$ (1.00) \\
 
     \midrule
-
     \rowcolor{claimMeth!15}
-    \multicolumn{8}{l}{\textbf{\textcolor{claimMeth}{Methods}}} \\
+    \multicolumn{7}{l}{\textbf{\textcolor{claimMeth}{Methods}}} \\
 
-    C03 & Study design \& data sources & 6--9
-    & 68\% & [56, 77]
-    & 81\% & [67, 90]
-    & $+14\%$ (0.14) \\
+    Study design & 5--6
+    & 100\% & [95, 100]
+    & 100\% & [92, 100]
+    & $\pm0\%$ (1.00) \\
 
-    C04 & Participants \& image acquisition & 10--13
+    Data & 7--13
+    & 58\% & [47, 69]
+    & 63\% & [48, 76]
+    & $+4\%$ (0.70) \\
+
+    Reference standard & 14--18
+    & 76\% & [65, 84]
+    & 67\% & [52, 80]
+    & $-9\%$ (0.39) \\
+
+    Data partitions & 19--20
+    & 84\% & [73, 90]
+    & 76\% & [62, 86]
+    & $-7\%$ (0.34) \\
+
+    Testing data & 21
+    & 4\% & [1, 11]
+    & 5\% & [1, 16]
+    & $+1\%$ (1.00) \\
+
+    Model & 22--24
+    & 66\% & [55, 76]
+    & 63\% & [48, 76]
+    & $-3\%$ (0.84) \\
+
+    Training & 25--27
+    & 53\% & [42, 64]
+    & 43\% & [29, 58]
+    & $-10\%$ (0.34) \\
+
+    Evaluation & 28--34
+    & 58\% & [47, 69]
+    & 58\% & [43, 72]
+    & $\pm0\%$ (1.00) \\
+
+    \midrule
+    \rowcolor{claimRes!15}
+    \multicolumn{7}{l}{\textbf{\textcolor{claimRes}{Results}}} \\
+
+    Data & 35--36
+    & 55\% & [44, 66]
+    & 65\% & [50, 78]
+    & $+10\%$ (0.34) \\
+
+    Model performance & 37--39
+    & 91\% & [82, 96]
+    & 79\% & [65, 89]
+    & $-12\%$ (0.09) \\
+
+    \midrule
+    \rowcolor{claimDisc!15}
+    \multicolumn{7}{l}{\textbf{\textcolor{claimDisc}{Discussion}}} \\
+
+    Discussion & 40--41
+    & 100\% & [95, 100]
+    & 95\% & [84, 99]
+    & $-5\%$ (0.13) \\
+
+    \midrule
+    \rowcolor{claimRepro!15}
+    \multicolumn{7}{l}{\textbf{\textcolor{claimRepro}{Other information}}} \\
+
+    Other information & 42--44
     & 49\% & [38, 60]
     & 70\% & [55, 81]
     & $+20\%$ (0.04) \\
-
-    C05 & Reference standards \& annotation & 14--16
-    & 71\% & [60, 80]
-    & 56\% & [41, 70]
-    & $-15\%$ (0.11) \\
-
-    C06 & Data partitioning \& class handling & 17--21
-    & 70\% & [59, 79]
-    & 69\% & [54, 81]
-    & $-1\%$ (1.00) \\
-
-    C07 & Model architecture \& training & 22--26
-    & 75\% & [65, 84]
-    & 67\% & [52, 80]
-    & $-8\%$ (0.40) \\
-
-    C08 & Evaluation design \& interpretability & 27--31
-    & 47\% & [36, 58]
-    & 56\% & [41, 70]
-    & $+9\%$ (0.45) \\
-
-    \midrule
-
-    \rowcolor{claimRes!15}
-    \multicolumn{8}{l}{\textbf{\textcolor{claimRes}{Results}}} \\
-
-    C09 & Performance \& external validation & 32--36
-    & 62\% & [51, 72]
-    & 65\% & [50, 78]
-    & $+3\%$ (0.84) \\
-
-    C10 & Demographic \& subgroup reporting & 37--39
-    & 30\% & [21, 41]
-    & 28\% & [17, 43]
-    & $-2\%$ (1.00) \\
-
-    \midrule
-
-    \rowcolor{claimDisc!15}
-    \multicolumn{8}{l}{\textbf{\textcolor{claimDisc}{Discussion}}} \\
-
-    C11 & Limitations, implications \& supporting documentation & 40--42
-    & 88\% & [79, 94]
-    & 91\% & [78, 96]
-    & $+2\%$ (0.77) \\
-
-    \midrule
-
-    \rowcolor{claimRepro!15}
-    \multicolumn{8}{l}{\textbf{\textcolor{claimRepro}{Reproducibility \& Transparency}}} \\
-
-    C12 & Reproducibility \& funding disclosure & 43--44
-    & 74\% & [63, 82]
-    & 74\% & [60, 85]
-    & $\pm0\%$ (1.00) \\
 
     \bottomrule
 
@@ -139,9 +142,7 @@
 
   \par\smallskip
   \footnotesize
-  \textit{Note:} Proportion of studies meeting each cluster among those where it
-  applies, with 95\% Wilson CIs. $\Delta$: difference from unrounded
-  proportions, with the two-sided Fisher's exact $p$-value. No cluster is significant after Holm correction (smallest adjusted $p=0.43$).
+  \textit{Note:} Proportion of studies in which the subsection is reported (at least half of its applicable items), among studies where it applies, with 95\% Wilson CIs. $\Delta$: difference from unrounded proportions, with the two-sided Fisher's exact $p$-value. No subsection is significant after Holm correction (smallest adjusted $p=0.50$). Item 34 (clinical trial registration) was not applicable to any study.
 
 \end{table}
 % \definecolor{claimTA}{HTML}{4C72B0}
