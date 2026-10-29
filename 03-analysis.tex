@@ -87,7 +87,7 @@ Here, we examined the computational tasks addressed by the included studies and 
 
 Figure~\ref{fig:task_distribution} shows that disease classification and grading is the most common primary task (31 of 120 studies), followed by object detection \& localization (18) and vessel segmentation (15). Regarding the model architectures (Table~\ref{tab:task_architecture_clean}) involved in those tasks, 14 of the 15 segmentation studies use encoder--decoder models, mostly U-Net variants; detection studies use YOLO, DETR and R-CNN detectors on ResNet backbones; classification relies on ResNet-style CNNs, with Transformers increasingly added. The majority of architectures are adapted from natural-image computer vision rather than designed specifically for angiography.
 
-Tasks whose output is itself temporal remain rare: temporal sequence modeling (6 studies) and contrast flow analysis (9). Many spatial tasks, such as segmentation, detection, and classification, use several frames only to stabilize a per-frame prediction (discussed in detail in Section~\ref{subsec:temporal_taxonomy}).
+Tasks that produce a temporal output remain uncommon. These included temporal sequence modeling, such as cardiac cycle detection and key-frame identification (6 studies), and contrast flow analysis (9 studies). Many spatial tasks, such as segmentation, detection, and classification, use several frames only to stabilize a per-frame prediction (discussed in detail in Section~\ref{subsec:temporal_taxonomy}).
 
 
 \label{subsec:tasks_architectures}
@@ -121,18 +121,18 @@ Figure~\ref{fig:task_dendrogram} shows that most task categories merge near the 
 \subsubsection{Temporal Modeling}
 \label{subsec:temporal_taxonomy}
 
-How studies use information across frames is analyzed in this subsection. We categorized temporal modeling strategies and compared their use across tasks, imaging modalities, anatomical regions, and publication periods. Table~\ref{tab:temporal_taxonomy} summarizes these strategies, while Table~\ref{tab:temporal_crosstab} shows their distribution across study characteristics.
+This subsection examines how studies leverage information across frames. We categorized temporal modeling strategies and compared their use across tasks, imaging modalities, anatomical regions, and publication periods. Table~\ref{tab:temporal_taxonomy} summarizes these strategies and Table~\ref{tab:temporal_crosstab} shows their distribution across study characteristics.
 
-Table~\ref{tab:temporal_taxonomy} shows that 97 of 120 studies (80.8\%) explicitly consider sequential data (linked frames, where a particular visual data instance contains a set of image frames), 21 (17.5\%) process frames independently, and 2 (1.7\%) do not specify how frames enter the trained model. Here, the high proportion of studies with sequential frames is partly impacted by the inclusion criterion (I2). Nonetheless, the most common strategies are 3D/video convolution (20 studies), optical flow or registration (19), and recurrent networks (18), followed by frame aggregation and hemodynamic or physics-based models (15 each). Transformer or state-space models are least common (10 studies, 8.3\%), all published from 2023 onward.
+Ninety-seven of the 120 studies (80.8\%) explicitly consider sequential data (linked frames, where a particular visual data instance contains a set of image frames), 21 (17.5\%) process frames independently, and 2 (1.7\%) do not specify how frames enter the trained model. Here, the high proportion of studies with sequential frames is partly impacted by the inclusion criterion (I2). Nonetheless, the most common strategies are 3D/video convolution (20 studies), optical flow or registration (19), and recurrent networks (18), followed by frame aggregation and hemodynamic or physics-based models (15 each). Transformer or state-space models are least common (10 studies, 8.3\%), all published from 2023 onward.
 
-Table~\ref{tab:temporal_crosstab} shows that temporal modeling varies by task, from 100\% for temporal sequence modeling to 67\% for catheter and device tracking. It is more common in DSA studies (86\%) than in X-ray/fluoroscopy studies (78\%), and in neurologic studies (90\%) than in cardiac (77\%) or abdominopelvic studies (60\%). Its prevalence increased from 40\% in 2018--2019 (2 of 5 studies) to 75--100\% in 2020--2025, but was 59\% (10 of 17) in the partial year 2026.
+Temporal modeling varies by task, from 100\% for temporal sequence modeling to 67\% for catheter and device tracking, Table~\ref{tab:temporal_crosstab}. It is slightly more common in DSA studies (86\%) than in X-ray/fluoroscopy studies (78\%), and in neurologic studies (90\%) than in cardiac (77\%) or abdominopelvic studies (60\%). Its prevalence increased substantially over the study period from 40\% in 2018--2019 (2 of 5 studies) to 75--100\% in 2020--2025. 59\% (10 of 17) occurred in the partial year of 2026 included in the analysis.
 
 
-Of the 97 studies that use sequential frame data, 49 use fixed operations, including frame aggregation, optical flow or registration, and hemodynamic models. The remaining 48 (40.0\% of all studies) learn temporal representations through recurrent, 3D/video, or Transformer/state-space models. Learned temporal models are concentrated in disease classification (21 of 31 studies), absent from image enhancement and device tracking (0 of 9 each), and uncommon in flow analysis and outcome prediction (1 of 9 each). Their prevalence increased from 31.7\% in 2018--2022 (13 of 41 studies) to 44.3\% in 2023--2026 (35 of 79). Nevertheless, 41 studies (34.2\%) use short frame stacks rather than full sequences, and 63 identify limited temporal modeling as a limitation.
+Of the 97 studies that use sequential frame data, 49 use fixed operations, including frame aggregation, optical flow or registration, and hemodynamic models. The remaining 48 (40.0\% of all studies) learn temporal representations through recurrent, 3D/video, or transformer/state-space models. Learned temporal models are concentrated in disease classification (21 of 31 studies), absent from image enhancement and device tracking (0 of 9 each), and uncommon in flow analysis and outcome prediction (1 of 9 each). Their prevalence increased from 31.7\% in 2018--2022 (13 of 41 studies) to 44.3\% in 2023--2026 (35 of 79). Nevertheless, 41 studies (34.2\%) use short frame stacks rather than full sequences, and 63 identify limited temporal modeling as a limitation.
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
-\textbf{Finding 3.} Although 80.8\% of studies used sequential frame data, roughly half use fixed temporal operations. Learned temporal representations remain concentrated in classification, while Transformer or state-space models appear in only 8.3\% of studies.
+\textbf{Finding 3.} Although 80.8\% of studies used sequential frame data, roughly half use fixed temporal operations. Learned temporal representations remain concentrated in classification, while transformer or state-space models appear in only 8.3\% of studies.
 \end{mdframed}
 \vspace{0.25cm}
 
@@ -148,13 +148,13 @@ Of the 97 studies that use sequential frame data, 49 use fixed operations, inclu
 
 The publication outlets and their distribution have been analyzed in this subsection. Figure~\ref{fig:venue_stacked} shows the most frequent venues, while Figure~\ref{fig:venue_curve} shows the cumulative share of studies as venues are added in descending order of publication count.
 
-The breakdown of the 120 studies is as follows: 89 journal articles, 24 conference papers, and 7 preprints. Figure~\ref{fig:venue_stacked} shows that the SPIE proceedings are the most frequent outlet, with 11 studies overall, including 9 listed under the displayed series name. IJCARS and IEEE TMI follow with 5 studies each, and Medical Image Analysis with 4. IEEE venues and SPIE proceedings each account for 11 studies, while MICCAI accounts for 3 and none of the articles are from ACM venues.
+Of the 120 included studies, 89 (74.2\%) were journal articles, 24 (20.0\%) were conference papers, and 7 (5.8\%) were preprints. Figure~\ref{fig:venue_stacked} shows that the SPIE proceedings are the most frequent outlet, with 11 studies overall, including 9 listed under the displayed series name. IJCARS and IEEE TMI follow with 5 studies each, and Medical Image Analysis with 4. IEEE venues and SPIE proceedings each account for 11 studies, while MICCAI accounts for 3 and none of the articles are from ACM venues.
 
-Figure~\ref{fig:venue_curve} shows that the studies are distributed across 79 venues. The 20 most frequent venues account for approximately 50\% of the studies, and 56 venues are needed to reach 80\%. Of the 79 venues, 60 contribute only one study, which indicates that the literature is widely dispersed.
+Figure~\ref{fig:venue_curve} demonstrates a wide distribution of publication venue. The 20 most frequent venues account for approximately 50\% of the studies. Fifty-six venues are required to reach 80\%. Of the 79 venues, 60 contribute only one study.
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
-\textbf{Finding 4.} The selected 120 publications are dispersed across 79 venues, 60 of which contribute a single study. Reviews therefore need broad venue coverage to capture this literature.
+\textbf{Finding 4.} The selected 120 publications are dispersed across 79 venues, 60 of which contribute a single study.Because no venue concentrates this literature, researchers and practitioners seeking to understand the current state of the field must survey a broad range of journals and conference proceedings.
 \end{mdframed}
 \vspace{0.25cm}
 
@@ -179,11 +179,11 @@ Figure~\ref{fig:venue_curve} shows that the studies are distributed across 79 ve
 \subsection{Reported Performance}
 \label{subsec:performance}
 
-Reported performance metrics are the main basis on which studies compare methods, but each value is meaningful only together with the dataset, validation design and metric definition that produced it. This subsection examines the reported performance values and their variation across metric families. The values are grouped by metric family and their distributions are shown as a histogram on a scale of 0--100 in Figure~\ref{fig:metric_histogram}. These summaries describe reported results rather than pooled estimates of model performance.
+Reported performance metrics are the main basis on which studies compare methods, but each value is meaningful only together with the dataset, validation design, and metric definition that produced it. This subsection examines the reported performance values and their variation across metric families. The values are grouped by metric family and their distributions are shown as a histogram on a scale of 0--100 in Figure~\ref{fig:metric_histogram}. These summaries describe reported results rather than pooled estimates of model performance.
 
 It can be observed from Figure~\ref{fig:metric_histogram} that reported scores are concentrated near the upper end of the scale (average~88\%), although several studies report substantially lower values. Accuracy and detection precision/recall have the widest spread (SD 12.0 and 12.5, respectively), whereas Dice/F1 scores are more tightly grouped (SD 7.5). AUC values show intermediate variation (SD 8.7). Despite these differences in spread, the four metric families have similar mean values (Accuracy, precision \& recall, Dice/F1, AUC), ranging from 86.6 to 89.9. 
 
-Differences in datasets (few studies share a common dataset), evaluation protocols, and metric definitions limit direct comparisons across studies; therefore, we did not perform any meta-analysis on the reported performances. Grouping metrics into families does not make them interchangeable, and accuracy alone can obscure poor performance on minority classes. The concentration of high values may reflect selective reporting or testing on data similar to the training data; however, these distributions alone cannot establish either explanation.
+Heterogeneity in datasets, evaluation protocols, and metric definitions precluded direct comparison of performance across studies, and few studies shared a common dataset. A quantitative meta-analysis of reported results was therefore not conducted. Grouping metrics into families does not make them interchangeable, and accuracy alone can obscure poor performance on minority classes. The concentration of high values may reflect selective reporting or testing on data similar to the training data. However, this distribution analysis alone cannot establish either explanation.
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
@@ -234,7 +234,7 @@ Although 74\% meet the reproducibility and funding-disclosure cluster (C12), onl
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
-\textbf{Finding 6.} Background and objectives are well reported, but demographic and subgroup reporting, code and data sharing, and evidence of clinical use remain limited. We found no statistically significant difference in reporting in studies up until 2024 and 2025 onward.
+\textbf{Finding 6.} Background and objectives are well reported, but demographic and subgroup reporting, code and data sharing, and evidence of clinical use remain limited. We found no statistically significant difference in reporting in studies published prior to, and after, the CLAIM-2024 publication.
 \end{mdframed}
 \vspace{0.25cm}
 
