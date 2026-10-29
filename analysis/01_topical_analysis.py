@@ -447,8 +447,8 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     print(txt_path.read_text())
 
     # Zipf Plot
-    fig, ax = plt.subplots(figsize=(7, 5), facecolor='#FAFAFA')
-    ax.set_facecolor('#FAFAFA')
+    fig, ax = plt.subplots(figsize=(7, 5), facecolor='white')
+    ax.set_facecolor('white')
     plt.plot(
         metrics["ranks"], metrics["sorted_counts"],
         color='#D90429', linewidth=2.5, marker='o',
@@ -463,12 +463,12 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     plt.minorticks_on()
     ax.grid(True, which="minor", linestyle=":", linewidth=0.5, color='#F3F4F6')
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "venue_zipf_plot.pdf", dpi=300, facecolor='#FAFAFA')
+    plt.savefig(OUTPUT_DIR / "venue_zipf_plot.pdf", dpi=300, facecolor='white')
     plt.close(fig)
 
     # Cumulative Dominance Curve with defined captions
-    fig2, ax2 = plt.subplots(figsize=(COL_W, 2.8), facecolor='#FAFAFA')
-    ax2.set_facecolor('#FAFAFA')
+    fig2, ax2 = plt.subplots(figsize=(COL_W, 2.8), facecolor='white')
+    ax2.set_facecolor('white')
     
     # Main cumulative curve
     plt.plot(
@@ -494,7 +494,7 @@ def run_venue_dominance(raw_venue_counts: Counter) -> None:
     ax2.legend(loc="lower right", framealpha=0.95, edgecolor='black')
     
     plt.tight_layout()
-    plt.savefig(OUTPUT_DIR / "venue_cumulative_curve.pdf", dpi=300, facecolor='#FAFAFA')
+    plt.savefig(OUTPUT_DIR / "venue_cumulative_curve.pdf", dpi=300, facecolor='white')
     plt.close(fig2)
 
 

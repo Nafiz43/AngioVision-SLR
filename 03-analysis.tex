@@ -146,9 +146,9 @@ Of the 97 studies that use sequential frame data, 49 use fixed operations, inclu
 \subsection{Publication Venues}
 \label{subsec:venues}
 
-The publication outlets and their distribution have been analyzed in this subsection. Figure~\ref{fig:venue_stacked} shows the most frequent venues, while Figure~\ref{fig:venue_curve} shows the cumulative share of studies as venues are added in descending order of publication count.
+Where studies are published shows which research communities drive the field and which sources a reader must search to follow it. Figure~\ref{fig:venue_stacked} shows the most frequent venues, while Figure~\ref{fig:venue_curve} shows the cumulative share of studies as venues are added in descending order of publication count.
 
-Of the 120 included studies, 89 (74.2\%) were journal articles, 24 (20.0\%) were conference papers, and 7 (5.8\%) were preprints. Figure~\ref{fig:venue_stacked} shows that the SPIE proceedings are the most frequent outlet, with 11 studies overall, including 9 listed under the displayed series name. IJCARS and IEEE TMI follow with 5 studies each, and Medical Image Analysis with 4. IEEE venues and SPIE proceedings each account for 11 studies, while MICCAI accounts for 3 and none of the articles are from ACM venues.
+Of the 120 included studies, 89 (74.2\%) were journal articles, 24 (20.0\%) were conference papers, and 7 (5.8\%) were preprints. Figure~\ref{fig:venue_stacked} shows that the SPIE proceedings are the most frequent outlet, with 11 studies overall, including 9 listed under the displayed series name. IJCARS and IEEE TMI follow with 5 studies each, and Medical Image Analysis with 4. IEEE venues and SPIE proceedings each account for 11 studies, while MICCAI accounts for 3. None of the articles appeared in ACM venues; because ACM is a major computing publisher, this suggests that the work is published in imaging and medical venues rather than in general computer-science outlets.
 
 Figure~\ref{fig:venue_curve} demonstrates a wide distribution of publication venue. The 20 most frequent venues account for approximately 50\% of the studies. Fifty-six venues are required to reach 80\%. Of the 79 venues, 60 contribute only one study.
 
@@ -217,20 +217,20 @@ Heterogeneity in datasets, evaluation protocols, and metric definitions preclude
 \subsection{Reporting Quality and Clinical Readiness}
 \label{subsec:reporting_quality}
 
-We assessed reporting completeness using 44 review-specific criteria informed by CLAIM 2024~\cite{Tejani2024} and separately summarized evidence supporting clinical use. The operational criteria differ from the official checklist, as documented in Appendix~\ref{app:claim_clusters}. We compared reporting completeness between studies published up to 2024 and those published from 2025 onward; this comparison does not estimate the effect of the guideline update.
+We assessed reporting completeness using 44 review-specific criteria informed by CLAIM 2024~\cite{Tejani2024} and separately summarized evidence supporting clinical use. The operational criteria differ from the official checklist, as documented in Appendix~\ref{app:claim_clusters}. We compared reporting completeness between studies published up to 2024 and those published from 2025 onward.
 
 We grouped the 44 operational criteria into 12 review-defined reporting clusters (Appendix~\ref{app:claim_clusters}). These are organized into six broad categories: Title/Abstract (C01), Introduction (C02), Methods (C03--C08), Results (C09--C10), Discussion (C11), and Reproducibility and Transparency (C12). C12 covers reproducibility and funding disclosure.
 
 \input{tables/claim_2024_comaprison}
 
-Figure~\ref{fig:forest_plot} shows reporting completeness across the 12 review-defined clusters with confidence intervals, while Table~\ref{tab:claim2024_temporal} reports the comparisons between publication periods. Nearly perfect reporting of background and objectives can be seen in Figure~\ref{fig:forest_plot}; however, lower and less consistent reporting can be observed for methods. Table~\ref{tab:claim2024_temporal} shows the largest differences in participant and image-acquisition reporting (C04: 49\% to 70\%, unadjusted $p=0.04$), study design and data sources (C03: 68\% to 81\%, $p=0.14$), and reference-standard and annotation reporting (C05: 71\% to 56\%, $p=0.11$). Demographic and subgroup reporting remains low (C10: 30\% and 28\%). No difference is statistically significant after Holm correction (smallest adjusted $p=0.43$).
+Table~\ref{tab:claim2024_temporal} shows reporting completeness across the 12 review-defined clusters with 95\% Wilson confidence intervals and the comparisons between publication periods. Background and objectives are reported almost perfectly; however, lower and less consistent reporting can be observed for methods. Table~\ref{tab:claim2024_temporal} shows the largest differences in participant and image-acquisition reporting (C04: 49\% to 70\%, unadjusted $p=0.04$), study design and data sources (C03: 68\% to 81\%, $p=0.14$), and reference-standard and annotation reporting (C05: 71\% to 56\%, $p=0.11$). Demographic and subgroup reporting remains low (C10: 30\% and 28\%). No difference is statistically significant after Holm correction (smallest adjusted $p=0.43$).
 
 % The later group contains 43 studies, limiting the precision of these comparisons; the results do not establish that reporting remained unchanged.
 
 
 
 
-Although 74\% meet the reproducibility and funding-disclosure cluster (C12), only 25 studies (20.8\%) share code and 3 (2.5\%) share data. Meeting C12 does not necessarily indicate artifact release because the cluster includes funding disclosure and uses a threshold of at least half of applicable items. Evidence supporting clinical use was also limited: 19 studies (15.8\%) report external validation, including one that also reports prospective deployment; 3 (2.5\%) use a prospective design; 4 (3.3\%) report clinical deployment or live use; and 4 (3.3\%) discuss regulatory requirements. These categories are not mutually exclusive.
+Although 74\% meet the reproducibility and funding-disclosure cluster (C12), only 25 studies (20.8\%) publicly release code and 3 (2.5\%) publicly release their own data. We counted a release only when the article gave a working repository or archive link; statements that data are available on reasonable request, made by 27 further studies, were not counted. Meeting C12 does not necessarily indicate public release of code or data because the cluster includes funding disclosure and uses a threshold of at least half of applicable items. Evidence supporting clinical use was also limited: 19 studies (15.8\%) report external validation, including one that also reports prospective deployment; 3 (2.5\%) use a prospective design; 4 (3.3\%) report clinical deployment or live use; and 4 (3.3\%) discuss regulatory requirements. These categories are not mutually exclusive.
 
 \vspace{0.25cm}
 \begin{mdframed}[linewidth=0.5pt, linecolor=black, backgroundcolor=blue!10]
@@ -238,9 +238,3 @@ Although 74\% meet the reproducibility and funding-disclosure cluster (C12), onl
 \end{mdframed}
 \vspace{0.25cm}
 
-\begin{figure*}[pos=!tp]
-\centering
-\includegraphics[width=1\linewidth]{figs/forest_plot_claim2024_comparison.pdf}
-\caption{Reporting completeness under the review-specific CLAIM-informed schema for studies published up to 2024 (left) and from 2025 onward (right). The split follows the publication of CLAIM 2024~\cite{Tejani2024}. Diamonds show the proportion meeting each review-defined cluster, with 95\% Wilson confidence intervals. Colors identify broad reporting categories; the right axis lists operational item numbers from Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}
-\label{fig:forest_plot}
-\end{figure*}

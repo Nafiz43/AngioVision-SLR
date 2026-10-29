@@ -12,7 +12,7 @@ The repository contains the project's shared manuscript and reproducibility mate
 
 The review examines computational methods for temporally ordered catheter-based angiographic image sequences, including digital subtraction angiography (DSA) and contrast fluoroscopy. It covers clinical applications, tasks, architectures, temporal modeling, evaluation, reporting, reproducibility, and research gaps.
 
-The current manuscript reports searches of PubMed/MEDLINE and Semantic Scholar through **25 May 2026**:
+The current manuscript reports searches of PubMed/MEDLINE and Semantic Scholar through **31 July 2026**:
 
 | Stage | Records | Where to inspect |
 | --- | ---: | --- |

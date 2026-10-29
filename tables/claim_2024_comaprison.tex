@@ -8,7 +8,7 @@
 
 \begin{table}[pos=!htbp]
   \centering
-  \caption{Reporting completeness by review-defined CLAIM-informed cluster, studies published up to 2024 vs.\ from 2025 onward.}
+  \caption{Reporting completeness by review-defined CLAIM-informed cluster, studies published up to 2024 vs.\ from 2025 onward. The split follows the publication of CLAIM 2024~\cite{Tejani2024}. Items are the operational criteria listed in Appendix~\ref{app:claim_clusters}, not official CLAIM checklist numbers.}
   \label{tab:claim2024_temporal}
 
   \footnotesize
@@ -18,7 +18,8 @@
   \resizebox{\columnwidth}{!}{%
   \begin{tabular}{@{}
       l
-      p{6.2cm}
+      p{5.4cm}
+      c
       r r
       r r
       >{\centering\arraybackslash}p{1.9cm}
@@ -28,14 +29,15 @@
 
     \multicolumn{1}{l}{\textbf{ID}} &
     \multicolumn{1}{l}{\textbf{Cluster}} &
+    \multicolumn{1}{c}{\textbf{Items}} &
     \multicolumn{2}{c}{$\boldsymbol{\leq 2024}$ \textbf{(N\,=\,77)}} &
     \multicolumn{2}{c}{$\boldsymbol{\geq 2025}$ \textbf{(N\,=\,43)}} &
     \multicolumn{1}{c}{$\boldsymbol{\Delta}$ \textbf{($p$)}} \\
 
-    \cmidrule(lr){3-4}
-    \cmidrule(lr){5-6}
+    \cmidrule(lr){4-5}
+    \cmidrule(lr){6-7}
 
-    & &
+    & & &
     \textbf{\%} & \textbf{95\% CI} &
     \textbf{\%} & \textbf{95\% CI} &
     \\
@@ -43,9 +45,9 @@
     \midrule
 
     \rowcolor{claimTA!15}
-    \multicolumn{7}{l}{\textbf{\textcolor{claimTA}{Title/Abstract}}} \\
+    \multicolumn{8}{l}{\textbf{\textcolor{claimTA}{Title/Abstract}}} \\
 
-    C01 & AI identification \& abstract completeness
+    C01 & AI identification \& abstract completeness & 1--2
     & 100\% & [95, 100]
     & 100\% & [92, 100]
     & $\pm0\%$ (1.00) \\
@@ -53,9 +55,9 @@
     \midrule
 
     \rowcolor{claimIntro!15}
-    \multicolumn{7}{l}{\textbf{\textcolor{claimIntro}{Introduction}}} \\
+    \multicolumn{8}{l}{\textbf{\textcolor{claimIntro}{Introduction}}} \\
 
-    C02 & Background \& study objectives
+    C02 & Background \& study objectives & 3--5
     & 100\% & [95, 100]
     & 98\% & [88, 100]
     & $-2\%$ (0.36) \\
@@ -63,34 +65,34 @@
     \midrule
 
     \rowcolor{claimMeth!15}
-    \multicolumn{7}{l}{\textbf{\textcolor{claimMeth}{Methods}}} \\
+    \multicolumn{8}{l}{\textbf{\textcolor{claimMeth}{Methods}}} \\
 
-    C03 & Study design \& data sources
+    C03 & Study design \& data sources & 6--9
     & 68\% & [56, 77]
     & 81\% & [67, 90]
     & $+14\%$ (0.14) \\
 
-    C04 & Participants \& image acquisition
+    C04 & Participants \& image acquisition & 10--13
     & 49\% & [38, 60]
     & 70\% & [55, 81]
     & $+20\%$ (0.04) \\
 
-    C05 & Reference standards \& annotation
+    C05 & Reference standards \& annotation & 14--16
     & 71\% & [60, 80]
     & 56\% & [41, 70]
     & $-15\%$ (0.11) \\
 
-    C06 & Data partitioning \& class handling
+    C06 & Data partitioning \& class handling & 17--21
     & 70\% & [59, 79]
     & 69\% & [54, 81]
     & $-1\%$ (1.00) \\
 
-    C07 & Model architecture \& training
+    C07 & Model architecture \& training & 22--26
     & 75\% & [65, 84]
     & 67\% & [52, 80]
     & $-8\%$ (0.40) \\
 
-    C08 & Evaluation design \& interpretability
+    C08 & Evaluation design \& interpretability & 27--31
     & 47\% & [36, 58]
     & 56\% & [41, 70]
     & $+9\%$ (0.45) \\
@@ -98,14 +100,14 @@
     \midrule
 
     \rowcolor{claimRes!15}
-    \multicolumn{7}{l}{\textbf{\textcolor{claimRes}{Results}}} \\
+    \multicolumn{8}{l}{\textbf{\textcolor{claimRes}{Results}}} \\
 
-    C09 & Performance \& external validation
+    C09 & Performance \& external validation & 32--36
     & 62\% & [51, 72]
     & 65\% & [50, 78]
     & $+3\%$ (0.84) \\
 
-    C10 & Demographic \& subgroup reporting
+    C10 & Demographic \& subgroup reporting & 37--39
     & 30\% & [21, 41]
     & 28\% & [17, 43]
     & $-2\%$ (1.00) \\
@@ -113,9 +115,9 @@
     \midrule
 
     \rowcolor{claimDisc!15}
-    \multicolumn{7}{l}{\textbf{\textcolor{claimDisc}{Discussion}}} \\
+    \multicolumn{8}{l}{\textbf{\textcolor{claimDisc}{Discussion}}} \\
 
-    C11 & Limitations, implications \& supporting documentation
+    C11 & Limitations, implications \& supporting documentation & 40--42
     & 88\% & [79, 94]
     & 91\% & [78, 96]
     & $+2\%$ (0.77) \\
@@ -123,9 +125,9 @@
     \midrule
 
     \rowcolor{claimRepro!15}
-    \multicolumn{7}{l}{\textbf{\textcolor{claimRepro}{Reproducibility \& Transparency}}} \\
+    \multicolumn{8}{l}{\textbf{\textcolor{claimRepro}{Reproducibility \& Transparency}}} \\
 
-    C12 & Reproducibility \& funding disclosure
+    C12 & Reproducibility \& funding disclosure & 43--44
     & 74\% & [63, 82]
     & 74\% & [60, 85]
     & $\pm0\%$ (1.00) \\
