@@ -233,24 +233,8 @@ The complete instructions, the JSON schema and the validator are provided with t
 \section{Scoring of CLAIM 2024 Items}
 \label{app:claim_clusters}
 
-We scored every included study against the 44 items of the CLAIM 2024 checklist~\cite{Tejani2024}, using the official item numbers and the official subsections as groups. Thirty items were derived from the main extraction schema; where several schema fields correspond to one CLAIM item, the item counts as reported only when all applicable fields are reported. The remaining 14 items (marked $\dagger$) were scored in a targeted second pass against the official wording, with a verbatim supporting quote required for every item marked as reported.
+We scored every included study against the 44 items of the CLAIM 2024 checklist~\cite{Tejani2024}, using the official item numbers and the official subsections as groups; Table~\ref{tab:claim2024_temporal} lists the items in each subsection. Thirty items were derived from the main extraction schema; where several schema fields correspond to one CLAIM item, the item counts as reported only when all applicable fields are reported. The remaining 14 items (marked $^\dagger$ in Table~\ref{tab:claim2024_temporal}) were scored in a targeted second pass against the official wording, with a verbatim supporting quote required for every item marked as reported.
 
-\begin{itemize}
-    \item \textbf{Title and abstract (1--2).} 1 identification as an AI study; 2 structured summary of design, methods, results and conclusions.
-    \item \textbf{Introduction (3--4).} 3 scientific and clinical background, including the intended role of AI; 4 aims and objectives.
-    \item \textbf{Study design (5--6).} 5 prospective or retrospective; 6$\dagger$ study goal and intended use.
-    \item \textbf{Data (7--13).} 7 data sources; 8 inclusion and exclusion criteria; 9$\dagger$ data preprocessing; 10$\dagger$ selection of data subsets; 11 de-identification; 12$\dagger$ missing data; 13 image acquisition protocol.
-    \item \textbf{Reference standard (14--18).} 14 definition of the reference standard; 15$\dagger$ rationale for choosing it; 16 source of annotations and annotator qualifications; 17$\dagger$ annotation of the test set; 18 inter- and intrarater variability.
-    \item \textbf{Data partitions (19--20).} 19 assignment of data to partitions; 20$\dagger$ level at which partitions are disjoint.
-    \item \textbf{Testing data (21).} 21$\dagger$ intended sample size.
-    \item \textbf{Model (22--24).} 22 detailed model description; 23$\dagger$ software libraries and frameworks; 24 initialization of model parameters.
-    \item \textbf{Training (25--27).} 25 training details (augmentation, objective function, hyperparameters, stopping criteria); 26$\dagger$ selection of the final model; 27$\dagger$ ensembling.
-    \item \textbf{Evaluation (28--34).} 28 performance metrics and comparison with prior models; 29 statistical significance and uncertainty; 30 robustness or sensitivity analysis; 31 explainability; 32 evaluation on internal data; 33 testing on external data; 34$\dagger$ clinical trial registration.
-    \item \textbf{Results: data (35--36).} 35 numbers of patients or examinations included and excluded; 36 demographic and clinical characteristics.
-    \item \textbf{Results: model performance (37--39).} 37$\dagger$ performance on all partitions and datasets; 38$\dagger$ diagnostic performance estimates with their precision; 39 failure analysis.
-    \item \textbf{Discussion (40--41).} 40 limitations; 41 implications for practice.
-    \item \textbf{Other information (42--44).} 42 reference to the full protocol or technical details; 43 availability of software, model or data; 44 funding and role of funders.
-\end{itemize}
 % \section{List of Included Studies}
 % \label{appendix:included_studies}
 
