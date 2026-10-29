@@ -44,19 +44,21 @@ FS_LEGEND_TITLE  = 8
 FS_LEGEND_BODY   = 8
 
 # ── Cluster definitions ───────────────────────────────────────────────────────
-CLAIM2024_CLUSTERS = [
-    {"cluster_id": "C01", "cluster_label": "AI identification & abstract completeness", "section": "Title/Abstract",               "items_covered": "1–2"},
-    {"cluster_id": "C02", "cluster_label": "Background & study objectives",             "section": "Introduction",                 "items_covered": "3–5"},
-    {"cluster_id": "C03", "cluster_label": "Study design & data sources",               "section": "Methods",                      "items_covered": "6–9"},
-    {"cluster_id": "C04", "cluster_label": "Participants & image acquisition",          "section": "Methods",                      "items_covered": "10–13"},
-    {"cluster_id": "C05", "cluster_label": "Reference standards & annotation",                 "section": "Methods",                      "items_covered": "14–16"},
-    {"cluster_id": "C06", "cluster_label": "Data partitioning & class handling",        "section": "Methods",                      "items_covered": "17–21"},
-    {"cluster_id": "C07", "cluster_label": "Model architecture & training",             "section": "Methods",                      "items_covered": "22–26"},
-    {"cluster_id": "C08", "cluster_label": "Evaluation design & interpretability",              "section": "Methods",                      "items_covered": "27–31"},
-    {"cluster_id": "C09", "cluster_label": "Performance & external validation",         "section": "Results",                      "items_covered": "32–36"},
-    {"cluster_id": "C10", "cluster_label": "Demographic & subgroup reporting",          "section": "Results",                      "items_covered": "37–39"},
-    {"cluster_id": "C11", "cluster_label": "Limitations, implications & supporting documentation",   "section": "Discussion",                   "items_covered": "40–42"},
-    {"cluster_id": "C12", "cluster_label": "Reproducibility & funding disclosure",      "section": "Reproducibility & Transparency","items_covered": "43–44"},
+CLAIM2024_CLUSTERS = [  # official CLAIM 2024 checklist subsections
+    {"cluster_id": "1-2", "cluster_label": "Title & abstract", "section": "Title/Abstract", "items_covered": "1–2"},
+    {"cluster_id": "3-4", "cluster_label": "Introduction", "section": "Introduction", "items_covered": "3–4"},
+    {"cluster_id": "5-6", "cluster_label": "Study design", "section": "Methods", "items_covered": "5–6"},
+    {"cluster_id": "7-13", "cluster_label": "Data", "section": "Methods", "items_covered": "7–13"},
+    {"cluster_id": "14-18", "cluster_label": "Reference standard", "section": "Methods", "items_covered": "14–18"},
+    {"cluster_id": "19-20", "cluster_label": "Data partitions", "section": "Methods", "items_covered": "19–20"},
+    {"cluster_id": "21", "cluster_label": "Testing data", "section": "Methods", "items_covered": "21"},
+    {"cluster_id": "22-24", "cluster_label": "Model", "section": "Methods", "items_covered": "22–24"},
+    {"cluster_id": "25-27", "cluster_label": "Training", "section": "Methods", "items_covered": "25–27"},
+    {"cluster_id": "28-34", "cluster_label": "Evaluation", "section": "Methods", "items_covered": "28–34"},
+    {"cluster_id": "35-36", "cluster_label": "Data", "section": "Results", "items_covered": "35–36"},
+    {"cluster_id": "37-39", "cluster_label": "Model performance", "section": "Results", "items_covered": "37–39"},
+    {"cluster_id": "40-41", "cluster_label": "Discussion", "section": "Discussion", "items_covered": "40–41"},
+    {"cluster_id": "42-44", "cluster_label": "Other information", "section": "Other information", "items_covered": "42–44"},
 ]
 
 SECTION_COLORS = {
@@ -65,7 +67,7 @@ SECTION_COLORS = {
     "Methods":                      "#C44E52",
     "Results":                      "#DD8452",
     "Discussion":                   "#8172B2",
-    "Reproducibility & Transparency":"#937860",
+    "Other information":            "#937860",
 }
 
 DEFAULT_INPUT   = "../results/claim2024_results.jsonl"
@@ -358,7 +360,7 @@ def save_latex_table(pre_rows, post_rows, split_year, out_dir, n_pre, n_post):
         "Methods":                      "claimMeth",
         "Results":                      "claimRes",
         "Discussion":                   "claimDisc",
-        "Reproducibility & Transparency":"claimRepro",
+        "Other information":"claimRepro",
     }
     SEC_HEX = {
         "Title/Abstract":               "4C72B0",
@@ -366,7 +368,7 @@ def save_latex_table(pre_rows, post_rows, split_year, out_dir, n_pre, n_post):
         "Methods":                      "C44E52",
         "Results":                      "DD8452",
         "Discussion":                   "8172B2",
-        "Reproducibility & Transparency":"937860",
+        "Other information":"937860",
     }
 
     lines = []
