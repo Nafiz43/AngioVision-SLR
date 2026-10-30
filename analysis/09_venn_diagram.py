@@ -111,7 +111,8 @@ for k,(x,y) in centres.items():
 labels = {'C1':(-1.78,0), 'C2':(0,1.75), 'C3':(1.78,0), 'C4':(0,-1.75)}
 for k,(x,y) in labels.items():
     gaps=', '.join(g[0] for g in CLUSTERS[k]['gaps'])
-    ax.text(x,y,k+'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=8,color=COLOURS[k]['txt'])
+    ax.text(x,y,'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=8,color=COLOURS[k]['txt'])
+    ax.text(x,y+0.13,k,ha='center',va='center',fontsize=10,weight='bold',color=COLOURS[k]['txt'])
 positions = {frozenset(['C1','C2']):(-.85,.85),frozenset(['C2','C3']):(.85,.85),frozenset(['C1','C4']):(-.85,-.85),frozenset(['C3','C4']):(.85,-.85),frozenset(['C1','C2','C3']):(0,.57),frozenset(['C1','C2','C3','C4']):(0,0)}
 for region,(x,y) in positions.items():
     label=INTERSECTIONS[region]
