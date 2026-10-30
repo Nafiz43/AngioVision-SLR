@@ -111,32 +111,32 @@ for (label, col), xx in zip([('learned', LEARNED), ('fixed', FIXED), ('none', NO
 arrow(8.4, 8.9)
 
 # 4. Research-gap clusters with mitigation strategies (S codes), laid out as in the article's Venn figure.
-names = {'GC1': 'Data\ninfrastructure', 'GC2': 'Modeling &\nlearning', 'GC3': 'Clinical\ndeployment', 'GC4': 'Outcome &\nreporting'}
+names = {'C1': 'Data\ninfrastructure', 'C2': 'Modeling &\nlearning', 'C3': 'Clinical\ndeployment', 'C4': 'Outcome &\nreporting'}
 r, h, v, vx, vy = 1.0, .78, .7, 10.8, 2.45
-centres = {'GC1': (vx - h, vy), 'GC2': (vx, vy + v), 'GC3': (vx + h, vy), 'GC4': (vx, vy - v)}
+centres = {'C1': (vx - h, vy), 'C2': (vx, vy + v), 'C3': (vx + h, vy), 'C4': (vx, vy - v)}
 for k, (x, y) in centres.items():
     c = colours[k]
     ax.add_patch(Circle((x, y), r, facecolor=c['fill'], edgecolor=c['edge'], alpha=.5, lw=1.2))
-lobe = {'GC1': (vx - 1.25, vy), 'GC2': (vx, vy + 1.27), 'GC3': (vx + 1.25, vy), 'GC4': (vx, vy - 1.27)}
+lobe = {'C1': (vx - 1.25, vy), 'C2': (vx, vy + 1.27), 'C3': (vx + 1.25, vy), 'C4': (vx, vy - 1.27)}
 for k, (tx, ty) in lobe.items():
     c = colours[k]
     strat = unique.get(k, '—')
     lines = [(names[k], 8.6, 'bold'), (' '.join(g[0] for g in clusters[k]['gaps']), 7.6, 'normal')]
     if strat != '—':
         lines.append((strat.replace(', ', ' '), 7.6, 'bold'))
-    if k in ('GC2', 'GC4'):
-        ax.text(tx, ty + (.06 if k == 'GC2' else -.06), names[k].replace('\n', ' '), ha='center', va='center',
+    if k in ('C2', 'C4'):
+        ax.text(tx, ty + (.06 if k == 'C2' else -.06), names[k].replace('\n', ' '), ha='center', va='center',
                 fontsize=8.6, weight='bold', color=c['txt'])
         rest_lines = lines[1:]
-        ax.text(tx, ty + (-.17 if k == 'GC2' else .17), '   '.join(t for t, _, _ in rest_lines), ha='center',
+        ax.text(tx, ty + (-.17 if k == 'C2' else .17), '   '.join(t for t, _, _ in rest_lines), ha='center',
                 va='center', fontsize=7.6, color=c['txt'])
     else:
         ax.text(tx, ty + .3, names[k], ha='center', va='center', fontsize=8.2, weight='bold', color=c['txt'], linespacing=1.05)
         for n, (t, fs, w) in enumerate(lines[1:]):
             ax.text(tx, ty - .12 - n * .22, t, ha='center', va='center', fontsize=fs, weight=w, color=c['txt'])
-spots = {('GC1', 'GC2'): (vx - .55, vy + .55), ('GC2', 'GC3'): (vx + .55, vy + .55),
-         ('GC3', 'GC4'): (vx + .55, vy - .55), ('GC1', 'GC4'): (vx - .55, vy - .55),
-         ('GC1', 'GC2', 'GC3'): (vx, vy + .4), ('GC1', 'GC2', 'GC3', 'GC4'): (vx, vy - .08)}
+spots = {('C1', 'C2'): (vx - .55, vy + .55), ('C2', 'C3'): (vx + .55, vy + .55),
+         ('C3', 'C4'): (vx + .55, vy - .55), ('C1', 'C4'): (vx - .55, vy - .55),
+         ('C1', 'C2', 'C3'): (vx, vy + .4), ('C1', 'C2', 'C3', 'C4'): (vx, vy - .08)}
 for keys, (x, y) in spots.items():
     label = inter.get(frozenset(keys), '—')
     if label == '—':

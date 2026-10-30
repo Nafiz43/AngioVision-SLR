@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, FancyBboxPatch
 
 CLUSTERS = {
-    'GC1': {
+    'C1': {
         'name'  : 'Data Infrastructure',
         'gaps'  : [
             ('G1',  'Absence of public benchmarks'),
@@ -22,7 +22,7 @@ CLUSTERS = {
             ('G10', 'Privacy-preserving &\nmulti-institutional learning'),
         ],
     },
-    'GC2': {
+    'C2': {
         'name'  : 'Modeling & Learning',
         'gaps'  : [
             ('G3',  'Temporal modeling & video-level analysis'),
@@ -30,7 +30,7 @@ CLUSTERS = {
             ('G9',  'Class imbalance & \n rare pathology coverage'),
         ],
     },
-    'GC3': {
+    'C3': {
         'name'  : 'Clinical Deployment',
         'gaps'  : [
             ('G6',  'Clinical validation'),
@@ -38,7 +38,7 @@ CLUSTERS = {
             ('G8',  'Multi-modal data integration'),
         ],
     },
-    'GC4': {
+    'C4': {
         'name'  : 'Outcome & Reporting',
         'gaps'  : [
             ('G11', 'Clinical outcome prediction'),
@@ -65,31 +65,31 @@ STRATEGIES = [
 ]
 
 INTERSECTIONS = {
-    frozenset(['GC1', 'GC2'])             : 'S3, S14',
-    frozenset(['GC2', 'GC3'])             : 'S9',
-    frozenset(['GC1', 'GC4'])             : '—',
-    frozenset(['GC3', 'GC4'])             : 'S10, S11,\nS12, S13',
-    frozenset(['GC1', 'GC3'])             : '—',
-    frozenset(['GC2', 'GC4'])             : '—',
-    frozenset(['GC1', 'GC2', 'GC3'])       : 'S8',
-    frozenset(['GC1', 'GC2', 'GC4'])       : '—',
-    frozenset(['GC2', 'GC3', 'GC4'])       : '—',
-    frozenset(['GC1', 'GC3', 'GC4'])       : '—',
-    frozenset(['GC1', 'GC2', 'GC3', 'GC4']) : 'S1',
+    frozenset(['C1', 'C2'])             : 'S3, S14',
+    frozenset(['C2', 'C3'])             : 'S9',
+    frozenset(['C1', 'C4'])             : '—',
+    frozenset(['C3', 'C4'])             : 'S10, S11,\nS12, S13',
+    frozenset(['C1', 'C3'])             : '—',
+    frozenset(['C2', 'C4'])             : '—',
+    frozenset(['C1', 'C2', 'C3'])       : 'S8',
+    frozenset(['C1', 'C2', 'C4'])       : '—',
+    frozenset(['C2', 'C3', 'C4'])       : '—',
+    frozenset(['C1', 'C3', 'C4'])       : '—',
+    frozenset(['C1', 'C2', 'C3', 'C4']) : 'S1',
 }
 
 UNIQUE = {
-    'GC1': 'S2, S4, S5',
-    'GC2': 'S6, S7',
-    'GC3': '—',
-    'GC4': '—',
+    'C1': 'S2, S4, S5',
+    'C2': 'S6, S7',
+    'C3': '—',
+    'C4': '—',
 }
 
 COLOURS = {
-    'GC1': dict(fill='#CECBF6', edge='#534AB7', txt='#26215C'),
-    'GC2': dict(fill='#9FE1CB', edge='#0F6E56', txt='#04342C'),
-    'GC3': dict(fill='#F5C4B3', edge='#993C1D', txt='#4A1B0C'),
-    'GC4': dict(fill='#FAC775', edge='#854F0B', txt='#412402'),
+    'C1': dict(fill='#CECBF6', edge='#534AB7', txt='#26215C'),
+    'C2': dict(fill='#9FE1CB', edge='#0F6E56', txt='#04342C'),
+    'C3': dict(fill='#F5C4B3', edge='#993C1D', txt='#4A1B0C'),
+    'C4': dict(fill='#FAC775', edge='#854F0B', txt='#412402'),
 }
 
 # Drawn at the manuscript text width (6.84 in) without cropping, so 8 pt here
@@ -105,14 +105,14 @@ fig = plt.figure(figsize=(6.84, H), facecolor='white')
 ax = fig.add_axes([0, 4.351/H, 1, 1-4.351/H])
 ax.set(xlim=(-3.5, 3.5), ylim=(-2.32, 2.32), aspect='equal')
 ax.axis('off')
-centres = {'GC1':(-1.25,0), 'GC2':(0,1.05), 'GC3':(1.25,0), 'GC4':(0,-1.05)}
+centres = {'C1':(-1.25,0), 'C2':(0,1.05), 'C3':(1.25,0), 'C4':(0,-1.05)}
 for k,(x,y) in centres.items():
     ax.add_patch(Circle((x,y),1.25,fc=COLOURS[k]['fill'],ec=COLOURS[k]['edge'],alpha=.45,lw=1.3))
-labels = {'GC1':(-1.78,0), 'GC2':(0,1.75), 'GC3':(1.78,0), 'GC4':(0,-1.75)}
+labels = {'C1':(-1.78,0), 'C2':(0,1.75), 'C3':(1.78,0), 'C4':(0,-1.75)}
 for k,(x,y) in labels.items():
     gaps=', '.join(g[0] for g in CLUSTERS[k]['gaps'])
     ax.text(x,y,k+'\n'+gaps+'\nUnique: '+UNIQUE[k],ha='center',va='center',fontsize=8,color=COLOURS[k]['txt'])
-positions = {frozenset(['GC1','GC2']):(-.85,.85),frozenset(['GC2','GC3']):(.85,.85),frozenset(['GC1','GC4']):(-.85,-.85),frozenset(['GC3','GC4']):(.85,-.85),frozenset(['GC1','GC2','GC3']):(0,.57),frozenset(['GC1','GC2','GC3','GC4']):(0,0)}
+positions = {frozenset(['C1','C2']):(-.85,.85),frozenset(['C2','C3']):(.85,.85),frozenset(['C1','C4']):(-.85,-.85),frozenset(['C3','C4']):(.85,-.85),frozenset(['C1','C2','C3']):(0,.57),frozenset(['C1','C2','C3','C4']):(0,0)}
 for region,(x,y) in positions.items():
     label=INTERSECTIONS[region]
     if label == '—':
