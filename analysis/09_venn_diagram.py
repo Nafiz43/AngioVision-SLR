@@ -55,7 +55,7 @@ STRATEGIES = [
     ('S5',  'Domain adaptation for contrast,\ndose, frame rate, and motion'),
     ('S6',  'Video Transformer architectures\nwith long-range attention & SSMs'),
     ('S7',  'Physics-informed networks with\nprojection geometry & multi-view fusion'),
-    ('S8',  'Semi-supervised, active & self-\nsupervised learning for annotation'),
+    ('S8',  'Semi-supervised, active &\nself-supervised learning for annotation'),
     ('S9',  'Uncertainty quantification &\nOOD failure detection'),
     ('S10', 'Prospective multi-center RCTs\nwith clinical outcome endpoints'),
     ('S11', 'Outcome-supervised training for\nclinically meaningful prediction'),

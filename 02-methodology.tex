@@ -10,6 +10,7 @@ Because most clinical articles are indexed by PubMed/\allowbreak MEDLINE \cite{w
 The search query combined two Boolean blocks:
 
 \medskip
+\noindent\begin{minipage}{\linewidth}
 \noindent\textbf{Block 1 --- Imaging modality}
 \begin{quote}
 \small\texttt{(angiograph* OR fluoroscop* OR ``digital subtraction angiography'' OR DSA)}
@@ -21,6 +22,7 @@ The search query combined two Boolean blocks:
 \begin{quote}
 \small\texttt{(``deep learning'' OR ``machine learning'' OR CNN OR transformer OR ``artificial intelligence'' OR AI)}
 \end{quote}
+\end{minipage}
 \medskip
 
 
@@ -60,10 +62,10 @@ Two reviewers, an interventional radiologist and a biomedical AI researcher, scr
 
 
 
-\subsubsection{Recurrent Theme Extraction}
-We retrieved the full text of all eligible articles and identified research gaps by combining topic modeling with an analysis of each study's stated limitations and future work. We applied Latent Dirichlet Allocation (LDA) \cite{blei2003latent} to the limitations and future work sections of the reviewed studies to identify recurring themes across the included studies. Text preprocessing involved i) lowercasing the text; ii) removing irrelevant content, such as URLs, HTML tags, and reference lists; iii) tokenizing the text into words and removing stop words, such as ``the,'' ``and,'' and ``of''; and iv) lemmatizing words \cite{khyani2021interpretation} to their base forms---for example, ``models'' $\rightarrow$ ``model'', ``sequences'' $\rightarrow$ ``sequence.'' Documents were represented using a document--term matrix with bigram features. Terms appearing in fewer than 5\% of the documents were excluded. Next, the number of topics (K) was selected by comparing candidate values from 5 to 20 using the C\_v coherence score~\cite{roder2015exploring}, as in prior topic-model-based systematic reviews~\cite{ogunleye2024systematic}, supplemented by manual assessment of topic interpretability and redundancy. The model used symmetric document--topic and topic--word priors of 1/K each and was trainedxc using Gensim with 20 passes, a maximum of 100 iterations per document, and a random seed of 42. Topics were interpreted by examining their 10 highest-weighted terms and representative studies. We then manually reviewed and curated the resulting themes and derived a set literature gaps that highlight unresolved challenges and opportunities for future research in this domain.
+\subsection{Recurrent Theme Extraction}
+We retrieved the full text of all eligible articles and identified research gaps by combining topic modeling with an analysis of each study's stated limitations and future work. We applied Latent Dirichlet Allocation (LDA) \cite{blei2003latent} to the limitations and future work sections of the reviewed studies to identify recurring themes across the included studies. Text preprocessing involved i) lowercasing the text; ii) removing irrelevant content, such as URLs, HTML tags, and reference lists; iii) tokenizing the text into words and removing stop words, such as ``the,'' ``and,'' and ``of''; and iv) lemmatizing words \cite{khyani2021interpretation} to their base forms---for example, ``models'' $\rightarrow$ ``model'', ``sequences'' $\rightarrow$ ``sequence.'' Documents were represented using a document--term matrix with bigram features. Terms appearing in fewer than 5\% of the documents were excluded. Next, the number of topics (K) was selected by comparing candidate values from 5 to 20 using the C\_v coherence score~\cite{roder2015exploring}, as in prior topic-model-based systematic reviews~\cite{ogunleye2024systematic}, supplemented by manual assessment of topic interpretability and redundancy. The model used symmetric document--topic and topic--word priors of 1/K each and was trained using Gensim with 20 passes, a maximum of 100 iterations per document, and a random seed of 42. Topics were interpreted by examining their 10 highest-weighted terms and representative studies. We then manually reviewed and curated the resulting themes and derived a set of literature gaps that highlight unresolved challenges and opportunities for future research in this domain.
 
-\subsubsection{Data Extraction}
+\subsection{Data Extraction}
 \label{sec:full-text-screening}
 We extracted analysis data in a structured format with the help of a reasoning model with high reasoning effort (\texttt{Claude Opus 5.5}). We selected this model because it was the most capable model available to us through the institutional Amazon Bedrock platform at the time of extraction. Claude Opus 5.5, released by Anthropic in September 2026, is described by its developer as its strongest Opus model, performing at the level of its frontier model on most work~\cite{anthropic2026opus55}. The use of commercial models for this purpose has precedent in systematic reviews and meta-analyses \cite{konet2024extraction,khan2025collaborative,reason2024automation}. Each article was processed in a fresh model context holding only the extraction instructions to ensure no information carried over between articles. The extraction schema (provided in Appendix~\ref{appendix:extraction_schema}) covers bibliographic data, imaging modality \& anatomical territory, dataset, tasks, architecture, the temporal-modeling category of the proposed method (Table~\ref{tab:temporal_taxonomy}), validation design, reported metrics, reproducibility, clinical validation, the status of each manually curated research gap, and the 44 items of the CLAIM 2024 checklist~\cite{Tejani2024} (Appendix~\ref{app:claim_clusters}). Fourteen CLAIM items were scored in a second targeted pass that used the official item wording and the same one-article-per-context procedure; every item marked as reported had to be supported by a verbatim quote from the article.
 
