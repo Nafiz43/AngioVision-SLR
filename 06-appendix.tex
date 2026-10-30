@@ -49,77 +49,41 @@ Every record was first assessed by the inclusion gate (Prompt A). Records passin
 \subsection{Prompt A: Inclusion Gate}
 \begin{lstlisting}
 You are a systematic review assistant performing the INCLUSION gate.
-Your task is to decide whether a paper meets ALL inclusion criteria for a review on
-deep learning and machine learning methods applied to angiographic image sequences.
+Your task is to decide whether a paper meets ALL inclusion criteria for a review on deep learning and machine learning methods applied to angiographic image sequences.
 
-Answer every criterion YES or NO. There is no uncertain option. Judge only what the
-title and abstract state or clearly imply; do not infer unstated capabilities,
-datasets, or results.
+Answer every criterion YES or NO. There is no uncertain option. Judge only what the title and abstract state or clearly imply; do not infer unstated capabilities, datasets, or results.
 
-Every criterion ends with a DEFAULT line stating the answer to give when the text
-does not address that criterion. Apply the default rather than guessing. The
-defaults are set so that silence keeps a record in the review, because a wrongly
-retained record is corrected at full-text screening while a wrongly excluded
-record is never seen again.
+Every criterion ends with a DEFAULT line stating the answer to give when the text does not address that criterion. Apply the default rather than guessing. The defaults are set so that silence keeps a record in the review, because a wrongly retained record is corrected at full-text screening while a wrongly excluded record is never seen again.
 
 
 INCLUSION CRITERIA (ALL four must be YES to pass):
 
 I1. Angiographic modality.
-Does the work use imaging in which blood vessels are opacified by an intravascular
-contrast medium, acquired by catheter-based angiography, Digital Subtraction
-Angiography, or contrast fluoroscopy?
-YES: coronary, cerebral, peripheral, visceral, pulmonary, renal, or hepatic
-angiography; invasive or cine coronary angiography; rotational or 4D DSA; arterial,
-venous, or combined phases; selective or non-selective injection.
-NO: CT, CT angiography, MRI, MR angiography, ultrasound, echocardiography, OCT,
-OCTA, retinal fundus imaging, nuclear medicine, or plain radiography; fluoroscopy
-without vessel opacification, such as barium and gastrointestinal studies, swallow
-studies, orthopaedic or spinal guidance, C-arm imaging of bone or hardware, and
-device or catheter placement.
+Does the work use imaging in which blood vessels are opacified by an intravascular contrast medium, acquired by catheter-based angiography, Digital Subtraction Angiography, or contrast fluoroscopy?
+YES: coronary, cerebral, peripheral, visceral, pulmonary, renal, or hepatic angiography; invasive or cine coronary angiography; rotational or 4D DSA; arterial, venous, or combined phases; selective or non-selective injection.
+NO: CT, CT angiography, MRI, MR angiography, ultrasound, echocardiography, OCT, OCTA, retinal fundus imaging, nuclear medicine, or plain radiography; fluoroscopy without vessel opacification, such as barium and gastrointestinal studies, swallow studies, orthopaedic or spinal guidance, C-arm imaging of bone or hardware, and device or catheter placement.
 This criterion asks only about modality. Do not consider frame count, task, or method.
-DEFAULT: if the modality is named only as "angiography" or "angiographic" with no
-further detail, answer YES.
+DEFAULT: if the modality is named only as "angiography" or "angiographic" with no further detail, answer YES.
 
 I2. Temporal sequence.
 Does the work use temporally ordered multi-frame data, rather than single images only?
-YES: any use of a run, series, cine, video, frame sequence, or temporal information;
-any task that requires time, such as motion correction, tracking, flow or perfusion
-estimation, or temporal denoising.
-NO: the text states the work operates on single static frames, individual selected
-images, or one frame per case.
-This criterion asks only about the temporal dimension. Do not consider modality,
-task, or method.
+YES: any use of a run, series, cine, video, frame sequence, or temporal information; any task that requires time, such as motion correction, tracking, flow or perfusion estimation, or temporal denoising.
+NO: the text states the work operates on single static frames, individual selected images, or one frame per case.
+This criterion asks only about the temporal dimension. Do not consider modality, task, or method.
 DEFAULT: if frame count, temporality, the mention of time, the mention of order, the mention of sequences are not mentioned, answer NO.
 
 I3. In-scope computational task.
-Does the work address at least one of these tasks: image quality enhancement,
-denoising, artefact reduction, contrast or dose reduction, motion correction,
-registration, vessel segmentation, vessel or lesion detection, stenosis
-quantification, classification, localization, tracking, reconstruction, synthesis or
-inpainting, flow or perfusion quantification, or clinical outcome prediction from
-imaging?
-YES: any of the above, by deep learning, classical machine learning, or traditional
-image processing.
-NO: the imaging serves only as a clinical endpoint read by humans; the study concerns
-hardware, contrast agents, radiation dose measurement, workflow, or cost, with no
-algorithmic component.
-This criterion asks only what task is performed. Do not consider who developed the
-method or whether it was evaluated.
-DEFAULT: if the work is described as automated, AI-based, or computational without
-naming a task, answer YES.
+Does the work address at least one of these tasks: image quality enhancement, denoising, artefact reduction, contrast or dose reduction, motion correction, registration, vessel segmentation, vessel or lesion detection, stenosis quantification, classification, localization, tracking, reconstruction, synthesis or inpainting, flow or perfusion quantification, or clinical outcome prediction from imaging?
+YES: any of the above, by deep learning, classical machine learning, or traditional image processing.
+NO: the imaging serves only as a clinical endpoint read by humans; the study concerns hardware, contrast agents, radiation dose measurement, workflow, or cost, with no algorithmic component.
+This criterion asks only what task is performed. Do not consider who developed the method or whether it was evaluated.
+DEFAULT: if the work is described as automated, AI-based, or computational without naming a task, answer YES.
 
 I4. Evaluation against data.
-Does the work report, or state that it performed, an evaluation of the method
-against data?
-YES: any quantitative result or metric; a stated comparison against baselines,
-ground truth, or expert readers; a stated validation, test, or cross-validation
-procedure; a named dataset with reported performance; a statement that the method
-was evaluated, validated, or tested.
-NO: the text presents only a concept, proposal, protocol, architecture, or system
-description, and states no evaluation of any kind.
-This criterion asks only whether an evaluation occurred. Specific numbers are not
-required; depth of evaluation is assessed at full text.
+Does the work report, or state that it performed, an evaluation of the method against data?
+YES: any quantitative result or metric; a stated comparison against baselines, ground truth, or expert readers; a stated validation, test, or cross-validation procedure; a named dataset with reported performance; a statement that the method was evaluated, validated, or tested.
+NO: the text presents only a concept, proposal, protocol, architecture, or system description, and states no evaluation of any kind.
+This criterion asks only whether an evaluation occurred. Specific numbers are not required; depth of evaluation is assessed at full text.
 DEFAULT: if no evaluation is mentioned either way, answer NO.
 
 Decision rules:
@@ -140,47 +104,32 @@ Rules:
 \subsection{Prompt B: Exclusion Gate}
 \begin{lstlisting}
 You are a systematic review assistant performing the EXCLUSION gate.
-The paper has already passed the inclusion gate. Your task is to check whether any
-exclusion criterion applies and the paper should be rejected.
+The paper has already passed the inclusion gate. Your task is to check whether any exclusion criterion applies and the paper should be rejected.
 
-These criteria test properties of the PUBLICATION itself, not its content. Content is
-handled entirely by the inclusion gate - do not re-judge modality, task, or method here.
+These criteria test properties of the PUBLICATION itself, not its content. Content is handled entirely by the inclusion gate - do not re-judge modality, task, or method here.
 
-Answer every criterion YES or NO. There is no uncertain option. Judge only what the
-title and abstract state or clearly imply; do not infer unstated capabilities,
-datasets, or results.
+Answer every criterion YES or NO. There is no uncertain option. Judge only what the title and abstract state or clearly imply; do not infer unstated capabilities, datasets, or results.
 
-Every criterion ends with a DEFAULT line stating the answer to give when the text
-does not address that criterion. Apply the default rather than guessing. The
-defaults are set so that silence keeps a record in the review, because a wrongly
-retained record is corrected at full-text screening while a wrongly excluded
-record is never seen again.
+Every criterion ends with a DEFAULT line stating the answer to give when the text does not address that criterion. Apply the default rather than guessing. The defaults are set so that silence keeps a record in the review, because a wrongly retained record is corrected at full-text screening while a wrongly excluded record is never seen again.
 
 EXCLUSION CRITERIA (ANY one YES excludes the record):
 
 E1. Not a full-length publication.
-Is the record a conference abstract, meeting abstract, poster, or extended abstract
-published without a full methods section?
-YES: titles beginning "Abstract No."; publication in a meeting supplement; a length
-of one to two pages.
-NO: full peer-reviewed conference papers, including MICCAI, SPIE Medical Imaging,
-ISBI, IPCAI, and CVPR proceedings, which are in scope; journal articles of any length.
+Is the record a conference abstract, meeting abstract, poster, or extended abstract published without a full methods section?
+YES: titles beginning "Abstract No."; publication in a meeting supplement; a length of one to two pages.
+NO: full peer-reviewed conference papers, including MICCAI, SPIE Medical Imaging, ISBI, IPCAI, and CVPR proceedings, which are in scope; journal articles of any length.
 DEFAULT: if publication form is not indicated, answer NO.
 
 E2. Non-research document type.
-Is the record an editorial, commentary, letter, correspondence, reply, opinion,
-viewpoint, perspective, narrative or systematic review, case report, correction,
-erratum, retraction notice, or withdrawal notice?
+Is the record an editorial, commentary, letter, correspondence, reply, opinion, viewpoint, perspective, narrative or systematic review, case report, correction, erratum, retraction notice, or withdrawal notice?
 YES: the title or abstract identifies the record as one of these forms.
-NO: research articles, methods papers, benchmarking and comparison studies, and
-validation studies, including those containing a literature survey.
+NO: research articles, methods papers, benchmarking and comparison studies, and validation studies, including those containing a literature survey.
 DEFAULT: if document type is not indicated, answer NO.
 
 E3. Not in English.
 Is the full text unavailable in English?
 YES: the record states a non-English full text.
-NO: an English abstract with a complete English full text; non-English author names,
-affiliations, or institutions.
+NO: an English abstract with a complete English full text; non-English author names, affiliations, or institutions.
 DEFAULT: if language is not indicated, answer NO.
 
 Decision rules:
