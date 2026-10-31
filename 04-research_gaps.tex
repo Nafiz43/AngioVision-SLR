@@ -35,6 +35,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Construct and release large-scale multi-institutional angiographic datasets with standardized annotations and defined train/test splits \cite{R0099,ref35,ref97}.\newline
 \tabitem Organize dedicated challenge benchmarks modeled on established algorithmic medical image interpretation competitions, building on the public datasets already reused by included studies \cite{ref15,ref211,ref64,R1222,ref48,R0099}.\newline
 \tabitem Mandate inter-rater reliability protocols in annotation guidelines to ensure label quality \cite{R1213}.\newline
+\tabitem Construct longitudinal multi-modal cohort datasets linking angiographic sequences to post-procedural outcomes \cite{R0643,ref76}.\newline
 % \tabitem Define standard evaluation metrics and phantom-versus-patient evaluation subsets \cite{R0058}.
 \\
 \dashedrule
@@ -48,7 +49,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Treat external multi-institutional validation as a prerequisite for clinical deployment across institutions \cite{ref198,R2873,ref65,ref94,ref152,ref155}.\newline
 \tabitem Develop domain adaptation methods tailored to variable contrast concentration, dose, frame rate, and motion profiles \cite{ref64}.\newline
 \tabitem Extend personalized federated learning frameworks to accommodate non-identical cross-center data distributions \cite{R2443}.\newline
-\tabitem Establish domain shift benchmarks to quantify performance degradation across different imaging vendors \cite{ref95}.
+\tabitem Establish domain shift benchmarks to quantify performance degradation across different imaging vendors \cite{ref65,ref99,R3338}.
 \\
 \dashedrule
 \textbf{G3:} Temporal Modeling \& Video-Level Analysis\newline\textit{C2}
@@ -61,7 +62,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Develop architectures that model the complete temporal structure of angiographic acquisitions, including mask, injection, and washout phases \cite{R1939,ref46,R1609}.\newline
 \tabitem Evaluate video Transformer architectures with long-range attention and state-space models for efficient long-sequence processing \cite{ref42,R1222,ref104}.\newline
 \tabitem Explore temporal self-supervised pretraining on large archives of unannotated fluoroscopic video \cite{R2400,ref39}.\newline
-\tabitem Incorporate explicit hemodynamic priors into temporal model design \cite{ref43,ref46}.
+\tabitem Incorporate explicit hemodynamic priors, such as contrast agent kinetics, into temporal model design \cite{ref43,ref46}.
 \\
 \dashedrule
 \textbf{G4:} 2D Constraints \& 3D Reconstruction\newline\textit{C2}
@@ -72,7 +73,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem 2D/3D registration accuracy is insufficient for routine intraoperative use \cite{ref40,R3910,ref99,ref92}.
 &
 \tabitem Develop multi-view learning architectures that fuse information across projection angles \cite{ref148,R4557,ref35,R2466}.\newline
-\tabitem Investigate physics-informed networks incorporating known projection geometry and contrast agent kinetics \cite{ref43,R3164}.\newline
+\tabitem Investigate physics-informed networks incorporating known projection geometry \cite{ref43,R3164}.\newline
 \tabitem Use rotational angiographic acquisitions for temporally informed 3D reconstruction \cite{ref152,R3338}.\newline
 \tabitem Systematically combine intra-procedural cone-beam CT with fluoroscopic AI pipelines to provide 3D context \cite{R2466,R3164,ref39}.
 \\
@@ -110,7 +111,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Retrospective evaluation cannot measure the effect of AI outputs on physician behavior or patient outcomes \cite{R0100,ref208,ref80}.\newline
 \tabitem Demonstrated technical performance does not establish clinical value or cost-effectiveness \cite{ref152,ref40,ref82,R3661}.
 &
-\tabitem Design prospective clinical evaluation frameworks in collaboration between AI researchers and clinicians from the outset \cite{ref198,R4557}.\newline
+\tabitem Design prospective clinical evaluation frameworks in collaboration between AI researchers and clinicians \cite{ref198,R4557}.\newline
 \tabitem Pursue randomized controlled trials comparing outcomes under standard-of-care versus AI-assisted decision-making \cite{ref48}.\newline
 \tabitem Engage regulatory bodies to define the evidence standards required for clinical deployment \cite{R1362,ref95,R0570}.\newline
 \tabitem Develop AI interface designs that integrate model outputs into existing workflow without adding cognitive burden \cite{R1362,ref198}.
@@ -137,7 +138,6 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Longitudinal multi-modal datasets linking intraoperative imaging to procedural outcomes are almost absent \cite{ref62,ref30}.
 &
 \tabitem Develop architectures capable of fusing imaging, hemodynamic, and structured clinical data with explicit handling of missing modalities \cite{ref42,R0643,ref76,ref102}.\newline
-\tabitem Construct longitudinal multi-modal cohort datasets linking angiographic sequences to post-procedural outcomes \cite{R0643,ref76}.\newline
 \tabitem Explore vision-language model architectures for integrating free-text clinical notes with imaging features \cite{R0643}.\newline
 \tabitem Define outcome-oriented multi-modal training objectives that directly target clinical outcomes \cite{ref42,ref127}.
 \\
@@ -176,7 +176,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Auditability and accountability requirements for federated clinical AI systems are unaddressed, including by the one federated study \cite{R2443}.
 &
 \tabitem Develop federated learning frameworks specifically tailored to large angiographic video inputs with efficient communication protocols \cite{R2443}.\newline
-\tabitem Evaluate differential privacy and secure multi-party computation approaches for their impact on model utility.\newline
+\tabitem Evaluate privacy-preserving data-sharing approaches for their impact on model utility \cite{ref46,R2443}.\newline
 \tabitem Establish standardized data use agreements and federated audit mechanisms for cross-institutional AI training, since data protection currently limits release or sharing of angiographic datasets \cite{ref75,ref162}.\newline
 \tabitem Benchmark personalized federated approaches against centralized baselines as a function of institutional data heterogeneity \cite{R2443}.
 \\
@@ -188,10 +188,9 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Longitudinal cohort designs linking imaging findings to follow-up clinical endpoints are largely absent \cite{ref84,R3093,ref89}.\newline
 \tabitem Outcome-supervised training objectives have not been systematically explored in the angiographic domain \cite{ref79}.
 &
-\tabitem Construct longitudinal datasets linking intraoperative angiographic images to post-procedural endpoints including re-intervention rates and mortality \cite{ref42,ref76,ref102}.\newline
+\tabitem Link angiographic archives with procedural databases and electronic health records to build longitudinal datasets with post-procedural endpoints, including re-intervention and mortality \cite{ref42,ref76,ref102,R0643,ref127}.\newline
 \tabitem Develop outcome-supervised training objectives that directly target clinical events \cite{R1263,R1609,ref72,R0643}.\newline
-\tabitem Apply imaging biomarker discovery workflows combining feature extraction with survival and outcome modeling \cite{R1263,ref76,ref28}.\newline
-\tabitem Integrate procedural databases and electronic health record data with angiographic image archives to enable outcome-linked training \cite{R0643,ref127}.
+\tabitem Apply imaging biomarker discovery workflows combining feature extraction with survival and outcome modeling \cite{R1263,ref76,ref28}.
 \\
 \dashedrule
 \textbf{G12}: Large Language Models \& Structured Reporting\newline\textit{C4}
@@ -232,7 +231,7 @@ Table~\ref{tab:cbm_roadmap} turns each gap into a clinical risk, a computational
 \textbf{G1} Absence of Public Benchmarks\newline\textit{C1} & 65 &
 Reported performance cannot be verified to generalize beyond the originating institution before deployment, risking undetected failure in new clinical settings. &
 Large-scale, standardized, publicly released multi-institutional datasets with defined train/test splits. &
-Organize a public challenge benchmark with standardized metrics and phantom-versus-patient evaluation subsets. \\
+Organize a public challenge benchmark with standardized metrics. \\
 \dashedrule
 \addlinespace
 \textbf{G2} Generalizability \& Domain Shift\newline\textit{C1} & 68 &
@@ -261,7 +260,7 @@ Report performance-versus-label-count curves for each annotation-efficient metho
 \addlinespace
 \textbf{G6} Prospective Clinical Validation \& Outcome Assessment\newline\textit{C3} & 43 &
 Because almost no studies validate prospectively, there is no evidence these models change physician behavior or patient outcomes in live care. &
-Prospective evaluation frameworks and outcome-supervised training designed jointly with clinicians from the outset. &
+Prospective evaluation frameworks and outcome-supervised training designed jointly with clinicians. &
 Randomized controlled trials comparing standard-of-care versus AI-assisted decision-making as the evaluation standard. \\
 \dashedrule
 \bottomrule
