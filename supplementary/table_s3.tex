@@ -1,5 +1,5 @@
 \begin{longtable}{>{\raggedright\arraybackslash}p{0.7cm} >{\raggedright\arraybackslash}p{6.2cm} >{\raggedright\arraybackslash}p{2.9cm} r >{\raggedright\arraybackslash}p{4.2cm}}
-\caption{Reconstructed topic model and its correspondence to the research gaps. \textbf{This table is back-calculated.} The original LDA outputs that informed the gap definitions were lost during a data migration, so we reran the procedure of Section 2.4 on the final corpus of 115 studies, using the limitation and future-work statements recorded for each study during extraction (vocabulary after filtering: 136 terms; terms in fewer than 5\% or more than 50\% of documents and generic words were removed). C\_v coherence for K = 5--20 was 5: 0.279, 6: 0.273, 7: 0.272, 8: 0.257, 9: 0.281, 10: 0.291, 11: 0.300, 12: 0.269, 13: 0.281, 14: 0.299, 15: 0.285, 16: 0.303, 17: 0.318, 18: 0.294, 19: 0.293, 20: 0.319; the highest value selected K = 20. The original run would have produced a table of this form, but its topics and terms may differ. Representative studies are the three with the highest weight on the topic (record IDs as in the public repository); $n$ is the number of studies for which the topic is dominant. The gap column lists up to two gaps whose coding correlates with the topic weight across studies ($r \geq 0.15$). The largest correlation is 0.34, so the reconstructed topics align only loosely with G1--G12: the gaps were defined by reviewer interpretation of the stated limitations (Section 2.4), with topic modeling as an aid rather than the source.}\label{tab:lda_topics}\\
+\caption{Reconstructed topic model and its correspondence to the research gaps. \textbf{This table is back-calculated.} The original LDA outputs were lost during a data migration, so we reran the procedure of Section 2.4 on the full texts of the 115 included studies (2,641 terms after filtering). C\_v coherence was highest at K = 10 (0.386; 0.329 to 0.386 for K = 5 to 20). The original run would have produced a table of this form, but its topics and terms may differ. Representative studies have the highest weight on the topic; $n$ is the number of studies for which the topic is dominant. The gap column lists gaps whose coding correlates with the topic weight across studies at $r \geq 0.2$, a deliberately broad threshold chosen to surface as many candidate gaps as possible. Topics served only as a starting point: the gaps were defined and validated through careful manual curation by two reviewers (Section 2.4).}\label{tab:lda_topics}\\
 \toprule
 \textbf{Topic} & \textbf{Top 10 terms} & \textbf{Representative studies} & \textbf{\textit{n}} & \textbf{Correlated gaps}\\
 \midrule\endfirsthead
@@ -7,24 +7,14 @@
 \textbf{Topic} & \textbf{Top 10 terms} & \textbf{Representative studies} & \textbf{\textit{n}} & \textbf{Correlated gaps}\\
 \midrule\endhead
 \bottomrule\endfoot
-T1 & stenosis, lesion, detection, localization, prospective, occlusion, annotation, distal, imaging, training & R2992, R0521, R0514 & 14 & G12 LLMs and reporting ($r=0.19$); G1 public benchmarks ($r=0.18$)\\
-T2 & frame, segmentation, trained, artifact, detection, quality, vascular, external, vessel, selection & R0546, R1317, R1238 & 5 & none ($r<0.15$)\\
-T3 & expand, occlusion, robustness, augmentation, single, protocol, synthetic, incorporate, segment, frame & R1329, R0550, R2022 & 4 & G4 2D constraints ($r=0.21$)\\
-T4 & aneurysm, training, available, prediction, threshold, system, occlusion, input, segmentation, sequence & R4482, R3155, R1421 & 5 & G7 explainability ($r=0.34$)\\
-T5 & aneurysm, detection, extend, dsa, segmentation, small, frame, extraction, optimize, computational & R4479, R2855, R2114 & 6 & none ($r<0.15$)\\
-T6 & stenosis, classification, larger, video, error, automated, evaluated, end-to-end, view, distal & R4204, R2087, R0099 & 6 & G12 LLMs and reporting ($r=0.30$); G3 temporal modeling ($r=0.21$)\\
-T7 & segmentation, parameter, temporal, dsa, motion, flow, robustness, end-to-end, frame, learning & R1537, R3999, R1209 & 6 & G7 explainability ($r=0.16$); G4 2D constraints ($r=0.15$)\\
-T8 & device, region, training, segmentation, computational, frame, validation, larger, dsa, artifact & R1541, R4557, R3576 & 9 & G8 multimodal integration ($r=0.26$)\\
-T9 & cannot, frame, extraction, integrate, segmentation, lesion, gpu, device, combine, dsa & R1251, R1504, R3392 & 3 & none ($r<0.15$)\\
-T10 & frame, artifact, view, time, angiogram, sample, add, noise, external, integration & R1565, R2845, R2377 & 5 & G8 multimodal integration ($r=0.15$)\\
-T11 & aneurysm, motion, complex, flow, method, detection, region, augmentation, value, larger & R2263, R4441, R1862 & 6 & none ($r<0.15$)\\
-T12 & training, real-time, size, inference, automatic, manual, evaluation, dsa, external validation, pressure & R0640, R4143, R0939 & 6 & G6 prospective validation ($r=0.21$); G1 public benchmarks ($r=0.19$)\\
-T13 & angiography, detection, function, validation, single, coronary artery, prospective, bias, reduce, projection & R0309, R2873, R4208 & 5 & G9 class imbalance ($r=0.19$)\\
-T14 & motion, vessel, segmentation, attention, reduce, frame, small, large, artifact, selection & R4339, R3485, R3910 & 6 & G6 prospective validation ($r=0.21$)\\
-T15 & angiogram, cardiac, coronary artery, guidewire, attention, reference, standard, validation, included, angiography & R4102, R3648, R2466 & 7 & none ($r<0.15$)\\
-T16 & catheter, system, device, contrast, dsa, flow, case, coronary, pressure, small & R2376, R0774, R1422 & 8 & G11 outcome prediction ($r=0.18$); G6 prospective validation ($r=0.15$)\\
-T17 & case, vessel, structure, projection, large, included, video, excluded, sample, vascular & R3970, R3338, R1222 & 4 & none ($r<0.15$)\\
-T18 & multiple, sequence, ground truth, noise, cardiac, validate, catheter, frame, motion, score & R4411, R4323, R4265 & 4 & G4 2D constraints ($r=0.21$)\\
-T19 & vessel, segmentation, motion, detection, coronary, coronary artery, trained, occlusion, quality, poor & R2675, R4220, R4699 & 3 & none ($r<0.15$)\\
-T20 & vessel, background, segmentation, structure, module, vascular, gpu, temporal, video, angiography & R0352, R0529, R4762 & 3 & G3 temporal modeling ($r=0.15$)\\
+T1 & angiogram, video, system, dsa, assessment, function, classification, dnn, automated, coronary angiography & R2873, R0570, R3999 & 11 & G7 explainability ($r=0.28$); G11 outcome prediction ($r=0.26$); G6 prospective validation ($r=0.22$); G9 class imbalance ($r=0.22$)\\
+T2 & detection, stenosis, coronary artery, coronary angiography, stenosis detection, key frame, coronary, angiographic, view, classification & R4317, R4102, R3030 & 11 & none ($r<0.2$)\\
+T3 & dsa, aneurysm, occlusion, segmentation, dsa sequence, prediction, treatment, stroke, flow, intervention & R4683, R4482, R3093 & 20 & none ($r<0.2$)\\
+T4 & aneurysm, detection, segmentation, dsa, intracranial aneurysm, ia, radiologist, digital subtraction, detect, dsa image & R2855, R4441, R4479 & 10 & G4 2D constraints ($r=0.28$)\\
+T5 & video, stenosis, set, segment, coronary artery, classification, cag, prediction, assessment, visual assessment & R1421, R2992, R2087 & 9 & none ($r<0.2$)\\
+T6 & reconstruction, view, projection, dsa, dsa image, flow, psnr ssim, x-ray, synthesis, kernel & R3164, R2466, R1565 & 3 & none ($r<0.2$)\\
+T7 & video, datasets, across, score, selection, classification, framework, coronary artery, prediction, precision & R0643, R1238, R0521 & 13 & G12 LLMs and reporting ($r=0.44$); G8 multimodal integration ($r=0.36$); G7 explainability ($r=0.24$); G2 generalizability ($r=0.24$)\\
+T8 & tracking, segmentation, detection, point, motion, stent, x-ray, section, pixel, set & R4411, R4143, R3576 & 13 & none ($r<0.2$)\\
+T9 & optical flow, dsa, dsa image, video, coronary angiography, motion, artery, data set, text, dsa sequence & R2490, R2491, R4029 & 11 & none ($r<0.2$)\\
+T10 & segmentation, vessel segmentation, vascular, u-net, dsa, temporal, artifact, module, background, region & R0546, R0352, R2377 & 14 & G3 temporal modeling ($r=0.24$)\\
 \end{longtable}
