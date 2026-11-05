@@ -47,7 +47,7 @@
   "method": {
     "architecture_names": ["VGG-16 encoder-decoder", "Global average pooling (GAP) layer for class-activation maps"],
     "architecture_family": "unet_encoder_decoder",
-    "temporal_category": "none",
+    "temporal_category": "frame_aggregation",
     "temporal_evidence": {
       "quote": "the frames in the DSA sequences were flattened along the time-axis when the IAs were fully opacified to create a single frame",
       "section": "methods"

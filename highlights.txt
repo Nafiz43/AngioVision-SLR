@@ -1,7 +1,7 @@
 Highlights
 
-- Human review of 491 records validated screening; 120 studies were included
-- Most studies (80.8%) use time, but half rely on fixed, non-learned operations
-- Transformer or state-space temporal models appear in 8.3% of studies, all since 2023
+- Human review of 491 records validated screening; 115 studies were included
+- Most studies (82.6%) use time, but half rely on fixed, non-learned operations
+- Transformer or state-space temporal models appear in 8.7% of studies, all since 2023
 - Cardiac and neurologic applications account for nearly 90% of included studies
-- External validation (16%) and data release (2.5%) are rare; twelve gaps identified
+- External validation (16.5%) and data release (2.6%) are rare; twelve gaps identified

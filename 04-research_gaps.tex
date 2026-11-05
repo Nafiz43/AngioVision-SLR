@@ -27,8 +27,8 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \midrule
 \textbf{G1:} Absence of Public Benchmarks\newline\textit{C1}
 &
-\tabitem Small, private, single-center datasets dominate; 43 of the 95 studies that report patient numbers include fewer than 200 patients \cite{ref20,R1609,R1362,R1674,R1680,ref93}.\newline
-\tabitem Public, annotated datasets are lacking for many angiographic tasks, devices and territories; only 20 of 120 studies use a public dataset and 3 release their own data \cite{ref178,ref35,ref36,ref67,ref97,ref162}.\newline
+\tabitem Small, private, single-center datasets dominate; 42 of the 91 studies that report patient numbers include fewer than 200 patients \cite{ref20,R1609,R1362,R1674,R1680,ref93}.\newline
+\tabitem Public, annotated datasets are lacking for many angiographic tasks, devices and territories; only 20 of 115 studies use a public dataset and 3 release their own data \cite{ref178,ref35,ref36,ref67,ref97,ref162}.\newline
 \tabitem Absence of shared benchmarks makes cross-study comparison practically impossible \cite{R0100,ref43,ref48,ref92,ref94,ref95}.\newline
 \tabitem Inconsistent evaluation protocols prevent measurement of field-wide progress \cite{R2411,ref100}.
 &
@@ -41,9 +41,9 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \dashedrule
 \textbf{G2:} Generalizability \& Domain Shift\newline\textit{C1}
 &
-\tabitem Models trained on a single vendor or acquisition protocol consistently fail to transfer to external settings \cite{ref91,ref178,ref38,ref56,ref93,ref99}.\newline
+\tabitem Most models are trained and tested on data from a single vendor or acquisition protocol, and their authors note that transfer to external settings is untested \cite{ref91,ref178,ref38,ref56,ref93,ref99}.\newline
 \tabitem Domain shift between synthetic training data and real clinical images remains unresolved \cite{R1565,ref43,ref52,ref67,ref74,R3910}.\newline
-\tabitem Methods validated on coronary angiography degrade when applied to cerebral, renal, or peripheral vasculature \cite{ref208,R4204,R4557,ref179}.\newline
+\tabitem Methods are typically developed within one vascular territory or view, and their authors list performance in other territories or lesion types as unknown \cite{ref208,R4204,R4557,ref179}.\newline
 \tabitem Multi-center heterogeneity in frame rate, contrast dosing, and radiation settings is rarely addressed \cite{ref42,R3093,R1680,ref92}.
 &
 \tabitem Treat external multi-institutional validation as a prerequisite for clinical deployment across institutions \cite{ref198,R2873,ref65,ref94,ref152,ref155}.\newline
@@ -54,7 +54,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \dashedrule
 \textbf{G3:} Temporal Modeling \& Video-Level Analysis\newline\textit{C2}
 &
-\tabitem Temporal information is often modeled only superficially: 21 of 120 studies process each frame independently, and half of the 97 temporally aware studies rely on fixed operations rather than learned temporal representations of flow and contrast propagation \cite{ref64,ref15,R1541,ref50,ref82,ref10}.\newline
+\tabitem Temporal information is often modeled only superficially: 20 of 115 studies process each frame independently, and half of the 95 temporally aware studies rely on fixed operations rather than learned temporal representations of flow and contrast propagation \cite{ref64,ref15,R1541,ref50,ref82,ref10}.\newline
 \tabitem Temporal models are typically restricted to short fixed-length clips, not full variable-length sequences \cite{R1222,R3149,R3712}.\newline
 \tabitem Procedural phase transitions during interventional procedures are not explicitly modeled \cite{R3129,R4208,ref94,R2443}.\newline
 \tabitem Respiratory and cardiac motion are treated as noise rather than informative temporal signals \cite{ref36,R4220,ref34}.
@@ -214,10 +214,10 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \subsection{Roadmap}
 \label{sec:actionable_roadmap}
 
-Table~\ref{tab:cbm_roadmap} turns each gap into a clinical risk, a computational opportunity, and a benchmark that would make progress measurable. Its evidence count is the number of included studies whose full text documents the gap, each backed by a verbatim quote. The best-documented gaps are G2, G1 and G3 (68, 65 and 63 of 120 studies); G12, G10 and G11 (2, 8 and 9 studies) are emerging directions with limited evidence.
+Table~\ref{tab:cbm_roadmap} turns each gap into a clinical risk, a computational opportunity, and a benchmark that would make progress measurable. Its evidence count is the number of included studies coded as documenting the gap, that is, studies that state it as a limitation, motivation or direction for future work, each backed by a verbatim quote. It counts studies that report the problem, not studies that demonstrate it experimentally; for example, the 67 studies counted for G2 note limited generalizability, but only 12 of them tested a model on external data. The best-documented gaps are G2, G1 and G3 (67, 64 and 61 of 115 studies); G12, G10 and G11 (2, 8 and 9 studies) are emerging directions with limited evidence.
 
 \begin{table*}[pos=!t]
-\caption{Roadmap for each research gap: clinical risk, computational opportunity and a benchmark or evaluation recommendation. Evidence count is the number of included studies whose full text documents the gap. Cluster codes C1--C4 follow Figure~\ref{fig:venn_gaps}.}
+\caption{Roadmap for each research gap: clinical risk, computational opportunity and a benchmark or evaluation recommendation. Evidence count is the number of included studies coded as documenting the gap (stating it as a limitation, motivation or future work); it does not count studies that demonstrated the gap experimentally. Cluster codes C1--C4 follow Figure~\ref{fig:venn_gaps}.}
 \label{tab:cbm_roadmap}
 \footnotesize
 \begin{tabular}{>{\raggedright\arraybackslash}p{2.1cm}
@@ -228,31 +228,31 @@ Table~\ref{tab:cbm_roadmap} turns each gap into a clinical risk, a computational
 \toprule
 \textbf{Gap} & \textbf{Evid.\ Count} & \textbf{Clinical Risk} & \textbf{Computational Opportunity} & \textbf{Benchmark / Evaluation Recommendation} \\
 \midrule
-\textbf{G1} Absence of Public Benchmarks\newline\textit{C1} & 65 &
+\textbf{G1} Absence of Public Benchmarks\newline\textit{C1} & 64 &
 Reported performance cannot be verified to generalize beyond the originating institution before deployment, risking undetected failure in new clinical settings. &
 Large-scale, standardized, publicly released multi-institutional datasets with defined train/test splits. &
 Organize a public challenge benchmark with standardized metrics. \\
 \dashedrule
 \addlinespace
-\textbf{G2} Generalizability \& Domain Shift\newline\textit{C1} & 68 &
+\textbf{G2} Generalizability \& Domain Shift\newline\textit{C1} & 67 &
 Models validated at a single site, vendor, or vascular territory may silently degrade elsewhere, producing unreliable outputs during patient care without warning. &
 Domain adaptation and personalized federated learning tailored to cross-vendor, cross-protocol, and cross-territory variation. &
 Require external multi-institutional validation and report a domain-shift benchmark quantifying degradation across imaging vendors, imaging protocols, and institutions. \\
 \dashedrule
 \addlinespace
-\textbf{G3} Temporal Modeling \& Video-Level Analysis\newline\textit{C2} & 63 &
+\textbf{G3} Temporal Modeling \& Video-Level Analysis\newline\textit{C2} & 61 &
 Discarding hemodynamic flow and contrast-propagation dynamics risks missing clinically important temporal signals a frame-independent model cannot detect. &
 Video-transformer and state-space architectures modeling full acquisition phases (mask, injection, washout) with hemodynamic priors. &
 Evaluate on full variable-length real acquisitions with metrics scoring temporal fidelity, not accuracy on short fixed-length clips alone. \\
 \dashedrule
 \addlinespace
-\textbf{G4} 2D Constraints \& 3D Reconstruction\newline\textit{C2} & 48 &
+\textbf{G4} 2D Constraints \& 3D Reconstruction\newline\textit{C2} & 46 &
 Foreshortening, vessel overlap, and depth loss from monoplane 2D projections can cause missed or mis-measured lesions during intraoperative decisions. &
 Multi-view and physics-informed 3D reconstruction from mono-/biplane or rotational angiographic acquisitions. &
 Standardized 2D/3D registration accuracy benchmark evaluated under intraoperative time constraints. \\
 \dashedrule
 \addlinespace
-\textbf{G5} Annotation Scarcity \& Annotation-Efficient Learning\newline\textit{C1} & 51 &
+\textbf{G5} Annotation Scarcity \& Annotation-Efficient Learning\newline\textit{C1} & 49 &
 Reliance on scarce expert annotation with unquantified inter-observer variability threatens label reliability for safety-critical model training. &
 Semi-/self-supervised and active learning, foundation-model pretraining on large archives of unlabeled fluoroscopic video. &
 Report performance-versus-label-count curves for each annotation-efficient method, rather than accuracy at a single fixed label budget. \\
