@@ -40,7 +40,7 @@ The 491-record validation sample contains all 134 pipeline inclusions and 357 sa
 | [`references.bib`](references.bib) | Bibliography used by the main manuscript. |
 | [`figs/`](figs/) and [`tables/`](tables/) | Committed figures, tables, and supporting summaries for the manuscript. |
 | [`supplementary/`](supplementary/) | Separate supplementary LaTeX document, Table S1 screening validation records, and Table S2 PRISMA checklist. |
-| [`00_supplementary_file.pdf`](00_supplementary_file.pdf) | Compiled supplementary material (Table S1 screening validation records, Table S2 PRISMA 2020 checklist), built from `supplementary/supplementary.tex`. |
+| [`submission/`](submission/) + [`tools/split_submission.py`](tools/split_submission.py) | `00-main.tex` compiles every upload item in one PDF (manuscript, supplementary Tables S1-S3, cover letter, highlights, abstract, ethics statement). `python3 tools/split_submission.py` rebuilds it and writes the separate upload files to `~/Documents/CBM submission`. Revision edits are wrapped in `\edit{}`; set `\colorlet{editcolor}{black}` in `00-main.tex` before submitting. |
 | [`screening/`](screening/) | Screening decisions for all 5,064 records, dual-review annotations, agreement calculation, and search/screening pipeline. |
 | [`extraction/`](extraction/) | Extraction instructions, JSON schema, schema generator, validator, study manifest, conversion script, and 115 study-level JSON records (plus 5 excluded or merged reports in `out_excluded/`). |
 | [`analysis/`](analysis/) | Scripts for topical, metric, task/architecture, reporting-cluster, overlap, and task-clustering analyses. |
@@ -57,7 +57,7 @@ The manuscript stays at the repository root, with its existing figure, table, an
 2. For an Overleaf project already linked to this repository, open its GitHub synchronization menu and pull the latest changes. Synchronization is manual.
 3. For a new project, use **Import from GitHub** and select this repository. GitHub synchronization requires an eligible Overleaf subscription. A downloaded repository ZIP can also be uploaded as a project.
 4. Select **`00-main.tex`** as the main document and **pdfLaTeX** as the compiler.
-5. Recompile after pulling or editing. The supplementary entry point is `supplementary/supplementary.tex` when building the supplementary document separately.
+5. Recompile after pulling or editing. The supplementary material is part of `00-main.tex` (after the appendix); `tools/split_submission.py` extracts it as its own PDF.
 
 Before changing files locally, synchronize any pending Overleaf edits back to GitHub and pull them locally. After pushing local changes, pull them into Overleaf. Avoid simultaneous unsynchronized edits to the same files.
 
