@@ -12,3 +12,5 @@ output/
 *.out
 *.synctex.gz
 .DS_Store
+*.parts
+supplementary/*.pdf
