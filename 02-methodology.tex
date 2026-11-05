@@ -51,7 +51,7 @@ Screening of database records was performed using two separate LLM calls, one fo
 \subsubsection{Validation of the Screening Pipeline}
 \label{sec:validation}
 
-We validated the LLM screening decisions against a human-annotated sample stratified by the pipeline decision. All records labeled INCLUDE were reviewed, because each of them changes the review corpus. From the records labeled EXCLUDE, we drew a random sample whose size was set by Cochran's formula for a proportion with a finite-population correction~\cite{cochran1977sampling},
+We validated the LLM screening decisions against a human-annotated sample stratified by the pipeline decision. All records \edit{labeled} INCLUDE were reviewed, because each of them changes the review corpus. From the records \edit{labeled} EXCLUDE, we drew a random sample whose size was set by Cochran's formula for a proportion with a finite-population correction~\cite{cochran1977sampling},
 \begin{equation}
 n_0 = \frac{Z^2\,p(1-p)}{e^2}, \qquad n = \frac{n_0}{1 + \dfrac{n_0-1}{N}},
 \end{equation}
