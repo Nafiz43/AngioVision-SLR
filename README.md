@@ -21,9 +21,10 @@ The current manuscript reports searches of PubMed/MEDLINE and Semantic Scholar t
 | Initial pipeline inclusions | 134 | `llm_decision` in the screening CSV |
 | Records independently reviewed by two humans | 491 | `screening/screening_double_annotation.csv` |
 | Eligible studies after reviewed screening decisions | 122 | `extraction/manifest.csv` |
-| Studies with retrievable full text included in extraction and synthesis | 120 | `extraction/out/R*.json` |
+| Reports with retrievable full text assessed at full text | 120 | `extraction/out/` + `extraction/out_excluded/` |
+| Studies included in synthesis (2 meeting abstracts excluded, 3 earlier versions merged) | 115 | `extraction/out/R*.json` |
 
-The 491-record validation sample contains all 134 pipeline inclusions and 357 sampled exclusions. The final screening decisions incorporate human consensus for sampled records. Eligible records `R4468` and `R4475` have no extraction record because their full texts were not retrievable. These stages have different denominators; 122 eligible studies should not be confused with the 120 studies analyzed.
+The 491-record validation sample contains all 134 pipeline inclusions and 357 sampled exclusions. The final screening decisions incorporate human consensus for sampled records. Eligible records `R4468` and `R4475` have no extraction record because their full texts were not retrievable. These stages have different denominators; 122 eligible reports should not be confused with the 115 studies analyzed. Full-text exclusions and merges are in `extraction/out_excluded/`: R1725 and R2430 are meeting abstracts excluded under E1 at full text; R4154, R2434 and R4671 are earlier versions (preprint or conference paper) of the included journal articles R3555, R1238 and R4479 and are counted once. R4482 was reclassified by the reviewers from `none` to `frame_aggregation` (temporal pooling of frames).
 
 ## What is included
 
@@ -41,7 +42,7 @@ The 491-record validation sample contains all 134 pipeline inclusions and 357 sa
 | [`supplementary/`](supplementary/) | Separate supplementary LaTeX document, Table S1 screening validation records, and Table S2 PRISMA checklist. |
 | [`00_supplementary_file.pdf`](00_supplementary_file.pdf) | Compiled supplementary material (Table S1 screening validation records, Table S2 PRISMA 2020 checklist), built from `supplementary/supplementary.tex`. |
 | [`screening/`](screening/) | Screening decisions for all 5,064 records, dual-review annotations, agreement calculation, and search/screening pipeline. |
-| [`extraction/`](extraction/) | Extraction instructions, JSON schema, schema generator, validator, study manifest, conversion script, and 120 study-level JSON records. |
+| [`extraction/`](extraction/) | Extraction instructions, JSON schema, schema generator, validator, study manifest, conversion script, and 115 study-level JSON records (plus 5 excluded or merged reports in `out_excluded/`). |
 | [`analysis/`](analysis/) | Scripts for topical, metric, task/architecture, reporting-cluster, overlap, and task-clustering analyses. |
 | [`validation/`](validation/) | Original manuscript-side screening agreement script and annotation CSV, retained during consolidation. Use `screening/` for the consolidated screening workflow. |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Additional descriptions of the data files, extraction process, and reproduction dependencies. |
