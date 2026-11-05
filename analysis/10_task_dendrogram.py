@@ -65,13 +65,13 @@ OUTPUT_PDF = OUTPUT_DIR / "task_dendrogram.pdf"
 # comparable to that figure.
 CANONICAL_TASKS = [
     "Vessel Segmentation",
-    "Object Detection & Localisation",
+    "Object Detection & Localization",
     "Catheter & Device Tracking",
     "Disease Classification & Grading",
     "Outcome Prediction",
     "Contrast Flow Analysis",
     "Image Enhancement & Denoising",
-    "Temporal Sequence Modelling",
+    "Temporal Sequence Modeling",
     "Background Subtraction",
     "Motion Correction & Registration",
 ]

@@ -8,10 +8,10 @@ import csv, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-TASK = {"vessel_segmentation": "Vessel Segmentation", "object_detection_localization": "Object Detection & Localisation",
+TASK = {"vessel_segmentation": "Vessel Segmentation", "object_detection_localization": "Object Detection & Localization",
         "catheter_device_tracking": "Catheter & Device Tracking", "disease_classification_grading": "Disease Classification & Grading",
         "background_subtraction": "Background Subtraction", "image_enhancement_denoising": "Image Enhancement & Denoising",
-        "temporal_sequence_modeling": "Temporal Sequence Modelling", "contrast_flow_analysis": "Contrast Flow Analysis",
+        "temporal_sequence_modeling": "Temporal Sequence Modeling", "contrast_flow_analysis": "Contrast Flow Analysis",
         "motion_correction_registration": "Motion Correction & Registration", "outcome_prediction": "Outcome Prediction",
         "other": "other"}
 MODALITY = {"DSA": "DSA", "xray_fluoroscopy": "fluoroscopy", "DSA_and_fluoroscopy": "DSA+fluoroscopy", "other": "other"}

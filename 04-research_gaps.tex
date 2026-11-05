@@ -4,7 +4,7 @@
 \begin{figure*}[pos=htbp]
   \centering
   \includegraphics[width=0.9\textwidth]{figs/venn_diagram.pdf}
-  \caption{Research gaps grouped into four clusters, with mitigation strategies. C1: Data Infrastructure (G1, G2, G5, G10); C2: Modeling \& Learning (G3, G4, G9); C3: Clinical Deployment (G6, G7, G8); C4: Outcome \& Reporting (G11, G12). Strategy codes (S1--S14, defined in the legend) sit in the clusters or overlaps they serve; unlabelled overlaps have no shared strategy. Gap codes follow Table~\ref{tab:research_gaps}.}
+  \caption{Research gaps grouped into four clusters, with mitigation strategies. C1: Data Infrastructure (G1, G2, G5, G10); C2: Modeling \& Learning (G3, G4, G9); C3: Clinical Deployment (G6, G7, G8); C4: Outcome \& Reporting (G11, G12). Strategy codes (S1--S14, defined in the legend) sit in the clusters or overlaps they serve; unlabeled overlaps have no shared strategy. Gap codes follow Table~\ref{tab:research_gaps}.}
   \label{fig:venn_gaps}
 \end{figure*}
 
@@ -93,7 +93,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \midrule
 \textbf{G5:} Annotation Scarcity \& Annotation-Efficient Learning\newline\textit{C1}
 &
-\tabitem Manual data annotation takes significant amount of physician time and specialist expertise for every labeled study \cite{R0521,ref34,ref56,R4204,R4208,ref162}.\newline
+\tabitem Manual data annotation \edit{takes a large amount of physician time} and specialist expertise for every labeled study \cite{R0521,ref34,ref56,R4204,R4208,ref162}.\newline
 \tabitem Annotation varies within and between observers, rarely quantified in included studies \cite{ref28,R1213,ref208,R1674,ref75,R3661}.\newline
 \tabitem Synthetic data generation partially addresses scarcity, but synthetic-to-real domain gaps persist \cite{ref64,ref52,ref74}.\newline
 \tabitem Semi-supervised and self-supervised methods are underrepresented across angiographic analysis tasks \cite{ref2,ref57,R2411}.
@@ -106,7 +106,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \dashedrule
 \textbf{G6:} Prospective Clinical Validation \& Outcome Assessment\newline\textit{C3}
 &
-\tabitem Among the 61 studies that report their design, 57 are retrospective analyses of previously acquired images. \cite{ref42,ref38,R3052,R3093,R3126,ref76}.\newline
+\tabitem Among the 61 studies that report their design, 57 are retrospective analyses of previously acquired images \cite{ref42,ref38,R3052,R3093,R3126,ref76}.\newline
 \tabitem Prospective validation in live clinical settings is almost entirely absent from the literature \cite{ref102,ref91,R0521,R1362,R1503,ref75}.\newline
 \tabitem Retrospective evaluation cannot measure the effect of AI outputs on physician behavior or patient outcomes \cite{R0100,ref208,ref80}.\newline
 \tabitem Demonstrated technical performance does not establish clinical value or cost-effectiveness \cite{ref152,ref40,ref82,R3661}.
@@ -181,7 +181,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Benchmark personalized federated approaches against centralized baselines as a function of institutional data heterogeneity \cite{R2443}.
 \\
 \dashedrule
-\textbf{G11}: Imaging Biomarkers \& Clinical Outcome Prediction\newline\textit{C4}
+\textbf{G11:} Imaging Biomarkers \& Clinical Outcome Prediction\newline\textit{C4}
 &
 \tabitem Most methods focus on intermediate imaging tasks rather than on direct clinical outcome prediction \cite{R1680,ref91,ref92}.\newline
 \tabitem Demonstrating detection or segmentation accuracy does not establish impact on revascularization decisions or survival \cite{R1362,R1680,ref91}.\newline
@@ -193,7 +193,7 @@ Figure~\ref{fig:venn_gaps} also shows how proposed strategies address gaps acros
 \tabitem Apply imaging biomarker discovery workflows combining feature extraction with survival and outcome modeling \cite{R1263,ref76,ref28}.
 \\
 \dashedrule
-\textbf{G12}: Large Language Models \& Structured Reporting\newline\textit{C4}
+\textbf{G12:} Large Language Models \& Structured Reporting\newline\textit{C4}
 &
 \tabitem Language-model use is almost entirely unexplored; only one included study encodes procedural free-text reports with a pretrained language model, as one input of a mortality-prediction model \cite{R0643}.\newline
 \tabitem Free-text angiographic reports contain rich structured information routinely discarded in downstream analyses \cite{R0099,R0521}.\newline
@@ -291,7 +291,7 @@ Outcome-oriented multi-modal benchmarks that explicitly test performance under m
 \dashedrule
 \addlinespace
 \textbf{G9} Class Imbalance \& Rare Pathology Coverage\newline\textit{C2} & 41 &
-Models biased toward majority classes may have poor sensitivity for rare but critical events (e.g., perforation, aneurysm) -- precisely the cases where failure is most dangerous. &
+Models biased toward majority classes may have poor sensitivity for rare but critical events \edit{(e.g., perforation, aneurysm), which are precisely the cases} where failure is most dangerous. &
 Cost-sensitive learning, hard negative mining, and rare-event simulation or generative augmentation. &
 Mandate stratified per-class sensitivity reporting for rare pathologies alongside aggregate accuracy metrics. \\
 \dashedrule
